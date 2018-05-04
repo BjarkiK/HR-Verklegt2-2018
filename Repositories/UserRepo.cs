@@ -10,12 +10,12 @@ namespace TheBookCave.Repositories {
         public UserRepo() {
             _db = new DataContext();
         }
-        public List<UserListViewModel> getUser(int uid) {
+        public List<UserListViewModel> getUser(string uid) {
             var user = (from u in _db.Users
                                 where u.Id == uid
                                 select new UserListViewModel {
                                 Id = u.Id,
-                                AddressId = u.Id,
+                                AddressId = u.AddressId,
                                 FavoriteBookId = u.FavoriteBookId,
                                 Name = u.Name,
                                 OrderId = u.OrderId,
@@ -30,7 +30,7 @@ namespace TheBookCave.Repositories {
             var users = (from u in _db.Users
                                 select new UserListViewModel {
                                 Id = u.Id,
-                                AddressId = u.Id,
+                                AddressId = u.AddressId,
                                 FavoriteBookId = u.FavoriteBookId,
                                 Name = u.Name,
                                 OrderId = u.OrderId,

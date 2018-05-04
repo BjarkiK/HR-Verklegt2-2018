@@ -11,15 +11,10 @@ namespace SpotifyLite.Controllers
 {
     public class HomeController : Controller
     {
-        private ArtistService _artistService;
-
         public HomeController() {
-            _artistService = new ArtistService();
         }
         public IActionResult Index()
         {
-            /*var artists = _artistService.GetAllArtists();
-            return View(artists);*/
             return View();
         }
     }
