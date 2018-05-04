@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TheBookCave.Data;
@@ -22,6 +23,12 @@ namespace TheBookCave.Repositories {
                                 }).ToList();
             return order;
         }
+
+        internal object getOrder()
+        {
+            throw new NotImplementedException();
+        }
+
         public List<OrderListViewModel> getAllOrder() {
             var orders = (from o in _db.Orders
                                 select new OrderListViewModel {
