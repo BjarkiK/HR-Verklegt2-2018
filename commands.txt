@@ -12,7 +12,8 @@ dotnet ef database update - Run migrations on database
 GITHUB 
 git add FILENAME  	//push file to local staging area
 git commit -m "COMMENT"	//push file to local repository
-git push 		//push all files in local repo to github
+git push origin master  //push all files in local repo to github
+git pull origin amster	//pull all files from git repository
 
 git status  		//Check what status files are in (Untracked, up to date e.g.)
 git log 		//Log of all commits
