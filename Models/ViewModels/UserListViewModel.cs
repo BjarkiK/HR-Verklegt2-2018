@@ -1,5 +1,5 @@
 namespace TheBookCave.Models.ViewModels {
-    public class UserViewModel {
+    public class UserListViewModel {
         // ID email for each User.
         public string Id { get; set; } 
         // Id add for each User

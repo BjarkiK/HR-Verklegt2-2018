@@ -1,5 +1,5 @@
 namespace TheBookCave.Models.ViewModels {
-    public class HelpViewModel {
+    public class HelpListViewModel {
         public int Id { get; set; }
         // The genre of help (login transaction, profile...).
         public int GenreId { get; set; }

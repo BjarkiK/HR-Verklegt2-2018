@@ -1,6 +1,6 @@
 using System;
 namespace TheBookCave.Models.ViewModels {
-    public class PaymentDetailViewModel {
+    public class PaymentDetailListViewModel {
         public int Id { get; set; }
         // Id of user owning this payment detail.
         public string UserId { get; set; }
