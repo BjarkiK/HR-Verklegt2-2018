@@ -18,7 +18,7 @@ namespace TheBookCave.Repositories {
                                 Id = o.Id,
                                 AddressId = o.AddressId,
                                 Date = o.Date,
-                                GenreId = o.GenreId,
+                                TypeId = o.TypeId,
                                 UserId = o.UserId
                                 }).ToList();
             return order;
@@ -35,7 +35,7 @@ namespace TheBookCave.Repositories {
                                 Id = o.Id,
                                 AddressId = o.AddressId,
                                 Date = o.Date,
-                                GenreId = o.GenreId,
+                                TypeId = o.TypeId,
                                 UserId = o.UserId
                                 }).ToList();
             return orders;
