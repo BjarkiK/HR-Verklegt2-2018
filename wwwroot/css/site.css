@@ -40,4 +40,29 @@
 .navbarSearch {
     width: 40em !important;
 }
-
+#sideBar {
+    margin: 20px 20px;
+    border-radius: 5px;
+    width: 250px;
+    border-color: black;
+    border: solid;
+}
+#footerLeft {
+    font-size: 18px;
+    text-align: right; 
+}
+#footerMiddle {
+    text-align: right; 
+}
+#footerMiddle a{
+    color: inherit;
+}
+#facebook:hover{
+    color: #3b5998;
+}
+#twitter:hover{
+    color: #00aced;
+}
+#youtube:hover{
+    color: #ff0000;
+}
