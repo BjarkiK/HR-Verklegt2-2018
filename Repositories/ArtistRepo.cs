@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using TheBookCave.Data;
-using TheBookCave.Models.ViewyModels;
+using TheBookCave.Models.ViewModels;
 
 namespace TheBookCave.Repositories {
     public class ArtistRepo {

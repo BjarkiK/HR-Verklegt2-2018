@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using TheBookCave.Models.ViewyModels;
+using TheBookCave.Models.ViewModels;
 using TheBookCave.Repositories;
 
 namespace TheBookCave.Services {
