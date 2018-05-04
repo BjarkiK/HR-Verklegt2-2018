@@ -23,7 +23,7 @@ namespace TheBookCave.Services {
             return book;*/
             return null;
         }
-        public List<UserReviewViewModel> GetBookReviews(int bid) { 
+        public List<UserReviewListViewModel> GetBookReviews(int bid) { 
             /* var reviews = _userGradeRepo.GetAllReviewBooks();
             
             return reviews;*/
