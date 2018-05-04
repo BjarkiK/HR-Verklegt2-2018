@@ -4,10 +4,16 @@ using TheBookCave.Repositories;
 
 namespace TheBookCave.Services {
     public class BookService {
-        //private BookRepo _bookRepo;
+        /*private BookRepo _bookRepo;
+        private UserGradeRepo _userGradeRepo;
+        private GenreRepo _genreRepo;
+        private AuthorRepo _authorRepo;*/
 
         public BookService() {
-            //_bookRepo = new BookRepo();
+            /*_bookRepo = new BookRepo();
+            _userGradeRepo = new UserGradeRepo();
+            _genreRepo = new GenreRepo();
+            _authorRepo = new AuthorRepo();*/
         }
 
         public List<BookListViewModel> GetAllBooks() {
@@ -76,7 +82,5 @@ namespace TheBookCave.Services {
             /* tekur marga param og leitar út frá því */
             return null;
         }
-
-        
     }
 }
