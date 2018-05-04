@@ -1,3 +1,5 @@
+VISUAL STUDIO CODE
+
 dotnet new mvc - Nýtt project
 dotnet build - Build project
 dotnet run - Run project on port X
@@ -6,3 +8,24 @@ Entity framework
 dotnet ef - EntityFramework info
 dotnet ef add migration [MigrationName] - Add new migration to project
 dotnet ef database update - Run migrations on database
+
+GITHUB 
+git add FILENAME  	//push file to local staging area
+git commit -m "COMMENT"	//push file to local repository
+git push 		//push all files in local repo to github
+
+git status  		//Check what status files are in (Untracked, up to date e.g.)
+git log 		//Log of all commits
+git log --online	//Log of all commit comments
+git checkout 		//pull files from local repo (?)
+
+Example1
+git log --online
+//Choose id of commit you want to look at
+git checkout ID
+//Look at files
+git checkout master
+//back to the rigth place in workflow
+
+
+
