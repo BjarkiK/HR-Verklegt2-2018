@@ -5,7 +5,13 @@ namespace TheBookCave.Data {
     public class DataContext : DbContext {
         public DbSet<Artist> Artists { get; set; }
         public DbSet<Album> Albums { get; set; }
-
+        public DbSet<Subscription> Subscriptions { get; set; }
+        public DbSet<UserReview> UserReviews { get; set; }
+        public DbSet<PaymentDetail> PaymentDetail { get; set; }
+        public DbSet<Help> Helps { get; set; }
+        public DbSet<Book> Books { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<PromoCodes> PromoCodes { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
             // erum ad nota SQL fyrir gagnagrun
             optionsBuilder.UseSqlServer(

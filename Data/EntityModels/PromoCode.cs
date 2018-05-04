@@ -3,7 +3,7 @@ namespace TheBookCave.Data.EntityModels {
         // The promo code it self
         public int Id { get; set; }
         // How much discount this promo code gives.
-        public int Discouont { get; set; }
+        public int Discount { get; set; }
         // Discription af the promo code.
         public int Description { get; set; }
         // Determines if the promi code can be used or not.
