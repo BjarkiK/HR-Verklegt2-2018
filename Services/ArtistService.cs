@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using TheBookCave.Models.ViewyModels;
+using TheBookCave.Models.ViewModels;
 using TheBookCave.Repositories;
 
 namespace TheBookCave.Services {
@@ -10,10 +10,10 @@ namespace TheBookCave.Services {
             _artistRepo = new ArtistRepo();
         }
 
-        public List<ArtistListViewModel> GetAllArtists() {
+        /*public List<ArtistListViewModel> GetAllArtists() {
             //var artists = _artistRepo.GetAllArtists();
 
             return null;
-        }
+        }*/
     }
 }

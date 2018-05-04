@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using TheBookCave.Data;
-using TheBookCave.Models.ViewyModels;
+using TheBookCave.Models.ViewModels;
 
 namespace TheBookCave.Repositories {
     public class AlbumRepo {
@@ -11,7 +11,7 @@ namespace TheBookCave.Repositories {
             _db = new DataContext();
         }
 
-        public List<AlbumListViewModel> GetAllAlbums() {
+        /*public List<AlbumListViewModel> GetAllAlbums() {
             var albums =    (from a in _db.Albums
                             join ar in _db.Artists on a.ArtistId equals ar.Id
                             select new AlbumListViewModel {
@@ -22,6 +22,6 @@ namespace TheBookCave.Repositories {
                                 ReleaseYear = a.releaseYear
                             }).ToList();
             return albums;
-        }
+        }*/
     }
 }

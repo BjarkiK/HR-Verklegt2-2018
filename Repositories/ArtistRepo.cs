@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using TheBookCave.Data;
-using TheBookCave.Models.ViewyModels;
+using TheBookCave.Models.ViewModels;
 
 namespace TheBookCave.Repositories {
     public class ArtistRepo {
@@ -11,14 +11,14 @@ namespace TheBookCave.Repositories {
         public ArtistRepo() {
             _db = new DataContext();
         }
-        public List<ArtistListViewModel> GetAllArtists() {
-            /*var artists =   (from a in _db.Artists
+        /*public List<ArtistListViewModel> GetAllArtists() {
+            var artists =   (from a in _db.Artists
                             select new ArtistListViewModel {
                                 Id = a.Id,
                                 Name = a.Name
                             }).ToList();
-            return artists;*/
+            return artists;
             return null;
-        }
+        }*/
     }
 }

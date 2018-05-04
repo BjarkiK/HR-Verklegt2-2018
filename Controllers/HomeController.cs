@@ -18,8 +18,9 @@ namespace SpotifyLite.Controllers
         }
         public IActionResult Index()
         {
-            var artists = _artistService.GetAllArtists();
-            return View(artists);
+            /*var artists = _artistService.GetAllArtists();
+            return View(artists);*/
+            return View();
         }
     }
 }

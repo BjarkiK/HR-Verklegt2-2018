@@ -18,8 +18,9 @@ namespace TheBookCave.Controllers
         }
         public IActionResult Index()
         {
-            var albums = _albumService.GetAllAlbums();
-            return View(albums);
+            /*var albums = _albumService.GetAllAlbums();
+            return View(albums);*/
+            return View();
         }
     }
 }
