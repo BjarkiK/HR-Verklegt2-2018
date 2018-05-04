@@ -1,6 +1,6 @@
 using System;
 namespace TheBookCave.Models.ViewModels {
-    public class UserReviewViewModel {
+    public class UserReviewListViewModel {
         public int Id { get; set; }
         // Id of the user that wrote the review.
         public string UserId { get; set; }

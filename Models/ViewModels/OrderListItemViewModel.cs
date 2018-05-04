@@ -1,7 +1,7 @@
 using TheBookCave.Data.EntityModels;
 
 namespace TheBookCave.Models.ViewModels {
-    public class OrderItemViewModel {
+    public class OrderItemListViewModel {
         public int Id { get; set; }
         // Copy of book purched.
         public Book Book { get; set; }

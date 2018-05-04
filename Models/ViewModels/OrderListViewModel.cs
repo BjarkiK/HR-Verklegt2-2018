@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 
 namespace TheBookCave.Models.ViewModels {
-    public class OrderViewModel {
+    public class OrderListViewModel {
         public int Id { get; set; }
         // Id of user who made this order.
         public int UserId { get; set; }

@@ -7,13 +7,12 @@ dotnet run - Run project on port X
 Entity framework
 dotnet ef - EntityFramework info
 dotnet ef add migration [MigrationName] - Add new migration to project
-dotnet ef database update - Run migrations on database
+dotnet ef database update - Run migrations on database ( to make table)
 
 GITHUB 
 git add FILENAME  	//push file to local staging area
 git commit -m "COMMENT"	//push file to local repository
-git push origin master  //push all files in local repo to github
-git pull origin master	//pull all files from git repository
+git push 		//push all files in local repo to github
 
 git status  		//Check what status files are in (Untracked, up to date e.g.)
 git log 		//Log of all commits
