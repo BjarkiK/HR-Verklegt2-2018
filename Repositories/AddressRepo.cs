@@ -11,7 +11,7 @@ namespace TheBookCave.Repositories {
             _db = new DataContext();
         }
         public List<AddressListViewModel> getAddress(int aid) {
-            var address = (from a in _db.Address
+            var address = (from a in _db.Addresses
                                 where a.Id == aid
                                 select new AddressListViewModel {
                                 AddressId = a.Id,
@@ -26,7 +26,7 @@ namespace TheBookCave.Repositories {
             return address;
         }
         public List<AddressListViewModel> getAllAddresses() {
-            var address = (from a in _db.Address
+            var address = (from a in _db.Addresses
                                 select new AddressListViewModel {
                                 AddressId = a.Id,
                                 Address1 = a.Address1,
