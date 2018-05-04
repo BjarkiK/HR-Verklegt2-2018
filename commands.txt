@@ -1,0 +1,8 @@
+dotnet new mvc - Nýtt project
+dotnet build - Build project
+dotnet run - Run project on port X
+
+Entity framework
+dotnet ef - EntityFramework info
+dotnet ef add migration [MigrationName] - Add new migration to project
+dotnet ef database update - Run migrations on database
