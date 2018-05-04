@@ -3,11 +3,12 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - TheBookCave</title>
+    <title>@ViewData["Title"] TheBookCave</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -17,31 +18,72 @@
     </environment>
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">SpotifyLite</a>
+<!--Þarf að laga navbar þegar gluggi er minnkaður-->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="row">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="col-md-3">
+            <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">The Book Cave</a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+            <div class="col-md-7">
+                <form class="navbar-form" action="/action_page.php">
+                    <div class="input-group">
+                        <input type="text" class="form-control navbarSearch" placeholder="Search">
+                        <div class="input-group-btn">
+                            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                            <button type="submit" class="btn btn-default">adv. Search</button>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+            <div class="col-md-2">
+                <ul class="nav navbar-nav"> 
+                    <li><a asp-area="" asp-controller="Home" asp-action="Globe"><span class="glyphicon glyphicon-globe" aria-hidden="true"></a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="User"><span class="glyphicon glyphicon-user" aria-hidden="true"></a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Basket"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></a></li>
                 </ul>
             </div>
         </div>
-    </nav>
+    </div>
+</nav>
+<nav id="sideBar">
+    <div style="height:700px"></div>
+</nav>
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2018 - SpotifyLite</p>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2 first">
+                        <p>Kt xxxxxx-xxxx</p>
+                        <p>Sími 581-2345</p>
+                        <p>&copy; 2018 - The Book Cave</p>
+                    </div>
+                    <div class="col-md-7 middle">
+                        <div id="footerMiddle">
+                            <br>
+                            <a id="facebook" href="https://www.facebook.com"><i class="fa fa-facebook-square" style="font-size:36px"></i></a>
+                            <a id="youtube" href="https://www.youtube.com"><i class="fa fa-youtube-square" style="font-size:36px"></i></a>
+                            <a id="twitter"href="https://www.twitter.com"><i class="fa fa-twitter-square" style="font-size:36px"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-2 last">
+                        <div id="footerLeft">
+                            <a asp-controller="Home" asp-action="AboutUs">About Us</a><br>
+                            <a asp-controller="Home" asp-action="Help">Help</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </footer>
     </div>
 
