@@ -1,0 +1,12 @@
+@model List<TheBookCave.Models.ViewyModels.AlbumListViewModel>
+
+<div>
+    @foreach(var album in @Model) {
+        <div>
+            <p>@album.Title</p>
+            <p>@album.Artist</p>
+            <p>@album.ReleaseYear</p>
+        </div>
+        
+    }
+ </div>
