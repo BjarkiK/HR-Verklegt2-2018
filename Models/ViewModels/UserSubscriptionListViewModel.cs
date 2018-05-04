@@ -1,7 +1,7 @@
 using System;
 
 namespace TheBookCave.Models.ViewModels {
-    public class UserSubscription {
+    public class UserSubscriptionListViewModel {
         // Might not need Id.
         public int Id { get; set; }
         // Path to user.

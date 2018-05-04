@@ -10,10 +10,10 @@ namespace TheBookCave.Services {
             _albumRepo = new AlbumRepo();
         }
 
-        public List<AlbumListViewModel> GetAllAlbums() {
+        /*public List<AlbumListViewModel> GetAllAlbums() {
             var albums = _albumRepo.GetAllAlbums();
 
             return albums;
-        }
+        }*/
     }
 }

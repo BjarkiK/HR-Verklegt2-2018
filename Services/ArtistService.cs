@@ -10,10 +10,10 @@ namespace TheBookCave.Services {
             _artistRepo = new ArtistRepo();
         }
 
-        public List<ArtistListViewModel> GetAllArtists() {
-            var artists = _artistRepo.GetAllArtists();
+        /*public List<ArtistListViewModel> GetAllArtists() {
+            //var artists = _artistRepo.GetAllArtists();
 
-            return artists;
-        }
+            return null;
+        }*/
     }
 }

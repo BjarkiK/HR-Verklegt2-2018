@@ -1,5 +1,5 @@
 namespace TheBookCave.Models.ViewModels {
-    public class RegionViewModel {
+    public class RegionListViewModel {
         public int Id { get; set; }
         // Name of Region.
         public string Name { get; set; }

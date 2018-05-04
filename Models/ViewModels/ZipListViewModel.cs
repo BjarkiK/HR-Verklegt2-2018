@@ -1,5 +1,5 @@
 namespace TheBookCave.Models.ViewModels {
-    public class ZipViewModel {
+    public class ZipListViewModel {
         public string Id { get; set; }
         // Name of Zip
         public string Name { get; set; }

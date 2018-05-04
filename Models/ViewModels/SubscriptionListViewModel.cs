@@ -2,7 +2,7 @@ using System;
 
 namespace TheBookCave.Models.ViewModels {
 
-    public class SubscriptionViewModel {
+    public class SubscriptionListViewModel {
 
         public int Id { get; set; }
         // type of sub in icelandic.

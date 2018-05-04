@@ -9,18 +9,20 @@ using TheBookCave.Services;
 
 namespace TheBookCave.Controllers
 {
-    public class AlbumController : Controller
+    public class LanguageController : Controller
     {
-        private AlbumService _albumService;
+        //private PageService _pageService;
 
-        public AlbumController() {
-            _albumService = new AlbumService();
+        public LanguageController() {
+            //_pageService = new PageService();
         }
         public IActionResult Index()
         {
-            /*var albums = _albumService.GetAllAlbums();
-            return View(albums);*/
             return View();
+        }
+        public void changeLanguage()
+        {
+            //_pageService.changeLanguage();
         }
     }
 }
