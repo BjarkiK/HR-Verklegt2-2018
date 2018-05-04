@@ -17,7 +17,7 @@ namespace TheBookCave.Repositories {
                                 Id = h.Id,
                                 AnswerEN = h.AnswerEN,
                                 AnswerIS = h.AnswerIS,
-                                GenreId = h.GenreId,
+                                TypeId = h.TypeId,
                                 Question = h.Question
                                 }).ToList();
             return help;
@@ -28,7 +28,7 @@ namespace TheBookCave.Repositories {
                                 Id = h.Id,
                                 AnswerEN = h.AnswerEN,
                                 AnswerIS = h.AnswerIS,
-                                GenreId = h.GenreId,
+                                TypeId = h.TypeId,
                                 Question = h.Question
                                 }).ToList();
             return help;

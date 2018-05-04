@@ -4,36 +4,33 @@ using TheBookCave.Repositories;
 
 namespace TheBookCave.Services {
     public class BookService {
-        /*private BookRepo _bookRepo;
+        private BookRepo _bookRepo;
         private UserGradeRepo _userGradeRepo;
         private GenreRepo _genreRepo;
-        private AuthorRepo _authorRepo;*/
+        private AuthorRepo _authorRepo;
 
         public BookService() {
-            /*_bookRepo = new BookRepo();
+            _bookRepo = new BookRepo();
             _userGradeRepo = new UserGradeRepo();
             _genreRepo = new GenreRepo();
-            _authorRepo = new AuthorRepo();*/
+            _authorRepo = new AuthorRepo();
         }
 
         public List<BookListViewModel> GetAllBooks() {
-            /*var books = _bookRepo.GetAllBooks();
+            var books = _bookRepo.GetAllBooks();
 
-            return books;*/
-            return null;
+            return books;
         }
 
         public List<BookListViewModel> GetBook(int bid) {
-            /*var book = _bookRepo.GetBook();
+            var book = _bookRepo.GetBook(bid);
 
-            return book;*/
-            return null;
+            return book;
         }
         public List<UserReviewListViewModel> GetBookReviews(int bid) { 
-            /* var reviews = _userGradeRepo.GetAllReviewBooks();
+            var reviews = _userGradeRepo.GetAllReviewsBook(bid);
             
-            return reviews;*/
-            return null;
+            return reviews;
         }
         public void AddBookReview() {
             //var review = _userGradeRepo.CreateReview(userReview)

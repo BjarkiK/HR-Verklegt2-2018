@@ -31,7 +31,7 @@ namespace TheBookCave.Repositories {
                                 }).ToList();
             return book;
         }
-        public List<BookListViewModel> GetAllBook() {
+        public List<BookListViewModel> GetAllBooks() {
             var books = (from b in _db.Books
                                 select new BookListViewModel {
                                 Id = b.Id,

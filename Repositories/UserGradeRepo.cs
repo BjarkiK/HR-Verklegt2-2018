@@ -23,8 +23,9 @@ namespace TheBookCave.Repositories {
                                 }).ToList();
             return review;
         }
-        public List<UserReviewListViewModel> GetAllReviewBook(int rid) {
-            var review = (from rev in _db.UserReviews 
+        public List<UserReviewListViewModel> GetAllReviewsBook(int bid) {
+            var review = (from rev in _db.UserReviews
+                                where rev.BookId == bid
                                 select new UserReviewListViewModel {
                                 Id = rev.Id,
                                 BookId = rev.BookId,
