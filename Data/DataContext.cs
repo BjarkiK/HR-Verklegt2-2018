@@ -3,11 +3,9 @@ using TheBookCave.Data.EntityModels;
 
 namespace TheBookCave.Data {
     public class DataContext : DbContext {
-        public DbSet<Artist> Artists { get; set; }
-        public DbSet<Album> Albums { get; set; }
         public DbSet<Subscription> Subscriptions { get; set; }
         public DbSet<UserReview> UserReviews { get; set; }
-        public DbSet<PaymentDetail> PaymentDetail { get; set; }
+        public DbSet<PaymentDetail> PaymentDetails { get; set; }
         public DbSet<Help> Helps { get; set; }
         public DbSet<Book> Books { get; set; }
         public DbSet<Order> Orders { get; set; }
@@ -15,7 +13,7 @@ namespace TheBookCave.Data {
         public DbSet<Genre> Genre { get; set; }
         public DbSet<Author> Authors { get; set; }
         public DbSet<Publisher> Publishers { get; set; }
-        public DbSet<Address> Address { get; set; }
+        public DbSet<Address> Addresses { get; set; }
         public DbSet<User> Users { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
             // erum ad nota SQL fyrir gagnagrun

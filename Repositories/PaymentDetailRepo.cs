@@ -11,7 +11,7 @@ namespace TheBookCave.Repositories {
             _db = new DataContext();
         }
         public List<PaymentDetailListViewModel> GetPaymentDetail(int pdid) {
-            var paymentDetail = (from pd in _db.PaymentDetail
+            var paymentDetail = (from pd in _db.PaymentDetails
                                 where pd.Id == pdid
                                 select new PaymentDetailListViewModel {
                                 Id = pd.Id,
@@ -27,7 +27,7 @@ namespace TheBookCave.Repositories {
 
         // Spurning hvort við þurfum eitthvertíman að sækja öll payment details?
         public List<PaymentDetailListViewModel> GetAllPaymentDetail() {
-            var paymentDetail = (from pd in _db.PaymentDetail
+            var paymentDetail = (from pd in _db.PaymentDetails
                                 select new PaymentDetailListViewModel {
                                 Id = pd.Id,
                                 AddressId = pd.AddressId,

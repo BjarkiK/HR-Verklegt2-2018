@@ -7,5 +7,7 @@ namespace TheBookCave.Data.EntityModels {
         public int Quantity { get; set; }
         // If there is any discount on this book.
         public int Discount { get; set; }
+        // If of order this order item belongs to
+        public int OrderId { get; set; }
     }
 }

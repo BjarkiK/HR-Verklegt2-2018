@@ -7,7 +7,5 @@ namespace TheBookCave.Data.EntityModels {
         public string Id { get; set; }
         // Name of country.
         public string Name { get; set; }
-
-
     }
 }
