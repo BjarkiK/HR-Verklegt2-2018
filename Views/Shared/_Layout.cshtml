@@ -8,6 +8,7 @@
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -53,11 +54,36 @@
         </div>
     </div>
 </nav>
+<nav id="sideBar">
+    <div style="height:700px"></div>
+</nav>
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2018 - The Book Cave</p>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2 first">
+                        <p>Kt xxxxxx-xxxx</p>
+                        <p>Sími 581-2345</p>
+                        <p>&copy; 2018 - The Book Cave</p>
+                    </div>
+                    <div class="col-md-7 middle">
+                        <div id="footerMiddle">
+                            <br>
+                            <a id="facebook" href="https://www.facebook.com"><i class="fa fa-facebook-square" style="font-size:36px"></i></a>
+                            <a id="youtube" href="https://www.youtube.com"><i class="fa fa-youtube-square" style="font-size:36px"></i></a>
+                            <a id="twitter"href="https://www.twitter.com"><i class="fa fa-twitter-square" style="font-size:36px"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-2 last">
+                        <div id="footerLeft">
+                            <a asp-controller="Home" asp-action="AboutUs">About Us</a><br>
+                            <a asp-controller="Home" asp-action="Help">Help</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </footer>
     </div>
 
