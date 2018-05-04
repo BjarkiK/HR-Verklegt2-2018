@@ -1,10 +1,6 @@
-/*
-    Address entity class
-    Address2 not required 
- */
-namespace TheBookCave.Data.EntityModels {
-    public class Address {
-        public int Id { get; set; }
+namespace TheBookCave.Models.ViewModels {
+    public class AddressListViewModel {
+        public int AddressId { get; set; }
         // Id of user owning this address.
          public string UserId { get; set; }
          // Required home address.

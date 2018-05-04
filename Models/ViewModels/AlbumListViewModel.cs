@@ -1,4 +1,4 @@
-namespace TheBookCave.Models.ViewyModels {
+namespace TheBookCave.Models.ViewModels {
     public class AlbumListViewModel {
         public int AlbumId { get; set; }
         public string Title { get; set; }

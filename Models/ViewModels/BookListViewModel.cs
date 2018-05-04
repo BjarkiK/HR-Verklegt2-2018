@@ -1,5 +1,5 @@
-namespace TheBookCave.Data.EntityModels {
-    public class Book {
+namespace TheBookCave.Models.ViewModels {
+    public class BookListViewModel {
         // ISBN of book
         public int Id { get; set; }
         // The book title.

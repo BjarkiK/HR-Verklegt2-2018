@@ -1,5 +1,6 @@
 namespace TheBookCave.Data.EntityModels {
     public class PromoCodes {
+        // The promo code it self
         public int Id { get; set; }
         // How much discount this promo code gives.
         public int Discouont { get; set; }
