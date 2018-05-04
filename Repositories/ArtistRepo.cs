@@ -12,12 +12,13 @@ namespace TheBookCave.Repositories {
             _db = new DataContext();
         }
         public List<ArtistListViewModel> GetAllArtists() {
-            var artists =   (from a in _db.Artists
+            /*var artists =   (from a in _db.Artists
                             select new ArtistListViewModel {
                                 Id = a.Id,
                                 Name = a.Name
                             }).ToList();
-            return artists;
+            return artists;*/
+            return null;
         }
     }
 }

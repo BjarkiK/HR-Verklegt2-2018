@@ -11,9 +11,9 @@ namespace TheBookCave.Services {
         }
 
         public List<ArtistListViewModel> GetAllArtists() {
-            var artists = _artistRepo.GetAllArtists();
+            //var artists = _artistRepo.GetAllArtists();
 
-            return artists;
+            return null;
         }
     }
 }
