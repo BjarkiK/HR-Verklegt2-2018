@@ -1,7 +1,6 @@
 namespace TheBookCave.Data.EntityModels {
     public class OrderItem {
         public int Id { get; set; }
-         public int OrderId { get; set; }
         // Copy of book purched.
         public Book Book { get; set; }
         // Number of books of same type bought.
