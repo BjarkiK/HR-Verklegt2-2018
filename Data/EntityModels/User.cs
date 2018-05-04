@@ -1,5 +1,5 @@
 /*
-     Entity class for all Users ( normal users and employee)
+     Entity class for all Users ( normal users and)
  */
 
 namespace TheBookCave.Data.EntityModels {
@@ -8,7 +8,7 @@ namespace TheBookCave.Data.EntityModels {
         public string Id { get; set; } 
         // Id add for each User
         public int AddressId { get; set; }
-         // nafn notanda (UserName).
+         // UserName
         public string Name { get; set; }
         public string Picture {get; set; }
         public string Password { get; set; }
