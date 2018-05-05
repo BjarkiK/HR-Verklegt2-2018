@@ -10,7 +10,7 @@ namespace TheBookCave.Repositories {
         public UserGradeRepo() {
             _db = new DataContext();
         }
-        public List<UserReviewListViewModel> GetReviewBook(int rid) {
+        public List<UserReviewListViewModel> getReviewBook(int rid) {
             var review = (from rev in _db.UserReviews 
                                 where rev.Id == rid
                                 select new UserReviewListViewModel {
@@ -23,7 +23,7 @@ namespace TheBookCave.Repositories {
                                 }).ToList();
             return review;
         }
-        public List<UserReviewListViewModel> GetAllReviewsBook(int bid) {
+        public List<UserReviewListViewModel> getAllReviewsBook(int bid) {
             var review = (from rev in _db.UserReviews
                                 where rev.BookId == bid
                                 select new UserReviewListViewModel {

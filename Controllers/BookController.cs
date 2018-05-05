@@ -18,14 +18,14 @@ namespace TheBookCave.Controllers
         }
         public IActionResult Index()
         {
-            var bookList = _bookService.GetAllBooks();
+            var bookList = _bookService.getAllBooks();
             return View(bookList);
            //return View();
         }
 
         public IActionResult Details(int bid)
         {
-            var book = _bookService.GetBook(bid);
+            var book = _bookService.getBook(bid);
             return View(book);
             
         }

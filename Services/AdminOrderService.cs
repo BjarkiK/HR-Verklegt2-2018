@@ -12,13 +12,13 @@ namespace TheBookCave.Services {
             _orderRepo = new OrdersRepo();
         }
 
-         public List<OrderListViewModel> GetOrder(int oid) {
+         public List<OrderListViewModel> getOrder(int oid) {
             var order = _orderRepo.getOrder(oid);
 
             return order;
         }
 
-        public List<OrderListViewModel> GetAllOrder() {
+        public List<OrderListViewModel> getAllOrder() {
             var orders = _orderRepo.getAllOrder();
 
             return orders;
@@ -27,7 +27,7 @@ namespace TheBookCave.Services {
         // If that is the case typeId will write 
 
         public List<OrderListViewModel> getAllOrdersOfActiveType() {
-            var allActiveOrders = GetAllOrder().Where(m => m.TypeId == 2);
+            var allActiveOrders = getAllOrder().Where(m => m.TypeId == 2);
             
             var lowest = ( from i in allActiveOrders orderby i ascending
 				select i).ToList();

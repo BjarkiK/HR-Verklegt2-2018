@@ -9,12 +9,12 @@ namespace TheBookCave.Services {
         public HelpService(){
             _helpRepo = new HelpRepo();
         }
-        public List<HelpListViewModel> GetHelpBySearch(string search){
+        public List<HelpListViewModel> getHelpBySearch(string search){
             /*var help = _helpRepo.GetAllHelps();
             filter out where it matches search*/
             return null;
         }
-        public List<HelpListViewModel> GetHelpByType(string type){
+        public List<HelpListViewModel> getHelpByType(string type){
             /*var help = _helpRepo.GetAllHelps();
             and filter out where it matches type */
             return null;

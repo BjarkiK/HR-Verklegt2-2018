@@ -10,7 +10,7 @@ namespace TheBookCave.Repositories {
         public BookRepo() {
             _db = new DataContext();
         }
-        public List<BookListViewModel> GetBook(int bid) {
+        public List<BookListViewModel> getBook(int bid) {
             var book = (from b in _db.Books
                                 where b.Id == bid
                                 select new BookListViewModel {
@@ -31,7 +31,7 @@ namespace TheBookCave.Repositories {
                                 }).ToList();
             return book;
         }
-        public List<BookListViewModel> GetAllBooks() {
+        public List<BookListViewModel> getAllBooks() {
             var books = (from b in _db.Books
                                 select new BookListViewModel {
                                 Id = b.Id,
