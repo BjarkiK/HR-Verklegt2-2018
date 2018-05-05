@@ -14,7 +14,8 @@
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </environment>
 </head>
 <body>
@@ -55,9 +56,16 @@
     </div>
 </nav>
 <nav id="sideBar">
-    <div></div>
+    <div>
+        <ul>
+            <li>Books</li>
+            <li>E-Books</li>
+            <li>Audio Books </li>
+            <li>Subscriptions</li>
+        </ul>
+    </div>
 </nav>
-    <div class="container body-content">
+    <!--<div class="container body-content">-->
         @RenderBody()
         <hr />
         <footer>
@@ -85,7 +93,7 @@
                 </div>
             </div>
         </footer>
-    </div>
+    <!--</div>-->
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>

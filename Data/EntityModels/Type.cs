@@ -6,7 +6,7 @@ namespace TheBookCave.Data.EntityModels {
         // The name of genre in English.
         public string TypeEn { get; set; }
         // Use to identify between type to use like orders and help
-        public string TypeOfType { get; set; }
+      //  public string TypeOfType { get; set; }
 
     }
 }
