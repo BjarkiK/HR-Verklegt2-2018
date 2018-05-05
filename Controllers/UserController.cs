@@ -22,7 +22,7 @@ namespace TheBookCave.Controllers
         {
             return View();
         }
-        public IActionResult userDetails(string id)
+        public IActionResult details(string id)
         {
             var user = _userService.getUser(id);
             return View(user);
