@@ -24,12 +24,13 @@ namespace TheBookCave
           public static void SeedData() {
             var db = new DataContext();
 
-            if(!db.Publishers.Any()){
-                var initialPublishers = new List<Publisher> {
-                    new Publisher { Name = "pub1" },
-                    new Publisher { Name = "pub2" },
-                    new Publisher { Name = "pub3" },
-                    new Publisher { Name = "pub4" },
+// Maybe hold on to one Book dont delete
+            if(!db.Books.Any()){
+                var initialPublishers = new List<Book> {
+                  //  new Book { Name = "pub1", Picture = "w",DetailsEN= "asd",DetailsIS="qwe", GenreId=1, AuthorId=1, PublisherId=1, Price=100,Discount=5,Pages=20, Quantity=1,Grade=5 },
+                    new Book { Name = "pub2", Picture = "w",DetailsEN= "asd",DetailsIS="qwe", GenreId=1, AuthorId=1, PublisherId=1, Price=100,Discount=5,Pages=20, Quantity=1,Grade=5 },
+                    new Book { Name = "pub3", Picture = "w",DetailsEN= "asd",DetailsIS="qwe", GenreId=1, AuthorId=1, PublisherId=1, Price=100,Discount=5,Pages=20, Quantity=1,Grade=5 },
+                    new Book { Name = "pub4", Picture = "w",DetailsEN= "asd",DetailsIS="qwe", GenreId=1, AuthorId=1, PublisherId=1, Price=100,Discount=5,Pages=20, Quantity=1,Grade=5 }
                 };
 
                 db.AddRange(initialPublishers);
@@ -45,3 +46,4 @@ namespace TheBookCave
                 
     }
 }
+

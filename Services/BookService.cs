@@ -24,7 +24,6 @@ namespace TheBookCave.Services {
 
         public List<BookListViewModel> GetBook(int bid) {
             var book = _bookRepo.GetBook(bid);
-
             return book;
         }
         public List<UserReviewListViewModel> GetBookReviews(int bid) { 
