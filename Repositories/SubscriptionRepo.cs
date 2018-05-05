@@ -19,7 +19,7 @@ namespace TheBookCave.Repositories {
                                 DescriptionIn = sub.DescriptionIn,
                                 TypeEn = sub.TypeEn,
                                 TypeIn = sub.TypeIn,
-                                published = sub.published
+                                Published = sub.Published
                                 }).ToList();
             return subscription;
         }
@@ -31,7 +31,7 @@ namespace TheBookCave.Repositories {
                                 DescriptionIn = sub.DescriptionIn,
                                 TypeEn = sub.TypeEn,
                                 TypeIn = sub.TypeIn,
-                                published = sub.published
+                                Published = sub.Published
                                 }).ToList();
             return subscription;
         }
