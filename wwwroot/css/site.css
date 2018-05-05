@@ -39,14 +39,39 @@
     border-color: black;
     border: solid;
 }
-#Top10 {
+#FrontPageBooks {
     display: inline-block;
+    vertical-align: top;
+}
+#FrontPageBooks h2 {
+    text-align: center;
+}
+#Top10 {
+    margin: 20px 20px;
+    margin-bottom: 60px; 
+    border-radius: 5px;
+    width: 900px;
+    height: 320px;
+    border: solid;
+    vertical-align: top;
+}
+#Top10 .TopBooks {
+    display: inline-block;
+    margin-left: 15px;
+    text-align: center;
+}
+#Top10 #Arrow {
+    display: inline-block;
+    margin-right: 6px;
+    vertical-align: 120px;
+}
+#New {
+    /*display: inline-block;*/
     margin: 20px 20px;
     border-radius: 5px;
     width: 900px;
-    height: 300px;
+    height: 320px;
     border: solid;
-    vertical-align:top;
 }
 #footerLeft {
     font-size: 18px;
