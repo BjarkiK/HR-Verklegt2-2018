@@ -23,9 +23,9 @@ namespace TheBookCave.Controllers
            //return View();
         }
 
-        public IActionResult Details(int bid)
+        public IActionResult Details(int id)
         {
-            var book = _bookService.GetBook(bid);
+            var book = _bookService.GetBook(id);
             return View(book);
             
         }
