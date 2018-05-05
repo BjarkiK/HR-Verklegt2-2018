@@ -50,7 +50,7 @@ namespace TheBookCave.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				_adminBookService.CreateBook(book);
+				_adminBookService.createBook(book);
                  Console.WriteLine("HURRA");
 				return RedirectToAction("Index");
 			}
