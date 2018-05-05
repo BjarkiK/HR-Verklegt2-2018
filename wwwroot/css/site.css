@@ -34,7 +34,7 @@
     width: 250px;
     height:700px;
     border-color: black;
-    border: solid;
+    border: 2px solid;
 }
 #FrontPageBooks {
     display: inline-block;
@@ -49,7 +49,7 @@
     border-radius: 5px;
     width: 900px;
     height: 320px;
-    border: solid;
+    border: 2px solid;
     vertical-align: top;
 }
 #Top10 .TopBooks {
@@ -68,7 +68,7 @@
     border-radius: 5px;
     width: 900px;
     height: 320px;
-    border: solid;
+    border: 2px solid;
 }
 #footerLeft {
     font-size: 18px;
