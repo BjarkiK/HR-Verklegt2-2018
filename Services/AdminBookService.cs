@@ -13,13 +13,13 @@ namespace TheBookCave.Services {
         }
 
          public List<BookListViewModel> GetBook(int bookId) {
-            var book = _orderRepo.GetBook(bookId);
+            var book = _orderRepo.getBook(bookId);
 
             return book;
         }
 
         public List<BookListViewModel> GetAllBooks() {
-            var books = _orderRepo.GetAllBooks();
+            var books = _orderRepo.getAllBooks();
 
             return books;
         }

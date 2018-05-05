@@ -10,7 +10,7 @@ namespace TheBookCave.Repositories {
         public HelpRepo() {
             _db = new DataContext();
         }
-        public List<HelpListViewModel> GetHelp(int hid) {
+        public List<HelpListViewModel> getHelp(int hid) {
             var help = (from h in _db.Helps
                                 where h.Id == hid
                                 select new HelpListViewModel {
@@ -22,7 +22,7 @@ namespace TheBookCave.Repositories {
                                 }).ToList();
             return help;
         }
-        public List<HelpListViewModel> GetAllHelps() {
+        public List<HelpListViewModel> getAllHelps() {
             var help = (from h in _db.Helps
                                 select new HelpListViewModel {
                                 Id = h.Id,

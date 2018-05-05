@@ -10,7 +10,7 @@ namespace TheBookCave.Repositories {
         public SubscriptionRepo() {
             _db = new DataContext();
         }
-        public List<SubscriptionListViewModel> GetSubscription(int sid) {
+        public List<SubscriptionListViewModel> getSubscription(int sid) {
             var subscription = (from sub in _db.Subscriptions 
                                 where sub.Id == sid
                                 select new SubscriptionListViewModel {
@@ -23,7 +23,7 @@ namespace TheBookCave.Repositories {
                                 }).ToList();
             return subscription;
         }
-        public List<SubscriptionListViewModel> GetAllSubscription(int sid) {
+        public List<SubscriptionListViewModel> getAllSubscription() {
             var subscription = (from sub in _db.Subscriptions 
                                 select new SubscriptionListViewModel {
                                 Id = sub.Id,

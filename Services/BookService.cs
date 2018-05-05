@@ -16,43 +16,41 @@ namespace TheBookCave.Services {
             _authorRepo = new AuthorRepo();
         }
 
-        public List<BookListViewModel> GetAllBooks() {
-            var books = _bookRepo.GetAllBooks();
+        public List<BookListViewModel> getAllBooks() {
+            var books = _bookRepo.getAllBooks();
 
             return books;
         }
 
-        public List<BookListViewModel> GetBook(int bid) {
-            var book = _bookRepo.GetBook(bid);
+        public List<BookListViewModel> getBook(int bid) {
+            var book = _bookRepo.getBook(bid);
             return book;
         }
-        public List<UserReviewListViewModel> GetBookReviews(int bid) { 
-            var reviews = _userGradeRepo.GetAllReviewsBook(bid);
+        public List<UserReviewListViewModel> getBookReviews(int bid) { 
+            var reviews = _userGradeRepo.getAllReviewsBook(bid);
             
             return reviews;
         }
-        public void AddBookReview() {
+        public void addBookReview() {
             //var review = _userGradeRepo.CreateReview(userReview)
         }
-        public void UpdateTotalGrade(int bid) {
+        public void updateTotalGrade(int bid) {
             //TODO
         }
-        public void AddBookToCartCookie(int bid) {
-            // AJAX?
-        }
-        public List<BookListViewModel> GetTop10Books() {
+        
+        public List<BookListViewModel> getTop10Books() {
             /*var books = _bookRepo.GetAllBooks();
             Taka svo top 10 úr öllum??
             return books;*/
             return null;
         }
-        public List<BookListViewModel> GetNewestBooks(int n) {
+        public List<BookListViewModel> getNewestBooks(int n) {
             /*var books = _bookRepo.GetAllBooks();
             Taka svo n fjölda nýjustu úr öllum??
             return books;*/
             return null;
         }
-        public List<BookListViewModel> GetBooksByGenre(string genre) {
+        public List<BookListViewModel> getBooksByGenre(string genre) {
             /* Sækja öll genre og finna rétta til að fá ID
             var genres = _genreRepo.GetAllGenre();
             int genreId = genre.id
@@ -61,7 +59,7 @@ namespace TheBookCave.Services {
             where genreId == books.genreId*/
             return null;
         }
-        public List<BookListViewModel> GetBooksByAuthor(string author) {
+        public List<BookListViewModel> getBooksByAuthor(string author) {
             /* Sækja alla authors og finna rétta til að fá ID
             var authors = _authorRepo.GetAllAuthor();
             int authorId = author.id
@@ -70,11 +68,11 @@ namespace TheBookCave.Services {
             where authorId == books.authorId*/
             return null;
         }
-        public List<BookListViewModel> GetBooksWithSearch(string param) {
+        public List<BookListViewModel> getBooksWithSearch(string param) {
             /* Tekur param og ber saman við heiti eða author, hugsanlega genre? */
             return null;
         }
-        public List<BookListViewModel> GetBooksWithAdvSearch(string param1, string param2, string param3, string param4, string param5) {
+        public List<BookListViewModel> getBooksWithAdvSearch(string param1, string param2, string param3, string param4, string param5) {
             /* tekur marga param og leitar út frá því */
             return null;
         }

@@ -10,7 +10,7 @@ namespace TheBookCave.Repositories {
         public PromoCodesRepo() {
             _db = new DataContext();
         }
-        public List<PromoCodesListViewModel> getPromoCode(int pcid) {
+        public List<PromoCodesListViewModel> getPromoCode(string pcid) {
             var promoCode = (from pc in _db.PromoCodes
                                 where pc.Id == pcid
                                 select new PromoCodesListViewModel {

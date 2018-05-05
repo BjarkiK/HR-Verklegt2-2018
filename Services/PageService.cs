@@ -4,7 +4,7 @@ using TheBookCave.Repositories;
 
 namespace TheBookCave.Services {
     public class PageService {
-        public void ChangeLanguage() {
+        public void changeLanguage() {
             // TODO impliment language change somehow.
         }
     }
