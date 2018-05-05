@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "SignUp";
+}
+<div class="InlineDiv">
+    <h2>@ViewData["Title"]</h2>
+    <h3>@ViewData["Message"]</h3>
+    
+    <div id="SignUpBox">
+        <form>
+            <div class="form-group">
+                <label for="InputFName">First Name:</label>
+                <input type="text" class="form-control" id="InputFName" placeholder="First Name">
+            </div>
+            <div class="form-group">
+                <label for="InputLName">Last Name:</label>
+                <input type="text" class="form-control" id="InputLName" placeholder="Last Name">
+            </div>
+            <div class="form-group">
+                <label for="InputEmail">Email address:</label>
+                <input type="email" class="form-control" id="InputEmail" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+                <label for="InputPassword">Password:</label>
+                <input type="password" class="form-control" id="InputPassword" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <label for="InputRPassword">Re-enter Password:</label>
+                <input type="password" class="form-control" id="InputRPassword" placeholder="Re-enter Password">
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="Check">
+                <label class="form-check-label" for="Check">I agree to the <a>Terms of service</a> and <a>Privacy policy</a></label>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>

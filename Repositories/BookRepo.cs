@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TheBookCave.Data;
+using TheBookCave.Data.EntityModels;
 using TheBookCave.Models.ViewModels;
 
 namespace TheBookCave.Repositories {
@@ -59,8 +61,9 @@ namespace TheBookCave.Repositories {
             // linq delete
             return true;
         }
-        public bool createBook(BookListViewModel book) {
-            // linq insert
+        public bool createBook(Book book) {
+            _db.Books.Add(book);
+            Console.WriteLine(book.Name);
             return true;
         }
     }

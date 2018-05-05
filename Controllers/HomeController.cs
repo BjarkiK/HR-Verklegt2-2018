@@ -17,8 +17,7 @@ namespace SpotifyLite.Controllers
         {
             return View();
         }
-
-        public IActionResult About()
+        public IActionResult SignUp()
         {
             return View();
         }

@@ -1,19 +1,4 @@
-﻿<!--<form id="add-book">
-    <label>Title</label>
-    <label>Picture URL</label>
-    <label>Description IS</label>
-    <label>Description EN</label>
-    <label>Genre ID</label>
-    <label>Author ID</label>
-    <label>Price</label>
-    <label>Discount</label>
-    <label>Pages</label>
-    <label>Quantity</label>
-    <label>Grade</label>
-    <label>Published</label>
-    <form>-->
-
-@model TheBookCave.Models.ViewModels.BookListViewModel
+﻿@model TheBookCave.Data.EntityModel.Book
 
 @{
     ViewBag.Title = "Create";
@@ -119,7 +104,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input id="add-book-submit" type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
     </div>

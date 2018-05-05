@@ -39,10 +39,24 @@ namespace TheBookCave.Controllers
         {
             //_adminBookService.updateBook(bid);
         }
-        public void addBook(BookListViewModel book)
+        public IActionResult CreateBook()
         {
-            _adminBookService.CreateBook(book);
+            Console.WriteLine("AddBook");
+            return View();
         }
+
+		[HttpPost]
+		public ActionResult CreateBook(Book book)
+		{
+			if (ModelState.IsValid)
+			{
+				_adminBookService.CreateBook(book);
+                 Console.WriteLine("HURRA");
+				return RedirectToAction("Index");
+			}
+            Console.WriteLine("Hello");
+            return RedirectToAction("Index");
+		}
         public void addAuthor()
         {
             //_adminBookService.addAuthor();

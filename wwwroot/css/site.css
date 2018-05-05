@@ -36,6 +36,16 @@
     border-color: black;
     border: 2px solid;
 }
+.SideButton {
+    height: 70px;
+}
+.InlineDiv {
+    display: inline-block;
+}
+#SignUpBox {
+    width: 500px;
+    display: inline-block;
+}
 #FrontPageBooks {
     display: inline-block;
     vertical-align: top;
@@ -54,13 +64,15 @@
 }
 #Top10 .TopBooks {
     display: inline-block;
-    margin-left: 15px;
+    margin-left: 52px;
+    margin-right: 52px;
     text-align: center;
 }
 #Top10 #Arrow {
     display: inline-block;
-    margin-right: 6px;
-    vertical-align: 120px;
+    margin-right: 5px;
+    margin-left: 5px;
+    vertical-align: 135px;
 }
 #New {
     /*display: inline-block;*/

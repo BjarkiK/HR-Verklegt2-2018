@@ -24,7 +24,7 @@ namespace TheBookCave.Services {
             return books;
         }
 
-         public void CreateBook(BookListViewModel book) {
+         public void CreateBook(Book book) {
             _orderRepo.createBook(book);
         }
 
