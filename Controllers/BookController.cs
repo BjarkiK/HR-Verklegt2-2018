@@ -25,11 +25,7 @@ namespace TheBookCave.Controllers
 
         public IActionResult Details(int id)
         {
-<<<<<<< HEAD
-            var book = _bookService.getBook(bid);
-=======
-            var book = _bookService.GetBook(id);
->>>>>>> 833784ddc8823f06b23d6d6245dffb2579c16170
+            var book = _bookService.getBook(id);
             return View(book);
             
         }
