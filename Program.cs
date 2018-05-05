@@ -19,6 +19,7 @@ namespace TheBookCave
            var host = BuildWebHost(args);
             SeedData();
             host.Run();
+            Console.WriteLine("Hello From Main");
         }
 
           public static void SeedData() {
