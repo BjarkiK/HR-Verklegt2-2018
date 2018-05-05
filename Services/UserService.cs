@@ -18,14 +18,9 @@ namespace TheBookCave.Services{
         }
 
         public List<UserListViewModel> getUser(string uid){
-<<<<<<< HEAD
             var user = _userRepo.getUser(uid);
             return user;
-=======
-            /*var user = _userRepo.GetUser(uid);
-            return user;*/
-            return null;
->>>>>>> 65bd768da8de4cfabbc38251b31562b771581038
+
         }
         public List<AddressListViewModel> getUserAddresss(string uid) {
             /* var user = _userRepo.GetUser(uid);
