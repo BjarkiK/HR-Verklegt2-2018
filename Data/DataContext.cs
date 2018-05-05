@@ -9,7 +9,7 @@ namespace TheBookCave.Data {
         public DbSet<Help> Helps { get; set; }
         public DbSet<Book> Books { get; set; }
         public DbSet<Order> Orders { get; set; }
-        public DbSet<PromoCodes> PromoCodes { get; set; }
+        public DbSet<PromoCode> PromoCodes { get; set; }
         public DbSet<Genre> Genre { get; set; }
         public DbSet<Author> Authors { get; set; }
         public DbSet<Publisher> Publishers { get; set; }

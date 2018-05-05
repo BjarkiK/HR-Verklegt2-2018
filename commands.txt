@@ -9,6 +9,59 @@ dotnet ef - EntityFramework info
 dotnet ef add migration [MigrationName] - Add new migration to project
 dotnet ef database update - Run migrations on database ( to make table)
 
+ABOUT MIGRATIONS:
+1. greate new migration. Nothing has changed in the database
+2. dotnet ef database upadte. All migrations applyed to the database from initial to newest
+3. If any 
+
+ADD TABLE TO DATABASE:
+1. Create new entity class
+2. Data -> DataContext -> add public DbSet<[EntityClassName]> [TableName] { get; set; }
+3. BUILD PROJECT (dotnet build)
+4. dotnet ef migrations add [TableName]Migration_add
+5. dotnet ef database update
+6. Check if successfull with TeamSQL
+
+
+REMOVE TABLE TO DATABASE (ALL DATA WILL BE LOST):
+1. Most likely remove entity class
+2. Data -> DataContext -> remove correct table
+5. BUILD PROJECT (dotnet build)
+6. dotnet ef migrations add [TableName]Migration_remove
+7. dotnet ef database update
+8. Check if successfull with TeamSQL
+
+
+UPDATE DATABASE TABLE NAME:
+1. Data -> DataContext -> Change tabke name
+2. Change the name of the entity class
+3. Change the name of the listViewModel class
+4. Fix all namechange related bugs
+5. BUILD PROJECT (dotnet build)
+6. dotnet ef migrations add [OldTableName]To[NewTableName]Migration_tnameChange
+7. dotnet ef database update
+8. Check if successfull with TeamSQL
+
+
+UPDATE DATABASE COLUMN NAME:
+1. Data -> EntityModels -> ClassToChange.cs -> Change column name
+2. Change the variable name in listViewModel
+3. Fix all namechange related bugs
+4. BUILD PROJECT (dotnet build)
+5. dotnet ef migrations add [OldColumnName]To[NewColumnName]In[TableName]Migration_cnameChange
+6. dotnet ef database update
+7. Check if successfull with TeamSQL
+
+
+REVERT FAULTY MIGRATION:
+0. BE CAREFULL! IF YOU REVERT FURTHER THAN WHEN A TABLE WAS CREATED, ALL DATA IN THAT TABLE WILL BE LOST!
+1. Revert all name changes
+2. BUILD PROJECT (dotnet build)
+3. dotnet ef database update [MigrationName (Revert to this migration)]
+4. dotnet ef migrations remove (Removes last migration)
+5. dotnet ef database update
+7. Check if successfull with TeamSQL
+
 GITHUB 
 git add FILENAME  	//push file to local staging area
 git commit -m "COMMENT"	//push file to local repository
