@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TheBookCave.Data;
+using TheBookCave.Data.EntityModels;
 using TheBookCave.Models.ViewModels;
 
 namespace TheBookCave.Repositories {
@@ -10,7 +12,7 @@ namespace TheBookCave.Repositories {
         public BookRepo() {
             _db = new DataContext();
         }
-        public List<BookListViewModel> GetBook(int bid) {
+        public List<BookListViewModel> getBook(int bid) {
             var book = (from b in _db.Books
                                 where b.Id == bid
                                 select new BookListViewModel {
@@ -31,7 +33,7 @@ namespace TheBookCave.Repositories {
                                 }).ToList();
             return book;
         }
-        public List<BookListViewModel> GetAllBooks() {
+        public List<BookListViewModel> getAllBooks() {
             var books = (from b in _db.Books
                                 select new BookListViewModel {
                                 Id = b.Id,
@@ -59,8 +61,9 @@ namespace TheBookCave.Repositories {
             // linq delete
             return true;
         }
-        public bool createBook() {
-            // linq insert
+        public bool createBook(Book book) {
+            _db.Books.Add(book);
+            Console.WriteLine(book.Name);
             return true;
         }
     }

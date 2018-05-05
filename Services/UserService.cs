@@ -18,28 +18,34 @@ namespace TheBookCave.Services{
         }
 
         public List<UserListViewModel> getUser(string uid){
+<<<<<<< HEAD
             var user = _userRepo.getUser(uid);
             return user;
+=======
+            /*var user = _userRepo.GetUser(uid);
+            return user;*/
+            return null;
+>>>>>>> 65bd768da8de4cfabbc38251b31562b771581038
         }
-        public List<AddressListViewModel> GetUserAddresss(string uid) {
+        public List<AddressListViewModel> getUserAddresss(string uid) {
             /* var user = _userRepo.GetUser(uid);
             var address = _addressRepo.GetAddress(user.addressId);
             return address */
             return null;
         }
-        public List<SubscriptionListViewModel> GetUserSubscriptions(string uid) {
+        public List<SubscriptionListViewModel> getUserSubscriptions(string uid) {
             /* var user = _userRepo.GetUser(uid);
             var subscriptions = _subscriptionRepo.GetAllSubscriptions();
             finna svo þar sem user.subscription passar við og skila */
             return null;
         }
-        public List<BookListViewModel> GetUserFavoriteBooks(string uid) {
+        public List<BookListViewModel> getUserFavoriteBooks(string uid) {
             /*var user = _userRepo.GetUser(uid);
             var books = _bookRepo.GetAllBooks();
             bera svo saman við user.favoriteBooks við allar bækur og skila.*/
             return null;
         }
-        public void UpdateUser(UserListViewModel user) {
+        public void updateUser(UserListViewModel user) {
             // Ekki viss hvernig er best að græja þetta.
         }
     }
