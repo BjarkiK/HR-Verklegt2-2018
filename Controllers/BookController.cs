@@ -11,31 +11,34 @@ namespace TheBookCave.Controllers
 {
     public class BookController : Controller
     {
-        //private BookService _bookService;
+        private BookService _bookService;
 
         public BookController() {
-            //_bookService = new BookService();
+            _bookService = new BookService();
         }
         public IActionResult Index()
         {
-            return View();
+            var bookList = _bookService.GetAllBooks();
+            return View(bookList);
+           //return View();
         }
+
         public IActionResult bookListDisplay()
         {
-            /*bookList = _bookService.getAllBooks();
-            return View(bookList);*/
-            return View();
+            var bookList = _bookService.GetAllBooks();
+
+            return View(bookList);
         }
         public IActionResult reviewBook()
         {
             // _bookService.addBookReview(?review?);
             return View();
         }
-        public IActionResult bookDetails(string bid)
+        public IActionResult bookDetails(int bid)
         {
-            /*book = _bookService.getBook(bid);
-            return View(book);*/
-            return View();
+            var book = _bookService.GetBook(bid);
+            return View(book);
+            
         }
         public IActionResult totalGradeUpdate(string bid)
         {
