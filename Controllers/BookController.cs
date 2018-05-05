@@ -23,23 +23,27 @@ namespace TheBookCave.Controllers
            //return View();
         }
 
-        public IActionResult bookListDisplay()
-        {
-            var bookList = _bookService.GetAllBooks();
-
-            return View(bookList);
-        }
-        public IActionResult reviewBook()
-        {
-            // _bookService.addBookReview(?review?);
-            return View();
-        }
-        public IActionResult bookDetails(int bid)
+        public IActionResult Details(int bid)
         {
             var book = _bookService.GetBook(bid);
             return View(book);
             
         }
+/*
+ public IActionResult bookListDisplay()
+        {
+            var bookList = _bookService.GetAllBooks();
+
+            return View(bookList);
+        }
+ */
+       
+        public IActionResult reviewBook()
+        {
+            // _bookService.addBookReview(?review?);
+            return View();
+        }
+       
         public IActionResult totalGradeUpdate(string bid)
         {
             //_bookService.updateTotalGrade(bid);

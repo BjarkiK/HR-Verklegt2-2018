@@ -12,7 +12,7 @@ namespace TheBookCave.Data.EntityModels {
         public string DescriptionIn { get; set; }
         public string DescriptionEn { get; set; }
         // Is it published or not ? see statedigrama in design report.
-        public bool published {get; set; }
+        public bool Published { get; set; }
 
     }
 }

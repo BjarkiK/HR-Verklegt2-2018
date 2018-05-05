@@ -23,11 +23,11 @@ namespace TheBookCave.Repositories {
                                 Name = b.Name,
                                 Picture = b.Picture,
                                 PublisherId = b.PublisherId,
-                                grade = b.grade,
-                                pages = b.pages,
-                                price = b.price,
-                                published = b.published,
-                                quantity = b.quantity 
+                                Grade = b.Grade,
+                                Pages = b.Pages,
+                                Price = b.Price,
+                                Published = b.Published,
+                                Quantity = b.Quantity 
                                 }).ToList();
             return book;
         }
@@ -43,11 +43,11 @@ namespace TheBookCave.Repositories {
                                 Name = b.Name,
                                 Picture = b.Picture,
                                 PublisherId = b.PublisherId,
-                                grade = b.grade,
-                                pages = b.pages,
-                                price = b.price,
-                                published = b.published,
-                                quantity = b.quantity 
+                                Grade = b.Grade,
+                                Pages = b.Pages,
+                                Price = b.Price,
+                                Published = b.Published,
+                                Quantity = b.Quantity 
                                 }).ToList();
             return books;
         }

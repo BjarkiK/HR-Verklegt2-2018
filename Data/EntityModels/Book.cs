@@ -17,18 +17,18 @@ namespace TheBookCave.Data.EntityModels {
         // Id of books publisher.
         public int PublisherId { get; set; }
         // The price of the book.
-        public double price { get; set; }
+        public double Price { get; set; }
         // If the book has any discount.
         public int Discount { get; set; }
         // Books page count.
-        public int pages { get; set; }
+        public int Pages { get; set; }
         // How many books are in stock.
-        public int quantity { get; set; }
+        public int Quantity { get; set; }
         // The total user grade of book.
-        public double grade { get; set; }
+        public double Grade { get; set; }
         // Determains if the book is visible on the website or is
         // saved and unfinished.
-        public bool published { get; set; }
+        public bool Published { get; set; }
 
     }
 }
