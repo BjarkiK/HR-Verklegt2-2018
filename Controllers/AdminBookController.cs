@@ -4,18 +4,20 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using TheBookCave.Data.EntityModels;
 using TheBookCave.Models;
+using TheBookCave.Models.ViewModels;
 using TheBookCave.Services;
 
 namespace TheBookCave.Controllers
 {
     public class AdminBookController : Controller
     {
-        //private AdminBookService _adminBookService;
+        private AdminBookService _adminBookService;
 
 
         public AdminBookController() {
-            //_adminSubscriptionService = new AdminSubscriptionService();
+            _adminBookService = new AdminBookService();
         }
         public IActionResult Index()
         {
@@ -37,9 +39,9 @@ namespace TheBookCave.Controllers
         {
             //_adminBookService.updateBook(bid);
         }
-        public void addBook()
+        public void addBook(BookListViewModel book)
         {
-            //_adminBookService.addBook();
+            _adminBookService.CreateBook(book);
         }
         public void addAuthor()
         {

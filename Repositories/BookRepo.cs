@@ -59,7 +59,7 @@ namespace TheBookCave.Repositories {
             // linq delete
             return true;
         }
-        public bool createBook() {
+        public bool createBook(BookListViewModel book) {
             // linq insert
             return true;
         }
