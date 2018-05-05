@@ -25,7 +25,7 @@ namespace TheBookCave.Services {
         }
 
          public void CreateBook(Book book) {
-            _orderRepo.createBook(book);
+           var successfull = _orderRepo.createBook(book);
         }
 
     }

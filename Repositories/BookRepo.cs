@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using TheBookCave.Data;
 using TheBookCave.Data.EntityModels;
@@ -63,7 +64,7 @@ namespace TheBookCave.Repositories {
         }
         public bool createBook(Book book) {
             _db.Books.Add(book);
-            Console.WriteLine(book.Name);
+            _db.SaveChanges();
             return true;
         }
     }

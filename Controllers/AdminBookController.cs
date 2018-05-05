@@ -52,7 +52,7 @@ namespace TheBookCave.Controllers
 			{
 				_adminBookService.CreateBook(book);
                  Console.WriteLine("HURRA");
-				return RedirectToAction("Index");
+				return RedirectToAction("CreateBook");
 			}
             Console.WriteLine("Hello");
             return RedirectToAction("Index");
