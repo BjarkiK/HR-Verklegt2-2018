@@ -5,20 +5,21 @@ using TheBookCave.Repositories;
 
 namespace TheBookCave.Services{
     public class UserService {
-        /*private UserRepo _userRepo;
+        private UserRepo _userRepo;
         private AddressRepo _addressRepo;
         private SubscriptionRepo _subscriptionRepo;
-        private BookRepo _bookRepo;*/
+        private BookRepo _bookRepo;
 
         public UserService() {
-            /*_userRepo = new UserRepo();
-            _addressRepo*/
+            _userRepo = new UserRepo();
+            _addressRepo = new AddressRepo();
+            _subscriptionRepo = new SubscriptionRepo();
+            _bookRepo = new BookRepo();
         }
 
-        public List<UserListViewModel> GetUser(string uid){
-            /*var user = _userRepo.GetUser(uid);
-            return user;*/
-            return null;
+        public List<UserListViewModel> getUser(string uid){
+            var user = _userRepo.getUser(uid);
+            return user;
         }
         public List<AddressListViewModel> GetUserAddresss(string uid) {
             /* var user = _userRepo.GetUser(uid);

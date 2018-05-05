@@ -11,22 +11,21 @@ namespace TheBookCave.Controllers
 {
     public class UserController : Controller
     {
-        //private UserService _userService;
-        //private OrderService _orderService;
+        private UserService _userService;
+       // private OrderService _orderService;
 
         public UserController() {
-            //_userService = new UserService();
-            //_orderService = new OrderService();
+            _userService = new UserService();
+           // _orderService = new OrderService();
         }
-        public IActionResult Index()
+        public IActionResult index()
         {
             return View();
         }
-        public IActionResult userDetails(string uid)
+        public IActionResult userDetails(string id)
         {
-            /*var user = _userService.getUser(uid);
-            return View(user);*/
-            return View();
+            var user = _userService.getUser(id);
+            return View(user);
         }
         public IActionResult userOrderListDisplay(string uid)
         {
