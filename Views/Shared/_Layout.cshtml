@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] TheBookCave</title>
+    <title>@ViewData["Title"] - TheBookCave</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -56,13 +56,16 @@
     </div>
 </nav>
 <nav id="sideBar">
-    <div>
-        <ul>
-            <li>Books</li>
-            <li>E-Books</li>
-            <li>Audio Books </li>
-            <li>Subscriptions</li>
-        </ul>
+    <div class="list-group">
+        <button type="button" class="list-group-item list-group-item-action SideButton">Drama</button>
+        <button type="button" class="list-group-item list-group-item-action SideButton">Horror</button>
+        <button type="button" class="list-group-item list-group-item-action SideButton">Adventure</button>
+        <button type="button" class="list-group-item list-group-item-action SideButton">Science fiction</button>
+        <button type="button" class="list-group-item list-group-item-action SideButton">Action </button>
+        <button type="button" class="list-group-item list-group-item-action SideButton">Romance</button>
+        <button type="button" class="list-group-item list-group-item-action SideButton">Fantasy</button>
+        <button type="button" class="list-group-item list-group-item-action SideButton">Subscriptions</button>
+
     </div>
 </nav>
     <!--<div class="container body-content">-->
