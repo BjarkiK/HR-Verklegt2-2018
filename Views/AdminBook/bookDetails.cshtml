@@ -1,21 +1,15 @@
-﻿@model List<TheBookCave.Models.ViewModels.BookListViewModel> 
+@model List<TheBookCave.Models.ViewModels.BookListViewModel> 
 
 @{
     Layout = "_AdminLayout";
 }
 
-<div>
-    <p>/AdminBook/AddBook to create new book</p>
-    <p>/AdminBook/EditBook to edit new book - Not complete</p>
-</div>
-
-<h1>BookList</h1>
+<h1>Book</h1>
 
 <div>
-    @foreach(var book in @Model)
-{
+@foreach(var book in @Model) {
     <ul>
-    <li>BookName:<a asp-controller="AdminBook" asp-action="bookDetails" asp-route-id="@book.Id">@book.Name</a></li>
+    <li>BookName: @book.Name</li>
     <li>Picture: @book.Picture</li>
     <li>DetailsIS: @book.DetailsIS</li>
     <li>DetailsEN: @book.DetailsEN</li>
