@@ -22,11 +22,17 @@ namespace TheBookCave.Services {
 
             return books;
         }
-        public void updateBook(Book book) {
-           var successfull = _orderRepo.updateBook(book);
+        public void updateBook(BookListViewModel b) {
+            var book = ConvertBookListViewModelToBook(b);
+            var successfull = _orderRepo.updateBook(book);
         }
 
         public void CreateBook(BookListViewModel b) {
+            var book = ConvertBookListViewModelToBook(b);
+            var successfull = _orderRepo.createBook(book);
+        }
+
+        private Book ConvertBookListViewModelToBook(BookListViewModel b) {
             var book = new Book {
                                 AuthorId = b.AuthorId,
                                 DetailsEN = b.DetailsEN,
@@ -43,7 +49,7 @@ namespace TheBookCave.Services {
                                 PublisherId = b.PublisherId,
                                 Quantity = b.Quantity                                
                                 };
-            var successfull = _orderRepo.createBook(book);
+            return book;
         }
 
     }

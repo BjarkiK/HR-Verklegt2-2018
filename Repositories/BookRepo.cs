@@ -55,7 +55,9 @@ namespace TheBookCave.Repositories {
             return books;
         }
         public bool updateBook(Book book) {
+            Console.WriteLine(book.Name);
             _db.Books.Update(book);
+            _db.SaveChanges();
             return true;
         }
         public bool deleteBook(int hid) {
