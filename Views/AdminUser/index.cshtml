@@ -4,22 +4,33 @@
     Layout = "_AdminLayout";
 }
 
-<h1>All Users for admin </h1>
-
-
 <h2> User List </h2>
 
-<div>
+ <table align="center">
+    <thead>
+      <tr>
+            <th>User Id</th>
+            <th>Name</th>
+            <th>Picture</th>
+            <th>Password</th>
+            <th>FavoriteBookId</th>
+            <th>SubscriptionId</th>
+            <th>OrderId</th>
+        </tr>
+    </thead>
     @foreach(var user in @Model)
-    {  
-        <ul>
-        <li>User Id: @user.Id</li>
-        <li>Name: @user.Name</li>
-        <li>Picture: @user.Picture</li>
-        <li>Password: @user.Password</li>
-        <li>FavoriteBookId: @user.FavoriteBookId</li>
-        <li>SubscriptionId: @user.SubscriptionId</li>
-        <li>OrderId: @user.OrderId</li>
-        </ul>
+    {
+    <tbody>
+        <tr>
+            <td><a asp-controller="AdminUser" asp-action="userDetails" asp-route-id="@user.Id">@user.Id</a></td>
+            <td>@user.Name</td>
+            <td>@user.Password</td>
+            <td>@user.Picture</td>
+            <td>@user.FavoriteBookId</td>
+            <td>@user.SubscriptionId</td>
+            <td>@user.OrderId</td>
+        </tr>
+    </tbody>
     }
-</div>
+              
+    </table>

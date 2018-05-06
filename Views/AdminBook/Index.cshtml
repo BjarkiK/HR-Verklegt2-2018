@@ -9,13 +9,11 @@
     <p>/AdminBook/EditBook to edit new book - Not complete</p>
 </div>
 
-
-
-<div class="center">
+<div>
 
 <h1>BookList</h1>
     
-    <table>
+    <table align="center">
     <thead>
       <tr>
             <th>BookName</th>
@@ -33,7 +31,7 @@
     {
     <tbody>
         <tr>
-            <td><a asp-controller="AdminBook" asp-action="bookDetails" asp-route-id="@book.Id">@book.Name</a></td>
+            <td><a asp-controller="AdminBook" asp-action="bookDetails" asp-route-id="@book.Id"></a>@book.Name</a></td>
             <td>@book.Picture</td>
             <td>@book.DetailsIS</td>
             <td>@book.DetailsEN</td>
