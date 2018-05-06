@@ -1,6 +1,33 @@
+@model List<TheBookCave.Models.ViewModels.OrderListViewModel> 
+
 @{
     Layout = "_AdminLayout";
 }
 
-    <h2>Admin order panel</h2>
+<h1>All Orders from website, canceld, active and complete orders</h1>
+
+
+<h2> OrderList </h2>
+
+ <table align="center">
+    <thead>
+      <tr>
+            <th>OrderId</th>
+            <th>AddressId</th>
+            <th>UserId</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    @foreach(var order in @Model)
+        {
+        <tbody>
+            <tr>
+                <td><a asp-controller="AdminAllOrder" asp-action="Details" asp-route-id="@order.Id">@order.Id</a></td>
+                <td>@order.AddressId</td>
+                <td>@order.UserId</td>
+                <td>@order.Date</td>
+            </tr>
+        </tbody>
+        }      
+    </table>
 

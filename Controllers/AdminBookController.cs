@@ -19,18 +19,17 @@ namespace TheBookCave.Controllers {
         public AdminBookController() {
             _adminBookService = new AdminBookService();
         }
-        public IActionResult Index() {
-            return View();
+        public IActionResult index() {
+            var bookList = _adminBookService.getAllBooks();
+            return View(bookList);
         }
         public IActionResult bookListDisplay() {
-            /*var bookList = _adminBookService.getAllBooks();
-            return View(bookList);*/
-            return View();
+            var bookList = _adminBookService.getAllBooks();
+            return View(bookList);
         }
-        public IActionResult bookDetails(string bid) {
-            /*var book = _adminBookService.getBook(bid);
-            return View(book);*/
-            return View();
+        public IActionResult bookDetails(int id) {
+            var book = _adminBookService.GetBook(id);
+            return View(book);
         }
         public IActionResult EditBook(int id) {
 			var book = _adminBookService.GetBook(id);
@@ -44,7 +43,7 @@ namespace TheBookCave.Controllers {
         public ActionResult EditBook(BookListViewModel book) {
             Console.WriteLine(book.Name);
            	if (ModelState.IsValid) {
-				_adminBookService.updateBook(book);
+	//			_adminBookService.updateBook(book);
 				return RedirectToAction("Index");
 			}
 			ViewBag.Id = new SelectList("2", "ID", "Name", book.Id);

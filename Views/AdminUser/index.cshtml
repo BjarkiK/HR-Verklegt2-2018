@@ -1,7 +1,36 @@
+@model List<TheBookCave.Models.ViewModels.UserListViewModel> 
+
 @{
     Layout = "_AdminLayout";
 }
 
-<h2>
-    Admin User Panel
-</h2>
+<h2> User List </h2>
+
+ <table align="center">
+    <thead>
+      <tr>
+            <th>User Id</th>
+            <th>Name</th>
+            <th>Picture</th>
+            <th>Password</th>
+            <th>FavoriteBookId</th>
+            <th>SubscriptionId</th>
+            <th>OrderId</th>
+        </tr>
+    </thead>
+    @foreach(var user in @Model)
+    {
+    <tbody>
+        <tr>
+            <td><a asp-controller="AdminUser" asp-action="userDetails" asp-route-id="@user.Id">@user.Id</a></td>
+            <td>@user.Name</td>
+            <td>@user.Password</td>
+            <td>@user.Picture</td>
+            <td>@user.FavoriteBookId</td>
+            <td>@user.SubscriptionId</td>
+            <td>@user.OrderId</td>
+        </tr>
+    </tbody>
+    }
+              
+    </table>

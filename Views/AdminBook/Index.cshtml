@@ -1,4 +1,5 @@
-﻿
+﻿@model List<TheBookCave.Models.ViewModels.BookListViewModel> 
+
 @{
     Layout = "_AdminLayout";
 }
@@ -7,3 +8,44 @@
     <p>/AdminBook/AddBook to create new book</p>
     <p>/AdminBook/EditBook to edit new book - Not complete</p>
 </div>
+
+<div>
+
+<h1>BookList</h1>
+    
+    <table align="center">
+    <thead>
+      <tr>
+            <th>BookName</th>
+            <th>Picture</th>
+            <th>DetailsIS</th>
+            <th>DetailsEN</th>
+            <th>Price</th>
+            <th>Discount</th>
+            <th>Pages</th>
+            <th>Quantiy</th>
+            <th>Grade</th>
+        </tr>
+    </thead>
+    @foreach(var book in @Model)
+    {
+    <tbody>
+        <tr>
+            <td><a asp-controller="AdminBook" asp-action="bookDetails" asp-route-id="@book.Id">@book.Name</a></td>
+            <td>@book.Picture</td>
+            <td>@book.DetailsIS</td>
+            <td>@book.DetailsEN</td>
+            <td>@book.Price</td>
+            <td>@book.Discount</td>
+            <td>@book.Pages</td>
+            <td>@book.Quantity</td>
+            <td>@book.Grade</td>
+        </tr>
+    </tbody>
+    }
+              
+    </table>
+
+</div>
+
+
