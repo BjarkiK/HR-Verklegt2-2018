@@ -11,10 +11,10 @@ namespace TheBookCave.Controllers
 {
     public class AdminAllOrderController : Controller
     {
-        //private AdminOrderService _adminOrderService;
+        private AdminOrderService _adminOrderService;
 
         public AdminAllOrderController() {
-            //_adminOrderService = new AdminOrderService();
+            _adminOrderService = new AdminOrderService();
         }
         public IActionResult Index()
         {
@@ -22,15 +22,13 @@ namespace TheBookCave.Controllers
         }
         public IActionResult orderListDisplay()
         {
-            /*var orderList = _adminOrderService.getAllOrders();
-            return View(orderList);*/
-            return View();
+            var orderList = _adminOrderService.getAllOrder();
+            return View(orderList);
         }
-        public IActionResult orderDetails(int oid)
+        public IActionResult Details(int id)
         {
-            /*var order = _adminOrderService.getOrder(oid);
-            return View(order);*/
-            return View();
+            var order = _adminOrderService.getOrder(id);
+            return View(order);
         }
         public void orderUpdate(int oid)
         {

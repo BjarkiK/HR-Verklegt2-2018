@@ -17,7 +17,7 @@ namespace TheBookCave.Services {
             return book;
         }
 
-        public List<BookListViewModel> GetAllBooks() {
+        public List<BookListViewModel> getAllBooks() {
             var books = _orderRepo.getAllBooks();
 
             return books;

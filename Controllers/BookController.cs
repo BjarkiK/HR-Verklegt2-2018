@@ -29,14 +29,7 @@ namespace TheBookCave.Controllers
             return View(book);
             
         }
-/*
- public IActionResult bookListDisplay()
-        {
-            var bookList = _bookService.GetAllBooks();
 
-            return View(bookList);
-        }
- */
        
         public IActionResult reviewBook()
         {

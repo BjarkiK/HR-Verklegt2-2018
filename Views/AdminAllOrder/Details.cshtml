@@ -1,0 +1,17 @@
+@model List<TheBookCave.Models.ViewModels.OrderListViewModel> 
+
+
+
+<h2> One Order from website, canceld, active or complete </h2>
+
+<div>
+    @foreach(var order in @Model)
+    {  
+        <ul>
+        <li>OrderId: @order.Id</li>
+        <li>AddressId: @order.AddressId</li>
+        <li>UserId: @order.UserId</li>
+        <li>Date: @order.Date</li>
+        </ul>
+    }
+</div>
