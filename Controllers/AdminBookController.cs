@@ -11,62 +11,50 @@ using TheBookCave.Models.ViewModels;
 using TheBookCave.Services;
 
 
-namespace TheBookCave.Controllers
-{
-    public class AdminBookController : Controller
-    {
+namespace TheBookCave.Controllers {
+    public class AdminBookController : Controller {
         private AdminBookService _adminBookService;
 
 
         public AdminBookController() {
             _adminBookService = new AdminBookService();
         }
-        public IActionResult Index()
-        {
+        public IActionResult Index() {
             return View();
         }
-        public IActionResult bookListDisplay()
-        {
+        public IActionResult bookListDisplay() {
             /*var bookList = _adminBookService.getAllBooks();
             return View(bookList);*/
             return View();
         }
-        public IActionResult bookDetails(string bid)
-        {
+        public IActionResult bookDetails(string bid) {
             /*var book = _adminBookService.getBook(bid);
             return View(book);*/
             return View();
         }
-        public IActionResult EditBook(int id)
-        {
+        public IActionResult EditBook(int id) {
 
-			var book = _adminBookService.GetBook(id);
-
-			//ViewBag.ProductCategoryID = new SelectList(db.ProductCategories, "ID", "Name", product.ProductCategoryID);
+			var book = _adminBookService.GetBook(id).First();
 			return View(book);
+
         }
         [HttpPost]
-        public ActionResult EditBook(Book book)
-        {
+        public ActionResult EditBook(BookListViewModel book) {
             Console.WriteLine(book.Name);
-           	if (ModelState.IsValid)
-			{
+           	if (ModelState.IsValid) {
 				_adminBookService.updateBook(book);
 				return RedirectToAction("Index");
 			}
 			ViewBag.Id = new SelectList("2", "ID", "Name", book.Id);
 			return View(book);
         }
-        public IActionResult AddBook()
-        {
+        public IActionResult AddBook() {
             return View();
         }
 
 		[HttpPost]
-		public ActionResult AddBook(BookListViewModel book)
-		{
-			if (ModelState.IsValid)
-			{
+		public ActionResult AddBook(BookListViewModel book) {
+			if (ModelState.IsValid) {
 				_adminBookService.CreateBook(book);
 				return RedirectToAction("Index");
 			}
@@ -74,16 +62,13 @@ namespace TheBookCave.Controllers
             ViewBag.book.id = new SelectList("2", "ID", "Name", book.Id);
 			return View(book);
 		}
-        public void addAuthor()
-        {
+        public void addAuthor() {
             //_adminBookService.addAuthor();
         }
-        public void addPublisher()
-        {
+        public void addPublisher() {
             //_adminBookService.addPublisher();
         }
-        public void addGenre()
-        {
+        public void addGenre() {
             //_adminBookService.addGenre();
         }
     }
