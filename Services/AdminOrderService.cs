@@ -23,8 +23,7 @@ namespace TheBookCave.Services {
 
             return orders;
         }
-        // Gets all active orders. Use all order list where TypeId == 2. 
-        // If that is the case typeId will write 
+/*
 
         public List<OrderListViewModel> getAllOrdersOfActiveType() {
             var allActiveOrders = getAllOrder().Where(m => m.TypeId == 2);
@@ -39,5 +38,6 @@ namespace TheBookCave.Services {
             return null;
            
         }
+ */
     }
 }

@@ -25,12 +25,13 @@ namespace TheBookCave
             var db = new DataContext();
 
 
-            if(!db.Subscriptions.Any()){
-                var initialPublishers = new List<Subscription> {
+            if(!db.PromoCodes.Any()){
+                var initialPublishers = new List<PromoCode> {
                   //  new Book { Name = "pub1", Picture = "w",DetailsEN= "asd",DetailsIS="qwe", GenreId=1, AuthorId=1, PublisherId=1, Price=100,Discount=5,Pages=20, Quantity=1,Grade=5 },
-                    new Subscription { DescriptionEn = "wqe", DescriptionIn ="qweq", TypeEn = "sw", TypeIn = "sqwe"},
-                    new Subscription { DescriptionEn = "wqe", DescriptionIn ="qweq", TypeEn = "sw", TypeIn = "sqwe"},
-                    new Subscription { DescriptionEn = "wqe", DescriptionIn ="qweq", TypeEn = "sw", TypeIn = "sqwe"}
+                /*    new PromoCode { Discount = 1, Description ="For employee"},
+                    new PromoCode { Discount = 1, Description ="For employee"},
+                    new PromoCode { Discount = 1, Description ="For employee"},
+                    */
                 };
 
                 db.AddRange(initialPublishers);
