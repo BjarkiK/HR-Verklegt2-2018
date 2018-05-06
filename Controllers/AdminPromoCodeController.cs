@@ -1,8 +1,3 @@
-/*
-        Virkar ekki. Database er vitlaust
-
- */
-
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -34,7 +29,6 @@ namespace TheBookCave.Controllers
         {
             var promoCode = _adminPromoCodeService.getPromoCode(id);
             return View(promoCode);
-
         }
         public void updatePromoCode(int pcid)
         {

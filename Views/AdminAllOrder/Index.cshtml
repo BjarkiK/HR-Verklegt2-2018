@@ -1,6 +1,22 @@
+@model List<TheBookCave.Models.ViewModels.OrderListViewModel> 
+
 @{
     Layout = "_AdminLayout";
 }
 
-    <h2>Admin order panel</h2>
+<h1>All Orders from website, canceld, active and complete orders</h1>
 
+
+<h2> OrderList </h2>
+
+<div>
+    @foreach(var order in @Model)
+    {  
+        <ul>
+        <li>OrderId: @order.Id</li>
+        <li>AddressId: @order.AddressId</li>
+        <li>UserId: @order.UserId</li>
+        <li>Date: @order.Date</li>
+        </ul>
+    }
+</div>

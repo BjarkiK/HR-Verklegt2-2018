@@ -1,7 +1,25 @@
+@model List<TheBookCave.Models.ViewModels.UserListViewModel> 
+
 @{
     Layout = "_AdminLayout";
 }
 
-<h2>
-    Admin User Panel
-</h2>
+<h1>All Users for admin </h1>
+
+
+<h2> User List </h2>
+
+<div>
+    @foreach(var user in @Model)
+    {  
+        <ul>
+        <li>User Id: @user.Id</li>
+        <li>Name: @user.Name</li>
+        <li>Picture: @user.Picture</li>
+        <li>Password: @user.Password</li>
+        <li>FavoriteBookId: @user.FavoriteBookId</li>
+        <li>SubscriptionId: @user.SubscriptionId</li>
+        <li>OrderId: @user.OrderId</li>
+        </ul>
+    }
+</div>

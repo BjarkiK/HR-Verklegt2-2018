@@ -16,7 +16,7 @@ namespace TheBookCave.Controllers
         public AdminActiveOrderController() {
             //_adminOrderService = new AdminOrderService();
         }
-        public IActionResult Index()
+        public IActionResult index()
         {
             return View();
         }

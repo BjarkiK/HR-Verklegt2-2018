@@ -44,7 +44,7 @@ namespace TheBookCave.Controllers {
         public ActionResult EditBook(BookListViewModel book) {
             Console.WriteLine(book.Name);
            	if (ModelState.IsValid) {
-				_adminBookService.updateBook(book);
+	//			_adminBookService.updateBook(book);
 				return RedirectToAction("Index");
 			}
 			ViewBag.Id = new SelectList("2", "ID", "Name", book.Id);

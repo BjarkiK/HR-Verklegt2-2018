@@ -1,3 +1,6 @@
+<!--
+     This is for all admin Views
+-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,18 +58,18 @@
         </div>
     </div>
 </nav>
+<input type="button" value="Go Somewhere Else" onclick="location.href='<%: Url.Action("Action", "Controller") %>'" />
 
 <div class="main-container">
     <nav id="sideBar">
         <div class="list-group">
-            <button type="button" class="list-group-item list-group-item-action SideButton">Drama</button>
-            <button type="button" class="list-group-item list-group-item-action SideButton">Horror</button>
-            <button type="button" class="list-group-item list-group-item-action SideButton">Adventure</button>
-            <button type="button" class="list-group-item list-group-item-action SideButton">Science fiction</button>
-            <button type="button" class="list-group-item list-group-item-action SideButton">Action </button>
-            <button type="button" class="list-group-item list-group-item-action SideButton">Romance</button>
-            <button type="button" class="list-group-item list-group-item-action SideButton">Fantasy</button>
-            <button type="button" class="list-group-item list-group-item-action SideButton">Subscriptions</button>
+            <input type="button" value="OrderList" onclick="location.href='@Url.Action("index", "AdminAllOrder")'" />
+            <input type="button" value="ActiveOrderList" onclick="location.href='@Url.Action("index", "AdminActiveOrder")'" />
+            <input type="button" value="BooksList" onclick="location.href='@Url.Action("index", "AdminBook")'" />
+            <input type="button" value="UserList" onclick="location.href='@Url.Action("index", "AdminUser")'" />
+            <input type="button" value="SubscriptionList" onclick="location.href='@Url.Action("index", "AdminSubscription")'" />
+            <input type="button" value="PromoCodeList" onclick="location.href='@Url.Action("index", "AdminPromoCode")'" />
+            
 
         </div>
     </nav>
