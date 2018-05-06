@@ -58,10 +58,9 @@
         </div>
     </div>
 </nav>
-<input type="button" value="Go Somewhere Else" onclick="location.href='<%: Url.Action("Action", "Controller") %>'" />
 
 <div class="main-container">
-    <nav id="sideBar">
+    <nav>
         <div class="list-group">
             <input type="button" value="OrderList" onclick="location.href='@Url.Action("index", "AdminAllOrder")'" />
             <input type="button" value="ActiveOrderList" onclick="location.href='@Url.Action("index", "AdminActiveOrder")'" />
