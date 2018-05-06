@@ -11,27 +11,25 @@ namespace TheBookCave.Controllers
 {
     public class AdminUserController : Controller
     {
-        //private AdminUserService _adminUserService;
+        private AdminUserService _adminUserService;
 
         public AdminUserController() {
-            //_adminUserService = new AdminUserService();
+            _adminUserService = new AdminUserService();
         }
         
-        public IActionResult Index()
+        public IActionResult index()
         {
             return View();
         }
         public IActionResult userListDisplay()
         {
-            /*var userList = _adminUserService.getAllUsers();
-            return View(UserList);*/
-            return View();
+            var userList = _adminUserService.getAllUsers();
+            return View(userList);
         }
-        public IActionResult userDetails(string uid)
+        public IActionResult userDetails(string id)
         {
-            /*var user = _adminUserService.getUser(uid);
-            return View(user);*/
-            return View();
+            var user = _adminUserService.getUser(id);
+            return View(user);
         }
         public void userUpdate(string uid)
         {

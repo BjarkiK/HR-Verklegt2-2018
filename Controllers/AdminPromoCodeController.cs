@@ -1,3 +1,8 @@
+/*
+        Virkar ekki. Database er vitlaust
+
+ */
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -11,26 +16,25 @@ namespace TheBookCave.Controllers
 {
     public class AdminPromoCodeController : Controller
     {
-        //private AdminPromoCodeService _adminPromoCodeService;
+        private AdminPromoCodeService _adminPromoCodeService;
 
         public AdminPromoCodeController() {
-            //_adminPromoCodeService = new AdminPromoCodeService();
+            _adminPromoCodeService = new AdminPromoCodeService();
         }
-        public IActionResult Index()
+        public IActionResult index()
         {
             return View();
         }
-        public IActionResult promoCodesDisplay()
+        public IActionResult promoCodeListDisplay()
         {
-            /*var promoCodeList = _adminPromoCodeService.getAllPromoCodes();
-            return View(subscriptionList);*/
-            return View();
+            var promoCodeList = _adminPromoCodeService.getAllPromoCode();
+            return View(promoCodeList);
         }
-        public IActionResult promoCodesDetails(int pcid)
+        public IActionResult promoCodeDetails(string id)
         {
-            /*var promoCode = _adminPromoCodeService.getPromoCode(pcid);
-            return View(promoCode);*/
-            return View();
+            var promoCode = _adminPromoCodeService.getPromoCode(id);
+            return View(promoCode);
+
         }
         public void updatePromoCode(int pcid)
         {
