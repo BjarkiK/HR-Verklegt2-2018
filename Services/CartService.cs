@@ -16,16 +16,16 @@ namespace TheBookCave.Services {
             // Filter books that are in cart and return
             return books;
         }
-        public bool validatePromoCode(int promoCode){
+       /* public bool validatePromoCode(int promoCode){
             var promoCodes = _promoCodesRepo.getAllPromoCode();
             /*if(promoCodes.Contains(promoCode)){
                 return true;
             }
             else {
                 return false;
-            }*/
+            }
             return false;
-        }
+        }*/
         public void addBookToCartCookie(int bid) {
             // AJAX?
         }

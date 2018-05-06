@@ -33,9 +33,11 @@ namespace TheBookCave.Controllers {
             return View();
         }
         public IActionResult EditBook(int id) {
-
-			var book = _adminBookService.GetBook(id).First();
-			return View(book);
+			var book = _adminBookService.GetBook(id);
+            if(!book.Any()) {
+                return RedirectToAction("BookNotFound");
+            }
+			return View(book.First());
 
         }
         [HttpPost]
@@ -47,6 +49,10 @@ namespace TheBookCave.Controllers {
 			}
 			ViewBag.Id = new SelectList("2", "ID", "Name", book.Id);
 			return View(book);
+        }
+
+        public IActionResult BookNotFound() {
+            return View();
         }
         public IActionResult AddBook() {
             return View();

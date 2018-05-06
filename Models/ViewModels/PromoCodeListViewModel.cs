@@ -1,6 +1,8 @@
 namespace TheBookCave.Models.ViewModels {
     public class PromoCodesListViewModel {
         public string Id { get; set; }
+        // The promo code
+        public string Code { get; set; }
         // How much discount this promo code gives.
         public int Discount { get; set; }
         // Discription af the promo code.

@@ -11,8 +11,8 @@ using TheBookCave.Data;
 namespace TheBookCave.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20180505202808_PromoCodeMigration_add")]
-    partial class PromoCodeMigration_add
+    [Migration("20180506160647_recreatePromicodesMigration_create")]
+    partial class recreatePromicodesMigration_create
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -173,8 +173,10 @@ namespace TheBookCave.Migrations
 
             modelBuilder.Entity("TheBookCave.Data.EntityModels.PromoCode", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Code");
 
                     b.Property<string>("Description");
 

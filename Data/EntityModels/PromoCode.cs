@@ -1,7 +1,10 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace TheBookCave.Data.EntityModels {
     public class PromoCode {
-        // The promo code it self
         public string Id { get; set; }
+        // The promo code it self
+        public string Code { get; set; }
         // How much discount this promo code gives.
         public int Discount { get; set; }
         // Discription af the promo code.

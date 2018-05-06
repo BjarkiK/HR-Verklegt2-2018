@@ -175,6 +175,8 @@ namespace TheBookCave.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("Code");
+
                     b.Property<string>("Description");
 
                     b.Property<int>("Discount");
