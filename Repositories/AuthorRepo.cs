@@ -22,14 +22,14 @@ namespace TheBookCave.Repositories {
                                 }).ToList();
             return author;
         }
-        public List<AuthorListViewModel> getAllAuthor(int aid) {
+        public List<AuthorListViewModel> getAllAuthors() {
             var authors = (from a in _db.Authors
                                 select new AuthorListViewModel {
-                                AuthorId = a.Id,
-                                DateOfBirth = a.DateOfBirth,
-                                DescriptionEN = a.DescriptionEN,
-                                DescriptionIS = a.DescriptionIS,
-                                Name = a.Name
+                                    AuthorId = a.Id,
+                                    DateOfBirth = a.DateOfBirth,
+                                    DescriptionEN = a.DescriptionEN,
+                                    DescriptionIS = a.DescriptionIS,
+                                    Name = a.Name
                                 }).ToList();
             return authors;
         }

@@ -1,0 +1,55 @@
+﻿@model List<TheBookCave.Models.ViewModels.BookAuthorListViewModel>
+
+<div id="FrontPageBooks">
+    <!-- (bæta við) Þegar hoverað er yfir mynd að þá kemur númer á myndina í hvaða sæti hún er á Top10 -->
+    <h2>Top 10</h2>
+    <div class="fp-list">
+        <div class="arrow">
+            <button type="button" class="btn btn-default btn-arrow glyphicon glyphicon-menu-left" value="left" />
+        </div>
+        <div class="books-container">
+            <div class="books-container2">
+            @foreach(var book in @Model) {
+                <a href="book/details/@book.Id" class="single-book-container">
+                    <div class="book">
+                        <div class="Teste"></div>
+                        <p class="book-preview-title">@book.Name</p>
+                        <img class="book-preview-image" src="@book.Picture" alt="Image broken">
+                        <p class="preview-book-author">@book.Author</p>
+                        <p>$ @book.Price</p>
+                    </div>
+                </a>
+            }
+            </div>
+        </div>
+        <div class="arrow">
+            <button type="button" class="btn btn-default btn-arrow glyphicon glyphicon-menu-right" value="right">
+            </button>
+        </div>
+    </div>
+    <h2>Newest 10 - Same as top 10 at the moment</h2>
+    <div class="fp-list">
+        <div class="arrow">
+            <button type="button" class="btn btn-default btn-arrow glyphicon glyphicon-menu-left" value="left" />
+        </div>
+        <div class="books-container">
+            <div class="books-container2">
+            @foreach(var book in @Model) {
+                <a href="book/details/@book.Id" class="single-book-container">
+                    <div class="book">
+                        <div class="Teste"></div>
+                        <p class="book-preview-title">@book.Name</p>
+                        <img class="book-preview-image" src="@book.Picture" alt="Image broken">
+                        <p class="preview-book-author">@book.Author</p>
+                        <p>$ @book.Price</p>
+                    </div>
+                </a>
+            }
+            </div>
+        </div>
+        <div class="arrow">
+            <button type="button" class="btn btn-default btn-arrow glyphicon glyphicon-menu-right" value="right">
+            </button>
+        </div>
+    </div>
+</div>

@@ -5,29 +5,42 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TheBookCave.Models;
+using TheBookCave.Models.ViewModels;
 using TheBookCave.Services;
 
 namespace TheBookCave.Controllers
 {
     public class FrontPageController : Controller
     {
-        //private BookService _bookService;
+        private BookService _bookService;
+        private AuthorService _authorService;
 
         public FrontPageController() {
-            //_bookService = new BookService();
+            _bookService = new BookService();
+            _authorService = new AuthorService();
         }
-        public IActionResult Index()
-        {
-            return View();
+        public IActionResult Index() {
+            var topBooks = _bookService.getTop10Books();
+            var authors = _authorService.getAllAuthors();
+            var joined =    (from b in topBooks
+                            join a in authors
+                            on b.AuthorId equals a.AuthorId
+                            select new BookAuthorListViewModel { 
+                                Id = b.Id,
+                                Name = b.Name,
+                                Price = b.Price,
+                                Author = a.Name,
+                                Picture = b.Picture
+                             }).ToList();              
+            return View(joined);
+
+            //return View();
         }
-        public IActionResult top10BooksDisplay()
-        {
-            /*var topBooks = _bookService.getTop10Books();
-            return View(topBooks);*/
-            return View();
+        public IActionResult top10BooksDisplay()  {
+            var topBooks = _bookService.getTop10Books();
+            return View(topBooks);
         }
-        public IActionResult newestBooksDisplay()
-        {
+        public IActionResult newestBooksDisplay() {
             /*var newestBooks = _bookService.getNewestBooks(10);
             return View(newestBooks);*/
             return View();

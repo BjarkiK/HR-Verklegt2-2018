@@ -52,7 +52,66 @@
     width: 500px;
     display: inline-block;
 }
+
+.fp-list {
+    height: 400px;
+    margin: 10px;
+    align-items: center;
+    overflow: hidden;
+    border: 2px solid black;
+    border-radius: 5px;
+    display: flex;
+}
+
+.books-container {
+    width: 90%;
+    overflow: hidden;
+}
+
+.books-container2 {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.single-book-container {
+    width: 20%;
+    padding: 10px;
+    cursor: pointer;
+    flex: 1 0 20%;
+    display: flex;
+    justify-content: center;
+    transition: margin 1s;
+}
+
+.book-preview-image {
+    width: 150px;
+    height: 220px;
+    border: 0.5px solid gray;
+    object-fit: cover;
+}
+
+.book-preview-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+.arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 5%;
+    height: 100%;
+}
+
+.btn-arrow {
+    height: 30px;
+}
+
+/*
 #FrontPageBooks {
+    width: 100%;
     display: inline-block;
     vertical-align: top;
 }
@@ -60,12 +119,11 @@
     text-align: center;
 }
 #Top10 {
-    margin: 20px 20px;
-    margin-bottom: 60px; 
-    border-radius: 5px;
-    width: 1500px;
-    height: 320px;
+    width: 100%;
+    height: auto;
+    margin: 20px 20px 60px 20px;
     border: 2px solid black;
+    border-radius: 5px;
     vertical-align: top;
 }
 #Top10 .TopBooks {
@@ -80,13 +138,14 @@
     margin-left: 5px;
     vertical-align: 135px;
 }
+*/
 #New {
     /*display: inline-block;*/
     margin: 20px 20px;
     border-radius: 5px;
-    width: 1500px;
+    width: 100%;
     height: 320px;
-    border: 2px solid;
+    border: 2px solid black;
 }
 #footerLeft {
     width: 20%;
@@ -107,4 +166,8 @@
 }
 #youtube:hover{
     color: #bb0000;
+}
+
+.hidden {
+    display: none;
 }

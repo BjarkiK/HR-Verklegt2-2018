@@ -33,7 +33,7 @@ namespace TheBookCave
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/FrontPage/Error");
             }
 
             app.UseStaticFiles();
@@ -42,7 +42,7 @@ namespace TheBookCave
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=FrontPage}/{action=Index}/{id?}");
             });
         }
     }

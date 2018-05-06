@@ -23,7 +23,7 @@ ADD TABLE TO DATABASE:
 6. Check if successfull with TeamSQL
 
 
-REMOVE TABLE TO DATABASE (ALL DATA WILL BE LOST):
+REMOVE TABLE FROM DATABASE (ALL DATA WILL BE LOST):
 1. Most likely remove entity class
 2. Data -> DataContext -> remove correct table
 5. BUILD PROJECT (dotnet build)
@@ -59,7 +59,6 @@ REVERT FAULTY MIGRATION:
 2. BUILD PROJECT (dotnet build)
 3. dotnet ef database update [MigrationName (Revert to this migration)]
 4. dotnet ef migrations remove (Removes last migration)
-5. dotnet ef database update
 7. Check if successfull with TeamSQL
 
 GITHUB 
