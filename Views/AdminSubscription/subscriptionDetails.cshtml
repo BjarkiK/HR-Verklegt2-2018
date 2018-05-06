@@ -1,0 +1,17 @@
+@model List<TheBookCave.Models.ViewModels.SubscriptionListViewModel> 
+
+
+<h2> Choosen subscription </h2>
+
+<div>
+    @foreach(var subscription in @Model)
+    {  
+        <ul>
+        <li>subscriptionId: @subscription.Id</li>
+        <li>DescriptionEn: @subscription.DescriptionEn</li>
+        <li>DescriptionIn: @subscription.DescriptionIn</li>
+        <li>TypeEn: @subscription.TypeEn</li>
+        <li>TypeIn: @subscription.TypeIn</li>
+        </ul>
+    }
+</div>

@@ -25,13 +25,13 @@ namespace TheBookCave
           public static void SeedData() {
             var db = new DataContext();
 
-// Maybe hold on to one Book dont delete
-            if(!db.Orders.Any()){
-                var initialPublishers = new List<Order> {
+
+            if(!db.Subscriptions.Any()){
+                var initialPublishers = new List<Subscription> {
                   //  new Book { Name = "pub1", Picture = "w",DetailsEN= "asd",DetailsIS="qwe", GenreId=1, AuthorId=1, PublisherId=1, Price=100,Discount=5,Pages=20, Quantity=1,Grade=5 },
-                    new Order { AddressId = 1, TypeId = 3, UserId =2},
-                    new Order { AddressId = 1, TypeId = 3, UserId =2},
-                    new Order { AddressId = 1, TypeId = 3, UserId =2}
+                    new Subscription { DescriptionEn = "wqe", DescriptionIn ="qweq", TypeEn = "sw", TypeIn = "sqwe"},
+                    new Subscription { DescriptionEn = "wqe", DescriptionIn ="qweq", TypeEn = "sw", TypeIn = "sqwe"},
+                    new Subscription { DescriptionEn = "wqe", DescriptionIn ="qweq", TypeEn = "sw", TypeIn = "sqwe"}
                 };
 
                 db.AddRange(initialPublishers);

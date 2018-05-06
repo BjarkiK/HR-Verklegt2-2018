@@ -11,10 +11,10 @@ namespace TheBookCave.Controllers
 {
     public class AdminSubscriptionController : Controller
     {
-        //private AdminSubscriptionService _adminSubscriptionService;
+        private AdminSubscriptionService _adminSubscriptionService;
 
         public AdminSubscriptionController() {
-            //_adminSubscriptionService = new AdminSubscriptionService();
+            _adminSubscriptionService = new AdminSubscriptionService();
         }
         public IActionResult Index()
         {
@@ -22,15 +22,13 @@ namespace TheBookCave.Controllers
         }
         public IActionResult subscriptionListDisplay()
         {
-            /*var subscriptionList = _adminSubscriptionService.getAllSubscriptions();
-            return View(subscriptionList);*/
-            return View();
+            var subscriptionList = _adminSubscriptionService.getAllSubscription();
+            return View(subscriptionList);
         }
-        public IActionResult subscriptionDetails(int sid)
+        public IActionResult subscriptionDetails(int id)
         {
-            /*var subscription = _adminSubscriptionService.getSubscription(sid);
-            return View(subscription);*/
-            return View();
+            var subscription = _adminSubscriptionService.getSubscription(id);
+            return View(subscription);
         }
         public void subscriptionUpdate(int sid)
         {
