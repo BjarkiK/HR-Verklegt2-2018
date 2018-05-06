@@ -4,10 +4,12 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using TheBookCave.Data.EntityModels;
 using TheBookCave.Models;
 using TheBookCave.Models.ViewModels;
 using TheBookCave.Services;
+
 
 namespace TheBookCave.Controllers
 {
@@ -35,27 +37,42 @@ namespace TheBookCave.Controllers
             return View(book);*/
             return View();
         }
-        public void bookUpdate(string bid)
+        public IActionResult EditBook(int id)
         {
-            //_adminBookService.updateBook(bid);
+
+			var book = _adminBookService.GetBook(id);
+
+			//ViewBag.ProductCategoryID = new SelectList(db.ProductCategories, "ID", "Name", product.ProductCategoryID);
+			return View(book);
         }
-        public IActionResult CreateBook()
+        [HttpPost]
+        public ActionResult EditBook(Book book)
         {
-            Console.WriteLine("AddBook");
+            Console.WriteLine(book.Name);
+           	if (ModelState.IsValid)
+			{
+				_adminBookService.updateBook(book);
+				return RedirectToAction("Index");
+			}
+			ViewBag.Id = new SelectList("2", "ID", "Name", book.Id);
+			return View(book);
+        }
+        public IActionResult AddBook()
+        {
             return View();
         }
 
 		[HttpPost]
-		public ActionResult CreateBook(Book book)
+		public ActionResult AddBook(BookListViewModel book)
 		{
 			if (ModelState.IsValid)
 			{
 				_adminBookService.CreateBook(book);
-                 Console.WriteLine("HURRA");
-				return RedirectToAction("CreateBook");
+				return RedirectToAction("Index");
 			}
-            Console.WriteLine("Hello");
-            return RedirectToAction("Index");
+            Console.WriteLine("CreateNotValid");
+            ViewBag.book.id = new SelectList("2", "ID", "Name", book.Id);
+			return View(book);
 		}
         public void addAuthor()
         {

@@ -12,9 +12,8 @@ namespace TheBookCave.Services {
             _orderRepo = new BookRepo();
         }
 
-         public List<BookListViewModel> GetBook(int bookId) {
-            var book = _orderRepo.getBook(bookId);
-
+         public List<BookListViewModel> GetBook(int id) {
+            var book = _orderRepo.getBook(id);
             return book;
         }
 
@@ -23,9 +22,28 @@ namespace TheBookCave.Services {
 
             return books;
         }
+        public void updateBook(Book book) {
+           var successfull = _orderRepo.updateBook(book);
+        }
 
-         public void CreateBook(Book book) {
-           var successfull = _orderRepo.createBook(book);
+        public void CreateBook(BookListViewModel b) {
+            var book = new Book {
+                                AuthorId = b.AuthorId,
+                                DetailsEN = b.DetailsEN,
+                                DetailsIS = b.DetailsIS,
+                                Discount = b.Discount,
+                                GenreId = b.GenreId,
+                                Grade = b.Grade,
+                                Id = b.Id,
+                                Name = b.Name,
+                                Pages = b.Pages,
+                                Picture = b.Picture,
+                                Price = b.Price,
+                                Published = b.Published,
+                                PublisherId = b.PublisherId,
+                                Quantity = b.Quantity                                
+                                };
+            var successfull = _orderRepo.createBook(book);
         }
 
     }

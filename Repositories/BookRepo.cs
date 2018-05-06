@@ -13,49 +13,49 @@ namespace TheBookCave.Repositories {
         public BookRepo() {
             _db = new DataContext();
         }
-        public List<BookListViewModel> getBook(int bid) {
+        public List<BookListViewModel> getBook(int id) {
             var book = (from b in _db.Books
-                                where b.Id == bid
+                                where b.Id == id
                                 select new BookListViewModel {
-                                Id = b.Id,
-                                AuthorId = b.AuthorId,
-                                DetailsEN = b.DetailsEN,
-                                DetailsIS = b.DetailsIS,
-                                Discount = b.Discount,
-                                GenreId = b.GenreId,
-                                Name = b.Name,
-                                Picture = b.Picture,
-                                PublisherId = b.PublisherId,
-                                Grade = b.Grade,
-                                Pages = b.Pages,
-                                Price = b.Price,
-                                Published = b.Published,
-                                Quantity = b.Quantity 
+                                    Id = b.Id,
+                                    AuthorId = b.AuthorId,
+                                    DetailsEN = b.DetailsEN,
+                                    DetailsIS = b.DetailsIS,
+                                    Discount = b.Discount,
+                                    GenreId = b.GenreId,
+                                    Name = b.Name,
+                                    Picture = b.Picture,
+                                    PublisherId = b.PublisherId,
+                                    Grade = b.Grade,
+                                    Pages = b.Pages,
+                                    Price = b.Price,
+                                    Published = b.Published,
+                                    Quantity = b.Quantity 
                                 }).ToList();
             return book;
         }
         public List<BookListViewModel> getAllBooks() {
             var books = (from b in _db.Books
                                 select new BookListViewModel {
-                                Id = b.Id,
-                                AuthorId = b.AuthorId,
-                                DetailsEN = b.DetailsEN,
-                                DetailsIS = b.DetailsIS,
-                                Discount = b.Discount,
-                                GenreId = b.GenreId,
-                                Name = b.Name,
-                                Picture = b.Picture,
-                                PublisherId = b.PublisherId,
-                                Grade = b.Grade,
-                                Pages = b.Pages,
-                                Price = b.Price,
-                                Published = b.Published,
-                                Quantity = b.Quantity 
+                                    Id = b.Id,
+                                    AuthorId = b.AuthorId,
+                                    DetailsEN = b.DetailsEN,
+                                    DetailsIS = b.DetailsIS,
+                                    Discount = b.Discount,
+                                    GenreId = b.GenreId,
+                                    Name = b.Name,
+                                    Picture = b.Picture,
+                                    PublisherId = b.PublisherId,
+                                    Grade = b.Grade,
+                                    Pages = b.Pages,
+                                    Price = b.Price,
+                                    Published = b.Published,
+                                    Quantity = b.Quantity 
                                 }).ToList();
             return books;
         }
-        public bool updateBook(int bid) {
-            // linq update
+        public bool updateBook(Book book) {
+            _db.Books.Update(book);
             return true;
         }
         public bool deleteBook(int hid) {

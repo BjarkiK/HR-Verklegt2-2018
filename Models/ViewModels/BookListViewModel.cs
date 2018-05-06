@@ -1,8 +1,11 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace TheBookCave.Models.ViewModels {
     public class BookListViewModel {
         // ISBN of book
         public int Id { get; set; }
         // The book title.
+        [Required(ErrorMessage = "Can't be empty! Please enter a title")]
         public string Name { get; set; }
         // Path to book picture.
         public string Picture { get; set; }
