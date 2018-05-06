@@ -7,7 +7,7 @@ namespace TheBookCave.Services {
         public void createUser() {
             //todo
         }
-        public void æogin() {
+        public void login() {
             //Todo
         }
         public void logout(){

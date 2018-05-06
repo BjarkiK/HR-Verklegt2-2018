@@ -26,10 +26,12 @@ namespace TheBookCave
             var db = new DataContext();
 
 // Maybe hold on to one Book dont delete
-            if(!db.Users.Any()){
-                var initialPublishers = new List<User> {
+            if(!db.Orders.Any()){
+                var initialPublishers = new List<Order> {
                   //  new Book { Name = "pub1", Picture = "w",DetailsEN= "asd",DetailsIS="qwe", GenreId=1, AuthorId=1, PublisherId=1, Price=100,Discount=5,Pages=20, Quantity=1,Grade=5 },
-                    new User { Name = "pub2", Picture = "w"}
+                    new Order { AddressId = 1, TypeId = 3, UserId =2},
+                    new Order { AddressId = 1, TypeId = 3, UserId =2},
+                    new Order { AddressId = 1, TypeId = 3, UserId =2}
                 };
 
                 db.AddRange(initialPublishers);
