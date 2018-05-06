@@ -12,19 +12,19 @@ namespace TheBookCave.Services {
             _orderRepo = new BookRepo();
         }
 
-         public List<BookListViewModel> GetBook(int bookId) {
+         public List<BookListViewModel> getBook(int bookId) {
             var book = _orderRepo.getBook(bookId);
 
             return book;
         }
 
-        public List<BookListViewModel> GetAllBooks() {
+        public List<BookListViewModel> getAllBooks() {
             var books = _orderRepo.getAllBooks();
 
             return books;
         }
 
-         public void CreateBook(Book book) {
+         public void createBook(Book book) {
             _orderRepo.createBook(book);
         }
 
