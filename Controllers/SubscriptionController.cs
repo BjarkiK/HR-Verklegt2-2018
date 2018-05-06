@@ -11,20 +11,19 @@ namespace TheBookCave.Controllers
 {
     public class SubscriptionController : Controller
     {
-        //private SubscriptionService _subscriptionService;
+        private SubscriptionService _subscriptionService;
 
         public SubscriptionController() {
-            //_subscriptionService = new SubscriptionService();
+            _subscriptionService = new SubscriptionService();
         }
-        public IActionResult Index()
+        public IActionResult index()
         {
             return View();
         }
         public IActionResult subscriptionListDisplay()
         {
-            /*var subscriptionList = _subscriptionService.getAllSubscriptions();
-            return View(subscriptionList);*/
-            return View();
+            var subscriptionList = _subscriptionService.getAllSubscriptions();
+            return View(subscriptionList);
         }
     }
 }

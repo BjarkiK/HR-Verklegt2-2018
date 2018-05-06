@@ -23,7 +23,7 @@ namespace TheBookCave.Controllers
            //return View();
         }
 
-        public IActionResult Details(int id)
+        public IActionResult bookDetails(int id)
         {
             var book = _bookService.getBook(id);
             return View(book);
