@@ -63,7 +63,7 @@ function displayStars() {
     var gradeElem = document.getElementsByClassName("book-detail-grade")[0];
     var grade = gradeElem.getAttribute("value").replace(",", ".");
     var antiGrade = 0;
-    while(grade > 0.0) {
+    while(grade >= 0.0 && grade <= 5.0 ) {
         if(grade >= 1) {
             grade--;
             antiGrade++;
