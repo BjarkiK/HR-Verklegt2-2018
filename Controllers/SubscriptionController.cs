@@ -18,7 +18,8 @@ namespace TheBookCave.Controllers
         }
         public IActionResult index()
         {
-            return View();
+            var subscriptionList = _subscriptionService.getAllSubscriptions();
+            return View(subscriptionList);
         }
         public IActionResult subscriptionListDisplay()
         {
