@@ -1,11 +1,5 @@
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using TheBookCave.Models;
-using TheBookCave.Services;
 
 namespace TheBookCave.Controllers
 {
@@ -16,12 +10,17 @@ namespace TheBookCave.Controllers
         public CartController() {
             //_cartService = new CookService();
         }
-        public IActionResult index()
-        {
+        public IActionResult index() {
+            var cookie = Request.Cookies["bajrki"];
+            if(cookie != null) {
+                Console.WriteLine(cookie);
+            } else {
+                Console.WriteLine("cookie not set");
+            }
+            
             return View();
         }
-        public IActionResult cartDisplay(string[] bid)
-        {
+        public IActionResult cartDisplay(string[] bid) {
             /*cartList = _cartService.getBooksInCart(bid[]);
             return View(cartList);*/
             return View();
