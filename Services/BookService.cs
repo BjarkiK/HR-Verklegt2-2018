@@ -9,12 +9,14 @@ namespace TheBookCave.Services {
         private UserGradeRepo _userGradeRepo;
         private GenreRepo _genreRepo;
         private AuthorRepo _authorRepo;
+        private PublisherRepo _publisherRepo;
 
         public BookService() {
             _bookRepo = new BookRepo();
             _userGradeRepo = new UserGradeRepo();
             _genreRepo = new GenreRepo();
             _authorRepo = new AuthorRepo();
+            _publisherRepo = new PublisherRepo();
         }
 
         public List<BookListViewModel> getAllBooks() {
@@ -42,18 +44,40 @@ namespace TheBookCave.Services {
         public List<BookDetailedListViewModel> getBookList() {
             var books = _bookRepo.getAllBooks();
             var authors = _authorRepo.getAllAuthors();
+            var publishers = _publisherRepo.getAllPublishers();
+            var genres = _genreRepo.getAllGenres();
             var joined =    (from b in books
                             join a in authors
                             on b.AuthorId equals a.AuthorId
+                            join p in publishers
+                            on b.PublisherId equals p.Id
+                            join g in genres
+                            on b.GenreId equals g.Id
                             select new BookDetailedListViewModel { 
                                 Id = b.Id,
                                 Name = b.Name,
                                 Price = b.Price,
-                                Author = a.Name,
+                                Picture = b.Picture,
                                 Grade = b.Grade,
-                                Picture = b.Picture
+                                DetailsEN = b.DetailsEN,
+                                DetailsIS = b.DetailsIS,
+                                Discount = b.Discount,
+                                Pages = b.Pages,
+                                Quantity = b.Quantity,
+                                Published = b.Published,
+                                Genre = g.GenreEN,
+                                Author = a.Name,
+                                Publisher = p.Name
                              }).ToList();
             return joined;
+        }
+        public List<BookDetailedListViewModel> getDetailedBook(int id) {
+            var books = getBookList();
+            List<BookDetailedListViewModel> detailedBook = books.Where(b => b.Id == id).ToList();
+            if (detailedBook.Count == 0) {
+                return null;
+            }
+            return detailedBook;
         }
         
         public List<BookDetailedListViewModel> getTop10Books() {
@@ -61,11 +85,13 @@ namespace TheBookCave.Services {
             List<BookDetailedListViewModel> topBooks = books.OrderByDescending(s => s.Grade).Select(x => x).Take(10).ToList();
             return topBooks;
         }
+
         public List<BookDetailedListViewModel> getNewestBooks(int n) {
             var books = getBookList();
             List<BookDetailedListViewModel> newestBooks = books.OrderByDescending(x => x.Id).Select(x => x).Take(n).ToList();
             return newestBooks;
         }
+
         public List<BookListViewModel> getBooksByGenre(string genre) {
             /* Sækja öll genre og finna rétta til að fá ID
             var genres = _genreRepo.GetAllGenre();

@@ -23,6 +23,23 @@ namespace TheBookCave.Services {
 
             return subscription;
         }
+
+         public List<SubscriptionListViewModel> getSearchResult(string searchString) {
+            var subscription = _subscriptionRepo.getAllSubscription();
+            var searchResult = (from sub in subscription
+                        where sub.DescriptionEn.ToLower().Contains(searchString.ToLower())
+                        select new SubscriptionListViewModel {
+                                Id = sub.Id,
+                                DescriptionEn = sub.DescriptionEn,
+                                DescriptionIn = sub.DescriptionIn,
+                                TypeEn = sub.TypeEn,
+                                TypeIn = sub.TypeIn,
+                                Published = sub.Published
+                        }).ToList();
+
+            return searchResult;
+        }
+
     }
 }    
     /*

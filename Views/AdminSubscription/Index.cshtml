@@ -4,10 +4,14 @@
     Layout = "_AdminLayout";
 }
 
-<h1>All subscription </h1>
-
-
 <h2> SubscriptionList </h2>
+
+<form asp-controller="adminSubscription" asp-action="index">
+    <p>
+        <input type="text" name="SearchString" value="Search DescriptionEn">
+        <input type="submit" value="Submit" />
+    </p>
+</form>
 
 <table align="center">
     <thead>

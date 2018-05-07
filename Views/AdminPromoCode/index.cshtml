@@ -6,13 +6,34 @@
 
 <h2> PromoCodeList </h2>
 
-<div>
-    @foreach(var promoCode in @Model) {  
-        <ul>
-        <li>promoCodeId: @promoCode.Id</li>
-        <li>Discount: @promoCode.Discount</li>
-        <li>Description: @promoCode.Description</li>
-        <li>Published: @promoCode.Published</li>
-        </ul>
-    }
-</div>
+<form asp-controller="adminPromoCode" asp-action="index">
+    <p>
+        <input type="text" name="SearchString" value="Search">
+        <input type="submit" value="Submit" />
+    </p>
+</form>
+
+
+<table align="center">
+    <thead>
+      <tr>
+            <th>PromoCode Id</th>
+            <th>Code </th>
+            <th>Discount</th>
+            <th>Description</th>
+            <th>Published</th>
+        </tr>
+    </thead>
+    @foreach(var promoCode in @Model)
+        {
+        <tbody>
+            <tr>
+                <td><a asp-controller="AdminPromoCode" asp-action="promoCodeDetails" asp-route-id="@promoCode.Id">@promoCode.Id</a></td>
+                <td>@promoCode.Code</td>
+                <td>@promoCode.Discount</td>
+                <td>@promoCode.Description</td>
+                <td>@promoCode.Published</td>
+            </tr>
+        </tbody>
+        }      
+    </table>

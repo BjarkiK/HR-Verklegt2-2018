@@ -3,22 +3,21 @@ displayStars();
 function addBookToChart(e) {
     var bookId = e.target.attributes[1].nodeValue.toString();
     var books = getCookie("TBCbooksInChart");
-    console.log(books)
     if(!idAlreadyAdded(books, bookId)) {
         if(books === ""){
             setCookie("TBCbooksInChart", bookId, 1);
         }
         else {
-            books = books + "," + bookId;
+            books = books + "." + bookId;
             setCookie("TBCbooksInChart", books, 1);
         }
     }
 }
 
 function idAlreadyAdded(cvalue, bId) {
-    var bookIds = cvalue.split(",");
-    for(var b in bookIds) {
-        if( b == bId){
+    var bookIds = cvalue.split(".");
+    for(var i = 0; i < bookIds.length; i++) {
+        if( bookIds[i] == bId ){
             return true
         }
     }
@@ -63,7 +62,7 @@ function displayStars() {
     var gradeElem = document.getElementsByClassName("book-detail-grade")[0];
     var grade = gradeElem.getAttribute("value").replace(",", ".");
     var antiGrade = 0;
-    while(grade > 0.0) {
+    while(grade >= 0.0 && grade <= 5.0 ) {
         if(grade >= 1) {
             grade--;
             antiGrade++;

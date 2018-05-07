@@ -24,21 +24,19 @@ namespace TheBookCave.Services {
             Console.WriteLine(promoCodes.First().Code);
             return promoCodes;
         }
-       /*
-       
-        public List<PromoCodesListViewModel> getAllPromoCodesOfActiveType() {
-            var allActivePromoCodes = getAllPromoCode().Where(m => m.TypeId == 2);
-            
-            var lowest = ( from i in allActivePromoCodes PromoCodeby i ascending
-				select i).ToList();
-            
-            foreach (var X in lowest)
-            {
-            //    return X;
-            }
-            return null;
-           
+
+         public List<PromoCodeListViewModel> getSearchResult(string searchString) {
+            var promoCode = _promoCodeRepo.getAllPromoCode();
+            var searchResult = (from pc in promoCode
+                        where pc.Description.ToLower().Contains(searchString.ToLower())
+                        select new PromoCodeListViewModel {
+                                    Id = pc.Id,
+                                    Description = pc.Description,
+                                    Discount = pc.Discount,
+                                    Published = pc.Published
+                        }).ToList();
+
+            return searchResult;
         }
-        */
     }
 }

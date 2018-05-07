@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TheBookCave.Models.ViewModels;
 using TheBookCave.Repositories;
@@ -11,9 +12,17 @@ namespace TheBookCave.Services {
             _bookRepo = new BookRepo();
             _promoCodesRepo = new PromoCodesRepo();
         }
-        public List<BookListViewModel> getBooksInCart() {
-            var books = _bookRepo.getAllBooks();
-            // Filter books that are in cart and return
+        public List<BookListViewModel> getBooksInCart(List<int> bookIds) {
+            var books = new List<BookListViewModel>();
+            foreach(var bid in bookIds) {
+                var book = _bookRepo.getBook(bid);
+                if(book != null) {
+                    books.Add(book[0]);
+                }
+                else {
+                    Console.WriteLine("Book with id '" + bid + "' was not found!");
+                }
+            }
             return books;
         }
        /* public bool validatePromoCode(int promoCode){

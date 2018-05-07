@@ -1,1 +1,6 @@
+@model List<TheBookCave.Models.ViewModels.BookListViewModel>
 <h2> Welcome to your cart</h2>
+
+@foreach(var book in @Model) {
+    <div>@book.Name</div>
+}
