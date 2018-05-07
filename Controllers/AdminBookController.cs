@@ -23,6 +23,19 @@ namespace TheBookCave.Controllers {
             var bookList = _adminBookService.getAllBooks();
             return View(bookList);
         }
+
+        [HttpPost]
+        public IActionResult Index(string searchString)
+        {
+            var searchResult = _adminBookService.getSearchResult(searchString);
+            if (searchResult == null) {
+                return View("NotFound");
+            }
+            return View(searchResult);
+        }
+
+
+
         public IActionResult bookListDisplay() {
             var bookList = _adminBookService.getAllBooks();
             return View(bookList);
