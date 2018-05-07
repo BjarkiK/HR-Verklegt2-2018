@@ -21,6 +21,17 @@ namespace TheBookCave.Controllers
             var orderList = _adminOrderService.getAllOrder();
             return View(orderList);
         }
+
+        [HttpPost]
+        public IActionResult index(string searchString)
+        {
+            var searchResult = _adminOrderService.getSearchResult(searchString);
+            if (searchResult == null) {
+                return View("NotFound");
+            }
+            return View(searchResult);
+        }
+
         public IActionResult orderListDisplay()
         {
             var orderList = _adminOrderService.getAllOrder();

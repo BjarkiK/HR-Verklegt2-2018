@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TheBookCave.Models.ViewModels;
 using TheBookCave.Repositories;
+using System.Linq;
 
 namespace TheBookCave.Services {
     public class BookService {
@@ -37,16 +38,33 @@ namespace TheBookCave.Services {
         public void updateTotalGrade(int bid) {
             //TODO
         }
-        
-        public List<BookListViewModel> getTop10Books() {
+
+        public List<BookDetailedListViewModel> getBookList() {
             var books = _bookRepo.getAllBooks();
-            return books;
+            var authors = _authorRepo.getAllAuthors();
+            var joined =    (from b in books
+                            join a in authors
+                            on b.AuthorId equals a.AuthorId
+                            select new BookDetailedListViewModel { 
+                                Id = b.Id,
+                                Name = b.Name,
+                                Price = b.Price,
+                                Author = a.Name,
+                                Grade = b.Grade,
+                                Picture = b.Picture
+                             }).ToList();
+            return joined;
         }
-        public List<BookListViewModel> getNewestBooks(int n) {
-            /*var books = _bookRepo.GetAllBooks();
-            Taka svo n fjölda nýjustu úr öllum??
-            return books;*/
-            return null;
+        
+        public List<BookDetailedListViewModel> getTop10Books() {
+            var books = getBookList();
+            List<BookDetailedListViewModel> topBooks = books.OrderByDescending(s => s.Grade).Select(x => x).Take(10).ToList();
+            return topBooks;
+        }
+        public List<BookDetailedListViewModel> getNewestBooks(int n) {
+            var books = getBookList();
+            List<BookDetailedListViewModel> newestBooks = books.OrderByDescending(x => x.Id).Select(x => x).Take(n).ToList();
+            return newestBooks;
         }
         public List<BookListViewModel> getBooksByGenre(string genre) {
             /* Sækja öll genre og finna rétta til að fá ID

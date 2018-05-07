@@ -14,34 +14,23 @@ namespace TheBookCave.Controllers
     {
         private BookService _bookService;
         private AuthorService _authorService;
+        private FrontPageViewModel _frontPageViewModel;
 
         public FrontPageController() {
             _bookService = new BookService();
             _authorService = new AuthorService();
+            _frontPageViewModel = new FrontPageViewModel();
         }
         public IActionResult Index() {
-            var topBooks = _bookService.getTop10Books();
-            var authors = _authorService.getAllAuthors();
-            var joined =    (from b in topBooks
-                            join a in authors
-                            on b.AuthorId equals a.AuthorId
-                            select new BookDetailedListViewModel { 
-                                Id = b.Id,
-                                Name = b.Name,
-                                Price = b.Price,
-                                Author = a.Name,
-                                Picture = b.Picture
-                             }).ToList();              
-            return View(joined);
+            top10Books();
+            newestBooks();
+            return View(_frontPageViewModel);
         }
-        public IActionResult top10BooksDisplay()  {
-            var topBooks = _bookService.getTop10Books();
-            return View(topBooks);
+        private void top10Books()  {
+            _frontPageViewModel.Top10 = _bookService.getTop10Books();
         }
-        public IActionResult newestBooksDisplay() {
-            /*var newestBooks = _bookService.getNewestBooks(10);
-            return View(newestBooks);*/
-            return View();
+        private void newestBooks() {
+            _frontPageViewModel.Newest =  _bookService.getNewestBooks(10);
         }
     }
 }

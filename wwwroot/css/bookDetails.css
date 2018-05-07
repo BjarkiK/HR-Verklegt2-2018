@@ -15,6 +15,11 @@
     width: 30%;
 }
 
+.book-detail-buy {
+    width: 20%;
+    text-align: center;
+}
+
 .book-detail-title {
     font-size: 30px;
     font-weight: bold;
@@ -33,6 +38,11 @@
 
 .book-detail-author {
     width: 80%;
+}
+
+.book-detailed-detail {
+    border: solid 2px black;
+    margin-left: 10%;
 }
 
 .star {

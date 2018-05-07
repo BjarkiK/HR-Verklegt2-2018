@@ -25,7 +25,7 @@ namespace TheBookCave.Controllers {
         }
 
         [HttpPost]
-        public IActionResult Index(string searchString)
+        public IActionResult index(string searchString)
         {
             var searchResult = _adminBookService.getSearchResult(searchString);
             if (searchResult == null) {

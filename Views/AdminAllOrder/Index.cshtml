@@ -4,10 +4,14 @@
     Layout = "_AdminLayout";
 }
 
-<h1>All Orders from website, canceld, active and complete orders</h1>
-
-
 <h2> OrderList </h2>
+
+<form asp-controller="adminAllOrder" asp-action="index">
+    <p>
+        <input type="text" name="SearchString" value="Search Date of order">
+        <input type="submit" value="Submit" />
+    </p>
+</form>
 
  <table align="center">
     <thead>
