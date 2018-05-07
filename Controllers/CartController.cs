@@ -16,7 +16,7 @@ namespace TheBookCave.Controllers
         public CartController() {
             //_cartService = new CookService();
         }
-        public IActionResult Index()
+        public IActionResult index()
         {
             return View();
         }
