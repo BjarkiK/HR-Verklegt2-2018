@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TheBookCave.Models.ViewModels;
 using TheBookCave.Repositories;
 
-namespace TheBookCave.Services {
+namespace TheBookCave.Services
+{
     public class CartService {
         
         private BookRepo _bookRepo;
@@ -12,8 +14,12 @@ namespace TheBookCave.Services {
             _bookRepo = new BookRepo();
             _promoCodesRepo = new PromoCodesRepo();
         }
-        public List<BookListViewModel> getBooksInCart(List<int> bookIds) {
+        public List<BookListViewModel> getBooksInCart(string cookie) {
+            if(cookie == null || cookie == "") {
+                return new List<BookListViewModel>();
+            }
             var books = new List<BookListViewModel>();
+            var bookIds = getCartBookIdList(cookie);
             foreach(var bid in bookIds) {
                 var book = _bookRepo.getBook(bid);
                 if(book != null) {
@@ -24,6 +30,13 @@ namespace TheBookCave.Services {
                 }
             }
             return books;
+        }
+         private List<int> getCartBookIdList(string cookie) {
+            return unpackCookie(cookie);
+        }
+
+        private List<int> unpackCookie(string cookie) {
+            return cookie.Split('.').Select(Int32.Parse).ToList();
         }
        /* public bool validatePromoCode(int promoCode){
             var promoCodes = _promoCodesRepo.getAllPromoCode();

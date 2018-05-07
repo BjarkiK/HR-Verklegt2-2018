@@ -1,15 +1,15 @@
 displayStars();
 
-function addBookToChart(e) {
+function addBookToCart(e) {
     var bookId = e.target.attributes[1].nodeValue.toString();
-    var books = getCookie("TBCbooksInChart");
+    var books = getCookie("TBCbooksInCart");
     if(!idAlreadyAdded(books, bookId)) {
         if(books === ""){
-            setCookie("TBCbooksInChart", bookId, 1);
+            setCookie("TBCbooksInCart", bookId, 1);
         }
         else {
             books = books + "." + bookId;
-            setCookie("TBCbooksInChart", books, 1);
+            setCookie("TBCbooksInCart", books, 1);
         }
     }
 }
@@ -24,32 +24,7 @@ function idAlreadyAdded(cvalue, bId) {
     return false;
 }
 
-// https://www.w3schools.com/js/js_cookies.asp
-function setCookie(cname, cvalue, exdays) {
-    var d = new Date();
-    d.setTime(d.getTime() + (exdays*24*60*60*1000));
-    var expires = "expires="+ d.toUTCString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-}
-
-// https://www.w3schools.com/js/js_cookies.asp
-function getCookie(cname) {
-    var name = cname + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for(var i = 0; i <ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
-    }
-    return "";
-}
-
-document.getElementsByClassName("book-detail-addtochart-button")[0].addEventListener("click", e => addBookToChart(e))
+document.getElementsByClassName("book-detail-addtocart-button")[0].addEventListener("click", e => addBookToCart(e))
 
 function createElementFromHTML(htmlString) {
     var div = document.createElement('div');

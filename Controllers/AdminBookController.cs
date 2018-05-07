@@ -59,7 +59,6 @@ namespace TheBookCave.Controllers {
 				_adminBookService.updateBook(book);
 				return RedirectToAction("Index");
 			}
-			ViewBag.Id = new SelectList("2", "ID", "Name", book.Id);
 			return View(book);
         }
 

@@ -16,19 +16,24 @@
         </div>
         <div class="book-detail-buy">
             @if(@book.Discount == 0) {
-                <div class="book-detail-price">Verð: @book.Price kr</div>
+                <div class="book-detail-price">Price: @book.Price kr</div>
             }
             @if(@book.Discount > 0) {
                 int price = Convert.ToInt32(@book.Price);
                 int discountPrice = Convert.ToInt32((1 - @book.Discount/100m) * price);
                 <div class="book-detail-price-container">
-                    <div class="book-detail-price">Verð: @discountPrice kr</div>
+                    <div class="book-detail-price">Price: @discountPrice kr</div>
                     <div class="discounted-price">@book.Price kr</div>
                     <div>(-@book.Discount%)</div>
                 </div>
             }
+<<<<<<< HEAD
+            <div>Free shipping</div>
+            <div class="book-detail-addtocart-button" value="@book.Id">Add To Cart</div>
+=======
             <div>Frí heimsending</div>
             <div class="book-detail-addtochart-button" value="@book.Id">Add To Cart</div>
+>>>>>>> 25f21192ded3791f4fd79ded7415de74d879c5fc
             
         </div>
     </div>
@@ -42,4 +47,6 @@
     </div>
 }
 <script src="~/js/bookDetail.js" asp-append-version="true"></script>
+<script src="~/js/cart.js" asp-append-version="true"></script>
+<link rel="stylesheet" href="~/css/bookDetails.css" />
 
