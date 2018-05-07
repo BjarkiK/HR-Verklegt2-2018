@@ -13,6 +13,7 @@
     </p>
 </form>
 
+<p><a asp-controller="adminUser" asp-action="AddUser" class="btn btn-default">Add User</a></p>
 
  <table align="center">
     <thead>
@@ -21,9 +22,11 @@
             <th>Name</th>
             <th>Picture</th>
             <th>Password</th>
-            <th>FavoriteBookId</th>
-            <th>SubscriptionId</th>
-            <th>OrderId</th>
+            <th>FavoriteBook Id</th>
+            <th>Subscription Id</th>
+            <th>Order Id</th>
+            <th>Permission</th>
+            <th>Adress Id</th>
         </tr>
     </thead>
     @foreach(var user in @Model)
@@ -37,6 +40,8 @@
             <td>@user.FavoriteBookId</td>
             <td>@user.SubscriptionId</td>
             <td>@user.OrderId</td>
+            <td>@user.Permission</td>
+            <td>@user.AddressId</td>
         </tr>
     </tbody>
     }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TheBookCave.Models;
+using TheBookCave.Models.ViewModels;
 using TheBookCave.Services;
 
 namespace TheBookCave.Controllers
@@ -46,9 +47,20 @@ namespace TheBookCave.Controllers
         {
             //_adminPromoCodeService.updatePromoCode(pcid);
         }
-        public void createPromoCode()
+
+        public IActionResult AddPromoCode()
         {
-            //_adminPromoCodeService.createPromoCode();
+            return View();
         }
+
+        [HttpPost]
+		public ActionResult AddPromoCode(PromoCodeListViewModel promoCode) {
+			if (ModelState.IsValid) {
+				_adminPromoCodeService.CreatePromocode(promoCode);
+				return RedirectToAction("Index");
+			}
+            Console.WriteLine("CreateNotValid");
+			return View(promoCode);
+		}
     }
 }

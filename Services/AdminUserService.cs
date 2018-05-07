@@ -24,6 +24,26 @@ namespace TheBookCave.Services {
             return users;
         }
 
+        public void CreateUser(UserListViewModel u) {
+            var user = ConvertUserListViewModelToUser(u);
+            var successfull = _userRepo.createUser(user);
+        }
+
+        private User ConvertUserListViewModelToUser(UserListViewModel u) {
+            var user = new User {
+                                Id = u.Id,
+                                AddressId = u.AddressId,
+                                FavoriteBookId = u.FavoriteBookId,
+                                Name = u.Name,
+                                OrderId = u.OrderId,
+                                Password = u.Password,
+                                Permission = u.Permission,
+                                Picture = u.Picture,
+                                SubscriptionId = u.SubscriptionId                         
+                                };
+            return user;
+        }
+
          public List<UserListViewModel> getSearchResult(string searchString) {
             var users = _userRepo.getAllUsers();
             var searchResult = (from u in users

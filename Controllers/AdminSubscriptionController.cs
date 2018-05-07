@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TheBookCave.Models;
+using TheBookCave.Models.ViewModels;
 using TheBookCave.Services;
 
 namespace TheBookCave.Controllers
@@ -46,9 +47,20 @@ namespace TheBookCave.Controllers
         {
             //_adminSubscriptionService.updateSubscription(sid);
         }
-        public void createSubscription()
+
+        public IActionResult AddSubscription()
         {
-            //_adminSubscriptionService.createSubscription();
+            return View();
         }
+
+        [HttpPost]
+		public ActionResult AddSubscription(SubscriptionListViewModel subscription) {
+			if (ModelState.IsValid) {
+				_adminSubscriptionService.CreateSubscription(subscription);
+				return RedirectToAction("Index");
+			}
+            Console.WriteLine("CreateNotValid");
+			return View(subscription);
+		}
     }
 }

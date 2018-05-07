@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TheBookCave.Models;
+using TheBookCave.Models.ViewModels;
 using TheBookCave.Services;
 
 namespace TheBookCave.Controllers
@@ -46,9 +47,19 @@ namespace TheBookCave.Controllers
         {
             //_adminOrderService.updateOrder(oid);
         }
-        public void addNewOrder() 
-        {
-            //_adminOrderService.createOrder();
+
+        public IActionResult AddOrder() {
+            return View();
         }
+
+        [HttpPost]
+		public ActionResult AddOrder(OrderListViewModel order) {
+			if (ModelState.IsValid) {
+				_adminOrderService.CreateOrder(order);
+				return RedirectToAction("Index");
+			}
+            Console.WriteLine("CreateNotValid");
+			return View(order);
+		}
     }
 }

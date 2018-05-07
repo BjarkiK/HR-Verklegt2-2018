@@ -6,30 +6,30 @@ using TheBookCave.Repositories;
 
 namespace TheBookCave.Services {
     public class AdminBookService {
-        private BookRepo _orderRepo;
+        private BookRepo _bookRepo;
 
         public AdminBookService() {
-            _orderRepo = new BookRepo();
+            _bookRepo = new BookRepo();
         }
 
          public List<BookListViewModel> GetBook(int id) {
-            var book = _orderRepo.getBook(id);
+            var book = _bookRepo.getBook(id);
             return book;
         }
 
         public List<BookListViewModel> getAllBooks() {
-            var books = _orderRepo.getAllBooks();
+            var books = _bookRepo.getAllBooks();
 
             return books;
         }
         public void updateBook(BookListViewModel b) {
             var book = ConvertBookListViewModelToBook(b);
-            var successfull = _orderRepo.updateBook(book);
+            var successfull = _bookRepo.updateBook(book);
         }
 
         public void CreateBook(BookListViewModel b) {
             var book = ConvertBookListViewModelToBook(b);
-            var successfull = _orderRepo.createBook(book);
+            var successfull = _bookRepo.createBook(book);
         }
 
         private Book ConvertBookListViewModelToBook(BookListViewModel b) {
@@ -53,7 +53,7 @@ namespace TheBookCave.Services {
         }
 
         public List<BookListViewModel> getSearchResult(string searchString) {
-            var books = _orderRepo.getAllBooks();
+            var books = _bookRepo.getAllBooks();
             var searchResult = (from b in books
                         where b.Name.ToLower().Contains(searchString.ToLower())
                         select new BookListViewModel

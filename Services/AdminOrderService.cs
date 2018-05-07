@@ -24,7 +24,21 @@ namespace TheBookCave.Services {
             return orders;
         }
 
+        public void CreateOrder(OrderListViewModel o) {
+            var order = ConvertOrderListViewModelToOrder(o);
+            var successfull = _orderRepo.createOrder(order);
+        }
 
+        private Order ConvertOrderListViewModelToOrder(OrderListViewModel o) {
+            var order = new Order {
+                                Id = o.Id,
+                                AddressId = o.AddressId,
+                                Date = o.Date,
+                                TypeId = o.TypeId,
+                                UserId = o.UserId                              
+                                };
+            return order;
+        }
 
          public List<OrderListViewModel> getSearchResult(string searchString) {
             var orders = _orderRepo.getAllOrder();

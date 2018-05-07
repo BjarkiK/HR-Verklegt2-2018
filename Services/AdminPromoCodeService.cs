@@ -25,6 +25,23 @@ namespace TheBookCave.Services {
             return promoCodes;
         }
 
+         public void CreatePromocode(PromoCodeListViewModel pc) {
+            var promocode = ConvertPromoCodeListViewModelToPromoCode(pc);
+            var successfull = _promoCodeRepo.createPromoCode(promocode);
+        }
+
+        private PromoCode ConvertPromoCodeListViewModelToPromoCode(PromoCodeListViewModel pc) {
+            var promoCode = new PromoCode {
+                                Id = pc.Id,
+                                Description = pc.Description,
+                                Discount = pc.Discount,
+                                Published = pc.Published,   
+                                Code = pc.Code                           
+                                };
+            return promoCode;
+        }
+
+
          public List<PromoCodeListViewModel> getSearchResult(string searchString) {
             var promoCode = _promoCodeRepo.getAllPromoCode();
             var searchResult = (from pc in promoCode
@@ -33,7 +50,8 @@ namespace TheBookCave.Services {
                                     Id = pc.Id,
                                     Description = pc.Description,
                                     Discount = pc.Discount,
-                                    Published = pc.Published
+                                    Published = pc.Published,
+                                    Code = pc.Code 
                         }).ToList();
 
             return searchResult;

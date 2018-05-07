@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using TheBookCave.Data;
+using TheBookCave.Data.EntityModels;
 using TheBookCave.Models.ViewModels;
 
 namespace TheBookCave.Repositories {
@@ -48,8 +49,9 @@ namespace TheBookCave.Repositories {
             // linq delete
             return true;
         }
-        public bool createOrder() {
-            // linq insert
+         public bool createOrder(Order order) {
+            _db.Orders.Add(order);
+            _db.SaveChanges();
             return true;
         }
     }
