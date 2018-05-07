@@ -22,6 +22,14 @@ namespace TheBookCave.Controllers
             var userList = _adminUserService.getAllUsers();
             return View(userList);
         }
+
+        [HttpPost]
+        public IActionResult index(string searchString)
+        {
+            var searchResult = _adminUserService.getSearchResult(searchString);
+            return View(searchResult);
+        }
+
         public IActionResult userListDisplay()
         {
             var userList = _adminUserService.getAllUsers();
