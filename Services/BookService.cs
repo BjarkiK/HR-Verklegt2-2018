@@ -40,7 +40,6 @@ namespace TheBookCave.Services {
         
         public List<BookListViewModel> getTop10Books() {
             var books = _bookRepo.getAllBooks();
-            //Taka svo top 10 úr öllum??
             return books;
         }
         public List<BookListViewModel> getNewestBooks(int n) {
