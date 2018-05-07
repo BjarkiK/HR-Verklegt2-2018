@@ -15,17 +15,17 @@ namespace TheBookCave.Repositories {
                                 where gen.Id == gid
                                 select new GenreListViewModel {
                                 Id = gen.Id,
-                                GenreEn = gen.GenreEn,
-                                GenreIs = gen.GenreIs
+                                GenreEN = gen.GenreEN,
+                                GenreIS = gen.GenreIS
                                 }).ToList();
             return genre;
         }
-        public List<GenreListViewModel> getAllGenre(int gid) {
+        public List<GenreListViewModel> getAllGenre() {
             var genres = (from gen in _db.Genre
                                 select new GenreListViewModel {
                                 Id = gen.Id,
-                                GenreEn = gen.GenreEn,
-                                GenreIs = gen.GenreIs
+                                GenreEN = gen.GenreEN,
+                                GenreIS = gen.GenreIS
                                 }).ToList();
             return genres;
         }

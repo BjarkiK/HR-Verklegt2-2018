@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TheBookCave.Data.EntityModels;
@@ -12,15 +13,15 @@ namespace TheBookCave.Services {
             _promoCodeRepo = new PromoCodesRepo();
         }
 
-         public List<PromoCodesListViewModel> getPromoCode(string oid) {
-            var promoCode = _promoCodeRepo.getPromoCode(oid);
+         public List<PromoCodeListViewModel> getPromoCode(int id) {
+            var promoCode = _promoCodeRepo.getPromoCode(id);
 
             return promoCode;
         }
 
-        public List<PromoCodesListViewModel> getAllPromoCode() {
+        public List<PromoCodeListViewModel> getAllPromoCode() {
             var promoCodes = _promoCodeRepo.getAllPromoCode();
-
+            Console.WriteLine(promoCodes.First().Code);
             return promoCodes;
         }
        /*

@@ -8,7 +8,7 @@ function handleArrowClick(e) {
     var direction = e.target.value;
     var bookContainer = e.path[2].children[1].children[0];
     var bookContainerWidth = bookContainer.offsetWidth;
-    if(direction === "left") {
+    if(direction === "right") {
         bookContainer.children[0].style.marginLeft = "-" + bookContainerWidth + "px";
     }
     else {

@@ -10,13 +10,12 @@
 <h2> PromoCodeList </h2>
 
 <div>
-    @foreach(var promoCode in @Model)
-    {  
+    @foreach(var promoCode in @Model) {  
         <ul>
-        <li>promoCodeId: @promoCode.Id</li>
-        <li>Discount: @promoCode.Discount</li>
-        <li>Description: @promoCode.Description</li>
-        <li>Published: @promoCode.Published</li>
+            <li>Code: @promoCode.Code</li>
+            <li>Discount: @promoCode.Discount</li>
+            <li>Description: @promoCode.Description</li>
+            <li>Published: @promoCode.Published</li>
         </ul>
     }
 </div>

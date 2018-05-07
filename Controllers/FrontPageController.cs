@@ -25,7 +25,7 @@ namespace TheBookCave.Controllers
             var joined =    (from b in topBooks
                             join a in authors
                             on b.AuthorId equals a.AuthorId
-                            select new BookAuthorListViewModel { 
+                            select new BookDetailedListViewModel { 
                                 Id = b.Id,
                                 Name = b.Name,
                                 Price = b.Price,
@@ -33,8 +33,6 @@ namespace TheBookCave.Controllers
                                 Picture = b.Picture
                              }).ToList();              
             return View(joined);
-
-            //return View();
         }
         public IActionResult top10BooksDisplay()  {
             var topBooks = _bookService.getTop10Books();

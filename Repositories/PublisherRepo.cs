@@ -19,7 +19,7 @@ namespace TheBookCave.Repositories {
                                 }).ToList();
             return publisher;
         }
-        public List<PublisherListViewModel> getAllPublisher() {
+        public List<PublisherListViewModel> getAllPublishers() {
             var publishers = (from p in _db.Publishers
                                 select new PublisherListViewModel {
                                 Id = p.Id,

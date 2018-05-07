@@ -16,6 +16,7 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="~/css/styles.css" />
     </environment>
 </head>
 <body>
@@ -31,7 +32,7 @@
             </button>
         </div>
         <div class="col-md-3">
-            <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">The Book Cave</a>
+            <a asp-area="" asp-controller="FrontPage" asp-action="Index" class="navbar-brand">The Book Cave</a>
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse">
             <div class="col-md-7">
@@ -47,9 +48,9 @@
             </div>
             <div class="col-md-2">
                 <ul class="nav navbar-nav"> 
-                    <li><a asp-area="" asp-controller="Home" asp-action="Globe"><span class="glyphicon glyphicon-globe" aria-hidden="true"></a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="User"><span class="glyphicon glyphicon-user" aria-hidden="true"></a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Basket"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></a></li>
+                    <li><a asp-area="" asp-controller="FrontPage" asp-action="Globe"><span class="glyphicon glyphicon-globe" aria-hidden="true"></a></li>
+                    <li><a asp-area="" asp-controller="FrontPage" asp-action="User"><span class="glyphicon glyphicon-user" aria-hidden="true"></a></li>
+                    <li><a asp-area="" asp-controller="FrontPage" asp-action="Basket"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></a></li>
                 </ul>
             </div>
         </div>

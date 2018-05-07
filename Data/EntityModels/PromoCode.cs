@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace TheBookCave.Data.EntityModels {
     public class PromoCode {
-        public string Id { get; set; }
+        public int Id { get; set; }
         // The promo code it self
         public string Code { get; set; }
         // How much discount this promo code gives.

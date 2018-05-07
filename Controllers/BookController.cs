@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TheBookCave.Models;
+using TheBookCave.Models.ViewModels;
 using TheBookCave.Services;
 
 namespace TheBookCave.Controllers
@@ -12,9 +13,15 @@ namespace TheBookCave.Controllers
     public class BookController : Controller
     {
         private BookService _bookService;
+        private AuthorService _authorService;
+        private GenreService _genreService;
+        private PublisherService _publisherService;
 
         public BookController() {
             _bookService = new BookService();
+            _authorService = new AuthorService();
+            _genreService = new GenreService();
+            _publisherService = new PublisherService();
         }
         public IActionResult Index()
         {
@@ -25,9 +32,51 @@ namespace TheBookCave.Controllers
 
         public IActionResult details(int id)
         {
-            var book = _bookService.getBook(id);
+            var detailedBooks = getDetailedBook();
+            var book = (from b in detailedBooks
+                        where b.Id == id
+                        select b).ToList();
+            if(detailedBooks.Count == 0) {
+                return RedirectToAction("BookNotFound");
+            }              
             return View(book);
             
+        }
+
+        private List<BookDetailedListViewModel> getDetailedBook() {
+            var books = _bookService.getAllBooks();
+            var authors = _authorService.getAllAuthors();
+            var publishers = _publisherService.getAllPublishers();
+            var genres = _genreService.getAllGenres();
+
+            var dBooks =    (from b in books
+                            join a in authors
+                            on b.AuthorId equals a.AuthorId
+                            join p in publishers
+                            on b.PublisherId equals p.Id
+                            join g in genres
+                            on b.GenreId equals g.Id
+                            select new BookDetailedListViewModel { 
+                                Id = b.Id,
+                                Name = b.Name,
+                                Price = b.Price,
+                                Picture = b.Picture,
+                                Grade = b.Grade,
+                                DetailsEN = b.DetailsEN,
+                                DetailsIS = b.DetailsIS,
+                                Discount = b.Discount,
+                                Pages = b.Pages,
+                                Quantity = b.Quantity,
+                                Published = b.Published,
+                                Genre = g.GenreEN,
+                                Author = a.Name,
+                                Publisher = p.Name
+                             }).ToList();
+            return dBooks;
+        }
+
+        public IActionResult BookNotFound() {
+            return View();
         }
 
        

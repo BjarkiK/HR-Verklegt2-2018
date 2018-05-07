@@ -1,0 +1,47 @@
+.book-main-detail {
+    display: flex;
+    width: 100%;
+    height: 500px;
+}
+
+.book-detail-image {
+    width: 300px;
+    height: 440px;
+    margin: 10px 30px 20px 30px;
+}
+
+.book-detail-main {
+    width: 30%;
+}
+
+.book-detail-buy {
+    width: auto;
+}
+
+.book-detail-title {
+    font-size: 30px;
+    font-weight: bold;
+    border-bottom: 2px solid gray;
+}
+
+.book-detail-author-grade {
+    padding-top: 10px;
+    display: flex;
+}
+
+.book-detail-description {
+    padding: 10px;
+    word-break: break-all;
+}
+
+.book-detail-author {
+    width: 80%;
+}
+
+.star {
+    color: #e7e7e7;
+}
+
+.star-yellow {
+    color: #fed221;
+}

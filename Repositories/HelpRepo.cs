@@ -15,8 +15,8 @@ namespace TheBookCave.Repositories {
                                 where h.Id == hid
                                 select new HelpListViewModel {
                                 Id = h.Id,
-                                AnswerEN = h.AnswerEN,
-                                AnswerIS = h.AnswerIS,
+                                //AnswerEN = h.AnswerEN,
+                                //AnswerIS = h.AnswerIS,
                                 TypeId = h.TypeId,
                                 Question = h.Question
                                 }).ToList();

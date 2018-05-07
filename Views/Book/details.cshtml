@@ -1,21 +1,37 @@
-@model List<TheBookCave.Models.ViewModels.BookListViewModel> 
-
+@model List<TheBookCave.Models.ViewModels.BookDetailedListViewModel>
 <h1>Book</h1>
 
-<div>
 @foreach(var book in @Model) {
-    <ul>
-    <li>BookName: @book.Name</li>
-    <li>Picture: @book.Picture</li>
-    <li>DetailsIS: @book.DetailsIS</li>
-    <li>DetailsEN: @book.DetailsEN</li>
-    <li>Price: @book.Price</li>
-    <li>Discount: @book.Discount</li>
-    <li>Pages: @book.Pages</li>
-    <li>Quantiy: @book.Quantity</li>
-    <li>Grade: @book.Grade</li>
-    </ul>
-}
-</div>
+    <div class="book-main-detail"> 
+        <img class="book-detail-image" src="~/@book.Picture" alt="Image broken">
+        <div class="book-detail-main">
+            <div class="book-detail-title">@book.Name</div>
+            <div class="book-detail-author-grade">
+                <div class="book-detail-author">Written by: @book.Author</div>
 
+                <div class="book-detail-grade" value="@book.Grade">@book.Grade</div>
+            </div>
+            <div class="book-detail-description">@book.DetailsEN</div>
+
+        </div>
+        <div class="book-detail-buy">
+            @if(@book.Discount == 0) {
+                <div>@book.Price</div>
+            }
+            @if(@book.Discount > 0) {
+                    int price = Convert.ToInt32(@book.Price);
+                    int discount = Convert.ToInt32((1 - @book.Discount/100m) * price);
+                
+                <div>@discount</div>
+                <div>@book.Discount</div>
+            }
+        </div>
+    </div>
+    <div class="book-detaild-detail">
+        <div>@book.Genre</div>
+        <div>@book.Publisher</div>
+        <div>@book.Pages</div>
+    </div>
+}
+<script src="~/js/bookDetail.js" asp-append-version="true"></script>
 
