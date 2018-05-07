@@ -1,6 +1,7 @@
 @model List<TheBookCave.Models.ViewModels.BookDetailedListViewModel>
 <h1>Book</h1>
 
+
 @foreach(var book in @Model) {
     <div class="book-main-detail"> 
         <img class="book-detail-image" src="~/@book.Picture" alt="Image broken">
@@ -12,19 +13,23 @@
                 <div class="book-detail-grade" value="@book.Grade">@book.Grade</div>
             </div>
             <div class="book-detail-description">@book.DetailsEN</div>
-
         </div>
         <div class="book-detail-buy">
             @if(@book.Discount == 0) {
-                <div>@book.Price</div>
+                <div class="book-detail-price">Verð: @book.Price kr</div>
             }
             @if(@book.Discount > 0) {
-                    int price = Convert.ToInt32(@book.Price);
-                    int discount = Convert.ToInt32((1 - @book.Discount/100m) * price);
-                
-                <div>@discount</div>
-                <div>@book.Discount</div>
+                int price = Convert.ToInt32(@book.Price);
+                int discountPrice = Convert.ToInt32((1 - @book.Discount/100m) * price);
+                <div class="book-detail-price-container">
+                    <div class="book-detail-price">Verð: @discountPrice kr</div>
+                    <div class="discounted-price">@book.Price kr</div>
+                    <div>(-@book.Discount%)</div>
+                </div>
             }
+            <div>Frí heimsending</div>
+            <div class="book-detail-addtochart-button" value="@book.Id">Add To Chart</div>
+            
         </div>
     </div>
     <div class="book-detaild-detail">
