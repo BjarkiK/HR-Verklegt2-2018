@@ -52,5 +52,31 @@ namespace TheBookCave.Services {
             return book;
         }
 
+        public List<BookListViewModel> getSearchResult(string searchString) {
+            var books = _orderRepo.getAllBooks();
+            var searchResult = (from b in books
+                        where b.Name.ToLower().Contains(searchString.ToLower())
+                        select new BookListViewModel
+                        {
+                            AuthorId = b.AuthorId,
+                            DetailsEN = b.DetailsEN,
+                            DetailsIS = b.DetailsIS,
+                            Discount = b.Discount,
+                            GenreId = b.GenreId,
+                            Grade = b.Grade,
+                            Id = b.Id,
+                            Name = b.Name,
+                            Pages = b.Pages,
+                            Picture = b.Picture,
+                            Price = b.Price,
+                            Published = b.Published,
+                            PublisherId = b.PublisherId,
+                            Quantity = b.Quantity    
+                        }).ToList();
+
+            return searchResult;
+        }
+
+
     }
 }

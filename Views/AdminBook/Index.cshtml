@@ -6,9 +6,14 @@
     Layout = "_AdminLayout";
 }
 
-<div>
+<form asp-controller="AdminBook" asp-action="index">
+    <p>
+        <input type="text" name="SearchString" value="Search">
+        <input type="submit" value="Submit" />
+    </p>
+</form>
 
-    
+<div> 
     <table align="center">
     <thead>
       <tr>
