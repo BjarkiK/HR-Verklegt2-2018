@@ -11,10 +11,10 @@ namespace TheBookCave.Controllers
 {
     public class FrontPageController : Controller
     {
-        //private BookService _bookService;
+        private BookService _bookService;
 
         public FrontPageController() {
-            //_bookService = new BookService();
+            _bookService = new BookService();
         }
         public IActionResult Index()
         {
@@ -22,15 +22,13 @@ namespace TheBookCave.Controllers
         }
         public IActionResult top10BooksDisplay()
         {
-            /*var topBooks = _bookService.getTop10Books();
-            return View(topBooks);*/
-            return View();
+            var topBooks = _bookService.getTop10Books();
+            return View(topBooks);
         }
         public IActionResult newestBooksDisplay()
         {
-            /*var newestBooks = _bookService.getNewestBooks(10);
-            return View(newestBooks);*/
-            return View();
+            var newestBooks = _bookService.getNewestBooks(10);
+            return View(newestBooks);
         }
     }
 }
