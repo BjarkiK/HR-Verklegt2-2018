@@ -18,7 +18,8 @@ namespace TheBookCave.Controllers
         }
         public IActionResult index()
         {
-            return View();
+            var promoCodeList = _adminPromoCodeService.getAllPromoCode();
+            return View(promoCodeList);
         }
         public IActionResult promoCodeListDisplay()
         {
