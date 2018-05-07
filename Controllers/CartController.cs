@@ -1,24 +1,39 @@
 using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using TheBookCave.Models.ViewModels;
+using TheBookCave.Services;
 
 namespace TheBookCave.Controllers
 {
     public class CartController : Controller
     {
-        //private CookService _cookService;
+        private CartService _cartService;
 
         public CartController() {
-            //_cartService = new CookService();
+            _cartService = new CartService();
         }
         public IActionResult index() {
-            var cookie = Request.Cookies["bajrki"];
+            var books = _cartService.getBooksInCart(getCartBookIdList());            
+            return View(books);
+        }
+        
+
+        private List<int> getCartBookIdList() {
+            var cookie = Request.Cookies["TBCbooksInChart"];
             if(cookie != null) {
-                Console.WriteLine(cookie);
-            } else {
-                Console.WriteLine("cookie not set");
+                return unpackCookie(cookie);
             }
-            
-            return View();
+            return new List<int>();
+        }
+
+        private List<int> unpackCookie(string cookie) {
+            var bookIdsString = cookie.Split(".");
+            var bookIds = new List<int>();
+            foreach(var b in bookIdsString) {
+                bookIds.Add(Int32.Parse(b));
+            }
+            return bookIds;
         }
         public IActionResult cartDisplay(string[] bid) {
             /*cartList = _cartService.getBooksInCart(bid[]);
