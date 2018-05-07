@@ -16,11 +16,22 @@ namespace TheBookCave.Controllers
         public AdminSubscriptionController() {
             _adminSubscriptionService = new AdminSubscriptionService();
         }
-        public IActionResult Index()
+        public IActionResult index()
         {
             var subscriptionList = _adminSubscriptionService.getAllSubscription();
             return View(subscriptionList);
         }
+
+        [HttpPost]
+        public IActionResult index(string searchString)
+        {
+            var searchResult = _adminSubscriptionService.getSearchResult(searchString);
+            if (searchResult == null) {
+                return View("NotFound");
+            }
+            return View(searchResult);
+        }
+
         public IActionResult subscriptionListDisplay()
         {
             var subscriptionList = _adminSubscriptionService.getAllSubscription();

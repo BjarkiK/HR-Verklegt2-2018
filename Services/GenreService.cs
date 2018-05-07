@@ -10,7 +10,7 @@ namespace TheBookCave.Services {
             _GenreRepo = new GenreRepo();
         }
         public List<GenreListViewModel> getAllGenres() {
-            var Genres = _GenreRepo.getAllGenre();
+            var Genres = _GenreRepo.getAllGenres();
             // Filter books that are in cart and return
             return Genres;
         }

@@ -23,5 +23,24 @@ namespace TheBookCave.Services {
 
             return users;
         }
+
+         public List<UserListViewModel> getSearchResult(string searchString) {
+            var users = _userRepo.getAllUsers();
+            var searchResult = (from u in users
+                        where u.Id.ToLower().Contains(searchString.ToLower())
+                        select new UserListViewModel {
+                                Id = u.Id,
+                                AddressId = u.AddressId,
+                                FavoriteBookId = u.FavoriteBookId,
+                                Name = u.Name,
+                                OrderId = u.OrderId,
+                                Password = u.Password,
+                                Permission = u.Permission,
+                                Picture = u.Picture,
+                                SubscriptionId = u.SubscriptionId
+                        }).ToList();
+
+            return searchResult;
+        }
     }
 }

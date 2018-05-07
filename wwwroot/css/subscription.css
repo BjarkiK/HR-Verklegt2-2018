@@ -1,0 +1,21 @@
+.caption {
+    border: solid 2px black;
+    margin: 2% 5% 2% 5%;
+    padding: 1%;
+    border-radius: 5px; 
+}
+
+h3, h4 {
+    text-align: center;
+}
+
+.price-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button, .price {
+    display: inline-block;
+    margin: 4px 4px;
+}
