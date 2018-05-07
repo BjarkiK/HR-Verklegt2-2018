@@ -20,28 +20,16 @@ namespace TheBookCave.Controllers
             _authorService = new AuthorService();
         }
         public IActionResult Index() {
-            var topBooks = _bookService.getTop10Books();
-            var authors = _authorService.getAllAuthors();
-            var joined =    (from b in topBooks
-                            join a in authors
-                            on b.AuthorId equals a.AuthorId
-                            select new BookDetailedListViewModel { 
-                                Id = b.Id,
-                                Name = b.Name,
-                                Price = b.Price,
-                                Author = a.Name,
-                                Picture = b.Picture
-                             }).ToList();              
-            return View(joined);
+            var topBooks = _bookService.getTop10Books();    
+            return View(topBooks);
         }
         public IActionResult top10BooksDisplay()  {
             var topBooks = _bookService.getTop10Books();
             return View(topBooks);
         }
         public IActionResult newestBooksDisplay() {
-            /*var newestBooks = _bookService.getNewestBooks(10);
-            return View(newestBooks);*/
-            return View();
+            var newestBooks = _bookService.getNewestBooks(10);
+            return View(newestBooks);
         }
     }
 }
