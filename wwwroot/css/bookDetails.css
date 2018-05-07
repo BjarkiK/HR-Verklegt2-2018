@@ -15,16 +15,15 @@
     width: 30%;
 }
 
-<<<<<<< HEAD
 .book-detail-buy {
     width: 20%;
     text-align: center;
-=======
+}
+
 .book-detail-title {
     font-size: 30px;
     font-weight: bold;
     border-bottom: 2px solid gray;
->>>>>>> 84d8e1650bf32e1960bfcd15012967967fae1828
 }
 
 .book-detail-author-grade {
