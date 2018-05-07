@@ -23,6 +23,26 @@ namespace TheBookCave.Services {
 
             return orders;
         }
+
+
+
+         public List<OrderListViewModel> getSearchResult(string searchString) {
+            var orders = _orderRepo.getAllOrder();
+            var searchResult = (from o in orders
+                        where o.Date.ToString().Contains(searchString)
+                        select new OrderListViewModel
+                        {
+                            Id = o.Id,
+                            AddressId = o.AddressId,
+                            Date = o.Date,
+                            TypeId = o.TypeId,
+                            UserId = o.UserId
+                        }).ToList();
+
+            return searchResult;
+        }
+
+
 /*
 
         public List<OrderListViewModel> getAllOrdersOfActiveType() {
