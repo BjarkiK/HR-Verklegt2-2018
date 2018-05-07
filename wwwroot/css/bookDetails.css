@@ -15,7 +15,8 @@
 }
 
 .book-detail-buy {
-    width: auto;
+    width: 20%;
+    text-align: center;
 }
 
 .book-detail-title {

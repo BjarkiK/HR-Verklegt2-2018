@@ -1,6 +1,6 @@
 @model List<TheBookCave.Models.ViewModels.BookDetailedListViewModel>
-<h1>Book</h1>
 
+<br>
 @foreach(var book in @Model) {
     <div class="book-main-detail"> 
         <img class="book-detail-image" src="~/@book.Picture" alt="Image broken">
@@ -16,15 +16,16 @@
         </div>
         <div class="book-detail-buy">
             @if(@book.Discount == 0) {
-                <div>@book.Price</div>
+                <div><h3>@book.Price $</h3></div>
             }
             @if(@book.Discount > 0) {
                     int price = Convert.ToInt32(@book.Price);
                     int discount = Convert.ToInt32((1 - @book.Discount/100m) * price);
                 
-                <div>@discount</div>
-                <div>@book.Discount</div>
+                <div><h3>@discount $</h3></div>
+                <div><h4>@book.Discount % discount</h4></div>
             }
+            <button class="btn btn-primary">Add To Cart</button>
         </div>
     </div>
     <div class="book-detaild-detail">
