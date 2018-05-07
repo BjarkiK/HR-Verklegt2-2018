@@ -1,4 +1,4 @@
-﻿@model List<TheBookCave.Models.ViewModels.BookDetailedListViewModel>
+﻿@model TheBookCave.Models.ViewModels.FrontPageViewModel
 
 <div id="FrontPageBooks">
     <!-- (bæta við?) Þegar hoverað er yfir mynd að þá kemur númer á myndina í hvaða sæti hún er á Top10 -->
@@ -9,7 +9,7 @@
         </div>
         <div class="books-container">
             <div class="books-container2">
-            @foreach(var book in @Model) {
+            @foreach(var book in @Model.Top10) {
                 <a href="book/details/@book.Id" class="single-book-container">
                     <div class="book">
                         <div class="Teste"></div>
@@ -27,14 +27,14 @@
             </button>
         </div>
     </div>
-    <h2>Newest 10 - Same as top 10 at the moment</h2>
+    <h2>Newest 10</h2>
     <div class="fp-list">
         <div class="arrow">
             <button type="button" class="btn btn-default btn-arrow glyphicon glyphicon-menu-left" value="left" />
         </div>
         <div class="books-container">
             <div class="books-container2">
-            @foreach(var book in @Model) {
+            @foreach(var book in @Model.Newest) {
                 <a href="book/details/@book.Id" class="single-book-container">
                     <div class="book">
                         <div class="Teste"></div>
