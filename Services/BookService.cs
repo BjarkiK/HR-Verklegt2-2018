@@ -92,23 +92,21 @@ namespace TheBookCave.Services {
             return newestBooks;
         }
 
-        public List<BookListViewModel> getBooksByGenre(string genre) {
-            /* Sækja öll genre og finna rétta til að fá ID
-            var genres = _genreRepo.GetAllGenre();
-            int genreId = genre.id
-            Senda id inní book repo til að finna allar bækur inní því genre
-             var books = _bookRepo.GetAllBooks();
-            where genreId == books.genreId*/
-            return null;
+        public List<BookDetailedListViewModel> getBooksByGenre(string genre) {
+            var books = getBookList();
+            List<BookDetailedListViewModel> genreBooks = books.Where(g => g.Genre == genre).ToList();
+            if (genreBooks.Count == 0){
+                return null;
+            }
+            return genreBooks;
         }
-        public List<BookListViewModel> getBooksByAuthor(string author) {
-            /* Sækja alla authors og finna rétta til að fá ID
-            var authors = _authorRepo.GetAllAuthor();
-            int authorId = author.id
-            Senda id inní book repo til að finna allar bækur frá þeim author
-             var books = _bookRepo.GetAllBooks();
-            where authorId == books.authorId*/
-            return null;
+        public List<BookDetailedListViewModel> getBooksByAuthor(string author) {
+            var books = getBookList();
+            List<BookDetailedListViewModel> authorsBooks = books.Where(a => a.Author == author).ToList();
+            if (authorsBooks.Count == 0){
+                return null;
+            }
+            return authorsBooks;
         }
         public List<BookListViewModel> getBooksWithSearch(string param) {
             /* Tekur param og ber saman við heiti eða author, hugsanlega genre? */
