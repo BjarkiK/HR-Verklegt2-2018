@@ -20,7 +20,7 @@ namespace TheBookCave.Repositories {
                                 }).ToList();
             return genre;
         }
-        public List<GenreListViewModel> getAllGenre() {
+        public List<GenreListViewModel> getAllGenres() {
             var genres = (from gen in _db.Genre
                                 select new GenreListViewModel {
                                 Id = gen.Id,
