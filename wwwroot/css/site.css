@@ -42,11 +42,16 @@
     border-color: black;
     border: 2px solid;
 }
+#HeaderSignUp {
+    text-align: center
+}
 .SideButton {
     height: 70px;
 }
 .InlineDiv {
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 #SignUpBox {
     width: 500px;
