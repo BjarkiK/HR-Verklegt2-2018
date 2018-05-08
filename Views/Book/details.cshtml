@@ -3,14 +3,15 @@
 
 
 @foreach(var book in @Model) {
+    var avgGrade = (@book.Grade / @book.NrOfGrades);
     <div class="book-main-detail"> 
         <img class="book-detail-image" src="~/@book.Picture" alt="Image broken">
         <div class="book-detail-main">
             <div class="book-detail-title">@book.Name</div>
             <div class="book-detail-author-grade">
                 <div class="book-detail-author">Written by: @book.Author</div>
-
-                <div class="book-detail-grade" value="@book.Grade">@book.Grade</div>
+                <div class="starRating"></div>
+                <div class="book-detail-grade" value="@avgGrade"> @avgGrade </div>
             </div>
             <div class="book-detail-description">@book.DetailsEN</div>
         </div>

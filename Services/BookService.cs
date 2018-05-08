@@ -37,8 +37,11 @@ namespace TheBookCave.Services {
         public void addBookReview() {
             //var review = _userGradeRepo.CreateReview(userReview)
         }
-        public void updateTotalGrade(int bid) {
-            //TODO
+        public void updateTotalGrade(int bid, int grade) {
+            var book = _bookRepo.getBookData(bid);
+            book.Grade += grade;
+            book.NrOfGrades += 1;
+            _bookRepo.updateBook(book);
         }
 
         public List<BookDetailedListViewModel> getBookList() {
@@ -58,6 +61,7 @@ namespace TheBookCave.Services {
                                 Name = b.Name,
                                 Price = b.Price,
                                 Picture = b.Picture,
+                                NrOfGrades = b.NrOfGrades,
                                 Grade = b.Grade,
                                 DetailsEN = b.DetailsEN,
                                 DetailsIS = b.DetailsIS,
