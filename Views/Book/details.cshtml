@@ -28,19 +28,27 @@
                 </div>
             }
             <div>Free shipping</div>
-            <div class="book-detail-addtocart-button" value="@book.Id">Add To Cart</div>
             <div>Frí heimsending</div>
-            <div class="book-detail-addtochart-button" value="@book.Id">Add To Cart</div>
-            
+            <div class="book-detail-addtocart-button" value="@book.Id">Add To Cart</div>
         </div>
     </div>
     <div class="book-detailed-detail">
-        <h4>Genre:</h4>
-        <div>@book.Genre</div>
-        <h4>Publisher:</h4>
-        <div>@book.Publisher</div>
-        <h4>Pages:</h4>
-        <div>@book.Pages</div>
+        <div class="book-detail-window">
+            <h4>Genre:</h4>
+            <div>@book.Genre</div>
+            <h4>Pages:</h4>
+            <div>@book.Pages</div>
+            <h4>Date:</h4>
+            <div>eftir að setja í gagnagrunn</div>
+        </div>
+        <div class="book-detail-window">
+            <h4>Publisher:</h4>
+            <div>@book.Publisher</div>
+            <h4>Language:</h4>
+            <div>eftir að setja í gagnagrunn</div>
+            <h4>ISBN:</h4>
+            <div>eftir að setja í gagnagrunn</div>
+        </div>
     </div>
 }
 <script src="~/js/bookDetail.js" asp-append-version="true"></script>

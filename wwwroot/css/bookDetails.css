@@ -41,8 +41,12 @@
 }
 
 .book-detailed-detail {
-    border: solid 2px black;
-    margin-left: 10%;
+    padding: 0% 2%;
+}
+
+.book-detail-window {
+    display: inline-block;
+    padding-right: 5%;
 }
 
 .star {
@@ -92,6 +96,3 @@
 }
 
 
-.book-detaild-detail {
-    margin: 10px 30px 20px 30px;
-}
