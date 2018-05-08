@@ -11,9 +11,10 @@ using TheBookCave.Data;
 namespace TheBookCave.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20180508154349_OrderStatusMigration_add")]
+    partial class OrderStatusMigration_add
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -81,8 +82,6 @@ namespace TheBookCave.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<int>("NrOfGrades");
-
                     b.Property<int>("Pages");
 
                     b.Property<string>("Picture");
@@ -137,9 +136,9 @@ namespace TheBookCave.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("TypeEN");
+                    b.Property<string>("TypeEn");
 
-                    b.Property<string>("TypeIS");
+                    b.Property<string>("TypeIs");
 
                     b.HasKey("Id");
 
@@ -169,9 +168,9 @@ namespace TheBookCave.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("StatusEN");
-
                     b.Property<string>("StatusIS");
+
+                    b.Property<string>("TypeEN");
 
                     b.HasKey("Id");
 

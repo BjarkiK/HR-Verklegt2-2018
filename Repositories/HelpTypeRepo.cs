@@ -4,18 +4,18 @@ using TheBookCave.Data;
 using TheBookCave.Models.ViewModels;
 
 namespace TheBookCave.Repositories {
-    public class TypeRepo {
+    public class HelpTypeRepo {
         private DataContext _db;
 
-        public TypeRepo() {
+        public HelpTypeRepo() {
             _db = new DataContext();
         }
-        public List<TypeListViewModel> getAllTypes() {
-            var types = (from typ in _db.Type
-                            select new TypeListViewModel {
+        public List<HelpTypeListViewModel> getAllTypes() {
+            var types = (from typ in _db.HelpType
+                            select new HelpTypeListViewModel {
                             Id = typ.Id,
-                            TypeEn = typ.TypeEn,
-                            TypeIs = typ.TypeIs
+                            TypeEN = typ.TypeEN,
+                            TypeIS = typ.TypeIS
                             }).ToList();
             return types;
         }

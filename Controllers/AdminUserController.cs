@@ -41,7 +41,7 @@ namespace TheBookCave.Controllers
             var user = _adminUserService.getUser(id);
             return View(user);
         }
-        public IActionResult EditUser(string id) {
+        public IActionResult editUser(string id) {
 			var user = _adminUserService.getUser(id);
             if(!user.Any()) {
                 return RedirectToAction("userNotFound");
@@ -50,7 +50,7 @@ namespace TheBookCave.Controllers
 
         }
         [HttpPost]
-        public ActionResult EditUser(UserListViewModel user) {
+        public ActionResult editUser(UserListViewModel user) {
            	if (ModelState.IsValid) {
 				_adminUserService.updateUser(user);
 				return RedirectToAction("index");
@@ -62,15 +62,15 @@ namespace TheBookCave.Controllers
             return View();
         }
 
-        public IActionResult AddUser()
+        public IActionResult addUser()
         {
             return View();
         }
 
         [HttpPost]
-		public ActionResult AddUser(UserListViewModel user) {
+		public ActionResult addUser(UserListViewModel user) {
 			if (ModelState.IsValid) {
-				_adminUserService.CreateUser(user);
+				_adminUserService.createUser(user);
 				return RedirectToAction("Index");
 			}
             Console.WriteLine("CreateNotValid");

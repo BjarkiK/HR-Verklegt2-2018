@@ -26,6 +26,8 @@ namespace TheBookCave.Data.EntityModels {
         public int Quantity { get; set; }
         // The total user grade of book.
         public double Grade { get; set; }
+        // Count of user grades submitted so the average can be calculated 
+        public int NrOfGrades { get; set; }
         // Determains if the book is visible on the website or is
         // saved and unfinished.
         public bool Published { get; set; }

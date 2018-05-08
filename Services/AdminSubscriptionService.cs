@@ -24,17 +24,17 @@ namespace TheBookCave.Services {
             return subscription;
         }
         public void updateSubscription(SubscriptionListViewModel sub) {
-            var subscription = ConvertSubscriptionListViewModelToSubscription(sub);
+            var subscription = convertSubscriptionListViewModelToSubscription(sub);
             var successfull = _subscriptionRepo.updateSubscription(subscription);
         }
 
 
-        public void CreateSubscription(SubscriptionListViewModel sub) {
-            var subscription = ConvertSubscriptionListViewModelToSubscription(sub);
+        public void createSubscription(SubscriptionListViewModel sub) {
+            var subscription = convertSubscriptionListViewModelToSubscription(sub);
             var successfull = _subscriptionRepo.createSubscription(subscription);
         }
 
-         private Subscription ConvertSubscriptionListViewModelToSubscription(SubscriptionListViewModel sub) {
+         private Subscription convertSubscriptionListViewModelToSubscription(SubscriptionListViewModel sub) {
             var subscription = new Subscription {
                                 Id = sub.Id,
                                 DescriptionEn = sub.DescriptionEn,

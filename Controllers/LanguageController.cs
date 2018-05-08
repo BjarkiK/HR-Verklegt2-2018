@@ -16,7 +16,7 @@ namespace TheBookCave.Controllers
         public LanguageController() {
             //_pageService = new PageService();
         }
-        public IActionResult Index()
+        public IActionResult index()
         {
             return View();
         }

@@ -23,7 +23,7 @@ namespace TheBookCave.Controllers
             _genreService = new GenreService();
             _publisherService = new PublisherService();
         }
-        public IActionResult Index()
+        public IActionResult index()
         {
             var bookList = _bookService.getAllBooks();
             return View(bookList);
@@ -43,7 +43,7 @@ namespace TheBookCave.Controllers
             return View(book);
         }
 
-        public IActionResult BookNotFound() {
+        public IActionResult bookNotFound() {
             return View();
         }
 

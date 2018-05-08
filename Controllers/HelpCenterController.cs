@@ -16,7 +16,7 @@ namespace TheBookCave.Controllers
         public HelpCenterController() {
             //_helpService = new HelpService();
         }
-        public IActionResult Index()
+        public IActionResult index()
         {
             return View();
         }
@@ -32,19 +32,19 @@ namespace TheBookCave.Controllers
             return View(genreHelp);*/
             return View();
         }
-        public IActionResult Orders()
+        public IActionResult orders()
         {
             return View();
         }
-        public IActionResult ForgotPassword()
+        public IActionResult forgotPassword()
         {
             return View();
         }
-        public IActionResult Shipping()
+        public IActionResult shipping()
         {
             return View();
         }
-        public IActionResult Subscriptions()
+        public IActionResult subscriptions()
         {
             return View();
         }
