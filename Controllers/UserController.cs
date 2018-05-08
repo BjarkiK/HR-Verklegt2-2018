@@ -12,11 +12,11 @@ namespace TheBookCave.Controllers
     public class UserController : Controller
     {
         private UserService _userService;
-       // private OrderService _orderService;
+       private OrderService _orderService;
 
         public UserController() {
             _userService = new UserService();
-           // _orderService = new OrderService();
+            _orderService = new OrderService();
         }
         public IActionResult index()
         {
@@ -33,11 +33,10 @@ namespace TheBookCave.Controllers
             return View(orders);*/
             return View();
         }
-        public IActionResult userOrderDetails(string oid)
+        public IActionResult userOrderDetails(int id)
         {
-            /*var orderDetails = _orderService.getOrderStatus(oid);
-            return View(orderDetails);*/
-            return View();
+            var orderDetails = _orderService.getOrderStatus(id);
+            return View(orderDetails);
         }
         public IActionResult userUpdate(string uid)
         {
