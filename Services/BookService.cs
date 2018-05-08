@@ -108,9 +108,11 @@ namespace TheBookCave.Services {
             }
             return authorsBooks;
         }
-        public List<BookListViewModel> getBooksWithSearch(string param) {
+        public List<BookDetailedListViewModel> getBooksWithSearch(string param) {
+            var books = getBookList();
+            List<BookDetailedListViewModel> searchResult = null;
             /* Tekur param og ber saman við heiti eða author, hugsanlega genre? */
-            return null;
+            return searchResult;
         }
         public List<BookListViewModel> getBooksWithAdvSearch(string param1, string param2, string param3, string param4, string param5) {
             /* tekur marga param og leitar út frá því */
