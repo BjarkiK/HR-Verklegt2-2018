@@ -5,7 +5,7 @@ namespace TheBookCave.Data.EntityModels {
     public class Order {
         public int Id { get; set; }
         // Id of user who made this order.
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         // Date when order was made.
         public DateTime Date { get; set; }
         // Genre id of order status (Finished, canceled, unfinsished...).

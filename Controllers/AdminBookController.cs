@@ -61,12 +61,33 @@ namespace TheBookCave.Controllers {
 			}
 			return View(book);
         }
+        
+        public IActionResult RemoveBook(int id)
+        {
+            var book = _adminBookService.GetBook(id);
+            if(!book.Any()) {
+                return RedirectToAction("BookNotFound");
+            }
+			return View(book.First());
+
+        }
+
+        [HttpPost]
+        public ActionResult RemoveBook(BookListViewModel book) {
+            Console.WriteLine(book.Name);
+           	if (ModelState.IsValid) {
+				_adminBookService.removeBook(book);
+				return RedirectToAction("index");
+			}
+			return View(book);
+        }
+        
 
         public IActionResult BookNotFound() {
-            return View();
+           return View();
         }
         public IActionResult AddBook() {
-            return View();
+           return View();
         }
 
 		[HttpPost]
