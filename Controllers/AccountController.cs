@@ -21,7 +21,7 @@ namespace TheBookCave.Controllers
         }
         
 
-        public IActionResult Index()
+        public IActionResult index()
         {
             return View();
         }
@@ -43,7 +43,7 @@ namespace TheBookCave.Controllers
         [HttpPost]
 		public ActionResult signUp(UserListViewModel user) {
 			if (ModelState.IsValid) {
-				_adminuserService.CreateUser(user);
+				_adminuserService.createUser(user);
 				return RedirectToAction("index");
 			}
             Console.WriteLine("signUpNotValid");

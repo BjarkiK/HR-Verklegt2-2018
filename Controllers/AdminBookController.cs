@@ -41,11 +41,11 @@ namespace TheBookCave.Controllers {
             return View(bookList);
         }
         public IActionResult bookDetails(int id) {
-            var book = _adminBookService.GetBook(id);
+            var book = _adminBookService.getBook(id);
             return View(book);
         }
-        public IActionResult EditBook(int id) {
-			var book = _adminBookService.GetBook(id);
+        public IActionResult editBook(int id) {
+			var book = _adminBookService.getBook(id);
             if(!book.Any()) {
                 return RedirectToAction("BookNotFound");
             }
@@ -53,7 +53,7 @@ namespace TheBookCave.Controllers {
 
         }
         [HttpPost]
-        public ActionResult EditBook(BookListViewModel book) {
+        public ActionResult editBook(BookListViewModel book) {
             Console.WriteLine(book.Name);
            	if (ModelState.IsValid) {
 				_adminBookService.updateBook(book);
@@ -62,9 +62,9 @@ namespace TheBookCave.Controllers {
 			return View(book);
         }
         
-        public IActionResult RemoveBook(int id)
+        public IActionResult removeBook(int id)
         {
-            var book = _adminBookService.GetBook(id);
+            var book = _adminBookService.getBook(id);
             if(!book.Any()) {
                 return RedirectToAction("BookNotFound");
             }
@@ -73,7 +73,7 @@ namespace TheBookCave.Controllers {
         }
 
         [HttpPost]
-        public ActionResult RemoveBook(BookListViewModel book) {
+        public ActionResult removeBook(BookListViewModel book) {
             Console.WriteLine(book.Name);
            	if (ModelState.IsValid) {
 				_adminBookService.removeBook(book);
@@ -83,17 +83,17 @@ namespace TheBookCave.Controllers {
         }
         
 
-        public IActionResult BookNotFound() {
+        public IActionResult bookNotFound() {
            return View();
         }
-        public IActionResult AddBook() {
+        public IActionResult addBook() {
            return View();
         }
 
 		[HttpPost]
-		public ActionResult AddBook(BookListViewModel book) {
+		public ActionResult addBook(BookListViewModel book) {
 			if (ModelState.IsValid) {
-				_adminBookService.CreateBook(book);
+				_adminBookService.createBook(book);
 				return RedirectToAction("Index");
 			}
             Console.WriteLine("CreateNotValid");

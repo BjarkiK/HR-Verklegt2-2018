@@ -24,16 +24,16 @@ namespace TheBookCave.Services {
             return users;
         }
         public void updateUser(UserListViewModel u) {
-            var user = ConvertUserListViewModelToUser(u);
+            var user = convertUserListViewModelToUser(u);
             var successfull = _userRepo.updateUser(user);
         }
 
-        public void CreateUser(UserListViewModel u) {
-            var user = ConvertUserListViewModelToUser(u);
+        public void createUser(UserListViewModel u) {
+            var user = convertUserListViewModelToUser(u);
             var successfull = _userRepo.createUser(user);
         }
 
-        private User ConvertUserListViewModelToUser(UserListViewModel u) {
+        private User convertUserListViewModelToUser(UserListViewModel u) {
             var user = new User {
                                 Id = u.Id,
                                 AddressId = u.AddressId,

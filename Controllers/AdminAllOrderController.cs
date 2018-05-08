@@ -38,12 +38,12 @@ namespace TheBookCave.Controllers
             var orderList = _adminOrderService.getAllOrder();
             return View(orderList);
         }
-        public IActionResult Details(int id)
+        public IActionResult details(int id)
         {
             var order = _adminOrderService.getOrder(id);
             return View(order);
         }
-        public IActionResult EditOrder(int id) {
+        public IActionResult editOrder(int id) {
 			var order = _adminOrderService.getOrder(id);
             if(!order.Any()) {
                 return RedirectToAction("orderNotFound");
@@ -52,7 +52,7 @@ namespace TheBookCave.Controllers
 
         }
         [HttpPost]
-        public ActionResult EditOrder(OrderListViewModel order) {
+        public ActionResult editOrder(OrderListViewModel order) {
            	if (ModelState.IsValid) {
 				_adminOrderService.updateOrder(order);
 				return RedirectToAction("index");
@@ -65,14 +65,14 @@ namespace TheBookCave.Controllers
         }
 
 
-        public IActionResult AddOrder() {
+        public IActionResult addOrder() {
             return View();
         }
 
         [HttpPost]
-		public ActionResult AddOrder(OrderListViewModel order) {
+		public ActionResult addOrder(OrderListViewModel order) {
 			if (ModelState.IsValid) {
-				_adminOrderService.CreateOrder(order);
+				_adminOrderService.createOrder(order);
 				return RedirectToAction("Index");
 			}
             Console.WriteLine("CreateNotValid");

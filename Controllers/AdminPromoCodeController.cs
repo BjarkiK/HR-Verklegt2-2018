@@ -43,7 +43,7 @@ namespace TheBookCave.Controllers
             var promoCode = _adminPromoCodeService.getPromoCode(id);
             return View(promoCode);
         }
-        public IActionResult EditPromoCode(int id) {
+        public IActionResult editPromoCode(int id) {
 			var promoCode = _adminPromoCodeService.getPromoCode(id);
             if(!promoCode.Any()) {
                 return RedirectToAction("promoCodeNotFound");
@@ -52,7 +52,7 @@ namespace TheBookCave.Controllers
 
         }
         [HttpPost]
-        public ActionResult EditPromoCode(PromoCodeListViewModel promoCode) {
+        public ActionResult editPromoCode(PromoCodeListViewModel promoCode) {
            	if (ModelState.IsValid) {
 				_adminPromoCodeService.updatePromoCode(promoCode);
 				return RedirectToAction("index");
@@ -63,15 +63,15 @@ namespace TheBookCave.Controllers
             return View();
         }
 
-        public IActionResult AddPromoCode()
+        public IActionResult addPromoCode()
         {
             return View();
         }
 
         [HttpPost]
-		public ActionResult AddPromoCode(PromoCodeListViewModel promoCode) {
+		public ActionResult addPromoCode(PromoCodeListViewModel promoCode) {
 			if (ModelState.IsValid) {
-				_adminPromoCodeService.CreatePromocode(promoCode);
+				_adminPromoCodeService.createPromocode(promoCode);
 				return RedirectToAction("Index");
 			}
             Console.WriteLine("CreateNotValid");

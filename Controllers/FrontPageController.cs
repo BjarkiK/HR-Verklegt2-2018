@@ -21,12 +21,12 @@ namespace TheBookCave.Controllers
             _authorService = new AuthorService();
             _frontPageViewModel = new FrontPageViewModel();
         }
-        public IActionResult Index() {
+        public IActionResult index() {
             top10Books();
             newestBooks();
             return View(_frontPageViewModel);
         }
-        public IActionResult SignUp() {
+        public IActionResult signUp() {
             return View();
         }
         private void top10Books()  {
