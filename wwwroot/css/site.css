@@ -35,7 +35,7 @@
 
 #sideBar {
     display: inline-block;
-    margin: 20px 20px;
+    margin: 60px 20px 20px;
     border-radius: 5px;
     width: 250px;
     height:700px;
@@ -56,6 +56,9 @@
 #SignUpBox {
     width: 500px;
     display: inline-block;
+}
+#FrontPageBooks h2 {
+    text-align: center;
 }
 
 .fp-list {

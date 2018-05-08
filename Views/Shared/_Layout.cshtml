@@ -49,32 +49,37 @@
             <div class="col-md-2">
                 <ul class="nav navbar-nav"> 
                     <li><a asp-area="" asp-controller="FrontPage" asp-action="Globe"><span class="glyphicon glyphicon-globe" aria-hidden="true"></a></li>
-                    <li><a asp-area="" asp-controller="FrontPage" asp-action="User"><span class="glyphicon glyphicon-user" aria-hidden="true"></a></li>
+                    <li><a asp-area="" asp-controller="Account" asp-action="index"><span class="glyphicon glyphicon-user" aria-hidden="true"></a></li>
                     <li><a asp-area="" asp-controller="Cart" asp-action="index"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></a></li>
                 </ul>
             </div>
         </div>
     </div>
 </nav>
-<!--
-<div class="main-container">
-    <nav id="sideBar">
-        <div class="list-group">
-            <button type="button" class="list-group-item list-group-item-action SideButton">Drama</button>
-            <button type="button" class="list-group-item list-group-item-action SideButton">Horror</button>
-            <button type="button" class="list-group-item list-group-item-action SideButton">Adventure</button>
-            <button type="button" class="list-group-item list-group-item-action SideButton">Science fiction</button>
-            <button type="button" class="list-group-item list-group-item-action SideButton">Action </button>
-            <button type="button" class="list-group-item list-group-item-action SideButton">Romance</button>
-            <button type="button" class="list-group-item list-group-item-action SideButton">Fantasy</button>
-            <button type="button" class="list-group-item list-group-item-action SideButton">Subscriptions</button>
 
+<div class="row">
+    <div class="col-md-2 ">
+        <div class="main-container">
+            <div id="sideBar">
+                <div class="list-group">
+                    <button type="button" class="list-group-item list-group-item-action SideButton">Drama</button>
+                    <button type="button" class="list-group-item list-group-item-action SideButton">Horror</button>
+                    <button type="button" class="list-group-item list-group-item-action SideButton">Adventure</button>
+                    <button type="button" class="list-group-item list-group-item-action SideButton">Science fiction</button>
+                    <button type="button" class="list-group-item list-group-item-action SideButton">Action </button>
+                    <button type="button" class="list-group-item list-group-item-action SideButton">Romance</button>
+                    <button type="button" class="list-group-item list-group-item-action SideButton">Fantasy</button>
+                    <button type="button" class="list-group-item list-group-item-action SideButton">Subscriptions</button>
+                </div>
+            </div>
         </div>
-    </nav>
-</div>
--->
+    </div>
+
     <!--<div class="container body-content">-->
-        @RenderBody()
+    <div class="col-md-10">
+         @RenderBody()
+    </div>
+</div>
         <hr />
         <footer>
             <div class="row">

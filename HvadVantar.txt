@@ -11,6 +11,6 @@
 - vantar virkni á buy button á subscription síðu
 - Karfa (layout) og virkni
 - Greiðslu kerfi
-- Helpcenter layout
+- Helpcenter vantar virkni á search og linka
 - About Us
 - Admin stöff, eitthvað komið en athuga hversu mikið(virkni) og look.
