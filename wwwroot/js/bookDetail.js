@@ -1,31 +1,4 @@
 displayStars();
-
-function addBookToCart(e) {
-    var bookId = e.target.attributes[1].nodeValue.toString();
-    var books = getCookie("TBCbooksInCart");
-    if(!idAlreadyAdded(books, bookId)) {
-        if(books === ""){
-            setCookie("TBCbooksInCart", bookId, 1);
-        }
-        else {
-            books = books + "." + bookId;
-            setCookie("TBCbooksInCart", books, 1);
-        }
-    }
-}
-
-function idAlreadyAdded(cvalue, bId) {
-    var bookIds = cvalue.split(".");
-    for(var i = 0; i < bookIds.length; i++) {
-        if( bookIds[i] == bId ){
-            return true
-        }
-    }
-    return false;
-}
-
-document.getElementsByClassName("book-detail-addtocart-button")[0].addEventListener("click", e => addBookToCart(e))
-
 function createElementFromHTML(htmlString) {
     var div = document.createElement('div');
     div.innerHTML = htmlString.trim();

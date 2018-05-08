@@ -36,3 +36,24 @@ function getCookie(cname) {
     }
     return "";
 }
+
+
+function addQuantity(oldId, cookieValue){
+    var split = oldId.split("-");
+    var quant = parseInt(split[1]) + 1;
+    updateCookie(split[0] + "-" + quant, oldId, cookieValue);
+}
+
+function lowerQuantity(oldId, cookieValue){
+    var split = oldId.split("-");
+    var quant = parseInt(split[1]) - 1;
+    if(quant === -1) {
+        return;
+    }
+    updateCookie(split[0] + "-" + quant, oldId, cookieValue);
+}
+
+function updateCookie(newId, oldId, cvalue) {
+    var newCookie =  cvalue.replace(oldId, newId);
+    setCookie("TBCbooksInCart", newCookie, 3);
+}

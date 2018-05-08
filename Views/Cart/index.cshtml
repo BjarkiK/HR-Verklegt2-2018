@@ -1,16 +1,24 @@
-@model List<TheBookCave.Models.ViewModels.BookListViewModel>
+@model List<TheBookCave.Models.ViewModels.ChartListViewModel>
 <h2> Welcome to your cart</h2>
 
 <div class="cart-item-container">
 
-@foreach(var book in @Model) {
+@foreach(var item in @Model) {
     <div class="cart-item">
-        <img class="book-detail-image" src="~/@book.Picture" alt="Image broken">
-        <div class="cart-title">@book.Name</div>
-        <div class="cart-price">@book.Price kr</div>
-        <div class="cart-quantity">Quantity to come</div>
-        <div class="cart-remove-btn" value="@book.Id">
-            <i class="fa fa-trash" value="@book.Id"></i>
+        <img class="book-detail-image" src="~/@item.Book.Picture" alt="Image broken">
+        <div class="cart-title">@item.Book.Name</div>
+        <div class="cart-price">@item.Book.Price kr</div>
+        <div class="cart-quantity-container">
+            <div class="cart-remove-quantity-btn cart-quantity-btn">
+                <i class="fa fa-minus"></i>
+            </div>
+            <p class="cart-quantity" value="@item.Book.Id-@item.Quantity">@item.Quantity</p>
+            <div class="cart-add-quantity-btn cart-quantity-btn">
+                <i class="fa fa-plus" ></i>
+            </div>
+        </div>
+        <div class="cart-remove-btn" value="@item.Book.Id">
+            <i class="fa fa-trash" value="@item.Book.Id"></i>
         </div>
     </div>
 }
@@ -18,5 +26,6 @@
 </div>
 
 <link rel="stylesheet" href="~/css/cart.css" />
-<script src="~/js/cart.js" asp-append-version="true"></script>
-<script src="~/js/cartRemove.js" asp-append-version="true"></script>
+<script src="~/js/cart/cart.js" asp-append-version="true"></script>
+<script src="~/js/cart/cartRemove.js" asp-append-version="true"></script>
+<script src="~/js/cart/cartUpdate.js" asp-append-version="true"></script>

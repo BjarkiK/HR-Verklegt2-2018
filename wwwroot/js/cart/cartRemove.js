@@ -6,7 +6,7 @@ function removeBookFromCart(e) {
     var bId = e.target.attributes[1].nodeValue.toString();
     var newString = "";
     for(var i = 0; i < bookIds.length; i++) {
-        if( bookIds[i] == bId ){
+        if( bookIds[i].split("-")[0] == bId ){
             if(i === bookIds.length - 1){
                 newString = newString.substring(0, newString.length-1)
             }
