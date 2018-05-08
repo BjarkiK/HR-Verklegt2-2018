@@ -23,6 +23,11 @@ namespace TheBookCave.Services {
 
             return subscription;
         }
+        public void updateSubscription(SubscriptionListViewModel sub) {
+            var subscription = ConvertSubscriptionListViewModelToSubscription(sub);
+            var successfull = _subscriptionRepo.updateSubscription(subscription);
+        }
+
 
         public void CreateSubscription(SubscriptionListViewModel sub) {
             var subscription = ConvertSubscriptionListViewModelToSubscription(sub);

@@ -19,6 +19,7 @@
     <thead>
       <tr>
             <th>OrderId</th>
+            <th>Edit Order</th>
             <th>AddressId</th>
             <th>UserId</th>
             <th>Date</th>
@@ -29,6 +30,7 @@
         <tbody>
             <tr>
                 <td><a asp-controller="AdminAllOrder" asp-action="Details" asp-route-id="@order.Id">@order.Id</a></td>
+                <td><a asp-controller="adminAllOrder" asp-action="EditOrder" class="btn btn-default" asp-route-id="@order.Id">Edit order</a></td>
                 <td>@order.AddressId</td>
                 <td>@order.UserId</td>
                 <td>@order.Date</td>

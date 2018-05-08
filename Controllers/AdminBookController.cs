@@ -57,7 +57,7 @@ namespace TheBookCave.Controllers {
             Console.WriteLine(book.Name);
            	if (ModelState.IsValid) {
 				_adminBookService.updateBook(book);
-				return RedirectToAction("Index");
+				return RedirectToAction("index");
 			}
 			return View(book);
         }

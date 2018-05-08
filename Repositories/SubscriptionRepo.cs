@@ -36,16 +36,17 @@ namespace TheBookCave.Repositories {
                                 }).ToList();
             return subscription;
         }
-        public bool updateSubscription(int sid) {
-            // linq update
-            return true;
-        }
         public bool deleteSubscription(int sid) {
             // linq delete
             return true;
         }
         public bool createSubscription(Subscription subscription) {
             _db.Subscriptions.Add(subscription);
+            _db.SaveChanges();
+            return true;
+        }
+        public bool updateSubscription(Subscription subscription) {
+            _db.Subscriptions.Update(subscription);
             _db.SaveChanges();
             return true;
         }

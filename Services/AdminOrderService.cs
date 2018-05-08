@@ -24,6 +24,11 @@ namespace TheBookCave.Services {
             return orders;
         }
 
+         public void updateOrder(OrderListViewModel o) {
+            var order = ConvertOrderListViewModelToOrder(o);
+            var successfull = _orderRepo.updateOrder(order);
+        }
+
         public void CreateOrder(OrderListViewModel o) {
             var order = ConvertOrderListViewModelToOrder(o);
             var successfull = _orderRepo.createOrder(order);

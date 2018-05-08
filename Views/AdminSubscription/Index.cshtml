@@ -19,6 +19,7 @@
     <thead>
       <tr>
             <th>subscriptionId</th>
+            <th>Edit subscription</th>
             <th>DescriptionEn</th>
             <th>DescriptionIn</th>
             <th>TypeEn</th>
@@ -30,6 +31,7 @@
     <tbody>
         <tr>
             <td><a asp-controller="AdminSubscription" asp-action="subscriptionDetails" asp-route-id="@subscription.Id">@subscription.Id</a></td>
+            <td><a asp-controller="AdminSubscription" asp-action="EditSubscription" class="btn btn-default" asp-route-id="@subscription.Id">Edit subscription</a></td>
             <td>@subscription.DescriptionEn</td>
             <td>@subscription.DescriptionIn</td>
             <td>@subscription.TypeEn</td>
