@@ -24,6 +24,10 @@ namespace TheBookCave.Services {
             Console.WriteLine(promoCodes.First().Code);
             return promoCodes;
         }
+        public void updatePromoCode(PromoCodeListViewModel pc) {
+            var promoCode = ConvertPromoCodeListViewModelToPromoCode(pc);
+            var successfull = _promoCodeRepo.updatePromoCode(promoCode);
+        }
 
          public void CreatePromocode(PromoCodeListViewModel pc) {
             var promocode = ConvertPromoCodeListViewModelToPromoCode(pc);

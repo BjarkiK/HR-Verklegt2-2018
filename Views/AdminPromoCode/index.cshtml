@@ -19,6 +19,7 @@
     <thead>
       <tr>
             <th>PromoCode Id</th>
+            <th>Edit Promocode</th>
             <th>Code </th>
             <th>Discount</th>
             <th>Description</th>
@@ -30,6 +31,7 @@
         <tbody>
             <tr>
                 <td><a asp-controller="AdminPromoCode" asp-action="promoCodeDetails" asp-route-id="@promoCode.Id">@promoCode.Id</a></td>
+                <td><a asp-controller="adminPromoCode" asp-action="EditPromoCode" class="btn btn-default" asp-route-id="@promoCode.Id">Edit promoCode</a></td>
                 <td>@promoCode.Code</td>
                 <td>@promoCode.Discount</td>
                 <td>@promoCode.Description</td>

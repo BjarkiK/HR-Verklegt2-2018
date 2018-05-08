@@ -43,9 +43,24 @@ namespace TheBookCave.Controllers
             var promoCode = _adminPromoCodeService.getPromoCode(id);
             return View(promoCode);
         }
-        public void updatePromoCode(int pcid)
-        {
-            //_adminPromoCodeService.updatePromoCode(pcid);
+        public IActionResult EditPromoCode(int id) {
+			var promoCode = _adminPromoCodeService.getPromoCode(id);
+            if(!promoCode.Any()) {
+                return RedirectToAction("promoCodeNotFound");
+            }
+			return View(promoCode.First());
+
+        }
+        [HttpPost]
+        public ActionResult EditPromoCode(PromoCodeListViewModel promoCode) {
+           	if (ModelState.IsValid) {
+				_adminPromoCodeService.updatePromoCode(promoCode);
+				return RedirectToAction("index");
+			}
+			return View(promoCode);
+        }
+        public IActionResult promoCodeNotFound() {
+            return View();
         }
 
         public IActionResult AddPromoCode()

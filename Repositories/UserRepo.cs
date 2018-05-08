@@ -42,16 +42,18 @@ namespace TheBookCave.Repositories {
                                 }).ToList();
             return users;
         }
-        public bool updateUser(int uid) {
-            // linq update
-            return true;
-        }
+       
         public bool deleteUser(int uid) {
             // linq delete
             return true;
         }
         public bool createUser(User user) {
             _db.Users.Add(user);
+            _db.SaveChanges();
+            return true;
+        }
+          public bool updateUser(User user) {
+            _db.Users.Update(user);
             _db.SaveChanges();
             return true;
         }

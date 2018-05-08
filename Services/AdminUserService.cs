@@ -23,6 +23,10 @@ namespace TheBookCave.Services {
 
             return users;
         }
+        public void updateUser(UserListViewModel u) {
+            var user = ConvertUserListViewModelToUser(u);
+            var successfull = _userRepo.updateUser(user);
+        }
 
         public void CreateUser(UserListViewModel u) {
             var user = ConvertUserListViewModelToUser(u);

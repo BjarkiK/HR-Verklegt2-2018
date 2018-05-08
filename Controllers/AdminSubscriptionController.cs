@@ -43,9 +43,24 @@ namespace TheBookCave.Controllers
             var subscription = _adminSubscriptionService.getSubscription(id);
             return View(subscription);
         }
-        public void subscriptionUpdate(int sid)
-        {
-            //_adminSubscriptionService.updateSubscription(sid);
+        public IActionResult EditSubscription(int id) {
+			var subscription = _adminSubscriptionService.getSubscription(id);
+            if(!subscription.Any()) {
+                return RedirectToAction("subscriptionNotFound");
+            }
+			return View(subscription.First());
+
+        }
+        [HttpPost]
+        public ActionResult EditSubscription(SubscriptionListViewModel subscription) {
+           	if (ModelState.IsValid) {
+				_adminSubscriptionService.updateSubscription(subscription);
+				return RedirectToAction("index");
+			}
+			return View(subscription);
+        }
+        public IActionResult subscriptionNotFound() {
+            return View();
         }
 
         public IActionResult AddSubscription()

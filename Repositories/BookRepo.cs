@@ -54,18 +54,18 @@ namespace TheBookCave.Repositories {
                                 }).ToList();
             return books;
         }
-        public bool updateBook(Book book) {
-            Console.WriteLine(book.Name);
-            _db.Books.Update(book);
-            _db.SaveChanges();
-            return true;
-        }
+        
         public bool deleteBook(int hid) {
             // linq delete
             return true;
         }
         public bool createBook(Book book) {
             _db.Books.Add(book);
+            _db.SaveChanges();
+            return true;
+        }
+        public bool updateBook(Book book) {
+            _db.Books.Update(book);
             _db.SaveChanges();
             return true;
         }

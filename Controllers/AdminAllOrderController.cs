@@ -43,10 +43,27 @@ namespace TheBookCave.Controllers
             var order = _adminOrderService.getOrder(id);
             return View(order);
         }
-        public void orderUpdate(int oid)
-        {
-            //_adminOrderService.updateOrder(oid);
+        public IActionResult EditOrder(int id) {
+			var order = _adminOrderService.getOrder(id);
+            if(!order.Any()) {
+                return RedirectToAction("orderNotFound");
+            }
+			return View(order.First());
+
         }
+        [HttpPost]
+        public ActionResult EditOrder(OrderListViewModel order) {
+           	if (ModelState.IsValid) {
+				_adminOrderService.updateOrder(order);
+				return RedirectToAction("index");
+			}
+			return View(order);
+        }
+
+        public IActionResult orderNotFound() {
+            return View();
+        }
+
 
         public IActionResult AddOrder() {
             return View();
