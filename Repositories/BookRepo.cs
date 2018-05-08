@@ -69,5 +69,11 @@ namespace TheBookCave.Repositories {
             _db.SaveChanges();
             return true;
         }
+
+        public bool removeBook(Book book){
+            _db.Books.Remove(book);
+            _db.SaveChanges();
+            return true;
+        }
     }
 }

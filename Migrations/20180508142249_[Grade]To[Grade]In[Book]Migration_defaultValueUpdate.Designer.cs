@@ -11,9 +11,10 @@ using TheBookCave.Data;
 namespace TheBookCave.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20180508142249_[Grade]To[Grade]In[Book]Migration_defaultValueUpdate")]
+    partial class GradeToGradeInBookMigration_defaultValueUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -143,7 +144,7 @@ namespace TheBookCave.Migrations
 
                     b.Property<int>("TypeId");
 
-                    b.Property<string>("UserId");
+                    b.Property<int>("UserId");
 
                     b.HasKey("Id");
 

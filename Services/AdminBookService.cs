@@ -31,6 +31,10 @@ namespace TheBookCave.Services {
             var book = ConvertBookListViewModelToBook(b);
             var successfull = _bookRepo.createBook(book);
         }
+        public void removeBook(BookListViewModel b) {
+            var book = ConvertBookListViewModelToBook(b);
+            var successfull = _bookRepo.removeBook(book);
+        }
 
         private Book ConvertBookListViewModelToBook(BookListViewModel b) {
             var book = new Book {
