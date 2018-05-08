@@ -58,7 +58,7 @@ function displayStars(grade) {
             antiGrade += 0.5;
             counter++;
             var halfStar = createElementFromHTML("<span class=\"fa fa-star-half star-yellow\" onclick=\"submitRating(" + counter + ")\" onmouseout=\"defaultRating()\" onmouseover=\"displayStars(" + counter + ")\"></span>");
-            starElem.insertBefore(halfstar, null);
+            starElem.insertBefore(halfStar, null);
         }
         else {
             break;
@@ -82,7 +82,7 @@ function displayStars(grade) {
 
 function submitRating(rating) {
     displayStars(rating);
-    var stars = document.getElementsByClassName("fa");
+    var stars = document.getElementsByClassName("fa-star");
     for (var i = 0; i < stars.length; i++) {
         stars[i].removeAttribute("onmouseout");
     }

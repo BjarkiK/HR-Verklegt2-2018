@@ -86,7 +86,7 @@ namespace TheBookCave.Services {
         
         public List<BookDetailedListViewModel> getTop10Books() {
             var books = getBookList();
-            List<BookDetailedListViewModel> topBooks = books.OrderByDescending(s => s.Grade).Select(x => x).Take(10).ToList();
+            List<BookDetailedListViewModel> topBooks = books.OrderByDescending(s => (s.Grade / s.NrOfGrades)).Select(x => x).Take(10).ToList();
             return topBooks;
         }
 
