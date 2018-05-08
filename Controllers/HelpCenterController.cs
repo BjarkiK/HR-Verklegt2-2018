@@ -32,5 +32,21 @@ namespace TheBookCave.Controllers
             return View(genreHelp);*/
             return View();
         }
+        public IActionResult Orders()
+        {
+            return View();
+        }
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+        public IActionResult Shipping()
+        {
+            return View();
+        }
+        public IActionResult Subscriptions()
+        {
+            return View();
+        }
     }
 }

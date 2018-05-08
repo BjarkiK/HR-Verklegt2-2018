@@ -57,6 +57,9 @@
     width: 500px;
     display: inline-block;
 }
+#FrontPageBooks h2 {
+    text-align: center;
+}
 
 .fp-list {
     height: 400px;
