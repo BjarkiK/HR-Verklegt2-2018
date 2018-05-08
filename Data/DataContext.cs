@@ -15,6 +15,7 @@ namespace TheBookCave.Data {
         public DbSet<Publisher> Publishers { get; set; }
         public DbSet<Address> Addresses { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Type> Type {get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
             // erum ad nota SQL fyrir gagnagrun
             optionsBuilder.UseSqlServer(
