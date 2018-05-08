@@ -1,0 +1,15 @@
+----Hvað vantar----
+- Login Kerfi
+- Sign Up vantar virkni
+- Laga Sidebar á síðunni
+- Vantar verð í Subscription gagnagrunn
+- Tungumál 
+- Book Deatils Vantar gluggakerfi fyrir nánar info, review og more books.
+- User síðu (layout), + glugga kerfi þar
+- setja virkni á search
+- adv. search síðu, og leitarniðurstöður
+- vantar virkni á buy button á subscription síðu
+- Karfa (layout) og virkni
+- Greiðslu kerfi
+- Helpcenter layout
+- Admin stöff, eitthvað komið en athuga hversu mikið(virkni) og look.
