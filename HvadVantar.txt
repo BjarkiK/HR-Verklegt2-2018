@@ -12,4 +12,5 @@
 - Karfa (layout) og virkni
 - Greiðslu kerfi
 - Helpcenter layout
+- About Us
 - Admin stöff, eitthvað komið en athuga hversu mikið(virkni) og look.
