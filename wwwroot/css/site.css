@@ -46,7 +46,8 @@
     text-align: center
 }
 .SideButton {
-    height: 70px;
+    padding: 25px;
+    display:block;
 }
 .InlineDiv {
     display: flex;

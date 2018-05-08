@@ -28,6 +28,11 @@ namespace TheBookCave.Controllers
             var bookList = _bookService.getAllBooks();
             return View(bookList);
         }
+        public IActionResult allBooks()
+        {
+            var allbooks = _bookService.getAllBooks();
+            return View(allbooks);
+        }
 
         public IActionResult details(int id)
         {
