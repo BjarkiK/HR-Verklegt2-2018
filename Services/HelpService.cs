@@ -13,9 +13,14 @@ namespace TheBookCave.Services {
             _typeRepo = new TypeRepo();
         }
         public List<HelpListViewModel> getHelpBySearch(string search){
-            /*var help = _helpRepo.GetAllHelps();
-            filter out where it matches search*/
-            return null;
+            var help = _helpRepo.getAllHelps();
+            var typeVar = _typeRepo.getAllTypes();
+            var result =    (from h in help
+                            join t in typeVar
+                            on h.TypeId equals t.Id
+                            where t.TypeEn.ToLower().Contains(search.ToLower())
+                            select h).ToList();
+            return result;
         }
         public List<HelpListViewModel> getHelpByType(string type){
             var help = _helpRepo.getAllHelps();
@@ -25,7 +30,6 @@ namespace TheBookCave.Services {
                             on h.TypeId equals t.Id
                             where t.TypeEn.ToLower() == type.ToLower()
                             select h).ToList();
-            /*and filter out where it matches type */
             return result;
         }
     }
