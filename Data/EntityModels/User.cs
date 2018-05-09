@@ -1,25 +1,23 @@
-/*
-     Entity class for all Users ( normal users and)
- */
-
 namespace TheBookCave.Data.EntityModels {
     public class User {
-        // ID email for each User.
+    
         public string Id { get; set; } 
-        // Id add for each User
-        public int AddressId { get; set; }
-         // UserName
-        public string Name { get; set; }
-        public string Picture {get; set; }
-        public string Password { get; set; }
-        // ID for favoriteBookId which User can only choose from database.
-        public int FavoriteBookId {get; set; }
-        // ID for User subscriptions in database.
-        public int SubscriptionId { get; set; }
-        // Id for User orders (are made instatly when user makes order).
-        public int OrderId {get; set; }
-        // bool, returns true if User is employee
-        public bool Permission {get; set; }
+        public int AccessFailedCount { get; set; }
+        public string ConcurrencyStamp { get; set; }
+        public string Email {get; set; }
+        public bool EmailConfirmed { get; set; }
+        public string LockoutEnd {get; set; }
+        public bool LockoutEnabled { get; set; }
+        public string NormalizedEmail {get; set; }
+        public string NormalizedUserName {get; set; }
+        public string PasswordHash { get; set; }
+        public string PhoneNumber { get; set; }
+        public bool PhoneNumberConfirmed { get; set; }
+        public string SecurityStamp { get; set; }
+        public bool TwoFactorEnabled { get; set; }
+        public string UserName { get; set; }
+
+
 
     }
 }

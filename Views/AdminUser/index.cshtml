@@ -19,15 +19,21 @@
     <thead>
       <tr>
             <th>User Id</th>
-            <th>Edit User</th>
-            <th>Name</th>
-            <th>Picture</th>
-            <th>Password</th>
-            <th>FavoriteBook Id</th>
-            <th>Subscription Id</th>
-            <th>Order Id</th>
-            <th>Permission</th>
-            <th>Adress Id</th>
+            <th>Edit user</th>
+            <th>AccessFailedCount</th>
+            <th>ConcurrencyStamp</th>
+            <th>Email</th>
+            <th>EmailConfirmed</th>
+            <th>LockoutEnd</th>
+            <th>LockoutEnabled</th>
+            <th>NormalizedEmail</th>
+            <th>NormalizedUserName</th>
+            <th>PasswordHash</th>
+            <th>PhoneNumber</th>
+            <th>PhoneNumberConfirmed</th>
+            <th>SecurityStamp</th>
+            <th>TwoFactorEnabled</th>
+            <th>UserName</th>
         </tr>
     </thead>
     @foreach(var user in @Model)
@@ -36,14 +42,19 @@
         <tr>
             <td><a asp-controller="AdminUser" asp-action="userDetails" asp-route-id="@user.Id">@user.Id</a></td>
             <td><a asp-controller="AdminUser" asp-action="EditUser" class="btn btn-default" asp-route-id="@user.Id">Edit user</a></td>
-            <td>@user.Name</td>
-            <td>@user.Password</td>
-            <td>@user.Picture</td>
-            <td>@user.FavoriteBookId</td>
-            <td>@user.SubscriptionId</td>
-            <td>@user.OrderId</td>
-            <td>@user.Permission</td>
-            <td>@user.AddressId</td>
+            <td>@user.AccessFailedCount</td>
+            <td>@user.ConcurrencyStamp</td>
+            <td>@user.Email</td>
+            <td>@user.EmailConfirmed</td>
+            <td>@user.LockoutEnd</td>
+            <td>@user.LockoutEnabled</td>
+            <td>@user.NormalizedEmail</td>
+            <td>@user.NormalizedUserName</td>
+            <td>@user.PasswordHash</td>
+            <td>@user.PhoneNumber</td>
+            <td>@user.PhoneNumberConfirmed</td>
+            <td>@user.SecurityStamp</td>
+            <td>@user.UserName</td>
         </tr>
     </tbody>
     }

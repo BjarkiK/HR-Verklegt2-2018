@@ -45,8 +45,10 @@ namespace authentication_repo.Controllers
                 // user is succesfully registered
                 // concatenated first and last name as fullname in claims
                 await _userManger.AddClaimAsync(user, new Claim("Name", $"{model.FirstName} {model.LastName}"));
+
+                await _userManger.AddToRoleAsync(user, "user");
                 // SignInAsync logar user in
-                await _signInMager.SignInAsync(user,false);
+               // await _signInMager.SignInAsync(user,false);
 
                 return RedirectToAction("index", "FrontPage");
             }

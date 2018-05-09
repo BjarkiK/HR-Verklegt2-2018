@@ -13,5 +13,7 @@ namespace authentication_repo.Models.ViewModels
         public string LastName { get; set; }
         [Required]
         public string Password { get; set; }
+
+        public string Role { get; set; } 
     }
 }

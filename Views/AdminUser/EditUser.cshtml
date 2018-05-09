@@ -1,76 +1,29 @@
-@model TheBookCave.Models.ViewModels.UserListViewModel
+@model authentication_repo.Models.ViewModels.RegisterViewModel
 
 @{
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit user</h2>
+<h1>Edit user</h1>
 
-
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Edit book</h4>
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id)
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Picture, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Picture, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Picture, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.FavoriteBookId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.FavoriteBookId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.FavoriteBookId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.SubscriptionId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.SubscriptionId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.SubscriptionId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.OrderId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.OrderId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.OrderId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Permission, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Permission, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Permission, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input id="add-book-submit" type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
+<form asp-action="editUser" asp-controller="AdminUser" class="form-horizontal">
+    <div class="form-group">
+        <input type="email" asp-for="Email" class="form-control" placeholder="Enter email.." />
     </div>
-}
+    <div class="form-group">
+           <input type="text" asp-for="FirstName" class="form-control" placeholder="Enter first name.."/>
+    </div>
+
+    <div class="form-group">
+           <input type="text" asp-for="LastName" class="form-control" placeholder="Enter last name.."/>
+    </div>
+    <div class="form-group">
+           <input type="password" asp-for="Password" class="form-control" placeholder="Enter password.."/>
+    </div>
+    <div class="form-group">
+           <input type="text" asp-for="Role" class="form-control" placeholder="Enter role.."/>
+    </div>
+    <div class="form-group">
+           <button type="submit" class="btn btn-default">Edit User</button>
+    </div>
+</form>
