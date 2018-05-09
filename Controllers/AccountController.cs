@@ -89,7 +89,7 @@ namespace authentication_repo.Controllers
             return RedirectToAction("Login", "Account");
         }
        
-        public IActionResult AccessDenied()
+        public IActionResult accessDenied()
         {
             return View();
         }

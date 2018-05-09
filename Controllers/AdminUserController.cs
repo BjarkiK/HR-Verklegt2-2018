@@ -49,27 +49,22 @@ namespace TheBookCave.Controllers
             return View(user);
         }
  
-
-    /*
         public IActionResult editUser(string id) {
-			var user = _userManger.FindByIdAsync(id);
+			var user = _adminUserService.getUser(id);
 			return View(user);
-
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult editUser(UserListViewModel model) {
-           
+        public ActionResult editUser(UserListViewModel user) {
+            Console.WriteLine("Try");
            	if (ModelState.IsValid) {
-                   var user =   convertUserListViewModelToUser(model);
-				_userManger.UpdateAsync(Email;
+				_adminUserService.updateUser(user);
+                Console.WriteLine(user.Email);
 				return RedirectToAction("index");
 			}
 			return View(user);
         }
-       */
-      
          
 
 

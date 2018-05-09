@@ -18,22 +18,20 @@
  <table align="center">
     <thead>
       <tr>
-            <th>User Id</th>
-            <th>Edit user</th>
+            <th>Username</th>
             <th>Email</th>
             <th>PhoneNumber</th>
-            <th>UserName</th>
+            <th></th>
         </tr>
     </thead>
     @foreach(var user in @Model)
     {
     <tbody>
         <tr>
-            <td><a asp-controller="AdminUser" asp-action="userDetails" asp-route-id="@user.Id">@user.Id</a></td>
-            <td><a asp-controller="AdminUser" asp-action="EditUser" class="btn btn-default" asp-route-id="@user.Id">Edit user</a></td>
+            <td>@user.UserName</td>
             <td>@user.Email</td>
             <td>@user.PhoneNumber</td>
-            <td>@user.UserName</td>
+            <td><a asp-controller="AdminUser" asp-action="EditUser" class="btn btn-default" asp-route-id="@user.Id">Edit user</a></td>            
         </tr>
     </tbody>
     }
