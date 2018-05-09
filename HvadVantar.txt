@@ -14,3 +14,4 @@
 - Helpcenter vantar virkni á search og linka
 - About Us
 - Admin stöff, eitthvað komið en athuga hversu mikið(virkni) og look.
+- Admin edit user (Role)...

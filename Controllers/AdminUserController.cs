@@ -9,6 +9,7 @@ using authentication_repo.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using TheBookCave.Data.EntityModels;
 using TheBookCave.Models;
 using TheBookCave.Models.ViewModels;
 using TheBookCave.Services;
@@ -56,9 +57,7 @@ namespace TheBookCave.Controllers
         }
  
 
- //// Fata ekki hvernig eg fae user yfir i Post.......
-       /*
-        [HttpGet("{id}")]
+    /*
         public IActionResult editUser(string id) {
 			var user = _userManger.FindByIdAsync(id);
 			return View(user);
@@ -67,16 +66,16 @@ namespace TheBookCave.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult editUser(authentication_repo.Models.ApplicationUser model) {
+        public ActionResult editUser(UserListViewModel model) {
            
            	if (ModelState.IsValid) {
-				_userManger.UpdateAsync(user, model.);
+                   var user =   convertUserListViewModelToUser(model);
+				_userManger.UpdateAsync(Email;
 				return RedirectToAction("index");
 			}
 			return View(user);
         }
-       
-        */
+       */
       
          
 

@@ -18,8 +18,9 @@ namespace TheBookCave.Data {
         public DbSet<OrderStatus> OrderStatus {get; set; }
         public DbSet<User> AspNetUsers { get; set;}
         public DbSet<Roles> AspNetRoles { get; set;}
-      //  public DbSet<UserRoles> AspNetUserRoles { get; set;}
+     
         public DbSet<UserClaims> AspNetClaims { get; set;}
+         public DbSet<UserRoles> AspNetUserRoles { get; set;}
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
             // erum ad nota SQL fyrir gagnagrun

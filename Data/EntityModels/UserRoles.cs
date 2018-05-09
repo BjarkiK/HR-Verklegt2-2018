@@ -1,11 +1,16 @@
-/*using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
 namespace TheBookCave.Data.EntityModels {
         public class UserRoles 
         {
-            public string UserId { get;}
+            private string _id;
+            [Key]
+            public string UserdId
+            {
+                get { return _id; }
+            }
+
             public string RoleId { get; set; }
 
         }
 }
-*/
