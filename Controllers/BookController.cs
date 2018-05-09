@@ -30,7 +30,7 @@ namespace TheBookCave.Controllers
         }
         public IActionResult allBooks()
         {
-            var allbooks = _bookService.getAllBooks();
+            var allbooks = _bookService.getBookList();
             return View(allbooks);
         }
 
@@ -41,6 +41,41 @@ namespace TheBookCave.Controllers
                 return RedirectToAction("BookNotFound");
             }              
             return View(book);
+        }
+        public IActionResult horror()
+        {
+            var genreBooks = _bookService.getBooksByGenre("Horror");
+            return View(genreBooks);
+        }
+        public IActionResult fantasy()
+        {
+            var genreBooks = _bookService.getBooksByGenre("Fantasy");
+            return View(genreBooks);
+        }
+        public IActionResult romance()
+        {
+            var genreBooks = _bookService.getBooksByGenre("Romance");
+            return View(genreBooks);
+        }
+        public IActionResult classic()
+        {
+            var genreBooks = _bookService.getBooksByGenre("Classic");
+            return View(genreBooks);
+        }
+        public IActionResult scifi()
+        {
+            var genreBooks = _bookService.getBooksByGenre("Scifi");
+            return View(genreBooks);
+        }
+        public IActionResult crime()
+        {
+            var genreBooks = _bookService.getBooksByGenre("Crime");
+            return View(genreBooks);
+        }
+        public IActionResult plays()
+        {
+            var genreBooks = _bookService.getBooksByGenre("Plays");
+            return View(genreBooks);
         }
 
         public IActionResult bookNotFound() {
@@ -57,11 +92,10 @@ namespace TheBookCave.Controllers
             return View(bookReviewList);*/
             return View();
         }
-        public IActionResult booksWithSameAuthor(int aid)
+        public IActionResult booksWithSameAuthor(int id)
         {
-            /*authorBookList = _bookService.getBookByAuthor(aid);
-            return View(authorBookList);*/
-            return View();
+            var authorBookList = _bookService.getBooksByAuthor(id);
+            return View(authorBookList);
         }
         public IActionResult booksWithSameGenre(int gid)
         {

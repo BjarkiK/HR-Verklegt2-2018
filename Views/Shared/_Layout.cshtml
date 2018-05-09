@@ -81,13 +81,13 @@
             <div id="sideBar">
                 <div class="list-group">
                     <a asp-controller="book" asp-action="allBooks" class="list-group-item list-group-item-action SideButton">All Books</a>
-                    <button type="button" class="list-group-item list-group-item-action SideButton">Drama</button>
-                    <button type="button" class="list-group-item list-group-item-action SideButton">Horror</button>
-                    <button type="button" class="list-group-item list-group-item-action SideButton">Adventure</button>
-                    <button type="button" class="list-group-item list-group-item-action SideButton">Science fiction</button>
-                    <button type="button" class="list-group-item list-group-item-action SideButton">Action </button>
-                    <button type="button" class="list-group-item list-group-item-action SideButton">Romance</button>
-                    <button type="button" class="list-group-item list-group-item-action SideButton">Fantasy</button>
+                    <a asp-controller="book" asp-action="romance" class="list-group-item list-group-item-action SideButton">Romance</a>
+                    <a asp-controller="book" asp-action="horror" class="list-group-item list-group-item-action SideButton">Horror</a>
+                    <a asp-controller="book" asp-action="fantasy" class="list-group-item list-group-item-action SideButton">Fantasy</a>
+                    <a asp-controller="book" asp-action="scifi" class="list-group-item list-group-item-action SideButton">Science Fiction</a>
+                    <a asp-controller="book" asp-action="plays" class="list-group-item list-group-item-action SideButton">Plays</a>
+                    <a asp-controller="book" asp-action="classic" class="list-group-item list-group-item-action SideButton">Classic</a>
+                    <a asp-controller="book" asp-action="crime" class="list-group-item list-group-item-action SideButton">Crime</a>
                     <a asp-controller="Subscription" asp-action="index" class="list-group-item list-group-item-action SideButton">Subscription</a>
                 </div>
             </div>

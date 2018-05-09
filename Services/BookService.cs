@@ -112,6 +112,14 @@ namespace TheBookCave.Services {
             }
             return authorsBooks;
         }
+        public List<BookListViewModel> getBooksByAuthor(int aid) {
+            var books = _bookRepo.getAllBooks();
+            List<BookListViewModel> authorsBooks = books.Where(b => b.AuthorId == aid).ToList();
+            if (authorsBooks.Count == 0){
+                return null;
+            }
+            return authorsBooks;
+        }
         public List<BookDetailedListViewModel> getBooksWithSearch(string param) {
             var books = getBookList();
             List<BookDetailedListViewModel> searchResult = books.Where(b => b.Author.ToLower().Contains(param.ToLower())
