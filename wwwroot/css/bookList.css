@@ -38,4 +38,7 @@ h1 {
 .title {
     position: absolute;
     overflow: hidden;
+    text-align: center;
+    left: 0%;
+    right: 0%;
 }

@@ -69,6 +69,7 @@ function submitRating(rating) {
     }
     var bookId = Number(location.pathname.split('/')[3]);
     $.post('/book/totalGradeUpdate',{ bid : bookId, grade : rating }, function(returnData) {
+        console.log(status + " " + returnData);
         if (returnData % 1 != 0) {
             returnData = fixRating(returnData);
         }
