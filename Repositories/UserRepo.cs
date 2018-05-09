@@ -77,5 +77,11 @@ namespace TheBookCave.Repositories {
             _db.SaveChanges();
             return true;
         }
+
+        public bool updateUser(UserRoles user) {
+            _db.AspNetUserRoles.Update(user);
+            _db.SaveChanges();
+            return true;
+        }
     }
 }

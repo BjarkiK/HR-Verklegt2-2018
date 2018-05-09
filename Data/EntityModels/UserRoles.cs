@@ -5,7 +5,7 @@ namespace TheBookCave.Data.EntityModels {
         {
             private string _id;
             [Key]
-            public string UserdId
+            public string UserId
             {
                 get { return _id; }
             }

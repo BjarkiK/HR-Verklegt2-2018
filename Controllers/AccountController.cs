@@ -48,7 +48,7 @@ namespace authentication_repo.Controllers
 
                 await _userManger.AddToRoleAsync(user, "user");
                 // SignInAsync logar user in
-               // await _signInMager.SignInAsync(user,false);
+                await _signInMager.SignInAsync(user,false);
 
                 return RedirectToAction("index", "FrontPage");
             }
