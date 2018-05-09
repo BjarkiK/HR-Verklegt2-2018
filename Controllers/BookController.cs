@@ -104,9 +104,10 @@ namespace TheBookCave.Controllers
             return View();
         }
         [HttpPost]
-        public void totalGradeUpdate(int bid, int grade)
+        public double totalGradeUpdate(int bid, int grade)
         {
-            _bookService.updateTotalGrade(bid, grade);
+            var newGrade = _bookService.updateTotalGrade(bid, grade);
+            return newGrade;
         }
     }
 }

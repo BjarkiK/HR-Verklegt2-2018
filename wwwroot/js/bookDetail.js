@@ -1,4 +1,4 @@
-displayStars();
+defaultRating();
 
 function createElementFromHTML(htmlString) {
     var div = document.createElement('div');
@@ -9,13 +9,21 @@ function createElementFromHTML(htmlString) {
 function defaultRating() {
     var gradeElem = document.getElementsByClassName("book-detail-grade")[0];
     var grade = gradeElem.getAttribute("value").replace(",", ".");
+    if (grade % 1 != 0) {
+        grade = fixRating(grade);
+    }
     displayStars(grade);
+}
+
+function fixRating(grade) {
+    return parseFloat(grade).toFixed(1);
 }
 
 // Made in a hurry. Tidy up if time
 function displayStars(grade) {
     var gradeElem = document.getElementsByClassName("book-detail-grade")[0];
     var starElem = document.getElementsByClassName("starRating")[0];
+    gradeElem.innerHTML = grade;
     starElem.innerHTML = "";
     var antiGrade = 0;
     var counter = 0;
@@ -55,14 +63,16 @@ function displayStars(grade) {
 }
 
 function submitRating(rating) {
-    displayStars(rating);
     var stars = document.getElementsByClassName("fa-star");
     for (var i = 0; i < stars.length; i++) {
         stars[i].removeAttribute("onmouseout");
     }
     var bookId = Number(location.pathname.split('/')[3]);
-    $.post('/book/totalGradeUpdate',{ bid : bookId, grade : rating }, function(data, status) {
-        console.log("Success id:" + bookId + " " + data + status);
+    $.post('/book/totalGradeUpdate',{ bid : bookId, grade : rating }, function(returnData) {
+        if (returnData % 1 != 0) {
+            returnData = fixRating(returnData);
+        }
+        displayStars(returnData);
     }).fail(function(response) {
         console.log("failed" + response);
     })

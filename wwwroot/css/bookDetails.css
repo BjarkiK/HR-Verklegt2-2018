@@ -33,11 +33,10 @@
 
 .book-detail-description {
     padding: 10px;
-    word-break: break-all;
 }
 
 .book-detail-author {
-    width: 80%;
+    width: 70%;
 }
 
 .book-detailed-detail {
@@ -94,5 +93,11 @@
     opacity: 0.9;
     cursor: pointer;
 }
-
-
+.starRating {
+    /*padding-right: 5px;*/
+    width: 20%;
+}
+.book-detail-grade {
+    width: 10%;
+    /*padding-left: 5px;*/
+} 
