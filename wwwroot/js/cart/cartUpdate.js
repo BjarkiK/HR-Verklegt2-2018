@@ -20,7 +20,7 @@ function calculateTotal(){
     
     // If cart was empty on load
     if(totalElement.length === 0) {
-        document.getElementsByClassName("cart-empty")[0].classList.toggle("hidden");
+        document.getElementsByClassName("cart-empty")[0].classList.toggle("hidden");git 
         return;
     }
     totalElement[0].innerHTML = sum + " kr"
