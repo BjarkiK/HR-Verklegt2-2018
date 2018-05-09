@@ -1,0 +1,36 @@
+@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims
+@using authentication_repo.Models
+<!-- athhvort notandi er signIn eda ekki -->
+@inject SignInManager<ApplicationUser> SignInManager
+
+@{
+    var claim = ((ClaimsIdentity) User.Identity).Claims.FirstOrDefault(c => c.Type == "Name")?.Value;
+}
+<!-- if user sign I want use my claim (first Name and Last Name) -->
+@if (SignInManager.IsSignedIn(User))
+{
+    <form asp-action="LogOut" asp-controller="Account" method="POST">
+    <ul class="nav navbar-nav navbar-right">
+    <li>
+        <!-- claim = firstName + lastName (vid eigum ad gera claim) -->
+        <button class="btn btn-link navbar-btn navbar-link">@claim</button>
+    </li>
+    <li>
+    <!-- logn out button -->
+        <button type="submit" class="btn btn-link navbar-btn navbar-link">Log out</button>
+    </li>
+    </ul>
+    </form>
+}
+else
+{
+    <ul>
+    <li>
+        <a asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+    </li>
+    <li>
+        <a asp-area="" asp-controller="Account" asp-action="Login">Log in</a>
+    </li>
+    </ul>
+}

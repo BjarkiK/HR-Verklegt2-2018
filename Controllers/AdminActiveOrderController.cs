@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TheBookCave.Models;
 using TheBookCave.Services;
 
 namespace TheBookCave.Controllers
 {
+    [Authorize]
     public class AdminActiveOrderController : Controller
     {
         //private AdminOrderService _adminOrderService;
