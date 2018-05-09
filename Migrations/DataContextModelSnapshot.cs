@@ -81,6 +81,8 @@ namespace TheBookCave.Migrations
 
                     b.Property<string>("Name");
 
+                    b.Property<int>("NrOfGrades");
+
                     b.Property<int>("Pages");
 
                     b.Property<string>("Picture");
@@ -130,6 +132,20 @@ namespace TheBookCave.Migrations
                     b.ToTable("Helps");
                 });
 
+            modelBuilder.Entity("TheBookCave.Data.EntityModels.HelpType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("TypeEN");
+
+                    b.Property<string>("TypeIS");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("HelpType");
+                });
+
             modelBuilder.Entity("TheBookCave.Data.EntityModels.Order", b =>
                 {
                     b.Property<int>("Id")
@@ -141,11 +157,25 @@ namespace TheBookCave.Migrations
 
                     b.Property<int>("TypeId");
 
-                    b.Property<int>("UserId");
+                    b.Property<string>("UserId");
 
                     b.HasKey("Id");
 
                     b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("TheBookCave.Data.EntityModels.OrderStatus", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("StatusEN");
+
+                    b.Property<string>("StatusIS");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("OrderStatus");
                 });
 
             modelBuilder.Entity("TheBookCave.Data.EntityModels.PaymentDetail", b =>
@@ -218,20 +248,6 @@ namespace TheBookCave.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Subscriptions");
-                });
-
-            modelBuilder.Entity("TheBookCave.Data.EntityModels.Type", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("TypeEn");
-
-                    b.Property<string>("TypeIs");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Type");
                 });
 
             modelBuilder.Entity("TheBookCave.Data.EntityModels.User", b =>

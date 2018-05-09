@@ -5,18 +5,23 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TheBookCave.Models;
+using TheBookCave.Models.ViewModels;
 using TheBookCave.Services;
 
 namespace TheBookCave.Controllers
 {
     public class AccountController : Controller
     {
-        //private AccountService _accountService;
+        private AccountService _accountService;
+        private AdminUserService _adminuserService;
 
         public AccountController() {
-            //_accountService = new AccountService();
+            _accountService = new AccountService();
+            _adminuserService = new AdminUserService();
         }
-        public IActionResult Index()
+        
+
+        public IActionResult index()
         {
             return View();
         }
@@ -30,10 +35,19 @@ namespace TheBookCave.Controllers
             //_accountService.logout();
             return true;
         }
-        public bool signup() 
+          public IActionResult signUp()
         {
-            //_accountService.createUser();
-            return true;
+            return View();
         }
+
+        [HttpPost]
+		public ActionResult signUp(UserListViewModel user) {
+			if (ModelState.IsValid) {
+				_adminuserService.createUser(user);
+				return RedirectToAction("index");
+			}
+            Console.WriteLine("signUpNotValid");
+			return View(user);
+		}
     }
 }

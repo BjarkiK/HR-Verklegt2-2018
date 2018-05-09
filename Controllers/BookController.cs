@@ -23,10 +23,15 @@ namespace TheBookCave.Controllers
             _genreService = new GenreService();
             _publisherService = new PublisherService();
         }
-        public IActionResult Index()
+        public IActionResult index()
         {
             var bookList = _bookService.getAllBooks();
             return View(bookList);
+        }
+        public IActionResult allBooks()
+        {
+            var allbooks = _bookService.getAllBooks();
+            return View(allbooks);
         }
 
         public IActionResult details(int id)
@@ -38,20 +43,12 @@ namespace TheBookCave.Controllers
             return View(book);
         }
 
-        public IActionResult BookNotFound() {
+        public IActionResult bookNotFound() {
             return View();
         }
-
-       
         public IActionResult reviewBook()
         {
             // _bookService.addBookReview(?review?);
-            return View();
-        }
-       
-        public IActionResult totalGradeUpdate(string bid)
-        {
-            //_bookService.updateTotalGrade(bid);
             return View();
         }
         public IActionResult bookReviewListDisplay(string bid)
@@ -71,6 +68,11 @@ namespace TheBookCave.Controllers
             /*genreBookList = _bookService.getBookByGenre(gid);
             return View(genreBookList);*/
             return View();
+        }
+        [HttpPost]
+        public void totalGradeUpdate(int bid, int grade)
+        {
+            _bookService.updateTotalGrade(bid, grade);
         }
     }
 }

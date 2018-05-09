@@ -24,13 +24,9 @@ namespace TheBookCave.Controllers
             return View();
         }
 
-        // Every time user adds something to cart a new order and order items are created.
-        // The order item is never deleted unless removed from cart
-        // Good bad? 
-        // Good for analises to check what users are adding th chart. 
-        // Bad because of unnessesary use of memory resources.
+       /*
         public bool addBookToCart(int id) {
             return _cartService.addBookToCart(id);
-        }
+        }*/
     }
 }

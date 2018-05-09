@@ -21,6 +21,7 @@
       <tr>
             <th>BookName</th>
             <th>Edit book</th>
+            <th>Remove book</th>
             <th>Picture</th>
             <th>DetailsIS</th>
             <th>DetailsEN</th>
@@ -37,6 +38,7 @@
         <tr>
             <td><a asp-controller="AdminBook" asp-action="bookDetails" asp-route-id="@book.Id">@book.Name</a></td>
             <td><a asp-controller="adminBook" asp-action="EditBook" class="btn btn-default" asp-route-id="@book.Id">Edit book</a></td>
+            <td><a asp-controller="adminBook" asp-action="RemoveBook" class="btn btn-default" asp-route-id="@book.Id">Remove book</a></td>
             <td>@book.Picture</td>
             <td>@book.DetailsIS</td>
             <td>@book.DetailsEN</td>

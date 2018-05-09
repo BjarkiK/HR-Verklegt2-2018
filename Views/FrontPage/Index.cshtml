@@ -10,7 +10,16 @@
         <div class="books-container">
             <div class="books-container2">
             @foreach(var book in @Model.Top10) {
-                <a href="book/details/@book.Id" class="single-book-container">
+                <div class="single-book-container">
+                    <div class="book-box" value="@book.Id">
+                        <img class="book-preview-image" src="~/@book.Picture" alt="Image broken">
+                        <h3 class="book-preview-title">@book.Name</h3>
+                        <h4 class="preview-book-author">@book.Author</h4>
+                        <h4>@book.Price kr</h4>
+                    </div>
+                </div>
+
+               /* <a href="book/details/@book.Id" class="single-book-container">
                     <div class="book">
                         <div class="Teste"></div>
                         <p class="book-preview-title">@book.Name</p>
@@ -18,7 +27,7 @@
                         <p class="preview-book-author">@book.Author</p>
                         <p>@book.Price kr.</p>
                     </div>
-                </a>
+                </a>*/
             }
             </div>
         </div>

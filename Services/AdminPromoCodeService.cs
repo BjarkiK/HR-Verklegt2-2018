@@ -25,16 +25,16 @@ namespace TheBookCave.Services {
             return promoCodes;
         }
         public void updatePromoCode(PromoCodeListViewModel pc) {
-            var promoCode = ConvertPromoCodeListViewModelToPromoCode(pc);
+            var promoCode = convertPromoCodeListViewModelToPromoCode(pc);
             var successfull = _promoCodeRepo.updatePromoCode(promoCode);
         }
 
-         public void CreatePromocode(PromoCodeListViewModel pc) {
-            var promocode = ConvertPromoCodeListViewModelToPromoCode(pc);
+         public void createPromocode(PromoCodeListViewModel pc) {
+            var promocode = convertPromoCodeListViewModelToPromoCode(pc);
             var successfull = _promoCodeRepo.createPromoCode(promocode);
         }
 
-        private PromoCode ConvertPromoCodeListViewModelToPromoCode(PromoCodeListViewModel pc) {
+        private PromoCode convertPromoCodeListViewModelToPromoCode(PromoCodeListViewModel pc) {
             var promoCode = new PromoCode {
                                 Id = pc.Id,
                                 Description = pc.Description,

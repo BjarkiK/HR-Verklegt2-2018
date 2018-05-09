@@ -18,7 +18,7 @@ namespace TheBookCave.Controllers
             //_checkoutService = new CheckoutService();
             //_orderservice = new OrderService();
         }
-        public IActionResult Index()
+        public IActionResult index()
         {
             return View();
         }

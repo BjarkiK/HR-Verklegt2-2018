@@ -6,29 +6,29 @@ using System.Linq;
 namespace TheBookCave.Services {
     public class HelpService {
         private HelpRepo _helpRepo;
-        private TypeRepo _typeRepo;
+        private HelpTypeRepo _helpTypeRepo;
 
         public HelpService(){
             _helpRepo = new HelpRepo();
-            _typeRepo = new TypeRepo();
+            _helpTypeRepo = new HelpTypeRepo();
         }
         public List<HelpListViewModel> getHelpBySearch(string search){
             var help = _helpRepo.getAllHelps();
-            var typeVar = _typeRepo.getAllTypes();
+            var typeVar = _helpTypeRepo.getAllTypes();
             var result =    (from h in help
                             join t in typeVar
                             on h.TypeId equals t.Id
-                            where t.TypeEn.ToLower().Contains(search.ToLower())
+                            where t.TypeEN.ToLower().Contains(search.ToLower())
                             select h).ToList();
             return result;
         }
         public List<HelpListViewModel> getHelpByType(string type){
             var help = _helpRepo.getAllHelps();
-            var typeVar = _typeRepo.getAllTypes();
+            var typeVar = _helpTypeRepo.getAllTypes();
             var result =    (from h in help
                             join t in typeVar
                             on h.TypeId equals t.Id
-                            where t.TypeEn.ToLower() == type.ToLower()
+                            where t.TypeEN.ToLower() == type.ToLower()
                             select h).ToList();
             return result;
         }

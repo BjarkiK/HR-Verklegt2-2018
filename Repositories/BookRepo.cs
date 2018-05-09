@@ -26,6 +26,7 @@ namespace TheBookCave.Repositories {
                                     Name = b.Name,
                                     Picture = b.Picture,
                                     PublisherId = b.PublisherId,
+                                    NrOfGrades = b.NrOfGrades,
                                     Grade = b.Grade,
                                     Pages = b.Pages,
                                     Price = b.Price,
@@ -46,6 +47,7 @@ namespace TheBookCave.Repositories {
                                     Name = b.Name,
                                     Picture = b.Picture,
                                     PublisherId = b.PublisherId,
+                                    NrOfGrades = b.NrOfGrades,
                                     Grade = b.Grade,
                                     Pages = b.Pages,
                                     Price = b.Price,
@@ -53,6 +55,28 @@ namespace TheBookCave.Repositories {
                                     Quantity = b.Quantity 
                                 }).ToList();
             return books;
+        }
+        public Book getBookData(int bid) {
+            var book = (from b in _db.Books
+                        where b.Id == bid
+                        select new Book {
+                            Id = b.Id,
+                            AuthorId = b.AuthorId,
+                            DetailsEN = b.DetailsEN,
+                            DetailsIS = b.DetailsIS,
+                            Discount = b.Discount,
+                            GenreId = b.GenreId,
+                            Name = b.Name,
+                            Picture = b.Picture,
+                            PublisherId = b.PublisherId,
+                            NrOfGrades = b.NrOfGrades,
+                            Grade = b.Grade,
+                            Pages = b.Pages,
+                            Price = b.Price,
+                            Published = b.Published,
+                            Quantity = b.Quantity
+                        }).SingleOrDefault();
+            return book;
         }
         
         public bool deleteBook(int hid) {
@@ -66,6 +90,12 @@ namespace TheBookCave.Repositories {
         }
         public bool updateBook(Book book) {
             _db.Books.Update(book);
+            _db.SaveChanges();
+            return true;
+        }
+
+        public bool removeBook(Book book){
+            _db.Books.Remove(book);
             _db.SaveChanges();
             return true;
         }

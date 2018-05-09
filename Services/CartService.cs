@@ -17,10 +17,10 @@ namespace TheBookCave.Services
             _promoCodesRepo = new PromoCodesRepo();
             _convertService = new ConvertService();
         }
-        public List<ChartListViewModel> getBooksInCart(string cookie) {
-            var books = new List<ChartListViewModel>();
+        public List<CartListViewModel> getBooksInCart(string cookie) {
+            var books = new List<CartListViewModel>();
             if(cookie == null || cookie == "") {
-                return new List<ChartListViewModel>();
+                return new List<CartListViewModel>();
             }
             var cookieContent = getCookiecontent(cookie);
             var id = cookieContent[0];
@@ -28,8 +28,9 @@ namespace TheBookCave.Services
             for(var i = 0; i < id.Count; i++) {
                 var book = _bookRepo.getBook(id[i]);
                 if(book.Count  != 0) {
-                    var eBook = _convertService.bookListViewToEntity(book);
-                    books.Add(new ChartListViewModel { Book = eBook.First(), Quantity = quantity[i] });
+                    var eBook = _convertService.bookListViewToEntity(book).First();
+                    var sum = eBook.Price * (1 - eBook.Discount/100.0)*quantity[i];
+                    books.Add(new CartListViewModel { Book = eBook, Quantity = quantity[i], Sum = sum });
                 }
                 else {
                     Console.WriteLine("Book with id '" + id[i] + "' was not found!");
@@ -45,8 +46,6 @@ namespace TheBookCave.Services
             var cookieItems = cookie.Split('.');
             foreach(var ci in cookieItems) {
                 var content = ci.Split('-').Select(Int32.Parse).ToList();
-                Console.WriteLine(content[0]);
-                Console.WriteLine(content[1]);
                 id.Add(content[0]);
                 quant.Add(content[1]);
             }
@@ -67,15 +66,9 @@ namespace TheBookCave.Services
             }
             return false;
         }*/
-        public bool addBookToCart(int bid) {
-            var book = _bookRepo.getBook(bid);
-            if(book.Count == 0) {
-                return false;
-            }
-            var convertBook = _convertService.bookListViewToEntity(book).First();
-            var orderItem = new OrderItem { Book = convertBook, Quantity = 1, Discount = convertBook.Discount, OrderId = -1 };
+       /* public bool addBookToCart(int bid) {
             return true;
-        }
+        }*/ 
         public void removeFromCart(int bid) {
             // AJAX?
         }

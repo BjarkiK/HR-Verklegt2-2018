@@ -1,10 +1,10 @@
 namespace TheBookCave.Models.ViewModels {
-    public class TypeListViewModel {
+    public class OrderStatusListViewModel {
         public int Id { get; set; }
         // The name of Type in Icelandic.
-        public string TypeIs { get; set; }
+        public string StatusIS { get; set; }
         // The name of Type in English.
-        public string TypeEn { get; set; }
+        public string StatusEN { get; set; }
 
     }
 }

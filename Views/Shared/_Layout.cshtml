@@ -16,7 +16,6 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        
     </environment>
 </head>
 <body>
@@ -49,13 +48,14 @@
             <div class="col-md-2">
                 <ul class="nav navbar-nav"> 
                     <li><a asp-area="" asp-controller="FrontPage" asp-action="Globe"><span class="glyphicon glyphicon-globe" aria-hidden="true"></a></li>
-                    <li><a asp-area="" asp-controller="FrontPage" asp-action="User"><span class="glyphicon glyphicon-user" aria-hidden="true"></a></li>
+                    <li><a asp-area="" asp-controller="Account" asp-action="index"><span class="glyphicon glyphicon-user" aria-hidden="true"></a></li>
                     <li><a asp-area="" asp-controller="Cart" asp-action="index"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></a></li>
                 </ul>
             </div>
         </div>
     </div>
 </nav>
+
 <noscript>
     <style type="text/css">
        .noscript {
@@ -73,56 +73,62 @@
     </style>
     <div class="noscript">This site uses javascript to function normaly. Please enable javascript in your browser</div>
 </noscript>
-<!--
-<div class="main-container">
-    <nav id="sideBar">
-        <div class="list-group">
-            <button type="button" class="list-group-item list-group-item-action SideButton">Drama</button>
-            <button type="button" class="list-group-item list-group-item-action SideButton">Horror</button>
-            <button type="button" class="list-group-item list-group-item-action SideButton">Adventure</button>
-            <button type="button" class="list-group-item list-group-item-action SideButton">Science fiction</button>
-            <button type="button" class="list-group-item list-group-item-action SideButton">Action </button>
-            <button type="button" class="list-group-item list-group-item-action SideButton">Romance</button>
-            <button type="button" class="list-group-item list-group-item-action SideButton">Fantasy</button>
-            <button type="button" class="list-group-item list-group-item-action SideButton">Subscriptions</button>
 
-        </div>
-    </nav>
-</div>
--->
-    <!--<div class="container body-content">-->
-        @RenderBody()
-        <hr />
-        <footer>
-            <div class="row">
-                <div class="col-md-1 first"></div>
-                <div class="col-md-2">
-                    <p>Kt xxxxxx-xxxx</p>
-                    <p>Sími 581-2345</p>
-                    <p>&copy; 2018 - The Book Cave</p>
+
+<div class="row">
+    <div class="col-md-2 ">
+        <div class="main-container">
+            <div id="sideBar">
+                <div class="list-group">
+                    <a asp-controller="book" asp-action="allBooks" class="list-group-item list-group-item-action SideButton">All Books</a>
+                    <button type="button" class="list-group-item list-group-item-action SideButton">Drama</button>
+                    <button type="button" class="list-group-item list-group-item-action SideButton">Horror</button>
+                    <button type="button" class="list-group-item list-group-item-action SideButton">Adventure</button>
+                    <button type="button" class="list-group-item list-group-item-action SideButton">Science fiction</button>
+                    <button type="button" class="list-group-item list-group-item-action SideButton">Action </button>
+                    <button type="button" class="list-group-item list-group-item-action SideButton">Romance</button>
+                    <button type="button" class="list-group-item list-group-item-action SideButton">Fantasy</button>
+                    <a asp-controller="Subscription" asp-action="index" class="list-group-item list-group-item-action SideButton">Subscription</a>
                 </div>
-                <div class="col-md-6 middle">
-                    <div id="footerMiddle">
-                        <br>
-                        <a id="facebook" href="https://www.facebook.com"><i class="fa fa-facebook-square" style="font-size:36px"></i></a>
-                        <a id="youtube" href="https://www.youtube.com"><i class="fa fa-youtube-square" style="font-size:36px"></i></a>
-                        <a id="twitter"href="https://www.twitter.com"><i class="fa fa-twitter-square" style="font-size:36px"></i></a>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div id="footerLeft">
-                        <a asp-controller="Home" asp-action="AboutUs">About Us</a><br>
-                        <a asp-controller="HelpCenter" asp-action="index">Help</a>
-                        <br>
-                        <p>temporary linkar á aðrar síður hér að neðan</p>
-                        <a asp-controller="Subscription" asp-action="index">Subscription</a><br>
-                        <a asp-controller="FrontPage" asp-action="SignUp">SignUp</a>
-                    </div>
-                </div>
-                <div class="col-md-1 last"></div>
             </div>
-        
-        </footer>
+        </div>
+    </div>
+
+    <!--<div class="container body-content">-->
+    <div class="col-md-10">
+         @RenderBody()
+    </div>
+</div>
+<hr />
+<footer>
+    <div class="row">
+        <div class="col-md-1 first"></div>
+        <div class="col-md-2">
+            <p>Kt xxxxxx-xxxx</p>
+            <p>Sími 581-2345</p>
+            <p>&copy; 2018 - The Book Cave</p>
+        </div>
+        <div class="col-md-6 middle">
+            <div id="footerMiddle">
+                <br>
+                <a id="facebook" href="https://www.facebook.com"><i class="fa fa-facebook-square" style="font-size:36px"></i></a>
+                <a id="youtube" href="https://www.youtube.com"><i class="fa fa-youtube-square" style="font-size:36px"></i></a>
+                <a id="twitter"href="https://www.twitter.com"><i class="fa fa-twitter-square" style="font-size:36px"></i></a>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div id="footerLeft">
+                <a asp-controller="Home" asp-action="AboutUs">About Us</a><br>
+                <a asp-controller="HelpCenter" asp-action="index">Help</a>
+                <br>
+                <p>temporary linkar á aðrar síður hér að neðan</p>
+                <a asp-controller="FrontPage" asp-action="SignUp">SignUp</a>
+            </div>
+        </div>
+        <div class="col-md-1 last"></div>
+    </div>
+
+</footer>
     <!--</div>-->
 
     <environment include="Development">

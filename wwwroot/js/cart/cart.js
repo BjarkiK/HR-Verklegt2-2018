@@ -47,7 +47,7 @@ function addQuantity(oldId, cookieValue){
 function lowerQuantity(oldId, cookieValue){
     var split = oldId.split("-");
     var quant = parseInt(split[1]) - 1;
-    if(quant === -1) {
+    if(quant === 0) {
         return;
     }
     updateCookie(split[0] + "-" + quant, oldId, cookieValue);

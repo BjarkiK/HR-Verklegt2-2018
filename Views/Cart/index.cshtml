@@ -1,4 +1,4 @@
-@model List<TheBookCave.Models.ViewModels.ChartListViewModel>
+@model List<TheBookCave.Models.ViewModels.CartListViewModel>
 <h2> Welcome to your cart</h2>
 
 <div class="cart-item-container">
@@ -6,8 +6,22 @@
 @foreach(var item in @Model) {
     <div class="cart-item">
         <img class="book-detail-image" src="~/@item.Book.Picture" alt="Image broken">
-        <div class="cart-title">@item.Book.Name</div>
-        <div class="cart-price">@item.Book.Price kr</div>
+        <div class="cart-item-detail">
+            <div class="cart-title">@item.Book.Name</div>
+            
+            @if(@item.Book.Discount == 0) {
+                <div class="cart-price" value="@item.Book.Price">@item.Book.Price kr</div>
+            }
+            else {
+                int price = Convert.ToInt32(@item.Book.Price);
+                int discountPrice = Convert.ToInt32((1 - @item.Book.Discount/100m) * price);
+                <div class="cart-price-container">
+                    <div class="cart-price" value="@discountPrice">Price: @discountPrice kr</div>
+                    <div class="cart-discounted-price">@item.Book.Price kr</div>
+                </div>
+                <div>@item.Book.Discount% discount</div>
+            }
+        </div>
         <div class="cart-quantity-container">
             <div class="cart-remove-quantity-btn cart-quantity-btn">
                 <i class="fa fa-minus"></i>
@@ -17,6 +31,7 @@
                 <i class="fa fa-plus" ></i>
             </div>
         </div>
+        <div class="cart-item-sum">@item.Sum kr</div>
         <div class="cart-remove-btn" value="@item.Book.Id">
             <i class="fa fa-trash" value="@item.Book.Id"></i>
         </div>
@@ -24,6 +39,32 @@
 }
 
 </div>
+@if(@Model.Count != 0) {
+<div class="cart-sum-container">
+    <div class="cart-promoCode">
+        <label>Do you have promo code?</label>
+        <input type="text" />
+        <button class=""chart-promo-btn>Apply</button>
+    </div>
+    <div class="cart-sum">
+        <div class="cart-sum-col1">
+            <p>Delivery cost:</p>
+            <p>Total:</p>
+        </div>
+        <div class="cart-sum-col2">
+            <p>FREE</p>
+            <p class="cart-total"></p>
+        </div>
+    </div>
+</div>
+}
+
+<div class="cart-empty hidden">
+    <p>Oh no!</p>
+    <p>Your cart is empty</p>
+    <button>Go find some sweet books!</button>
+</div>
+
 
 <link rel="stylesheet" href="~/css/cart.css" />
 <script src="~/js/cart/cart.js" asp-append-version="true"></script>
