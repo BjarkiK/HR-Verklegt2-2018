@@ -40,8 +40,6 @@ namespace TheBookCave.Controllers {
             return View(searchResult);
         }
 
-
-
         public IActionResult bookListDisplay() {
             var bookList = _adminBookService.getAllBooks();
             return View(bookList);
