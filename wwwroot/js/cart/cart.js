@@ -5,20 +5,8 @@ function setCookie(cname, cvalue, exdays) {
     var expires = "expires="+ d.toUTCString();
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
     console.log(cvalue)
-    //test();
 }
 
-function test() {
-    $.ajax({
-        url: "/Cart",
-        method: "POST",
-        success: function (responseData) {
-            console.log($(responseData))
-            console.log($(responseData).find('.cart-item-container').prevObject[26])
-            $('.cart-item-container').replaceWith($(responseData).find('.cart-item-container').prevObject[26]);
-        }
-    })
-}
 
 // https://www.w3schools.com/js/js_cookies.asp
 function getCookie(cname) {

@@ -32,7 +32,6 @@ namespace TheBookCave.Repositories {
                                     Discount = pc.Discount,
                                     Published = pc.Published
                                 }).ToList();
-            Console.WriteLine(promoCodes.First().Code);
             return promoCodes;
         }
 

@@ -56,16 +56,15 @@ namespace TheBookCave.Services
         private List<int> getCartBookQuantity(string cookie) {
             return cookie.Split('.').Select(Int32.Parse).ToList();
         }
-       /* public bool validatePromoCode(int promoCode){
+       public int validatePromoCode(string code){
             var promoCodes = _promoCodesRepo.getAllPromoCode();
-            /*if(promoCodes.Contains(promoCode)){
-                return true;
-            }
-            else {
-                return false;
-            }
-            return false;
-        }*/
+            var promoCode =  (from pc in promoCodes
+                            where pc.Code == code
+                            && pc.Published == true
+                            select pc).SingleOrDefault();
+            return promoCode.Discount;
+        }
+
        /* public bool addBookToCart(int bid) {
             return true;
         }*/ 

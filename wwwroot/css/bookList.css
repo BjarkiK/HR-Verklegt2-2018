@@ -9,6 +9,21 @@
     cursor: pointer;
 }
 
+h1 {
+    font-size: 36px;
+    text-align: center;
+}
+
+#price {
+    text-align: center;
+    color: red;
+    height: auto;
+}
+
+.addCart {
+    text-align: center;
+}
+
 
 .caption p {
     width:100%;
@@ -26,4 +41,7 @@
     text-align: center;
     position: absolute;
     overflow: hidden;
+    text-align: center;
+    left: 0%;
+    right: 0%;
 }

@@ -42,18 +42,24 @@
 @if(@Model.Count != 0) {
 <div class="cart-sum-container">
     <div class="cart-promoCode">
-        <label>Do you have promo code?</label>
-        <input type="text" />
-        <button class=""chart-promo-btn>Apply</button>
+        <div class="promo-input">
+            <label>Do you have promo code?</label>
+            <input type="text" class="cart-promo-input" />
+            <button class="cart-promo-btn">Apply</button>
+        </div>
+        <div class="promo-message"></div>
     </div>
     <div class="cart-sum">
         <div class="cart-sum-col1">
             <p>Delivery cost:</p>
+            <p class="promo-col hidden">Promo code:</p>
             <p>Total:</p>
         </div>
         <div class="cart-sum-col2">
             <p>FREE</p>
-            <p class="cart-total"></p>
+            <p class="promo-code-value"></p>
+            <p class="cart-total" value="0"></p>
+            <p class="cart-discount-total"></p>
         </div>
     </div>
 </div>
@@ -70,3 +76,4 @@
 <script src="~/js/cart/cart.js" asp-append-version="true"></script>
 <script src="~/js/cart/cartRemove.js" asp-append-version="true"></script>
 <script src="~/js/cart/cartUpdate.js" asp-append-version="true"></script>
+<script src="~/js/cart/cartPromo.js" asp-append-version="true"></script>

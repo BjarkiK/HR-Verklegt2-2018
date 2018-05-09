@@ -20,10 +20,12 @@ function calculateTotal(){
     
     // If cart was empty on load
     if(totalElement.length === 0) {
-        document.getElementsByClassName("cart-empty")[0].classList.toggle("hidden");git 
+        document.getElementsByClassName("cart-empty")[0].classList.toggle("hidden");
         return;
     }
-    totalElement[0].innerHTML = sum + " kr"
+    totalElement[0].innerHTML = sum + " kr";
+    totalElement[0].setAttribute("value", sum);
+    applyPromo();
     console.log(sum)
 }
 
