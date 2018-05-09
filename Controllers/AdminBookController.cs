@@ -58,7 +58,6 @@ namespace TheBookCave.Controllers {
         }
         [HttpPost]
         public ActionResult editBook(BookListViewModel book) {
-            Console.WriteLine(book.Name);
            	if (ModelState.IsValid) {
 				_adminBookService.updateBook(book);
 				return RedirectToAction("index");
@@ -78,7 +77,6 @@ namespace TheBookCave.Controllers {
 
         [HttpPost]
         public ActionResult removeBook(BookListViewModel book) {
-            Console.WriteLine(book.Name);
            	if (ModelState.IsValid) {
 				_adminBookService.removeBook(book);
 				return RedirectToAction("index");

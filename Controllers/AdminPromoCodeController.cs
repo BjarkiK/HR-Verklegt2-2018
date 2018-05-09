@@ -41,7 +41,6 @@ namespace TheBookCave.Controllers
         public IActionResult promoCodeListDisplay()
         {
             var promoCodeList = _adminPromoCodeService.getAllPromoCode();
-            Console.WriteLine(promoCodeList.First().Description);
             return View(promoCodeList);
         }
         public IActionResult promoCodeDetails(int id)
