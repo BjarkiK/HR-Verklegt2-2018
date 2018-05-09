@@ -37,11 +37,14 @@ namespace TheBookCave.Services {
         public void addBookReview() {
             //var review = _userGradeRepo.CreateReview(userReview)
         }
-        public void updateTotalGrade(int bid, int grade) {
+        public double updateTotalGrade(int bid, int grade) {
             var book = _bookRepo.getBookData(bid);
             book.Grade += grade;
             book.NrOfGrades += 1;
             _bookRepo.updateBook(book);
+
+            var newGrade = (book.Grade / book.NrOfGrades);
+            return newGrade;
         }
 
         public List<BookDetailedListViewModel> getBookList() {
@@ -107,6 +110,14 @@ namespace TheBookCave.Services {
         public List<BookDetailedListViewModel> getBooksByAuthor(string author) {
             var books = getBookList();
             List<BookDetailedListViewModel> authorsBooks = books.Where(a => a.Author == author).ToList();
+            if (authorsBooks.Count == 0){
+                return null;
+            }
+            return authorsBooks;
+        }
+        public List<BookListViewModel> getBooksByAuthor(int aid) {
+            var books = _bookRepo.getAllBooks();
+            List<BookListViewModel> authorsBooks = books.Where(b => b.AuthorId == aid).ToList();
             if (authorsBooks.Count == 0){
                 return null;
             }

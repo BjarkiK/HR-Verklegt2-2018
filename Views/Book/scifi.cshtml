@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="~/css/bookList.css" />
-<h1>All Books</h1>
+<h1>Science Fiction Books</h1>
 
 <div class="row">
     @foreach(var book in @Model)
@@ -13,10 +13,6 @@
                 </div>
                 <h4 class="author">@book.Author</h4>
                 <p>@book.DetailsEN</p>
-                <p id="price">@book.Price ISK</p>
-                <div class="addCart">
-                    <button class="btn btn-primary" type="button">Add To Cart</button>
-                </div>
             </div>
         </div>
     </div>

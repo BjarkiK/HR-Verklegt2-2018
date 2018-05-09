@@ -1,7 +1,6 @@
 ----Hvað vantar----
 - Login Kerfi
 - Sign Up vantar virkni
-- Laga Sidebar á síðunni
 - Vantar verð í Subscription gagnagrunn
 - Vantar að hægt sé að kaupa subscription
 - Tungumál ?
