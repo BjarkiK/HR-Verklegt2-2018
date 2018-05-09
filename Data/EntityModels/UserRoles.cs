@@ -1,4 +1,6 @@
-using System.ComponentModel.DataAnnotations;
+
+
+/*using System.ComponentModel.DataAnnotations;
 
 namespace TheBookCave.Data.EntityModels {
         public class UserRoles 
@@ -14,3 +16,4 @@ namespace TheBookCave.Data.EntityModels {
 
         }
 }
+*/

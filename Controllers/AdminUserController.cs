@@ -109,7 +109,7 @@ namespace TheBookCave.Controllers
                 await _userManger.AddClaimAsync(user, new Claim("Name", $"{model.FirstName} {model.LastName}"));
 
                 await _userManger.AddToRoleAsync(user, model.Role);
-                 await _signInMager.SignInAsync(user,false);
+              //   await _signInMager.SignInAsync(user,false);
 
                 return RedirectToAction("index", "AdminUser");
             }
