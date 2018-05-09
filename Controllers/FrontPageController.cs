@@ -12,7 +12,6 @@ using TheBookCave.Services;
 
 namespace TheBookCave.Controllers
 {
-    [Authorize]
     public class FrontPageController : Controller
     {
         private BookService _bookService;
