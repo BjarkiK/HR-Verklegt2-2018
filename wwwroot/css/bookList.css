@@ -21,6 +21,9 @@
     padding-bottom: 70px;
 }
 .title {
+    left: 0%;
+    right: 0%;
+    text-align: center;
     position: absolute;
     overflow: hidden;
 }

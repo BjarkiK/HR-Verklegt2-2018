@@ -8,6 +8,7 @@ function addBookToCart(e) {
    
     var bookId = e.target.attributes[1].nodeValue.toString();
     var cookie = getCookie("TBCbooksInCart");
+    var cartIconElem = document.getElementsByClassName("glyphicon-shopping-cart")[0];
     if(!idAlreadyAdded(cookie, bookId)) {
         bookId = bookId + "-1";
         if(cookie === ""){
@@ -17,7 +18,10 @@ function addBookToCart(e) {
             cookie = cookie + "." + bookId;
             setCookie("TBCbooksInCart", cookie, 3);
         }
-        //TODO let user know book was added
+        if (cartIconElem.firstChild == null) {
+            var badge = createElementFromHTML("<span class=\"badge badge-red\"> </span>");
+            cartIconElem.insertBefore(badge, null);
+        }
     }
     else {
         //TODO let user know book quantity was updated
