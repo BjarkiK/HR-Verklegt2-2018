@@ -36,7 +36,7 @@
 }
 
 .book-detail-author {
-    width: 70%;
+    width: 65%;
 }
 
 .book-detailed-detail {
@@ -46,14 +46,6 @@
 .book-detail-window {
     display: inline-block;
     padding-right: 5%;
-}
-
-.star {
-    color: #e7e7e7;
-}
-
-.star-yellow {
-    color: #fed221;
 }
 
 .book-detail-buy {
@@ -93,11 +85,61 @@
     opacity: 0.9;
     cursor: pointer;
 }
-.starRating {
+.rating {
     /*padding-right: 5px;*/
-    width: 20%;
+    width: 22%;
 }
 .book-detail-grade {
     width: 10%;
     /*padding-left: 5px;*/
 } 
+
+
+.rating {
+    display: inline-block;
+    color: #fed221;
+    white-space: nowrap;
+}
+  
+  .rating .star {
+    display: inline-block;
+    position: relative;
+    letter-spacing: 0.05em;
+}
+  
+  .rating .star::before {
+    display: inline-block;
+    color: #e7e7e7;
+    font-size: 20px;
+    font-weight: bold;
+    content: '☆';
+    width: 1em;
+    height: 1em;
+ }
+  
+  .rating .star::after {
+    display: inline-block;
+    position: absolute;
+    content: '★';
+    color: #fed221;
+    font-size: 20px;
+    font-weight: bold;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    transition: all 0.1s linear;
+    overflow: hidden; 
+}
+  
+  .rating .star:hover::after,
+  .rating .star.active::after {
+    opacity: 1;
+    width: 1em;
+    height: 1em; 
+}
+  
+  .rating .star.active.half::after {
+    width: 0.5em;
+ }
