@@ -11,34 +11,47 @@ namespace TheBookCave.Repositories {
         public UserRepo() {
             _db = new DataContext();
         }
+       
         public List<UserListViewModel> getUser(string uid) {
-            var user = (from u in _db.Users
+            var user = (from u in _db.AspNetUsers
                                 where u.Id == uid
                                 select new UserListViewModel {
                                 Id = u.Id,
-                                AddressId = u.AddressId,
-                                FavoriteBookId = u.FavoriteBookId,
-                                Name = u.Name,
-                                OrderId = u.OrderId,
-                                Password = u.Password,
-                                Permission = u.Permission,
-                                Picture = u.Picture,
-                                SubscriptionId = u.SubscriptionId
+                                AccessFailedCount = u.AccessFailedCount,
+                                ConcurrencyStamp = u.ConcurrencyStamp,
+                                Email = u.Email,
+                                EmailConfirmed = u.EmailConfirmed,
+                                LockoutEnd = u.LockoutEnd,
+                                LockoutEnabled = u.LockoutEnabled,
+                                NormalizedEmail = u.NormalizedEmail,
+                                NormalizedUserName = u.NormalizedUserName,
+                                PasswordHash = u.PasswordHash,
+                                PhoneNumber = u.PhoneNumber,
+                                PhoneNumberConfirmed = u.PhoneNumberConfirmed,
+                                SecurityStamp = u.SecurityStamp,
+                                TwoFactorEnabled = u.TwoFactorEnabled,
+                                UserName = u.UserName
                                 }).ToList();
             return user;
         }
         public List<UserListViewModel> getAllUsers() {
-            var users = (from u in _db.Users
+            var users = (from u in _db.AspNetUsers
                                 select new UserListViewModel {
                                 Id = u.Id,
-                                AddressId = u.AddressId,
-                                FavoriteBookId = u.FavoriteBookId,
-                                Name = u.Name,
-                                OrderId = u.OrderId,
-                                Password = u.Password,
-                                Permission = u.Permission,
-                                Picture = u.Picture,
-                                SubscriptionId = u.SubscriptionId
+                                AccessFailedCount = u.AccessFailedCount,
+                                ConcurrencyStamp = u.ConcurrencyStamp,
+                                Email = u.Email,
+                                EmailConfirmed = u.EmailConfirmed,
+                                LockoutEnd = u.LockoutEnd,
+                                LockoutEnabled = u.LockoutEnabled,
+                                NormalizedEmail = u.NormalizedEmail,
+                                NormalizedUserName = u.NormalizedUserName,
+                                PasswordHash = u.PasswordHash,
+                                PhoneNumber = u.PhoneNumber,
+                                PhoneNumberConfirmed = u.PhoneNumberConfirmed,
+                                SecurityStamp = u.SecurityStamp,
+                                TwoFactorEnabled = u.TwoFactorEnabled,
+                                UserName = u.UserName
                                 }).ToList();
             return users;
         }
@@ -48,12 +61,25 @@ namespace TheBookCave.Repositories {
             return true;
         }
         public bool createUser(User user) {
-            _db.Users.Add(user);
+            _db.AspNetUsers.Add(user);
             _db.SaveChanges();
             return true;
         }
+/*
           public bool updateUser(User user) {
-            _db.Users.Update(user);
+            _db.AspNetUsers.Update(user);
+            _db.SaveChanges();
+            return true;
+        }
+        */
+        public bool updateUser(User user) {
+            _db.AspNetUsers.Update(user);
+            _db.SaveChanges();
+            return true;
+        }
+
+        public bool updateUser(UserRoles user) {
+            _db.AspNetUserRoles.Update(user);
             _db.SaveChanges();
             return true;
         }

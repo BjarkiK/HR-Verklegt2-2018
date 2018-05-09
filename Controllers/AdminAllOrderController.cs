@@ -1,3 +1,7 @@
+/*
+        Only Admin role can use admin contoller
+ */
+ 
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -11,7 +15,7 @@ using TheBookCave.Services;
 
 namespace TheBookCave.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "ADMIN")]
     public class AdminAllOrderController : Controller
     {
         private AdminOrderService _adminOrderService;

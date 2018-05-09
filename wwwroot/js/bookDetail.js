@@ -65,11 +65,19 @@ function displayStars(grade) {
             starElem.insertBefore(star, null);
         }
     }
-    
-    for (var i = 0; i < starElem.childElementCount; i++) {
-        starElem.children[i].addEventListener("click", function() { submitRating( this.getAttribute("value") )});
-        starElem.children[i].addEventListener("mouseout", defaultRating);
-        starElem.children[i].addEventListener("mouseover", function() { displayStars( this.getAttribute("value")) });
+    var stars = document.getElementsByClassName('fa-star');
+    for (var i = 0; i < stars.length; i++) {
+        stars[i].onmouseout = function() { defaultRating() };
+        stars[i].onclick = function() { submitRating( this.getAttribute("value")) };
+        stars[i].onmouseover = function() { displayStars( this.getAttribute("value")) };
+        //var starSpan = starElem.children[i];
+        //starSpan.onclick = submitRating( starSpan.getAttribute("value") );
+        //starElem.children[i].addEventListener("click", function() { submitRating( this.getAttribute("value") )});
+        //starElem.children[i].addEventListener("mouseout", defaultRating);
+        //starElem.children[i].addEventListener("mouseover", function() { displayStars( this.getAttribute("value")) });
+        //starElem.children[i].on
+        //stars[i].onmouseover = function() { displayStars( stars[i].getAttribute("value")) };
+        //stars[i].onmouseout = function() { defaultRating };
     }
 }
 
