@@ -31,6 +31,5 @@ namespace TheBookCave.Services {
             }
             return books;
         }
-
     }
 }

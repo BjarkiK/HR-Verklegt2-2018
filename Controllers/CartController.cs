@@ -24,6 +24,11 @@ namespace TheBookCave.Controllers
             return View();
         }
 
+        [HttpPost]
+        public int validatePromoCode(string code) {
+            return _cartService.validatePromoCode(code);
+        }
+
        /*
         public bool addBookToCart(int id) {
             return _cartService.addBookToCart(id);
