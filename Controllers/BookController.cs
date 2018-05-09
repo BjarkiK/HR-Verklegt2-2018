@@ -108,5 +108,14 @@ namespace TheBookCave.Controllers
         {
             _bookService.updateTotalGrade(bid, grade);
         }
+        public IActionResult search(string searchText)
+        {
+            if(searchText != null)
+            {
+                var search = _bookService.getBooksWithSearch(searchText);
+                return View(search);
+            }
+            return View();
+        }
     }
 }
