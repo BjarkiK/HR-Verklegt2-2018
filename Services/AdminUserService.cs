@@ -57,7 +57,7 @@ namespace TheBookCave.Services {
          public List<UserListViewModel> getSearchResult(string searchString) {
             var users = _userRepo.getAllUsers();
             var searchResult = (from u in users
-                        where u.Id.ToLower().Contains(searchString.ToLower())
+                        where u.Email.ToLower().Contains(searchString.ToLower())
                         select new UserListViewModel {
                                 Id = u.Id,
                                 AccessFailedCount = u.AccessFailedCount,

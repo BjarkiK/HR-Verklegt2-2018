@@ -26,7 +26,7 @@ namespace TheBookCave.Controllers
     
         public AdminUserController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager) {
             _userManger =  userManager;
-               _signInMager =  signInManager;
+            _signInMager =  signInManager;
             _adminUserService = new AdminUserService();
         }
         
@@ -41,13 +41,6 @@ namespace TheBookCave.Controllers
         {
             var searchResult = _adminUserService.getSearchResult(searchString);
             return View(searchResult);
-        }
-
-
-        public IActionResult userListDisplay()
-        {
-            var userList = _adminUserService.getAllUsers();
-            return View(userList);
         }
 
         public IActionResult userDetails(string id)
