@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="~/css/bookList.css" />
+<h1>Horror books</h1>
+
+<div class="row">
+    @foreach(var book in @Model)
+    {
+    <div class="col-md-3 book-box" value="@book.Id">
+        <div class="thumbnail">
+            <img class="book-image" src="~/@book.Picture" alt="Image broken">
+            <div class="caption">
+                <div class="titleDiv">
+                    <h3 class="title">@book.Name</h3>
+                </div>
+                <h4 class="author">@book.Author</h4>
+                <p>@book.DetailsEN</p>
+            </div>
+        </div>
+    </div>
+    }
+</div>

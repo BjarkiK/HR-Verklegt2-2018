@@ -6,32 +6,62 @@
     margin: 10px;
     display: flex;
     align-items: center;
-    border-top: 1px solid gray;
+    border-top: 1px solid rgb(160, 148, 148);
     padding: 10px 10px 0 10px;
 }
 
 .book-detail-image {
     flex: 0 1 7%;
-    height: 100px;
+    height: auto;
+    max-height: 170px;
+    margin-right: 10px;
+}
+
+.cart-item-detail {
+    padding-left: 30px;
+    flex: 0 1 43%;
     margin-right: 10px;
 }
 
 .cart-title {
-    font-size: 20px;
+    font-size: 24px;
     font-weight: bold;
-    padding-left: 30px;
-    flex: 0 1 33%;
-    margin-right: 10px;
 }
 
-.cart-price {
+.cart-item-sum {
+    flex: 0 1 15%;
+}
+
+.cart-quantity-container {
     padding-left: 30px;
-    flex: 0 1 30%;
+    flex: 0 1 25%;
+    display: flex;
+    align-items: center;
 }
 
 .cart-quantity {
-    padding-left: 30px;
-    flex: 0 1 20%;
+    font-size: 48px;
+    margin: 0;
+    padding: 0 10px 0 10px;
+}
+
+.cart-quantity-btn {
+    background-color: rgb(209, 185, 185);
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 1px solid rgb(160, 148, 148);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    cursor: pointer;
+    color: white;
+}
+
+.cart-quantity-btn:hover {
+    font-size: 17px;
+    opacity: 0.9;
 }
 
 .cart-remove-btn {
@@ -49,4 +79,52 @@
 
 .cart-remove-btn:hover {
     font-size: 28px;
+    opacity: 0.9;
 }
+
+.cart-price-container {
+    display: flex;
+}
+
+.cart-discounted-price {
+    padding-left: 10px;
+    text-decoration: line-through;
+}
+
+.cart-sum-container {
+    padding: 30px;
+    border-top: 4px solid rgb(116, 112, 112);
+    display: flex;
+}
+
+.cart-promoCode {
+    flex-basis: 60%;
+}
+
+.cart-sum {
+    display: flex;
+    justify-content: flex-start;
+    flex-basis: 40%;
+    margin-right: 40px;
+}
+
+.cart-sum-col1 {
+    flex-basis: 80%;
+}
+.cart-sum-col2 {
+    text-align: right;
+    margin-left: auto;
+}
+
+/*
+.cart-empty {
+    width: 80%;
+    margin-top: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+*/
+
+

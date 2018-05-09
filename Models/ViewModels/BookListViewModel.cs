@@ -27,6 +27,8 @@ namespace TheBookCave.Models.ViewModels {
         public int Pages { get; set; }
         // How many books are in stock.
         public int Quantity { get; set; }
+        // Total number of user grades - To calculate the average grade
+        public int NrOfGrades { get; set; }
         // The total user grade of book.
         public double Grade { get; set; }
         // Determains if the book is visible on the website or is

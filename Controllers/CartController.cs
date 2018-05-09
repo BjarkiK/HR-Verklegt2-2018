@@ -23,5 +23,10 @@ namespace TheBookCave.Controllers
             return View(cartList);*/
             return View();
         }
+
+       /*
+        public bool addBookToCart(int id) {
+            return _cartService.addBookToCart(id);
+        }*/
     }
 }

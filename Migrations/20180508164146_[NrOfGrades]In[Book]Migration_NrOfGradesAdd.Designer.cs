@@ -11,9 +11,10 @@ using TheBookCave.Data;
 namespace TheBookCave.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20180508164146_[NrOfGrades]In[Book]Migration_NrOfGradesAdd")]
+    partial class NrOfGradesInBookMigration_NrOfGradesAdd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

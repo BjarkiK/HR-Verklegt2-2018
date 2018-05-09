@@ -28,6 +28,11 @@ namespace TheBookCave.Controllers
             var bookList = _bookService.getAllBooks();
             return View(bookList);
         }
+        public IActionResult allBooks()
+        {
+            var allbooks = _bookService.getBookList();
+            return View(allbooks);
+        }
 
         public IActionResult details(int id)
         {
@@ -37,21 +42,48 @@ namespace TheBookCave.Controllers
             }              
             return View(book);
         }
+        public IActionResult horror()
+        {
+            var genreBooks = _bookService.getBooksByGenre("Horror");
+            return View(genreBooks);
+        }
+        public IActionResult fantasy()
+        {
+            var genreBooks = _bookService.getBooksByGenre("Fantasy");
+            return View(genreBooks);
+        }
+        public IActionResult romance()
+        {
+            var genreBooks = _bookService.getBooksByGenre("Romance");
+            return View(genreBooks);
+        }
+        public IActionResult classic()
+        {
+            var genreBooks = _bookService.getBooksByGenre("Classic");
+            return View(genreBooks);
+        }
+        public IActionResult scifi()
+        {
+            var genreBooks = _bookService.getBooksByGenre("Scifi");
+            return View(genreBooks);
+        }
+        public IActionResult crime()
+        {
+            var genreBooks = _bookService.getBooksByGenre("Crime");
+            return View(genreBooks);
+        }
+        public IActionResult plays()
+        {
+            var genreBooks = _bookService.getBooksByGenre("Plays");
+            return View(genreBooks);
+        }
 
         public IActionResult bookNotFound() {
             return View();
         }
-
-       
         public IActionResult reviewBook()
         {
             // _bookService.addBookReview(?review?);
-            return View();
-        }
-       
-        public IActionResult totalGradeUpdate(string bid)
-        {
-            //_bookService.updateTotalGrade(bid);
             return View();
         }
         public IActionResult bookReviewListDisplay(string bid)
@@ -60,17 +92,21 @@ namespace TheBookCave.Controllers
             return View(bookReviewList);*/
             return View();
         }
-        public IActionResult booksWithSameAuthor(int aid)
+        public IActionResult booksWithSameAuthor(int id)
         {
-            /*authorBookList = _bookService.getBookByAuthor(aid);
-            return View(authorBookList);*/
-            return View();
+            var authorBookList = _bookService.getBooksByAuthor(id);
+            return View(authorBookList);
         }
         public IActionResult booksWithSameGenre(int gid)
         {
             /*genreBookList = _bookService.getBookByGenre(gid);
             return View(genreBookList);*/
             return View();
+        }
+        [HttpPost]
+        public void totalGradeUpdate(int bid, int grade)
+        {
+            _bookService.updateTotalGrade(bid, grade);
         }
     }
 }

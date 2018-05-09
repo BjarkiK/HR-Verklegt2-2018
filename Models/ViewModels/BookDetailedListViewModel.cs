@@ -17,7 +17,9 @@ namespace TheBookCave.Models.ViewModels {
         public string Publisher { get; set; }
         //Price of book
         public double Price { get; set; }
-        // If the book has any discount.
+        // Total number of user grades - To calculate the average grade
+        public int NrOfGrades { get; set; }
+        // Total user grades
         public double Grade { get; set; }
 
         public string DetailsIS { get; set; }
