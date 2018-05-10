@@ -15,19 +15,20 @@
                         <img class="book-preview-image" src="~/@book.Picture" alt="Image broken">
                         <h3 class="book-preview-title">@book.Name</h3>
                         <h4 class="preview-book-author">@book.Author</h4>
-                        <h4>@book.Price kr</h4>
+                        @if(@book.Discount == 0) {
+                            <div class="book-detail-price">Price: @book.Price kr</div>
+                        }
+                        else {
+                            int price = Convert.ToInt32(@book.Price);
+                            int discountPrice = Convert.ToInt32((1 - @book.Discount/100m) * price);
+                            <div class="book-detail-price-container">
+                                <div class="book-detail-price">Price: @discountPrice kr</div>
+                                <div class="discounted-price">@book.Price kr</div>
+                                <div>(-@book.Discount%)</div>
+                            </div>
+                        }
                     </div>
                 </div>
-
-               /* <a href="book/details/@book.Id" class="single-book-container">
-                    <div class="book">
-                        <div class="Teste"></div>
-                        <p class="book-preview-title">@book.Name</p>
-                        <img class="book-preview-image" src="@book.Picture" alt="Image broken">
-                        <p class="preview-book-author">@book.Author</p>
-                        <p>@book.Price kr.</p>
-                    </div>
-                </a>*/
             }
             </div>
         </div>
@@ -44,15 +45,25 @@
         <div class="books-container">
             <div class="books-container2">
             @foreach(var book in @Model.Newest) {
-                <a href="book/details/@book.Id" class="single-book-container">
-                    <div class="book">
-                        <div class="Teste"></div>
-                        <p class="book-preview-title">@book.Name</p>
-                        <img class="book-preview-image" src="@book.Picture" alt="Image broken">
-                        <p class="preview-book-author">@book.Author</p>
-                        <p>$ @book.Price kr.</p>
+                <div class="single-book-container">
+                    <div class="book-box" value="@book.Id">
+                        <img class="book-preview-image" src="~/@book.Picture" alt="Image broken">
+                        <h3 class="book-preview-title">@book.Name</h3>
+                        <h4 class="preview-book-author">@book.Author</h4>
+                        @if(@book.Discount == 0) {
+                            <div class="book-detail-price">Price: @book.Price kr</div>
+                        }
+                        else {
+                            int price = Convert.ToInt32(@book.Price);
+                            int discountPrice = Convert.ToInt32((1 - @book.Discount/100m) * price);
+                            <div class="book-detail-price-container">
+                                <div class="book-detail-price">Price: @discountPrice kr</div>
+                                <div class="discounted-price">@book.Price kr</div>
+                                <div>(-@book.Discount%)</div>
+                            </div>
+                        }
                     </div>
-                </a>
+                </div>
             }
             </div>
         </div>

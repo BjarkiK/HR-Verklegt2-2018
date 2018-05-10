@@ -50,13 +50,15 @@ Review step (read-only)
 X Add book to cart
 
 
-X 1
-X 2
-3 - Vantar allt
-Y 4 - Bæta við dropdown lista með öllum Genre, Author, Publisher sem eru til í grunni eða bæta nýjum við
-Y 5 - Sama og í 4
-X 6
-X 7
-X 8
-X 9
-10 - Vantar allt
+
+Kröfulisti 
+X 1 Notandi á að geta pantað bók
+X 2 Notandi á að geta fundið ákveðna bók
+3 Notandi á að geta greitt fyrir bók með kreditkorti - Vantar allt
+Y 4 Starfsmaður þarf að geta bætt inn bók - Bæta við dropdown lista með öllum Genre, Author, Publisher sem eru til í grunni eða bæta nýjum við
+Y 5 Starfsmaður þarf að geta uppfært bók - Sama og í 4
+X 6 Kerfið þarf að geta sýnt nánari upplýsingar um bók
+X 7 Kerfið þarf að geta bætt við í körfu
+X 8 Notandi þarf að geta skoðað körfuna
+X 9 Notandi þarf að geta eytt úr körfu
+10 Notandi þarf að geta valið "shipping address" - Vantar allt
