@@ -103,7 +103,7 @@ namespace TheBookCave.Controllers
                 }
                 return View("noResults");
             }
-            return View("NotFound");
+            return View("noResults");
         }
         public IActionResult advancedSearch(string title, string publisher, string author, string isbn) 
         {
