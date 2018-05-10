@@ -8,7 +8,7 @@
 
 <form asp-controller="AdminBook" asp-action="index">
     <p>
-        <input type="text" name="SearchString" value="Search book name">
+        <input type="text" name="SearchString" placeholder="Search book name">
         <input type="submit" value="Submit" />
     </p>
 </form>
@@ -22,9 +22,6 @@
             <th>BookName</th>
             <th>Edit book</th>
             <th>Remove book</th>
-            <th>Picture</th>
-            <th>DetailsIS</th>
-            <th>DetailsEN</th>
             <th>Price</th>
             <th>Discount</th>
             <th>Pages</th>
@@ -39,9 +36,6 @@
             <td><a asp-controller="AdminBook" asp-action="bookDetails" asp-route-id="@book.Id">@book.Name</a></td>
             <td><a asp-controller="adminBook" asp-action="EditBook" class="btn btn-default" asp-route-id="@book.Id">Edit book</a></td>
             <td><a asp-controller="adminBook" asp-action="RemoveBook" class="btn btn-default" asp-route-id="@book.Id">Remove book</a></td>
-            <td>@book.Picture</td>
-            <td>@book.DetailsIS</td>
-            <td>@book.DetailsEN</td>
             <td>@book.Price</td>
             <td>@book.Discount</td>
             <td>@book.Pages</td>

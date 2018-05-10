@@ -57,11 +57,12 @@
             </div>
             <div class="col-md-2">
                 <ul class="nav navbar-nav"> 
-                    <li><a asp-area="" asp-controller="FrontPage" asp-action="Globe"><span class="glyphicon glyphicon-globe" aria-hidden="true"></a></li>
-                    <li><a asp-area="" asp-controller="Account" asp-action="index"><span class="glyphicon glyphicon-user" aria-hidden="true"></a></li>
+                    <li>@await Html.PartialAsync("_LoginPartial")</li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Globe"><span class="glyphicon glyphicon-globe" aria-hidden="true"></a></li>
+                    <li><a asp-area="" asp-controller="AdminAllOrder" asp-action="index"><span class="glyphicon glyphicon-user" aria-hidden="true"></a></li>
+                    
                     <li><a asp-area="" asp-controller="Cart" asp-action="index"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></a></li>
                 </ul>
-                @await Html.PartialAsync("_LoginPartial")
             </div>
         </div>
     </div>
@@ -129,7 +130,7 @@
         </div>
         <div class="col-md-2">
             <div id="footerLeft">
-                <a asp-controller="Home" asp-action="AboutUs">About Us</a><br>
+                <a asp-controller="FrontPage" asp-action="AboutUs">About Us</a><br>
                 <a asp-controller="HelpCenter" asp-action="index">Help</a>
                 <br>
                 <p>temporary linkar á aðrar síður hér að neðan</p>

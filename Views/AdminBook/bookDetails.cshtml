@@ -10,7 +10,7 @@
 @foreach(var book in @Model) {
     <ul>
     <li>BookName: @book.Name</li>
-    <li>Picture: @book.Picture</li>
+    <li>Picture: <img src="~/@book.Picture"></li>
     <li>DetailsIS: @book.DetailsIS</li>
     <li>DetailsEN: @book.DetailsEN</li>
     <li>Price: @book.Price</li>

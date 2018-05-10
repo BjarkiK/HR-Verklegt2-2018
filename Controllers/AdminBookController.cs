@@ -1,3 +1,7 @@
+/*
+        Only Admin role can use admin contoller
+ */
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -13,7 +17,7 @@ using TheBookCave.Services;
 
 
 namespace TheBookCave.Controllers {
-    [Authorize]
+    [Authorize(Roles = "ADMIN")]
     public class AdminBookController : Controller {
         private AdminBookService _adminBookService;
 
@@ -36,8 +40,6 @@ namespace TheBookCave.Controllers {
             return View(searchResult);
         }
 
-
-
         public IActionResult bookListDisplay() {
             var bookList = _adminBookService.getAllBooks();
             return View(bookList);
@@ -56,7 +58,6 @@ namespace TheBookCave.Controllers {
         }
         [HttpPost]
         public ActionResult editBook(BookListViewModel book) {
-            Console.WriteLine(book.Name);
            	if (ModelState.IsValid) {
 				_adminBookService.updateBook(book);
 				return RedirectToAction("index");
@@ -76,7 +77,6 @@ namespace TheBookCave.Controllers {
 
         [HttpPost]
         public ActionResult removeBook(BookListViewModel book) {
-            Console.WriteLine(book.Name);
            	if (ModelState.IsValid) {
 				_adminBookService.removeBook(book);
 				return RedirectToAction("index");

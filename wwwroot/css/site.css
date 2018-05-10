@@ -33,7 +33,7 @@
     display: flex;
 }
 
-#sideBar {
+#SideBar {
     display: inline-block;
     margin: 60px 20px 20px;
     border-radius: 5px;
@@ -42,6 +42,17 @@
     border-color: black;
     border: 2px solid;
 }
+
+#adminBar {
+    display: inline-block;
+    margin: 60px 20px 20px;
+    border-radius: 5px;
+    width: 250px;
+    height:431px;
+    border-color: black;
+    border: 2px solid;
+}
+
 
 #HeaderSignUp {
     text-align: center
@@ -190,48 +201,30 @@ table, td, th {
     text-align: left;
 }
 
+
+
 table {
+    margin : 0px;
     border-collapse: collapse;
     width: 100%;
+    table-layout: auto;
+    width: 180px;
 }
 
+th, td :nth-child(even){
+    background-color: #f2f2f2;
+   
+}
 th, td {
     padding: 15px;
 }
-/*
-form.example input[type=text] {
-    padding: 10px;
-    font-size: 17px;
-    border: 1px solid grey;
-    float: left;
-    width: 80%;
-    background: #f1f1f1;
-}
 
-form.example button {
-    float: left;
-    width: 20%;
-    padding: 10px;
-    background: #2196F3;
-    color: white;
-    font-size: 17px;
-    border: 1px solid grey;
-    border-left: none;
-    cursor: pointer;
+td { 
+    
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    word-wrap: break-word;
 }
-
-form.example button:hover {
-    background: #0b7dda;
-}
-
-form.example::after {
-    content: "";
-    clear: both;
-    display: table;
-}
-*/
-
-/* Bug fix fyrir footer - kemur whitespace annars */
 .row {
     margin-right: 0;
     margin-left: 0;

@@ -8,7 +8,7 @@
 
 <form asp-controller="adminUser" asp-action="index">
     <p>
-        <input type="text" name="SearchString" value="Search for use id">
+        <input type="text" name="SearchString" placeholder="Search for email..">
         <input type="submit" value="Submit" />
     </p>
 </form>
@@ -18,16 +18,11 @@
  <table align="center">
     <thead>
       <tr>
-            <th>User Id</th>
-            <th>Edit User</th>
-            <th>Name</th>
-            <th>Picture</th>
-            <th>Password</th>
-            <th>FavoriteBook Id</th>
-            <th>Subscription Id</th>
-            <th>Order Id</th>
-            <th>Permission</th>
-            <th>Adress Id</th>
+            <th>Click User id for details</th>
+            <th>Edit user</th>
+            <th>Email</th>
+            <th>PhoneNumber</th>
+            <th>UserName</th>
         </tr>
     </thead>
     @foreach(var user in @Model)
@@ -36,14 +31,9 @@
         <tr>
             <td><a asp-controller="AdminUser" asp-action="userDetails" asp-route-id="@user.Id">@user.Id</a></td>
             <td><a asp-controller="AdminUser" asp-action="EditUser" class="btn btn-default" asp-route-id="@user.Id">Edit user</a></td>
-            <td>@user.Name</td>
-            <td>@user.Password</td>
-            <td>@user.Picture</td>
-            <td>@user.FavoriteBookId</td>
-            <td>@user.SubscriptionId</td>
-            <td>@user.OrderId</td>
-            <td>@user.Permission</td>
-            <td>@user.AddressId</td>
+            <td>@user.Email</td>
+            <td>@user.PhoneNumber</td>
+            <td>@user.UserName</td>
         </tr>
     </tbody>
     }

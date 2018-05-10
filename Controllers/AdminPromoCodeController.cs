@@ -1,3 +1,7 @@
+/*
+        Only Admin role can use admin contoller
+ */
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -11,7 +15,7 @@ using TheBookCave.Services;
 
 namespace TheBookCave.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "ADMIN")]
     public class AdminPromoCodeController : Controller
     {
         private AdminPromoCodeService _adminPromoCodeService;
@@ -37,7 +41,6 @@ namespace TheBookCave.Controllers
         public IActionResult promoCodeListDisplay()
         {
             var promoCodeList = _adminPromoCodeService.getAllPromoCode();
-            Console.WriteLine(promoCodeList.First().Description);
             return View(promoCodeList);
         }
         public IActionResult promoCodeDetails(int id)

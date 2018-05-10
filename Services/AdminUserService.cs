@@ -35,15 +35,21 @@ namespace TheBookCave.Services {
 
         private User convertUserListViewModelToUser(UserListViewModel u) {
             var user = new User {
-                                Id = u.Id,
-                                AddressId = u.AddressId,
-                                FavoriteBookId = u.FavoriteBookId,
-                                Name = u.Name,
-                                OrderId = u.OrderId,
-                                Password = u.Password,
-                                Permission = u.Permission,
-                                Picture = u.Picture,
-                                SubscriptionId = u.SubscriptionId                         
+                                 Id = u.Id,
+                                AccessFailedCount = u.AccessFailedCount,
+                                ConcurrencyStamp = u.ConcurrencyStamp,
+                                Email = u.Email,
+                                EmailConfirmed = u.EmailConfirmed,
+                                LockoutEnd = u.LockoutEnd,
+                                LockoutEnabled = u.LockoutEnabled,
+                                NormalizedEmail = u.NormalizedEmail,
+                                NormalizedUserName = u.NormalizedUserName,
+                                PasswordHash = u.PasswordHash,
+                                PhoneNumber = u.PhoneNumber,
+                                PhoneNumberConfirmed = u.PhoneNumberConfirmed,
+                                SecurityStamp = u.SecurityStamp,
+                                TwoFactorEnabled = u.TwoFactorEnabled,
+                                UserName = u.UserName                 
                                 };
             return user;
         }
@@ -51,17 +57,23 @@ namespace TheBookCave.Services {
          public List<UserListViewModel> getSearchResult(string searchString) {
             var users = _userRepo.getAllUsers();
             var searchResult = (from u in users
-                        where u.Id.ToLower().Contains(searchString.ToLower())
+                        where u.Email.ToLower().Contains(searchString.ToLower())
                         select new UserListViewModel {
                                 Id = u.Id,
-                                AddressId = u.AddressId,
-                                FavoriteBookId = u.FavoriteBookId,
-                                Name = u.Name,
-                                OrderId = u.OrderId,
-                                Password = u.Password,
-                                Permission = u.Permission,
-                                Picture = u.Picture,
-                                SubscriptionId = u.SubscriptionId
+                                AccessFailedCount = u.AccessFailedCount,
+                                ConcurrencyStamp = u.ConcurrencyStamp,
+                                Email = u.Email,
+                                EmailConfirmed = u.EmailConfirmed,
+                                LockoutEnd = u.LockoutEnd,
+                                LockoutEnabled = u.LockoutEnabled,
+                                NormalizedEmail = u.NormalizedEmail,
+                                NormalizedUserName = u.NormalizedUserName,
+                                PasswordHash = u.PasswordHash,
+                                PhoneNumber = u.PhoneNumber,
+                                PhoneNumberConfirmed = u.PhoneNumberConfirmed,
+                                SecurityStamp = u.SecurityStamp,
+                                TwoFactorEnabled = u.TwoFactorEnabled,
+                                UserName = u.UserName
                         }).ToList();
 
             return searchResult;

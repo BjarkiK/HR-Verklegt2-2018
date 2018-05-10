@@ -11,7 +11,7 @@ using TheBookCave.Services;
 
 namespace TheBookCave.Controllers
 {   
-    [Authorize]
+    [Authorize(Roles = "ADMIN")]
     public class AdminSubscriptionController : Controller
     {
         private AdminSubscriptionService _adminSubscriptionService;
