@@ -19,3 +19,11 @@ h3, h4 {
     display: inline-block;
     margin: 4px 4px;
 }
+.sub-item {
+    height: 250px;
+}
+.descript {
+    margin: 0px 15px;
+    height: 100px;
+    overflow: hidden;
+}
