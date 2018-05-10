@@ -1,6 +1,5 @@
-.caption {
-    border: solid 2px black;
-    margin: 2% 5% 2% 5%;
+.thumbnail {
+    margin: 2% 0% 2% 0%;
     padding: 1%;
     border-radius: 5px; 
 }
@@ -18,4 +17,8 @@ h3, h4 {
 .button, .price {
     display: inline-block;
     margin: 4px 4px;
+}
+
+p {
+    padding: 0% 2%;
 }
