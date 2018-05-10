@@ -1,3 +1,4 @@
+
 using System.Collections.Generic;
 using TheBookCave.Models.ViewModels;
 using TheBookCave.Repositories;
@@ -29,17 +30,6 @@ namespace TheBookCave.Services {
             var book = _bookRepo.getBook(bid);
             return book;
         }
-        
-         public List<BookListViewModel> getBooksByAuthor(int aid) {
-            var books = _bookRepo.getAllBooks();
-            List<BookListViewModel> authorsBooks = books.Where(b => b.AuthorId == aid).ToList();
-            if (authorsBooks.Count == 0){
-                return null;
-            }
-            return authorsBooks;
-        }
-
-
         public List<UserReviewListViewModel> getBookReviews(int bid) { 
             var reviews = _userGradeRepo.getAllReviewsBook(bid);
             
@@ -85,12 +75,9 @@ namespace TheBookCave.Services {
                                 Published = b.Published,
                                 Genre = g.GenreEN,
                                 Author = a.Name,
-                                Publisher = p.Name,
-
+                                Publisher = p.Name
                              }).ToList();
-            var OrderbyName = joined.OrderBy(x=>x.Name).ToList();
-            
-            return OrderbyName;
+            return joined;
         }
         public List<BookDetailedListViewModel> getDetailedBook(int id) {
             var books = getBookList();
@@ -116,33 +103,33 @@ namespace TheBookCave.Services {
         public List<BookDetailedListViewModel> getBooksByGenre(string genre) {
             var books = getBookList();
             List<BookDetailedListViewModel> genreBooks = books.Where(g => g.Genre == genre).ToList();
-            
-            var OrderbyName = genreBooks.OrderBy(x=>x.Name).ToList();
-
             if (genreBooks.Count == 0){
                 return null;
             }
-            return OrderbyName;
+            return genreBooks;
         }
         public List<BookDetailedListViewModel> getBooksByAuthor(string author) {
             var books = getBookList();
             List<BookDetailedListViewModel> authorsBooks = books.Where(a => a.Author == author).ToList();
-            var OrderbyName = authorsBooks.OrderBy(x=>x.Name).ToList();
-
             if (authorsBooks.Count == 0){
                 return null;
             }
-            return OrderbyName;
+            return authorsBooks;
         }
-       
+        public List<BookListViewModel> getBooksByAuthor(int aid) {
+            var books = _bookRepo.getAllBooks();
+            List<BookListViewModel> authorsBooks = books.Where(b => b.AuthorId == aid).ToList();
+            if (authorsBooks.Count == 0){
+                return null;
+            }
+            return authorsBooks;
+        }
         public List<BookDetailedListViewModel> getBooksWithSearch(string param) {
             var books = getBookList();
             List<BookDetailedListViewModel> searchResult = books.Where(b => b.Author.ToLower().Contains(param.ToLower())
                                                                          || b.Name.ToLower().Contains(param.ToLower())
                                                                          || b.Genre.ToLower().Contains(param.ToLower())).ToList();
-            var searchOrderbyName = searchResult.OrderBy(x=>x.Name).ToList();
-
-            return searchOrderbyName;
+            return searchResult;
         }
         public List<BookDetailedListViewModel> getBooksWithAdvSearch(string param1, string param2, string param3, string param4) {
             /* tekur marga param og leitar út frá því */
@@ -150,8 +137,7 @@ namespace TheBookCave.Services {
             if(param1 != null && param2 == null && param3 == null && param4 == null)
             {
                 List<BookDetailedListViewModel> searchResult = books.Where(b => b.Name.ToLower().Contains(param1.ToLower())).ToList();
-                var OrderbyName = searchResult.OrderBy(x=>x.Name).ToList();
-                return OrderbyName;
+                return searchResult;
             }
             return null;
         }
