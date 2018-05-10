@@ -11,7 +11,7 @@
             @{int counter = 1;}
             @foreach(var book in @Model.Top10) {
                 <div class="single-book-container">
-                    <div class="book-box" value="@book.Id">
+                    <div class="book-box click-book" value="@book.Id">
                         <div class="ticketOnBooks">
                             <img class="book-preview-image" src="~/@book.Picture" alt="Image broken">
                             <div class="text-block">
@@ -52,7 +52,7 @@
             <div class="books-container2">
             @foreach(var book in @Model.Newest) {
                 <div class="single-book-container">
-                    <div class="book-box" value="@book.Id">
+                    <div class="book-box click-book" value="@book.Id">
                     <div class="ticketOnBooks">
                         <div class="text-block">
                             <h4>NEW</h4>
