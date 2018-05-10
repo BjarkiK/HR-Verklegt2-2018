@@ -66,7 +66,7 @@
                     <a asp-controller="book" asp-action="plays" class="@(ViewContext.RouteData.Values["Action"].ToString() == "plays" ? "active-side" : "") list-group-item list-group-item-action SideButton">Plays</a>
                     <a asp-controller="book" asp-action="classic" class="@(ViewContext.RouteData.Values["Action"].ToString() == "classic" ? "active-side" : "") list-group-item list-group-item-action SideButton">Classic</a>
                     <a asp-controller="book" asp-action="crime" class="@(ViewContext.RouteData.Values["Action"].ToString() == "crime" ? "active-side" : "") list-group-item list-group-item-action SideButton">Crime</a>
-                    <a asp-controller="subscription" asp-action="index" class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active-side" : "") list-group-item list-group-item-action SideButton">Subscriptions</a>
+                    <a asp-controller="subscription" asp-action="index" class="@(ViewContext.RouteData.Values["Controller"].ToString() == "subscription" ? "active-side" : "") list-group-item list-group-item-action SideButton">Subscriptions</a>
                 </div>
             </div>
         </div>
