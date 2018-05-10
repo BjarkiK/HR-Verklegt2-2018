@@ -284,3 +284,17 @@ hr {
 .profile-layot {
     margin-top: 10px;
 }
+#editbuttons
+{
+    background-color: lightgreen;
+}
+#removebuttons
+{
+    background-color: lightcoral;
+}
+
+#addbuttons
+{
+    background-color: blue;
+    color: white;
+}
