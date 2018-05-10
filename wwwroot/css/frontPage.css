@@ -31,8 +31,8 @@
 }
 
 .book-preview-image {
-    width: 109px;
-    height: 160px;
+    width: 124px;
+    height: 183px;
     border: 0.5px solid gray;
     object-fit: cover;
 }

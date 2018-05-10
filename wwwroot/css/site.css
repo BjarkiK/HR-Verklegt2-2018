@@ -38,7 +38,7 @@
 .main-container {
     display: flex;
 }
-
+/*
 #SideBar {
     display: inline-block;
     margin: 60px 20px 20px;
@@ -48,7 +48,7 @@
     border-color: black;
     background-color: #2A3132;
     border: 2px solid;
-}
+}*/
 
 #adminBar {
     display: inline-block;
@@ -156,6 +156,9 @@ td {
 #sideBar {
     margin-top: 10px;
 }
+#sideBar a:hover {
+    background-color: #c0b283;
+}
 
 .header {
     background-color: #3b3a36;
@@ -255,4 +258,11 @@ td {
 
 hr {
     border-top: 1px solid #3b3a36;
+}
+.profile-container {
+    margin-top: 10px;
+}
+.profile-picture {
+    height: 150px;
+    border: solid 1px;
 }
