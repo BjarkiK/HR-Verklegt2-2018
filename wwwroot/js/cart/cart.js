@@ -22,7 +22,30 @@ function getCookie(cname) {
             return c.substring(name.length, c.length);
         }
     }
+    if (decodedCookie[15] != null) {
+        addCartBadge();
+    } else {
+        removeCartBadge();
+    }
     return "";
+}
+
+
+function addCartBadge() {
+    var cartIconElem = document.getElementsByClassName("glyphicon-shopping-cart")[0];
+    if (cartIconElem.firstChild == null) {
+        var badge = document.createElement('span');
+        badge.className = 'badge badge-red';
+        badge.innerHTML = "_";
+        cartIconElem.appendChild(badge);
+    }
+}
+
+function removeCartBadge() {
+    var cartIconElem = document.getElementsByClassName("glyphicon-shopping-cart")[0];
+    if (cartIconElem.firstChild != null) {
+        cartIconElem.innerHTML = "";
+    }
 }
 
 

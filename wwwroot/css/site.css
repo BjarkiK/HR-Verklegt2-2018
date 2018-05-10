@@ -256,3 +256,11 @@ td {
 hr {
     border-top: 1px solid #3b3a36;
 }
+.badge-red {
+    z-index: 2;
+    color: #ca1111;
+    background-color: #ca1111;
+    padding: 2px 5px;
+    font-size: 5px;
+    border-radius: 7px;
+}

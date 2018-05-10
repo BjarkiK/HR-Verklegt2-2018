@@ -18,14 +18,18 @@ function addBookToCart(e) {
             cookie = cookie + "." + bookId;
             setCookie("TBCbooksInCart", cookie, 3);
         }
-        if (cartIconElem.firstChild == null) {
-            var badge = createElementFromHTML("<span class=\"badge badge-red\"> </span>");
-            cartIconElem.insertBefore(badge, null);
-        }
+        alertBookAdd();
+        addCartBadge();
     }
     else {
-        //TODO let user know book quantity was updated
+        alertBookAdd();
     }
+}
+
+function alertBookAdd() {
+    var bookTitle = document.getElementsByClassName("book-detail-title")[0];
+    $('.book-detail-addtocart-button').popover({content: "" + bookTitle.innerHTML + " added to cart!", trigger: "focus", placement: "bottom"});
+    $('.book-detail-addtocart-button').popover('show');
 }
 
 function idAlreadyAdded(cvalue, bId) {
