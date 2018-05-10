@@ -9,17 +9,17 @@
 @foreach (var book in Model)
 {
     <div class="searchResults">
-        <div class="col-md-1">
+        <div class="col-md-1 searchBoxes">
             <img src="~/@book.Picture">
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 searchBoxes">
             <h3>@book.Name</h3>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 searchBoxes">
             <h3>@book.Author</h3>
         </div>
-        <div class="col-md-1 buttonDiv">
-            <a asp-controller="book" asp-action="details" asp-route-id="@book.Id" class="btn btn-primary btn-lg" role="button">Details</a>
+        <div class="col-md-1">
+            <div class="buttonDiv"><a asp-controller="book" asp-action="details" asp-route-id="@book.Id" class="btn btn-primary btn-lg detailsButt" role="button">Details</a></div>
         </div>
         <div class="col-md-2"></div>
     </div>

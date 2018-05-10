@@ -114,7 +114,7 @@
     color: #bb0000;
 }
 
-table, td, th {    
+table, td, th {
     border: 1px solid #ddd;
     text-align: left;
 }
@@ -263,4 +263,7 @@ hr {
 .profile-picture {
     height: 150px;
     border: solid 1px;
+}
+.profile-layot {
+    margin-top: 10px;
 }

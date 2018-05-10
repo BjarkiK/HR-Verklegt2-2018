@@ -6,7 +6,7 @@ h2 {
     text-align: center;
 }
 h3 {
-    height: 150px;
+    /*height: 150px;*/
     margin: auto;
 }
 .buttonDiv {
@@ -16,7 +16,22 @@ h3 {
     height: 160px;
     margin: 1% 0;
     border-radius: 5px;
+    display: flex;
+    justify-content: center;
 }
 .searchResults:nth-child(odd) {
     background: #f0f0f0;
+}
+.searchBoxes {
+    text-align: left;
+    margin: auto;
+}
+.buttonDiv {
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+}
+.detailsButt {
+    display: block;
+    margin: 0 auto;
 }
