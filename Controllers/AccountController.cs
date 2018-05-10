@@ -62,7 +62,7 @@ namespace authentication_repo.Controllers
                 return View();
             }
             // nyr user . Username og email verd tad sama
-            var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName };
+            var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, Picture = "~/images/profile/profileImagePlaceholder.jpg" };
             //  Task til ad nota asynic
             // _userMangar byr til user i startup
             var result = await _userManger.CreateAsync(user, model.Password);

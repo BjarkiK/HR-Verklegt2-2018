@@ -97,8 +97,17 @@ namespace TheBookCave.Controllers
         public IActionResult search(string searchText) {
             if(searchText != null) {
                 var search = _bookService.getBooksWithSearch(searchText);
-                return View(search);
+                if(search != null) 
+                {
+                    return View(search);
+                }
+                return View("noResults");
             }
+            return View("noResults");
+        }
+        public IActionResult advancedSearch(string title, string publisher, string author, string isbn) 
+        {
+            var search = _bookService.getBooksWithAdvSearch(title, publisher, author, isbn);
             return View();
         }
     }
