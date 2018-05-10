@@ -42,12 +42,10 @@
         <a class="actual-logo" asp-controller="FrontPage" asp-action="Index">The Book Cave</a>
     </div>
     <div class="search-container">
-
         <form  class="search" asp-action="search" asp-controller="Book" method="GET">
             <input type="search" name="searchText" class="form-control search-input" placeholder="Search">
             <button type="submit" class="btn btn-default search-btn"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
         </form>
-
     </div>
     @await Html.PartialAsync("_LoginPartial")
 </div>

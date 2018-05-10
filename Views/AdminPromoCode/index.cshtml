@@ -18,7 +18,7 @@
 <table align="center">
     <thead>
       <tr>
-            <th>PromoCode Id</th>
+            <th>#</th>
             <th>Edit Promocode</th>
             <th>Code </th>
             <th>Discount</th>
@@ -30,7 +30,7 @@
         {
         <tbody>
             <tr>
-                <td><a asp-controller="AdminPromoCode" asp-action="promoCodeDetails" asp-route-id="@promoCode.Id">@promoCode.Id</a></td>
+                <td><a class="btn btn-primary btn-rounded btn-sm my-0" asp-controller="AdminPromoCode" asp-action="promoCodeDetails" asp-route-id="@promoCode.Id">@promoCode.Id</a></td>
                 <td><a asp-controller="adminPromoCode" asp-action="EditPromoCode" class="btn btn-default" asp-route-id="@promoCode.Id">Edit promoCode</a></td>
                 <td>@promoCode.Code</td>
                 <td>@promoCode.Discount</td>
