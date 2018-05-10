@@ -1,7 +1,7 @@
 @model authentication_repo.Models.ViewModels.LoginViewModel
 
 <h1>Login</h1>
-<form asp-action="Login" asp-controller="Account" class="from-horizontal">
+<!--<form asp-action="Login" asp-controller="Account" class="from-horizontal">
     <div class="form group">
         <input type="email" asp-for="Email" class="form-control" placeholder="Enter email address.." />
     </div>
@@ -17,7 +17,28 @@
     <div class="question-container">
         <p class="question">Don't have an account?</p><a asp-area="" asp-controller="Account" asp-action="Register">Register here</a>
     </div>
-</form>
+</form>-->
+<div class="InlineDiv">
+    <div id="SignUpBox">
+        <form form asp-action="Login" asp-controller="Account" class="from-horizontal">
+            <div class="form group">
+                <input type="email" asp-for="Email" class="form-control" placeholder="Enter email address.." />
+            </div>
+            <div class="form group">
+                <input type="password" asp-for="Password" class="form-control" placeholder="Enter password.." />
+            </div>
+            <div class="checkbox">
+                <input type="checkbox" asp-for="RememberMe" /> Remember Me
+            </div> 
+            <div class="form group">
+                <input type="submit" class="btn btn-default" value="Login" />
+            </div>
+            <div class="question-container">
+                <p class="question">Don't have an account?</p><a asp-area="" asp-controller="Account" asp-action="Register">Register here</a>
+            </div>
+        </form>
+    </div>
+</div>
 
 <style>
     .question-container {

@@ -28,9 +28,6 @@ namespace TheBookCave.Controllers
             newestBooks();
             return View(_frontPageViewModel);
         }
-        public IActionResult signUp() {
-            return View();
-        }
         private void top10Books()  {
             _frontPageViewModel.Top10 = _bookService.getTop10Books();
         }
