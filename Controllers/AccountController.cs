@@ -1,5 +1,6 @@
 using System;
 using System.Security.Claims;
+using System.Security.Principal;
 using System.Threading.Tasks;
 using authentication_repo.Models;
 using authentication_repo.Models.ViewModels;
@@ -25,7 +26,8 @@ namespace authentication_repo.Controllers
         public async Task<IActionResult> index() {
             var user = await _userManger.GetUserAsync(User);
             var profile = new ProfileViewModel {UserName = user.UserName, Email = user.Email,
-                                                FirstName = user.FirstName, LastName = user.LastName};
+                                                FirstName = user.FirstName, LastName = user.LastName,
+                                                Picture = user.Picture};
             return View(profile);
         }
 
@@ -33,7 +35,8 @@ namespace authentication_repo.Controllers
         public async Task<IActionResult> editProfile() {
             var user = await _userManger.GetUserAsync(User);
             var profile = new ProfileViewModel {UserName = user.UserName, Email = user.Email,
-                                                FirstName = user.FirstName, LastName = user.LastName};
+                                                FirstName = user.FirstName, LastName = user.LastName,
+                                                Picture = user.Picture};
             return View(profile);
         }
 
@@ -44,6 +47,7 @@ namespace authentication_repo.Controllers
             Console.WriteLine(user.LastName);
             user.FirstName = profile.FirstName;
             user.LastName = profile.LastName;
+            user.Picture = profile.Picture;
             await _userManger.UpdateAsync(user);
 
             return RedirectToAction("index");
@@ -62,7 +66,7 @@ namespace authentication_repo.Controllers
                 return View();
             }
             // nyr user . Username og email verd tad sama
-            var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, Picture = "~/images/profile/profileImagePlaceholder.jpg" };
+            var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, Picture = "/images/profile/profileImagePlaceholder.jpg" };
             //  Task til ad nota asynic
             // _userMangar byr til user i startup
             var result = await _userManger.CreateAsync(user, model.Password);
@@ -98,6 +102,7 @@ namespace authentication_repo.Controllers
             var result = await _signInMager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
             if ( result.Succeeded) {
                 return RedirectToAction("index", "FrontPage");
+                // ADMIN return RedirectToAction("index", "AdmonOrderList");
             }
             return View();
 

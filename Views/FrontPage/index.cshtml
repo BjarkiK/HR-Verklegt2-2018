@@ -14,7 +14,18 @@
                         <img class="book-preview-image" src="~/@book.Picture" alt="Image broken">
                         <h3 class="book-preview-title">@book.Name</h3>
                         <h4 class="preview-book-author">@book.Author</h4>
-                        <h4>@book.Price kr</h4>
+                        @if(@book.Discount == 0) {
+                            <div class="book-detail-price">Price: @book.Price kr</div>
+                        }
+                        else {
+                            int price = Convert.ToInt32(@book.Price);
+                            int discountPrice = Convert.ToInt32((1 - @book.Discount/100m) * price);
+                            <div class="book-detail-price-container">
+                                <div class="book-detail-price">Price: @discountPrice kr</div>
+                                <div class="discounted-price">@book.Price kr</div>
+                                <div>(-@book.Discount%)</div>
+                            </div>
+                        }
                     </div>
                 </div>
             }
@@ -37,7 +48,18 @@
                         <img class="book-preview-image" src="~/@book.Picture" alt="Image broken">
                         <h3 class="book-preview-title">@book.Name</h3>
                         <h4 class="preview-book-author">@book.Author</h4>
-                        <h4>@book.Price kr</h4>
+                        @if(@book.Discount == 0) {
+                            <div class="book-detail-price">Price: @book.Price kr</div>
+                        }
+                        else {
+                            int price = Convert.ToInt32(@book.Price);
+                            int discountPrice = Convert.ToInt32((1 - @book.Discount/100m) * price);
+                            <div class="book-detail-price-container">
+                                <div class="book-detail-price">Price: @discountPrice kr</div>
+                                <div class="discounted-price">@book.Price kr</div>
+                                <div>(-@book.Discount%)</div>
+                            </div>
+                        }
                     </div>
                 </div>
             }
