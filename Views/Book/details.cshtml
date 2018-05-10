@@ -22,8 +22,8 @@
                 int price = Convert.ToInt32(@book.Price);
                 int discountPrice = Convert.ToInt32((1 - @book.Discount/100m) * price);
                 <div class="book-detail-price-container">
-                    <div class="book-detail-price">Price: @discountPrice kr</div>
-                    <div class="discounted-price">@book.Price kr</div>
+                    <div class="book-detail-price">Price: @discountPrice ISK</div>
+                    <div class="discounted-price">@book.Price ISK</div>
                     <div>(-@book.Discount%)</div>
                 </div>
             }

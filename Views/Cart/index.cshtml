@@ -10,14 +10,14 @@
             <div class="cart-title">@item.Book.Name</div>
             
             @if(@item.Book.Discount == 0) {
-                <div class="cart-price" value="@item.Book.Price">@item.Book.Price kr</div>
+                <div class="cart-price" value="@item.Book.Price">@item.Book.Price ISK</div>
             }
             else {
                 int price = Convert.ToInt32(@item.Book.Price);
                 int discountPrice = Convert.ToInt32((1 - @item.Book.Discount/100m) * price);
                 <div class="cart-price-container">
-                    <div class="cart-price" value="@discountPrice">Price: @discountPrice kr</div>
-                    <div class="cart-discounted-price">@item.Book.Price kr</div>
+                    <div class="cart-price" value="@discountPrice">Price: @discountPrice ISK</div>
+                    <div class="cart-discounted-price">@item.Book.Price ISK</div>
                 </div>
                 <div>@item.Book.Discount% discount</div>
             }
@@ -31,7 +31,7 @@
                 <i class="fa fa-plus" ></i>
             </div>
         </div>
-        <div class="cart-item-sum">@item.Sum kr</div>
+        <div class="cart-item-sum">@item.Sum ISK</div>
         <div class="cart-remove-btn" value="@item.Book.Id">
             <i class="fa fa-trash" value="@item.Book.Id"></i>
         </div>
