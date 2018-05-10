@@ -17,26 +17,7 @@ namespace TheBookCave
         public static void Main(string[] args)
         {
            var host = BuildWebHost(args);
-            SeedData();
             host.Run();
-        }
-
-          public static void SeedData() {
-            var db = new DataContext();
-
-
-            if(!db.PromoCodes.Any()){
-                var initialPublishers = new List<PromoCode> {
-                  //  new Book { Name = "pub1", Picture = "w",DetailsEN= "asd",DetailsIS="qwe", GenreId=1, AuthorId=1, PublisherId=1, Price=100,Discount=5,Pages=20, Quantity=1,Grade=5 },
-                /*    new PromoCode { Discount = 1, Description ="For employee"},
-                    new PromoCode { Discount = 1, Description ="For employee"},
-                    new PromoCode { Discount = 1, Description ="For employee"},
-                    */
-                };
-
-                db.AddRange(initialPublishers);
-                db.SaveChanges();
-            }
         }
 
         public static IWebHost BuildWebHost(string[] args) =>

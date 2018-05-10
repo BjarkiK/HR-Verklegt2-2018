@@ -126,10 +126,8 @@ namespace TheBookCave.Services {
         public List<BookDetailedListViewModel> getBooksWithSearch(string param) {
             var books = getBookList();
             List<BookDetailedListViewModel> searchResult = books.Where(b => b.Author.ToLower().Contains(param.ToLower())
-                                                                         || b.Name.ToLower().Contains(param.ToLower())).ToList();
-            if (searchResult.Count == 0) {
-                return null;
-            }
+                                                                         || b.Name.ToLower().Contains(param.ToLower())
+                                                                         || b.Genre.ToLower().Contains(param.ToLower())).ToList();
             return searchResult;
         }
         public List<BookDetailedListViewModel> getBooksWithAdvSearch(string param1, string param2, string param3, string param4) {

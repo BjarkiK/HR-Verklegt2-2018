@@ -28,6 +28,11 @@ namespace TheBookCave.Controllers
         public int validatePromoCode(string code) {
             return _cartService.validatePromoCode(code);
         }
+        public void checkout(){
+            //var books = Request.Cookies["TBCbooksInCart"];
+            //var promo = Request.Cookies["TBCPromoCode"];
+            //var books = _cartService.getBooksInCart(books, promo);  
+        }
 
        /*
         public bool addBookToCart(int id) {
