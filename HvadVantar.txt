@@ -21,7 +21,7 @@ Signed in users can rate a book and give an optional comment
 Book catalogue
 X • Filter by genre
 X • Search
-• Order by name
+X Order by name
 X Top 10 (based on rating)
 X Layout site
 X • Navigation bar
