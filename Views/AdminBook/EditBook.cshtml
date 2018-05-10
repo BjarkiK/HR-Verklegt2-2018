@@ -1,6 +1,8 @@
 ﻿@model TheBookCave.Models.ViewModels.BookListViewModel
 <h1>Edit book</h1>
-
+@{
+    Layout = "_AdminLayout";
+}
 
 <form asp-action="editBook" asp-controller="adminBook" method="POST">
     <div class="form-group">

@@ -6,22 +6,25 @@
 
 <h2> SubscriptionList </h2>
 
-<form asp-controller="adminSubscription" asp-action="index">
+<form class="pull-left" class="col-sm-6" asp-controller="adminSubscription" asp-action="index">
     <p>
         <input type="text" name="SearchString" placeholder="Search DescriptionEn">
         <input type="submit" value="Submit" />
     </p>
 </form>
 
-<p><a asp-controller="adminSubscription" asp-action="AddSubscription" class="btn btn-default">Add Subscription</a></p>
+<p class="pull-right" ><a id="addbuttons" class="btn btn-default btn-sm" asp-controller="adminSubscription" asp-action="AddSubscription" >
+    <span class="glyphicon glyphicon-plus"></span> Add Subscription</a>
+</p>
 
-<table align="center">
+<table class="table table-striped table-responsive-md btn-table ">
     <thead>
       <tr>
             <th>#</th>
             <th>Edit subscription</th>
-            <th>TypeEn</th>
-            <th>TypeIn</th>
+            <th>Remove user</th>
+            <th>Type in english</th>
+            <th>Type in icelandic</th>
         </tr>
     </thead>
     @foreach(var subscription in @Model)
@@ -29,7 +32,11 @@
     <tbody>
         <tr>
             <td><a class="btn btn-primary btn-rounded btn-sm my-0" asp-controller="AdminSubscription" asp-action="subscriptionDetails" asp-route-id="@subscription.Id">@subscription.Id</a></td>
-            <td><a asp-controller="AdminSubscription" asp-action="EditSubscription" class="btn btn-default" asp-route-id="@subscription.Id">Edit subscription</a></td>
+            <td><a id="editbuttons" class="btn btn-default btn-sm" asp-controller="AdminSubscription" asp-action="EditSubscription" class="btn btn-default" asp-route-id="@subscription.Id">
+            <span class="glyphicon glyphicon-edit"></span> Edit</a></td>
+            <td><a id="removebuttons" class="btn btn-default btn-sm" asp-controller="AdminSubscription" asp-action="RemoveSubscription" class="btn btn-default" asp-route-id="@subscription.Id">
+            <span class="glyphicon glyphicon-remove"></span> Remove</a></td>
+           
             <td>@subscription.TypeEn</td>
             <td>@subscription.TypeIn</td>
         </tr>
