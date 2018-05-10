@@ -69,3 +69,17 @@
 .book-detail-price {
     font-size: 20px;
 }
+.ticketOnBooks {
+    position: relative;
+    font-family: Arial;
+    min-width: 157px;
+}
+.text-block {
+    position: absolute;
+    top: 10px;
+    background-color: purple;
+    opacity: 0.8;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+}

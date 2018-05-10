@@ -2,38 +2,43 @@
 
 <div class="profile-container">
     <div class="row">
-        <div class="col-md-2">
-            <h2>Profile</h2>
-            <div>
-                <img class="profile-picture" src="~/images/profile/profileImagePlaceholder.jpg" alt="profile picture"></span>
-            </div>
+        <div class="btn-group btn-group-justified" role="group">
+            <a asp-controller="Account" asp-action="" class="btn btn-primary disabled" role="button">Profile</a>
+            <a asp-controller="Account" asp-action="" class="btn btn-default" role="button">Order history</a>
+            <a asp-controller="Account" asp-action="editProfile" class="btn btn-default" role="button">Edit profile</a>
         </div>
-        <div class="col-md-10">
-            <div>
-                <h4>Name:</h4>
-                <div>@Model.FirstName @Model.LastName</div>
+        <div class="profile-layot">
+            <div class="col-md-2">
+                <div>
+                    <img class="profile-picture" src="~/images/profile/profileImagePlaceholder.jpg" alt="profile picture"></span>
+                </div>
             </div>
-            <div>
-                <h4>Username:</h4>
-                <div>@Model.UserName</div>
+            <div class="col-md-10">
+                <div>
+                    <h4>Name:</h4>
+                    <div>@Model.FirstName @Model.LastName</div>
+                </div>
+                <div>
+                    <h4>Username:</h4>
+                    <div>@Model.UserName</div>
+                </div>
+                <div>
+                    <h4>Email:</h4>
+                    <div>@Model.Email</div>
+                </div>
+                <div>
+                    <h4>Shipping Address</h4>
+                    <div>heimilisfang</div>
+                </div>
+                <div>
+                    <h4>Phonenumber</h4>
+                    <div>símanumer</div>
+                </div>
+                <div>
+                    <h4>Subscriptions</h4>
+                    <div>engar askriftir</div>
+                </div>
             </div>
-            <div>
-                <h4>Email:</h4>
-                <div>@Model.Email</div>
-            </div>
-            <div>
-                <h4>Shipping Address</h4>
-                <div>heimilisfang</div>
-            </div>
-            <div>
-                <h4>Phonenumber</h4>
-                <div>símanumer</div>
-            </div>
-            <div>
-                <h4>Subscriptions</h4>
-                <div>engar askriftir</div>
-            </div>
-            <td><a asp-controller="Account" asp-action="editProfile" class="btn btn-default">Edit profile</a></td>
         </div>
     </div>
 </div>

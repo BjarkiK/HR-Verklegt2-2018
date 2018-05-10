@@ -8,10 +8,17 @@
         </div>
         <div class="books-container">
             <div class="books-container2">
+            @{int counter = 1;}
             @foreach(var book in @Model.Top10) {
                 <div class="single-book-container">
                     <div class="book-box" value="@book.Id">
-                        <img class="book-preview-image" src="~/@book.Picture" alt="Image broken">
+                        <div class="ticketOnBooks">
+                            <img class="book-preview-image" src="~/@book.Picture" alt="Image broken">
+                            <div class="text-block">
+                                <h4>Nr @counter</h4>
+                            </div>
+                        </div>
+                        <!--<img class="book-preview-image" src="~/@book.Picture" alt="Image broken">-->
                         <h3 class="book-preview-title">@book.Name</h3>
                         <h4 class="preview-book-author">@book.Author</h4>
                         @if(@book.Discount == 0) {
@@ -28,6 +35,7 @@
                         }
                     </div>
                 </div>
+                counter++;
             }
             </div>
         </div>
@@ -45,6 +53,11 @@
             @foreach(var book in @Model.Newest) {
                 <div class="single-book-container">
                     <div class="book-box" value="@book.Id">
+                    <div class="ticketOnBooks">
+                        <div class="text-block">
+                            <h4>NEW</h4>
+                        </div>
+                    </div>
                         <img class="book-preview-image" src="~/@book.Picture" alt="Image broken">
                         <h3 class="book-preview-title">@book.Name</h3>
                         <h4 class="preview-book-author">@book.Author</h4>
