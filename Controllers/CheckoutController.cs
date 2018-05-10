@@ -22,6 +22,15 @@ namespace TheBookCave.Controllers
         {
             return View();
         }
+        public IActionResult creditInfo()
+        {
+            return View();
+        }
+        public IActionResult overview()
+        {
+            return View();
+        }
+        
         public void autofillLoggedinUserDetails(string uid)
         {
             /*

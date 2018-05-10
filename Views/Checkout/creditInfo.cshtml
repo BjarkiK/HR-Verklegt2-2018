@@ -1,0 +1,35 @@
+<div class="container">
+    <form  asp-controller="Checkout" asp-action="overview" class="form-horizontal">
+      
+        <div class="row" >
+            <div class="form-group">
+                <h3>Credit Card information</h3>
+                <div class="form-group">
+                    <label for="cname"> Name on card</label>
+                    <input type="text" id="cname" name="cardName">
+                </div>
+                <div class="form-group">
+                    <label for="ccnum"> Credit card number</label>
+                    <input type="text" id="ccnum" name="creditcardnumber">
+                </div>
+                <div class="form-group">
+                    <label for="cardt">Card type</label>
+                    <input type="text" id="cardt" name="cardtype">
+                </div>
+                <div class="form-group">
+                    <label for="exd">Expiration date</label>
+                    <input type="text" id="exd" name="expiration date">
+                </div>
+                <div class="form-group">
+                    <label for="cvv2">CVV2</label>
+                    <input type="text" id="cvv2" name="cvv2">
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Continue">
+                </div> 
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="~/js/shippingAddress.js" asp-append-version="true"></script>
