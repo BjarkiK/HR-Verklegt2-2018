@@ -1,124 +1,99 @@
-var StarRating = (function () {
-    function StarRating(target) {
-        function attr(name, d) {
-            var a = target.getAttribute(name);
-            return (a ? a : d);
+defaultRating();
+
+function createElementFromHTML(htmlString) {
+    var div = document.createElement('div');
+    div.innerHTML = htmlString.trim();
+    return div.firstChild; 
+}
+
+function defaultRating() {
+    var gradeElem = document.getElementsByClassName("book-detail-grade")[0];
+    var grade = gradeElem.getAttribute("value").replace(",", ".");
+    if (grade % 1 != 0) {
+        grade = fixRating(grade);
+    }
+    displayStars(grade);
+}
+
+function fixRating(grade) {
+    return parseFloat(grade).toFixed(1);
+}
+
+// Made in a hurry. Tidy up if time
+function displayStars(grade) {
+    var gradeElem = document.getElementsByClassName("book-detail-grade")[0];
+    gradeElem.innerHTML = grade;
+
+    var starElem = document.getElementsByClassName("starRating")[0];
+    starElem.innerHTML = "";
+
+    var antiGrade = 0;
+    var counter = 0;
+
+    while(grade >= 0.0 && grade <= 5.0 ) {
+        if(grade >= 1) {
+            grade--;
+            antiGrade++;
+            counter++;
+            var star = createElementFromHTML("<span class=\"fa fa-star star-yellow\" value=\"" + counter + "\"></span>");
+            starElem.insertBefore(star, null);
         }
-
-        var rateElem = document.getElementsByClassName("book-detail-grade")[0],
-            defaultRating = rateElem.getAttribute("value").replace(",", "."),
-            currentRating = -1,
-            stars = [];
-
-
-        target.style.display = 'inline-block';
-
-        for (var s = 0; s < 5; s++) {
-            var n = document.createElement('span');
-            n.className = 'star';
-            n.addEventListener('click', starClick);
-            if (s > 0)
-                stars[s - 1].appendChild(n);
-            else
-                target.appendChild(n);
-
-            stars.push(n);
+        else if(grade >= 0.5) {
+            grade -= 0.5;
+            antiGrade += 0.5;
+            counter++;
+            var halfStar = createElementFromHTML("<span class=\"fa fa-star-half star-yellow\" value=\"" + counter + "\"></span>");
+            starElem.insertBefore(halfStar, null);
         }
-
-        function fixFloat(num) {
-            return parseFloat(num).toFixed(1);
-        }
-
-        function setCurrentRating(rating) {
-            currentRating = rating;
-            target.setAttribute('data-rating', currentRating);
-            showCurrentRating();
-        }
-        this.setCurrentRating = setCurrentRating;
-
-        function setDefaultRating(rating) {
-            defaultRating = rating;
-
-            if (rating % 1 != 0)
-                defaultRating = fixFloat(defaultRating);
-
-            rateElem.innerHTML = defaultRating;
-            showRating(defaultRating);
-        }
-        this.setDefaultRating = setDefaultRating;
-
-        setDefaultRating(rateElem.getAttribute("value").replace(",","."));
-
-        this.onrate = function (rating) {};
-
-        target.addEventListener('mouseout', function () {
-            showCurrentRating();
-        });
-
-        target.addEventListener('mouseover', function () {
-            clearRating();
-        });
-
-        function showRating(r) {
-            clearRating();
-            for (var i = 0; i < stars.length; i++) {
-                if (i >= r)
-                    break;
-                if (i === Math.floor(r) && i !== r)
-                    stars[i].classList.add('half');
-                stars[i].classList.add('active');
-            }
-        }
-
-        function showCurrentRating() {
-            var ratingAttr = parseFloat(attr('data-rating', 0));
-            if (ratingAttr) {
-                currentRating = ratingAttr;
-                showRating(currentRating);
-            } else {
-                showRating(defaultRating);
-            }
-        }
-
-        function clearRating() {
-            for (var i = 0; i < stars.length; i++) {
-                stars[i].classList.remove('active');
-                stars[i].classList.remove('half');
-            }
-        }
-
-        function starClick(e) {
-            if (this === e.target) {
-                var starClicked = stars.indexOf(e.target);
-                if (starClicked !== -1) {
-                    var sRating = starClicked + 1;
-                    setCurrentRating(sRating);
-                    if (typeof this.onrate === 'function')
-                        this.onrate(currentRating);
-                    var evt = new CustomEvent('rate', {
-                        detail: sRating,
-                    });
-                    target.dispatchEvent(evt);
-                }
-            }
+        else {
+            break;
         }
     }
-    return StarRating;
-})();
 
+    while(antiGrade !== 5 ) {
+        if(antiGrade % 1 !== 0) {
+            antiGrade += 0.5;
+            counter++;
+            var star = createElementFromHTML("<span class=\"fa fa-star-half star fa-flip-horizontal\" value=\"" + counter + "\"></span>");
+            starElem.insertBefore(star, null);
+        }
+        else {
+            antiGrade++;
+            counter++;
+            //var star = createElementFromHTML("<span class=\"fa fa-star star\" onclick=\"submitRating(" + counter + ")\" onmouseout='defaultRating()' onmouseover=\"displayStars(" + counter + ")\" value=\"" + counter + "\"></span>");
+            var star = createElementFromHTML("<span class=\"fa fa-star star\" value=\"" + counter + "\"></span>");
+            starElem.insertBefore(star, null);
+        }
+    }
+    var stars = document.getElementsByClassName('fa-star');
+    //stars.onmouseout = function() { defaultRating() };
+    //stars.onclick = function() { submitRating( this.getAttribute("value"))};
+    //stars.onmouseover = function() { displayStars( this.getAttribute("value"))};
 
-var stars = document.getElementsByClassName('rating');
-for (var i = 0; i < stars.length; i++) {
-    var r = new StarRating(stars[i]);
+    for (var i = 0; i < stars.length; i++) {
+        stars[i].onmouseover = function() { displayStars( this.getAttribute("value")) };
+        stars[i].onmouseout = function() { alert("TSKNLS")};
+        stars[i].onclick = function() { alert("TPSU") };
+        //var starSpan = starElem.children[i];
+        //starSpan.onclick = submitRating( starSpan.getAttribute("value") );
+        //starElem.children[i].addEventListener("click", function() { submitRating( this.getAttribute("value") )});
+        //starElem.children[i].addEventListener("mouseout", defaultRating);
+        //starElem.children[i].addEventListener("mouseover", function() { displayStars( this.getAttribute("value")) });
+        //starElem.children[i].on
+        //stars[i].onmouseover = function() { displayStars( stars[i].getAttribute("value")) };
+        //stars[i].onmouseout = function() { defaultRating };
+    }
+}
 
-    stars[i].addEventListener('rate', function(e) {
-        console.log('Rating: ' + e.detail);
-        var bookId = Number(location.pathname.split('/')[3]);
-        $.post('/book/totalGradeUpdate',{ bid : bookId, grade : e.detail }, function(returnData) {
-            console.log(status + " " + returnData);
-            r.setDefaultRating(returnData);
-        }).fail(function(response) {
-            console.log("failed" + response);
-        })
-    });
+function submitRating(rating) {
+    var bookId = Number(location.pathname.split('/')[3]);
+    $.post('/book/totalGradeUpdate',{ bid : bookId, grade : rating }, function(returnData) {
+        console.log(status + " " + returnData);
+        if (returnData % 1 != 0) {
+            returnData = fixRating(returnData);
+        }
+        displayStars(returnData);
+    }).fail(function(response) {
+        console.log("failed" + response);
+    })
 }
