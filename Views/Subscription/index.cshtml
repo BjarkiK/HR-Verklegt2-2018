@@ -56,10 +56,12 @@
     @foreach(var subscription in @Model)
     {
     <div class="col-md-3">
-        <div class="thumbnail">
-            <h3>Subscription @subscription.Id</h3>
-            <h4>@subscription.TypeEn</h4>
-            <p>@subscription.DescriptionEn</p>
+        <div class="thumbnail sub-item">
+            <h3>Subscription Type: @subscription.Id</h3>
+            <h4>@subscription.TypeEn Books</h4>
+            <div class="descript">
+                <p>@subscription.DescriptionEn</p>
+            </div>
             <div class="price-button">
                 <h4 class="price">1500 ISK</h4>
                 <div class="button">
