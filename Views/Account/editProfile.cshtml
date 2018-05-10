@@ -1,23 +1,27 @@
 @model TheBookCave.Models.ViewModels.ProfileViewModel;
 
-<h1>Edit Profile</h1>
+<div class="row container">
+    <div class="col-md-4">
+        <h1>Edit Profile</h1>
 
-<form asp-action="editProfile" asp-controller="Account" class="form-horizontal" method="POST">
-    <div class="form-group">
-        <input tpe="text" class="form-control" autofocus="autofocus" asp-for="FirstName" placeholder="Enter first name" value="@Model.FirstName" />
+        <form asp-action="editProfile" asp-controller="Account" class="form-horizontal" method="POST">
+            <div class="form-group">
+                <input tpe="text" class="form-control" autofocus="autofocus" asp-for="FirstName" placeholder="Enter first name" value="@Model.FirstName" />
+            </div>
+            <div class="form-group">
+                <input tpe="text" class="form-control" asp-for="LastName" placeholder="Enter last name" value="@Model.LastName" />
+            </div>
+            <div class="form-group">
+                <div class="profile-picture" asp-for="Picture"></div>
+                <input class="inputBtN" type='file' onchange="readURL(this);" />
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-default" value="Save"/>
+                
+            </div>
+        </form>
     </div>
-    <div class="form-group">
-        <input tpe="text" class="form-control" asp-for="LastName" placeholder="Enter last name" value="@Model.LastName" />
-    </div>
-    <div class="form-group">
-        <div class="profile-picture" asp-for="Picture"></div>
-        <input type='file' onchange="readURL(this);" />
-    </div>
-    <div class="form-group">
-        <input type="submit" class="btn btn-default" value="Save"/>
-        
-    </div>
-</form>
+</div>
 
 <script>
 
@@ -35,7 +39,14 @@ function readURL(input) {
 </script>
 
 <style>
+    .container{
+        text-align: center;
+    }
+    .inputBtN {
+        margin: auto;
+    }
     .profile-picture {
+        margin: auto;
         width: 200px;
         height: 200px;
         background-image: url(@Model.Picture);

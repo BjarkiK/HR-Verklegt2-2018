@@ -48,3 +48,9 @@ h1 {
     left: 0%;
     right: 0%;
 }
+.addtocart-button {
+    background: rgb(16, 108, 212);
+}
+.addtocart-button:hover{
+    opacity: 0.9;
+}
