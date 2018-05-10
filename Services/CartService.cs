@@ -74,5 +74,9 @@ namespace TheBookCave.Services
         public void updateQuantity(int bid, int quantity){
             // TODO
         }
+
+        public void checkout(){
+            
+        }
     }
 }

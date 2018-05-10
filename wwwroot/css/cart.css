@@ -116,6 +116,16 @@
     margin-left: auto;
 }
 
+.checkout {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.cart-checkout {
+    margin-left: auto;
+    margin-right: 70px;
+}
+
 /*
 .cart-empty {
     width: 80%;

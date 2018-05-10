@@ -1,29 +1,55 @@
-@model authentication_repo.Models.ViewModels.RegisterViewModel
+@model TheBookCave.Models.ViewModels.UserDetailedListViewModel
 
 @{
-    ViewBag.Title = "Edit";
+    Layout = "_AdminLayout";
 }
 
 <h1>Edit user</h1>
 
-<form asp-action="editUser" asp-controller="AdminUser" class="form-horizontal">
+<form asp-action="editUser" asp-controller="adminUser" class="form-horizontal" method="POST">
     <div class="form-group">
-        <input type="email" asp-for="Email" class="form-control" placeholder="Enter email.." />
-    </div>
-    <div class="form-group">
-           <input type="text" asp-for="FirstName" class="form-control" placeholder="Enter first name.."/>
+        <label>Username</label>
+        <input type="text" asp-for="User.UserName" autofocus="autofocus" class="form-control" placeholder="Enter username" value="@Model.User.UserName"/>
     </div>
 
     <div class="form-group">
-           <input type="text" asp-for="LastName" class="form-control" placeholder="Enter last name.."/>
+        <label>Email</label>
+        <input type="email" asp-for="User.Email" class="form-control" placeholder="Enter user email" value="@Model.User.Email"/>
     </div>
+
     <div class="form-group">
-           <input type="password" asp-for="Password" class="form-control" placeholder="Enter password.."/>
+        <label>Phone number</label>
+        <input type="phone" asp-for="User.PhoneNumber" class="form-control" placeholder="Enter user phone number" value="@Model.User.PhoneNumber"/>
     </div>
+
     <div class="form-group">
-           <input type="text" asp-for="Role" class="form-control" placeholder="Enter role.."/>
+        <label>First name</label>
+        <input type="text" asp-for="User.FirstName" class="form-control" placeholder="Enter users first name" value="@Model.User.FirstName"/>
     </div>
+
+    <select asp-for="User.FirstName">
+    @foreach(var r in @Model.AllRoles) {
+        if(@Model.Role.Name == r.Name) {
+            <option selected="selected" value="@r.Name">@r.Name</option>
+        }
+        else {
+            <option value="@r.Name">@r.Name</option>
+        }
+    }
+    </select>
+
     <div class="form-group">
-           <button type="submit" class="btn btn-default">Edit User</button>
+        <label>Last name</label>
+        <input type="text" asp-for="User.LastName" class="form-control" placeholder="Enter users last name" value="@Model.User.LastName"/>
+    </div>
+
+    <div class="form-group">
+        <label>Lockout end date</label>
+        <input type="text" asp-for="User.LockoutEnd" class="form-control" placeholder="Enter lockout end date" value="@Model.User.LockoutEnd"/>
+    </div>
+
+    <div class="form-group">
+           <button type="submit" class="btn btn-default">Save</button>
+            <a href="/adminUser"><button type="button" class="btn btn-default" >Cancel</button></a>
     </div>
 </form>

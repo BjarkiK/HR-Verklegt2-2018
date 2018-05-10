@@ -1,5 +1,4 @@
 ﻿body {
-    padding-top: 50px;
     padding-bottom: 20px;
 }
 /* Wrapping element */
@@ -25,8 +24,13 @@
     }
 }
 
+.navbar-fixed-top {
+    padding-top: 10px;
+}
+
+
 .navbarSearch {
-    width: 40em !important;
+    width: 30em !important;
 }
 
 .main-container {
@@ -75,94 +79,6 @@
     text-align: center;
 }
 
-.fp-list {
-    height: 400px;
-    margin: 10px;
-    align-items: center;
-    overflow: hidden;
-    border: 2px solid black;
-    border-radius: 5px;
-    display: flex;
-}
-
-.books-container {
-    width: 90%;
-    overflow: hidden;
-}
-
-.books-container2 {
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-}
-
-.single-book-container {
-    width: 20%;
-    padding: 10px;
-    text-align: center;
-    cursor: pointer;
-    flex: 1 0 20%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: margin 1s;
-}
-
-.book-preview-image {
-    width: 150px;
-    height: 220px;
-    border: 0.5px solid gray;
-    object-fit: cover;
-}
-
-.book-preview-title {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-
-.arrow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 5%;
-    height: 100%;
-}
-
-.btn-arrow {
-    height: 30px;
-}
-
-/*
-#FrontPageBooks {
-    width: 100%;
-    display: inline-block;
-    vertical-align: top;
-}
-#FrontPageBooks h2 {
-    text-align: center;
-}
-#Top10 {
-    width: 100%;
-    height: auto;
-    margin: 20px 20px 60px 20px;
-    border: 2px solid black;
-    border-radius: 5px;
-    vertical-align: top;
-}
-#Top10 .TopBooks {
-    display: inline-block;
-    margin-left: 52px;
-    margin-right: 52px;
-    text-align: center;
-}
-#Top10 #Arrow {
-    display: inline-block;
-    margin-right: 5px;
-    margin-left: 5px;
-    vertical-align: 135px;
-}
-*/
 #New {
     /*display: inline-block;*/
     margin: 20px 20px;
@@ -192,16 +108,10 @@
     color: #bb0000;
 }
 
-.hidden {
-    display: none;
-}
-
 table, td, th {    
     border: 1px solid #ddd;
     text-align: left;
 }
-
-
 
 table {
     margin : 0px;
@@ -220,11 +130,11 @@ th, td {
 }
 
 td { 
-    
     overflow: hidden; 
     text-overflow: ellipsis; 
     word-wrap: break-word;
 }
+
 .row {
     margin-right: 0;
     margin-left: 0;
@@ -237,3 +147,103 @@ td {
 .hidden {
     display: none;
 }
+
+
+
+.header {
+    background-color: #333333;
+    margin-bottom: 20px;
+    padding: 10px;
+    display: flex;
+    color: white;
+}
+
+.logo {
+    flex: 0 0 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 20px;
+    font-size: 20px;
+    
+}
+
+.actual-logo {
+    color: white;
+}
+
+.actual-logo:hover {
+    text-decoration: none;
+    color: white;
+    font-size: 1.02em;
+}
+
+.search-container {
+    display: flex;
+    flex: 0 0 50%;
+    justify-content: center;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    flex: 0 0 100%;
+}
+
+.icons {
+    flex: 1 0 30%;
+    width: 100%;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-right: 20px;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+}
+
+.name {
+ flex-basis: 50%;
+ font-size: 17px;
+}
+
+.icon-conainer {
+    display: flex;
+}
+
+.logout-login {
+    margin: 0;
+    font-size: 17px;
+    color: white;
+}
+
+.logout-login:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.login {
+    padding-left: 12px;
+}
+
+.small-icon {
+    padding: 5px;
+    font-size: 17px;
+    color: white;
+}
+
+.search-input {
+    border-radius: 4px 0 0 4px;
+    flex: 0 1 100%;
+    width: 100%;
+    height: 45px;
+}
+
+.search-btn {
+    border-radius: 0 4px 4px 0;
+    height: 45px;
+}
+

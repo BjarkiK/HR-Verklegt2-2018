@@ -29,8 +29,8 @@ namespace TheBookCave
             services.AddDbContext<AuthenticationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("AuthenticationConnection")));
             // User sem er tengdur vid inskradan notanda
             services.AddIdentity<ApplicationUser, IdentityRole>()
-            .AddEntityFrameworkStores<AuthenticationDbContext>()
-            .AddDefaultTokenProviders();
+                    .AddEntityFrameworkStores<AuthenticationDbContext>()
+                    .AddDefaultTokenProviders();
 
             // breyta akvednum hlutum vid audkenninguna :
             services.Configure<IdentityOptions>(config => {

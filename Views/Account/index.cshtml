@@ -1,0 +1,9 @@
+@model TheBookCave.Models.ViewModels.ProfileViewModel;
+
+<div class="profile-container">
+    <h2>Profile</h2>
+    <div>Username: @Model.UserName</div>
+    <div>Email: @Model.Email</div>
+    <div>Name: @Model.FirstName @Model.LastName</div>
+    <td><a asp-controller="Account" asp-action="editProfile" class="btn btn-default">Edit profile</a></td>
+</div>

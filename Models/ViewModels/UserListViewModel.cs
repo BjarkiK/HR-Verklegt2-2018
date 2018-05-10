@@ -15,6 +15,13 @@ namespace TheBookCave.Models.ViewModels {
         public string SecurityStamp { get; set; }
         public bool TwoFactorEnabled { get; set; }
         public string UserName { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Picture { get; set; }
+        public int AddressId { get; set; }
+        public int FavoriteBookId { get; set; }
+
+        
 
     }
 }
