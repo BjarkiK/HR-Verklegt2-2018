@@ -66,10 +66,14 @@ function displayStars(grade) {
         }
     }
     var stars = document.getElementsByClassName('fa-star');
+    //stars.onmouseout = function() { defaultRating() };
+    //stars.onclick = function() { submitRating( this.getAttribute("value"))};
+    //stars.onmouseover = function() { displayStars( this.getAttribute("value"))};
+
     for (var i = 0; i < stars.length; i++) {
-        stars[i].onmouseout = function() { defaultRating() };
-        stars[i].onclick = function() { submitRating( this.getAttribute("value")) };
         stars[i].onmouseover = function() { displayStars( this.getAttribute("value")) };
+        stars[i].onmouseout = function() { alert("TSKNLS")};
+        stars[i].onclick = function() { alert("TPSU") };
         //var starSpan = starElem.children[i];
         //starSpan.onclick = submitRating( starSpan.getAttribute("value") );
         //starElem.children[i].addEventListener("click", function() { submitRating( this.getAttribute("value") )});
