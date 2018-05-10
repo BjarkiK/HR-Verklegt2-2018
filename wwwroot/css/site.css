@@ -144,7 +144,7 @@ td {
 }
 
 .book-box:hover {
-    opacity: 0.6;
+    opacity: 0.8;
 }
 
 .hidden {
@@ -271,4 +271,12 @@ hr {
 .profile-picture {
     height: 150px;
     border: solid 1px;
+}
+
+.active-side {
+    background-color: #c0b283;
+}
+
+.listrow {
+    margin-top: 10px;
 }

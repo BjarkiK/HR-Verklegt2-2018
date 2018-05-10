@@ -1,8 +1,11 @@
-.thumbnail img {
+.booklist-container img {
     width: 200px;
     height: 270px;
     overflow: hidden;
     /*object-fit: cover;*/
+    margin: 0 auto;
+    display: block;
+    max-width: 100%;
 }
 
 .thumbnail {

@@ -58,15 +58,15 @@
         <div class="main-container">
             <div id="sideBar">
                 <div class="list-group">
-                    <a asp-controller="book" asp-action="allBooks" class="list-group-item list-group-item-action SideButton">All Books</a>
-                    <a asp-controller="book" asp-action="romance" class="list-group-item list-group-item-action SideButton">Romance</a>
-                    <a asp-controller="book" asp-action="horror" class="list-group-item list-group-item-action SideButton">Horror</a>
-                    <a asp-controller="book" asp-action="fantasy" class="list-group-item list-group-item-action SideButton">Fantasy</a>
-                    <a asp-controller="book" asp-action="scifi" class="list-group-item list-group-item-action SideButton">Science Fiction</a>
-                    <a asp-controller="book" asp-action="plays" class="list-group-item list-group-item-action SideButton">Plays</a>
-                    <a asp-controller="book" asp-action="classic" class="list-group-item list-group-item-action SideButton">Classic</a>
-                    <a asp-controller="book" asp-action="crime" class="list-group-item list-group-item-action SideButton">Crime</a>
-                    <a asp-controller="subscription" asp-action="index" class="list-group-item list-group-item-action SideButton">Subscription</a>
+                    <a asp-controller="book" asp-action="allBooks" class="@(ViewContext.RouteData.Values["Action"].ToString() == "allBooks" ? "active-side" : "") list-group-item list-group-item-action SideButton">All Books</a>
+                    <a asp-controller="book" asp-action="romance" class="@(ViewContext.RouteData.Values["Action"].ToString() == "romance" ? "active-side" : "") list-group-item list-group-item-action SideButton">Romance</a>
+                    <a asp-controller="book" asp-action="horror" class="@(ViewContext.RouteData.Values["Action"].ToString() == "horror" ? "active-side" : "") list-group-item list-group-item-action SideButton">Horror</a>
+                    <a asp-controller="book" asp-action="fantasy" class="@(ViewContext.RouteData.Values["Action"].ToString() == "fantasy" ? "active-side" : "") list-group-item list-group-item-action SideButton">Fantasy</a>
+                    <a asp-controller="book" asp-action="scifi" class="@(ViewContext.RouteData.Values["Action"].ToString() == "scifi" ? "active-side" : "") list-group-item list-group-item-action SideButton">Science Fiction</a>
+                    <a asp-controller="book" asp-action="plays" class="@(ViewContext.RouteData.Values["Action"].ToString() == "plays" ? "active-side" : "") list-group-item list-group-item-action SideButton">Plays</a>
+                    <a asp-controller="book" asp-action="classic" class="@(ViewContext.RouteData.Values["Action"].ToString() == "classic" ? "active-side" : "") list-group-item list-group-item-action SideButton">Classic</a>
+                    <a asp-controller="book" asp-action="crime" class="@(ViewContext.RouteData.Values["Action"].ToString() == "crime" ? "active-side" : "") list-group-item list-group-item-action SideButton">Crime</a>
+                    <a asp-controller="subscription" asp-action="index" class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active-side" : "") list-group-item list-group-item-action SideButton">Subscriptions</a>
                 </div>
             </div>
         </div>
@@ -127,6 +127,7 @@
         </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
         <script srC="~/js/cart/cart.js" asp-append-version="true"></script>
+        <script src="~/js/cart/cartAdd.js" asp-append-version="true"></script>
     </environment>
 
     @RenderSection("Scripts", required: false)
