@@ -55,3 +55,18 @@
 .btn-arrow {
     height: 30px;
 }
+
+.discounted-price {
+    padding: 5px 0 0 10px;
+    text-decoration: line-through;
+}
+
+.book-detail-price-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.book-detail-price {
+    font-size: 20px;
+}

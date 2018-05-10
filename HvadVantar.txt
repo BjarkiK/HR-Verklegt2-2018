@@ -15,3 +15,48 @@
 - About Us
 - Admin stöff, eitthvað komið en athuga hversu mikið(virkni) og look.
 - Admin edit user (Role)...
+
+
+Signed in users can rate a book and give an optional comment
+Book catalogue
+X • Filter by genre
+X • Search
+• Order by name
+X Top 10 (based on rating)
+X Layout site
+X • Navigation bar
+X • Footer
+Edit profile
+X • Name
+• Image
+• Addresses
+• Favorite book
+• Order history
+X Book details
+X Cart
+X • Quantity
+X • Delete
+Checkout
+• Billing address & Shipping address
+• Street name
+• House number
+• City
+• Country
+• <select>
+• Zip code
+Review step (read-only)
+• Confirmation step
+• Easy navig
+X Add book to cart
+
+
+X 1
+X 2
+3 - Vantar allt
+Y 4 - Bæta við dropdown lista með öllum Genre, Author, Publisher sem eru til í grunni eða bæta nýjum við
+Y 5 - Sama og í 4
+X 6
+X 7
+X 8
+X 9
+10 - Vantar allt
