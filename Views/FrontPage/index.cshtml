@@ -2,7 +2,6 @@
 
 <div id="FrontPageBooks">
     <!-- (bæta við?) Þegar hoverað er yfir mynd að þá kemur númer á myndina í hvaða sæti hún er á Top10 -->
-    <h2>Top 10</h2>
     <div class="fp-list">
         <div class="arrow">
             <button type="button" class="btn btn-default btn-arrow glyphicon glyphicon-menu-left" value="left" />
@@ -18,16 +17,6 @@
                         <h4>@book.Price kr</h4>
                     </div>
                 </div>
-
-               /* <a href="book/details/@book.Id" class="single-book-container">
-                    <div class="book">
-                        <div class="Teste"></div>
-                        <p class="book-preview-title">@book.Name</p>
-                        <img class="book-preview-image" src="@book.Picture" alt="Image broken">
-                        <p class="preview-book-author">@book.Author</p>
-                        <p>@book.Price kr.</p>
-                    </div>
-                </a>*/
             }
             </div>
         </div>
@@ -36,7 +25,6 @@
             </button>
         </div>
     </div>
-    <h2>Newest 10</h2>
     <div class="fp-list">
         <div class="arrow">
             <button type="button" class="btn btn-default btn-arrow glyphicon glyphicon-menu-left" value="left" />
@@ -44,15 +32,14 @@
         <div class="books-container">
             <div class="books-container2">
             @foreach(var book in @Model.Newest) {
-                <a href="book/details/@book.Id" class="single-book-container">
-                    <div class="book">
-                        <div class="Teste"></div>
-                        <p class="book-preview-title">@book.Name</p>
-                        <img class="book-preview-image" src="@book.Picture" alt="Image broken">
-                        <p class="preview-book-author">@book.Author</p>
-                        <p>$ @book.Price kr.</p>
+                <div class="single-book-container">
+                    <div class="book-box" value="@book.Id">
+                        <img class="book-preview-image" src="~/@book.Picture" alt="Image broken">
+                        <h3 class="book-preview-title">@book.Name</h3>
+                        <h4 class="preview-book-author">@book.Author</h4>
+                        <h4>@book.Price kr</h4>
                     </div>
-                </a>
+                </div>
             }
             </div>
         </div>
