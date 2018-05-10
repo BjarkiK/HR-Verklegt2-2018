@@ -20,14 +20,16 @@ namespace TheBookCave.Controllers
     public class AdminUserController : Controller
     {
         private AdminUserService _adminUserService;
-         private readonly UserManager<ApplicationUser> _userManger;
-         private readonly SignInManager<ApplicationUser> _signInMager;
+        private ConvertService _convertService;
+        private readonly UserManager<ApplicationUser> _userManger;
+        private readonly SignInManager<ApplicationUser> _signInMager;
 
     
         public AdminUserController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager) {
             _userManger =  userManager;
             _signInMager =  signInManager;
             _adminUserService = new AdminUserService();
+            _convertService = new ConvertService();
         }
         
         public IActionResult index()
@@ -50,31 +52,18 @@ namespace TheBookCave.Controllers
         }
  
         public IActionResult editUser(string id) {
-			var user = _adminUserService.getUser(id);
+			var user = _adminUserService.getUpdateUser(id);
 			return View(user);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult editUser(UserListViewModel user) {
-            Console.WriteLine("Try");
+        public ActionResult editUser(UserDetailedListViewModel user) {
            	if (ModelState.IsValid) {
 				_adminUserService.updateUser(user);
-                Console.WriteLine(user.Email);
 				return RedirectToAction("index");
 			}
 			return View(user);
-        }
-         
-
-
-        public IActionResult userNotFound() {
-            return View();
-        }
-
-        public IActionResult addUser()
-        {
-            return View();
         }
 
         [HttpPost]
@@ -96,7 +85,6 @@ namespace TheBookCave.Controllers
                 // concatenated first and last name as fullname in claims
                 await _userManger.AddClaimAsync(user, new Claim("Name", $"{model.FirstName} {model.LastName}"));
 
-                await _userManger.AddToRoleAsync(user, model.Role);
               //   await _signInMager.SignInAsync(user,false);
 
                 return RedirectToAction("index", "AdminUser");

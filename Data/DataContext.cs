@@ -17,7 +17,8 @@ namespace TheBookCave.Data {
         public DbSet<HelpType> HelpType {get; set; }
         public DbSet<OrderStatus> OrderStatus {get; set; }
         public DbSet<User> AspNetUsers { get; set;}
-        public DbSet<Roles> AspNetRoles { get; set;}
+        public DbSet<Role> AspNetRoles { get; set;}
+        public DbSet<UserRole> AspNetUserRoles { get; set;}
      
         public DbSet<UserClaims> AspNetClaims { get; set;}
         // public DbSet<UserRoles> AspNetUserRoles { get; set;}

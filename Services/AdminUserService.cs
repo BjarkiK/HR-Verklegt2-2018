@@ -7,11 +7,16 @@ using TheBookCave.Repositories;
 namespace TheBookCave.Services {
     public class AdminUserService {
         private UserRepo _userRepo;
+        private RoleRepo _roleRepo;
+        private UserRoleRepo _userRoleRepo;
+        
         private ConvertService _convertService;
 
         public AdminUserService() {
             _userRepo = new UserRepo();
-             _convertService = new ConvertService();
+            _roleRepo = new RoleRepo();
+            _userRoleRepo = new UserRoleRepo();
+            _convertService = new ConvertService();
         }
 
          public UserListViewModel getUser(string uid) {
@@ -24,9 +29,26 @@ namespace TheBookCave.Services {
 
             return users;
         }
-        public void updateUser(UserListViewModel u) {
-            var user = _convertService.userViewToEntity(u);
-            var successfull = _userRepo.updateUser(user);
+        
+
+        
+        public UserDetailedListViewModel getUpdateUser(string uid) {
+            var user = _convertService.userViewToEntity(_userRepo.getUser(uid).First());
+            var userRoleId = _userRoleRepo.getUserRoleId(uid);
+            var roles = _roleRepo.getAllRoles();
+            var role = (from r in roles
+                        where userRoleId == r.Id
+                        select r ).SingleOrDefault();
+
+            var userDetail = new UserDetailedListViewModel { User = user, AllRoles = roles, Role = role };
+            return userDetail;
+
+        }
+
+        public void updateUser(UserDetailedListViewModel detailedUser) {
+            var successfullUser = _userRepo.updateUser(detailedUser.User);
+
+            //var successfullRole = _
         }
 
         public void createUser(UserListViewModel u) {

@@ -23,57 +23,47 @@ namespace TheBookCave.Controllers
             _genreService = new GenreService();
             _publisherService = new PublisherService();
         }
-        public IActionResult index()
-        {
+        public IActionResult index() {
             var bookList = _bookService.getAllBooks();
             return View(bookList);
         }
-        public IActionResult allBooks()
-        {
+        public IActionResult allBooks() {
             var allbooks = _bookService.getBookList();
             return View(allbooks);
         }
 
-        public IActionResult details(int id)
-        {
+        public IActionResult details(int id) {
             var book = _bookService.getDetailedBook(id);
             if(book == null) {
                 return RedirectToAction("BookNotFound");
             }              
             return View(book);
         }
-        public IActionResult horror()
-        {
+        public IActionResult horror() {
             var genreBooks = _bookService.getBooksByGenre("Horror");
             return View(genreBooks);
         }
-        public IActionResult fantasy()
-        {
+        public IActionResult fantasy() {
             var genreBooks = _bookService.getBooksByGenre("Fantasy");
             return View(genreBooks);
         }
-        public IActionResult romance()
-        {
+        public IActionResult romance()  {
             var genreBooks = _bookService.getBooksByGenre("Romance");
             return View(genreBooks);
         }
-        public IActionResult classic()
-        {
+        public IActionResult classic()  {
             var genreBooks = _bookService.getBooksByGenre("Classic");
             return View(genreBooks);
         }
-        public IActionResult scifi()
-        {
+        public IActionResult scifi() {
             var genreBooks = _bookService.getBooksByGenre("Scifi");
             return View(genreBooks);
         }
-        public IActionResult crime()
-        {
+        public IActionResult crime() {
             var genreBooks = _bookService.getBooksByGenre("Crime");
             return View(genreBooks);
         }
-        public IActionResult plays()
-        {
+        public IActionResult plays() {
             var genreBooks = _bookService.getBooksByGenre("Plays");
             return View(genreBooks);
         }
@@ -81,38 +71,31 @@ namespace TheBookCave.Controllers
         public IActionResult bookNotFound() {
             return View();
         }
-        public IActionResult reviewBook()
-        {
+        public IActionResult reviewBook() {
             // _bookService.addBookReview(?review?);
             return View();
         }
-        public IActionResult bookReviewListDisplay(string bid)
-        {
+        public IActionResult bookReviewListDisplay(string bid) {
             /*bookReviewList = _bookService.getBookReviews(bid);
             return View(bookReviewList);*/
             return View();
         }
-        public IActionResult booksWithSameAuthor(int id)
-        {
+        public IActionResult booksWithSameAuthor(int id) {
             var authorBookList = _bookService.getBooksByAuthor(id);
             return View(authorBookList);
         }
-        public IActionResult booksWithSameGenre(int gid)
-        {
+        public IActionResult booksWithSameGenre(int gid) {
             /*genreBookList = _bookService.getBookByGenre(gid);
             return View(genreBookList);*/
             return View();
         }
         [HttpPost]
-        public double totalGradeUpdate(int bid, int grade)
-        {
+        public double totalGradeUpdate(int bid, int grade) {
             var newGrade = _bookService.updateTotalGrade(bid, grade);
             return newGrade;
         }
-        public IActionResult search(string searchText)
-        {
-            if(searchText != null)
-            {
+        public IActionResult search(string searchText) {
+            if(searchText != null) {
                 var search = _bookService.getBooksWithSearch(searchText);
                 return View(search);
             }

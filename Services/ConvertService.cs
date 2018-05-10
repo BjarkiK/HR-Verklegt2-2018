@@ -54,5 +54,29 @@ namespace TheBookCave.Services {
                 };
             return user;
         }
+
+        public List<User> userListViewToEntity(List<UserListViewModel> userList) {
+            var users = new List<User>();
+            foreach (var u in userList) {
+                var user = new User {
+                    Id = u.Id,
+                    AccessFailedCount = u.AccessFailedCount,
+                    ConcurrencyStamp = u.ConcurrencyStamp,
+                    Email = u.Email,
+                    EmailConfirmed = u.EmailConfirmed,
+                    LockoutEnd = u.LockoutEnd,
+                    LockoutEnabled = u.LockoutEnabled,
+                    NormalizedEmail = u.NormalizedEmail,
+                    NormalizedUserName = u.NormalizedUserName,
+                    PasswordHash = u.PasswordHash,
+                    PhoneNumber = u.PhoneNumber,
+                    PhoneNumberConfirmed = u.PhoneNumberConfirmed,
+                    SecurityStamp = u.SecurityStamp,
+                    TwoFactorEnabled = u.TwoFactorEnabled,
+                    UserName = u.UserName                 
+                };
+            }
+            return users;
+        }
     }
 }

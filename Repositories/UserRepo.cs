@@ -30,7 +30,10 @@ namespace TheBookCave.Repositories {
                                     PhoneNumberConfirmed = u.PhoneNumberConfirmed,
                                     SecurityStamp = u.SecurityStamp,
                                     TwoFactorEnabled = u.TwoFactorEnabled,
-                                    UserName = u.UserName
+                                    UserName = u.UserName,
+                                    FirstName = u.FirstName,
+                                    LastName = u.LastName,
+                                    Picture = u.Picture
                                 }).ToList();
             return user;
         }
@@ -51,7 +54,12 @@ namespace TheBookCave.Repositories {
                                     PhoneNumberConfirmed = u.PhoneNumberConfirmed,
                                     SecurityStamp = u.SecurityStamp,
                                     TwoFactorEnabled = u.TwoFactorEnabled,
-                                    UserName = u.UserName
+                                    UserName = u.UserName,
+                                    FirstName = u.FirstName,
+                                    LastName = u.LastName,
+                                    Picture = u.Picture
+
+                                    
                                 }).ToList();
             return users;
         }
@@ -70,12 +78,5 @@ namespace TheBookCave.Repositories {
             _db.SaveChanges();
             return true;
         }
-
-/*        public bool updateUser(UserRoles user) {
-            _db.AspNetUserRoles.Update(user);
-            _db.SaveChanges();
-            return true;
-        }
-        */
     }
 }
