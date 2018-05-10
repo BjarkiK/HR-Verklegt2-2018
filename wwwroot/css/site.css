@@ -1,5 +1,7 @@
 ﻿body {
     padding-bottom: 20px;
+    background-color: #e9ece5;
+    color: #373737;
 }
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
@@ -44,6 +46,7 @@
     width: 250px;
     height:700px;
     border-color: black;
+    background-color: #2A3132;
     border: 2px solid;
 }
 
@@ -64,6 +67,8 @@
 .SideButton {
     padding: 25px;
     display:block;
+    background-color: #3b3a36;
+    color: #e9ece5 !important;
 }
 
 .InlineDiv {
@@ -148,14 +153,15 @@ td {
     display: none;
 }
 
-
+#sideBar {
+    margin-top: 10px;
+}
 
 .header {
-    background-color: #333333;
-    margin-bottom: 20px;
+    background-color: #3b3a36;
     padding: 10px;
     display: flex;
-    color: white;
+    color: #e9ece5;
 }
 
 .logo {
@@ -247,3 +253,6 @@ td {
     height: 45px;
 }
 
+hr {
+    border-top: 1px solid #3b3a36;
+}

@@ -36,7 +36,8 @@
 }
 
 .book-detail-author {
-    width: 65%;
+    padding-top: 4px;
+    width: 55%;
 }
 
 .book-detailed-detail {
@@ -87,10 +88,11 @@
 }
 .rating {
     /*padding-right: 5px;*/
-    width: 22%;
+    width: 30%;
 }
 .book-detail-grade {
     width: 10%;
+    padding-top: 4px;
     /*padding-left: 5px;*/
 } 
 
