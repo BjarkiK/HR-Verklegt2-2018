@@ -35,11 +35,6 @@ namespace TheBookCave.Controllers
             return View(searchResult);
         }
 
-        public IActionResult subscriptionListDisplay()
-        {
-            var subscriptionList = _adminSubscriptionService.getAllSubscription();
-            return View(subscriptionList);
-        }
         public IActionResult subscriptionDetails(int id)
         {
             var subscription = _adminSubscriptionService.getSubscription(id);
