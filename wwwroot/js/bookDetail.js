@@ -1,3 +1,8 @@
+document.addEventListener("DOMContentLoaded", function(event) { 
+    var bookTitle = document.getElementsByClassName("book-detail-title")[0];
+    $('.book-detail-addtocart-button').popover({content: "" + bookTitle.innerHTML + " added to cart!", trigger: "focus", placement: "bottom"});
+  });
+
 var StarRating = (function () {
     function StarRating(target) {
         function attr(name, d) {
