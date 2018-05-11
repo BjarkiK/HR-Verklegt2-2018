@@ -14,7 +14,5 @@ namespace TheBookCave.Models.ViewModels {
         public int TypeId { get; set; }
         // Id of address shipped to.
         public int AddressId { get; set; }
-
-
     }
 }
