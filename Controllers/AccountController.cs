@@ -44,12 +44,16 @@ namespace authentication_repo.Controllers
             var profile = getProfile();
             return View(profile);
         }
+        public IActionResult orderHistory() {
+            return View();
+        }
 
         private ProfileViewModel getProfile() {
             var user = _userService.getUser(User.Claims.ToArray()[0].Value).First();
             var address = _addressService.getUserAddress(user.Id);
             var country = _addressService.getUserAddressCountry(address.CountryId);
             var countries = _addressService.getAllCountries();
+            var favBooks = _userService.getFavoriteBooks(user.Id);
             var orders = (from o in _orderService.getUserOrder(user.Id)
                             select new Order {
                                 AddressId = o.AddressId,
@@ -63,7 +67,8 @@ namespace authentication_repo.Controllers
                                                 FirstName = user.FirstName, LastName = user.LastName,
                                                 Picture = user.Picture, PhoneNumber = user.PhoneNumber,
                                                 Address = address, Orders = orders,
-                                                Countries = countries, Country = country};
+                                                Countries = countries, Country = country,
+                                                FavoriteBooks = favBooks};
         }
 
         [Authorize]  
@@ -74,6 +79,7 @@ namespace authentication_repo.Controllers
             var address = _addressService.getUserAddress(user.Id);
             user.FirstName = profile.FirstName;
             user.LastName = profile.LastName;
+            user.PhoneNumber = profile.PhoneNumber;
             await _userManger.UpdateAsync(user);
             Console.WriteLine(address.Id);
             address.Address1 = profile.Address.Address1;
@@ -148,7 +154,6 @@ namespace authentication_repo.Controllers
             
 
             if (result.Succeeded) {
-                
                 var userId = _userService.getUserIdByEmail(model.Email);
                 var userRole = _userRoleService.getUsersRole(userId);
                 if(userRole == "ADMIN"){

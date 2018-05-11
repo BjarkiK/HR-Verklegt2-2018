@@ -19,10 +19,17 @@ function getCookie(cname) {
             c = c.substring(1);
         }
         if (c.indexOf(name) == 0) {
-            addCartBadge();
+            if(c.substring(name.length, c.length).length > 0) {
+                addCartBadge();
+            }
+            else {
+                removeCartBadge();
+            }
             return c.substring(name.length, c.length);
         }
     }
+    console.log(decodedCookie[15])
+    console.log(decodedCookie)
     /*if (decodedCookie[15] != null ) {
         addCartBadge();
     } else {

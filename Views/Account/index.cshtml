@@ -4,7 +4,7 @@
     <div class="row">
         <div class="btn-group btn-group-justified" role="group">
             <a asp-controller="Account" asp-action="" class="btn btn-primary disabled" role="button">Profile</a>
-            <a asp-controller="Account" asp-action="" class="btn btn-default" role="button">Order history</a>
+            <a asp-controller="Account" asp-action="orderHistory" class="btn btn-default" role="button">Order history</a>
             <a asp-controller="Account" asp-action="editProfile" class="btn btn-default" role="button">Edit profile</a>
         </div>
         <div class="profile-layot">
@@ -14,7 +14,7 @@
                 </div>
             </div>
             <div class="col-md-10 container">
-                <div class="basic-info">
+                <div class="col-md-3 basic-info">
                     <h4>Name:</h4>
                     <div>@Model.FirstName @Model.LastName</div>
                     <h4>Username:</h4>
@@ -26,7 +26,9 @@
                     <h4>Subscriptions</h4>
                     <div>engar askriftir</div>
                 </div>
-                <div class="shipping-info">
+                <div class="col-md-3 shipping-info">
+                    <h4>Shipping Address</h4>
+                    <hr>
                     @if(@Model.Address != null) {
                         <h4>Address:</h4>
                         <div>@Model.Address.Address1</div>
@@ -44,6 +46,16 @@
                     else {
                          <h4>Edit profile to add new address</h4>
                     }
+
+                    @if(@Model.FavoriteBooks.Count == 0) {
+                        <h1>No books to dispay. Go find book you like and press <3</h1>
+                    }
+                    else {
+                        <h2>Your favorite books</h2>
+                        @foreach (var b in @Model.FavoriteBooks) {
+                            <div>@b.Name</div>
+                        }
+                    }
                 </div>
             </div>
         </div>
@@ -54,5 +66,16 @@
 <style>
     .container {
         display: flex;
+    }
+    .shipping-info hr {
+        margin: 0px;
+    }
+    .profile-picture {
+        margin: auto;
+        width: 200px;
+        height: 200px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 50%;
     }
 </style>

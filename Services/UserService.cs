@@ -12,6 +12,8 @@ namespace TheBookCave.Services{
         private SubscriptionRepo _subscriptionRepo;
         private BookRepo _bookRepo;
         private CountryRepo _contryRepo;
+        private FavBookRepo _favBookRepo;
+        private ConvertService _convertService;
 
         public UserService() {
             _userRepo = new UserRepo();
@@ -19,12 +21,46 @@ namespace TheBookCave.Services{
             _subscriptionRepo = new SubscriptionRepo();
             _bookRepo = new BookRepo();
             _contryRepo = new CountryRepo();
+            _favBookRepo = new FavBookRepo();
+            _convertService = new ConvertService();
+            
         }
 
         public List<UserListViewModel> getUser(string uid){
             var user = _userRepo.getUser(uid);
             return user;
         }
+
+        public List<Book> getFavoriteBooks(string uid) {
+            var books = _bookRepo.getAllBooks();
+            var favBooks = (from fb in _favBookRepo.getAllFavBooks()
+                                where fb.UserId == uid
+                                join b in books
+                                on fb.bookId equals b.Id
+                                select b).ToList();
+            return _convertService.bookListViewToEntity(favBooks);
+        }
+
+        public bool addFavoriteBook(string uid, int bid) {
+            var bookExists = _bookRepo.getBook(bid).Count;
+            if(bookExists == 0) {
+                 return false;
+            }
+            var favBook = (from fb in _favBookRepo.getAllFavBooks()
+                                    where uid == fb.UserId &&  bid == fb.bookId
+                                    select fb).SingleOrDefault();
+            if(favBook == null) {
+                _favBookRepo.addFavoriteBook(new FavBook { UserId = uid, bookId = bid });
+                return true;
+            }
+            removeFavBook(favBook);
+            return false;
+        }
+
+        public void removeFavBook(FavBook fb) {
+            _favBookRepo.removeFavBook(fb);
+        }
+
 
         public string  getUserIdByEmail(string email) {
             var users = _userRepo.getAllUsers();
@@ -42,15 +78,6 @@ namespace TheBookCave.Services{
             var subscriptions = _subscriptionRepo.GetAllSubscriptions();
             finna svo þar sem user.subscription passar við og skila */
             return null;
-        }
-        public List<BookListViewModel> getUserFavoriteBooks(string uid) {
-            /*var user = _userRepo.GetUser(uid);
-            var books = _bookRepo.GetAllBooks();
-            bera svo saman við user.favoriteBooks við allar bækur og skila.*/
-            return null;
-        }
-        public void updateUser(UserListViewModel user) {
-            // Ekki viss hvernig er best að græja þetta.
         }
     }
 }

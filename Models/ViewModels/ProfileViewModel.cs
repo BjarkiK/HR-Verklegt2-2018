@@ -13,6 +13,7 @@ namespace TheBookCave.Models.ViewModels {
         public List<Order> Orders { get; set; }
         public List<Country> Countries { get; set; }
         public string Country { get; set; }
+        public List<Book> FavoriteBooks { get; set; }
 
     }
 }

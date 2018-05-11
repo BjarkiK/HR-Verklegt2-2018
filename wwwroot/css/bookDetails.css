@@ -162,3 +162,15 @@
     margin-left: 15px;
     margin-top: 15px;
 }
+
+.favorite {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.heart {
+    font-size: 40px;
+    color: black;
+    cursor: pointer;
+}
