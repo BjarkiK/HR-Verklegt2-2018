@@ -47,8 +47,17 @@ namespace TheBookCave.Services {
 
         public void updateUser(UserDetailedListViewModel detailedUser) {
             var successfullUser = _userRepo.updateUser(detailedUser.User);
-
-            //var successfullRole = _
+            var newRole = detailedUser.Role.Name;
+            var newRoleId = "";
+            foreach(var r in detailedUser.AllRoles) {
+                if(r.Name == newRole) {
+                    newRoleId = r.Id;
+                    break;
+                }
+            }
+            var userRoler = new UserRole{ UserId = detailedUser.User.Id, RoleId = newRoleId};
+            var successfullUserRole = _userRoleRepo.updateUserRole(userRoler);
+            
         }
 
         public void createUser(UserListViewModel u) {

@@ -50,20 +50,20 @@ namespace TheBookCave.Controllers
             var user = _adminUserService.getUser(id);
             return View(user);
         }
- 
+
+        
         public IActionResult editUser(string id) {
 			var user = _adminUserService.getUpdateUser(id);
 			return View(user);
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult editUser(UserDetailedListViewModel user) {
+        public ActionResult editUser(UserDetailedListViewModel model) {
            	if (ModelState.IsValid) {
-				_adminUserService.updateUser(user);
+				_adminUserService.updateUser(model);
 				return RedirectToAction("index");
 			}
-			return View(user);
+			return View(model);
         }
 
         [HttpPost]
