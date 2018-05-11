@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - TheBookCave</title>
+    <link rel="shortcut icon" href="favicon1.ico" />
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -39,7 +40,7 @@
 
 <div class="header">
     <div class="logo">
-        <a class="actual-logo" asp-controller="FrontPage" asp-action="Index">The Book Cave</a>
+        <a class="actual-logo" asp-controller="FrontPage" asp-action="Index"><img src="~/images/book-5-24-289661.png" alt="logo">The Book Cave</a>
     </div>
     <div class="search-container">
         <form  class="search" asp-action="search" asp-controller="Book" method="GET">
@@ -98,7 +99,6 @@
             <div id="footerLeft">
                 <a asp-controller="FrontPage" asp-action="AboutUs">About Us</a><br>
                 <a asp-controller="HelpCenter" asp-action="index">Help</a><br>
-                <a asp-controller="FrontPage" asp-action="SignUp">Sign Up</a>
             </div>
         </div>
         <div class="col-md-1 last"></div>

@@ -39,11 +39,6 @@ namespace TheBookCave.Controllers
             return View(searchResult);
         }
 
-        public IActionResult orderListDisplay()
-        {
-            var orderList = _adminOrderService.getAllOrder();
-            return View(orderList);
-        }
         public IActionResult details(int id)
         {
             var order = _adminOrderService.getOrder(id);
@@ -69,8 +64,7 @@ namespace TheBookCave.Controllers
         public IActionResult orderNotFound() {
             return View();
         }
-
-
+        
         public IActionResult addOrder() {
             return View();
         }
