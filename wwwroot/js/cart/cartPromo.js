@@ -30,8 +30,8 @@ function applyPromo() {
         var cookie = getCookie("TBCPromoCode");
         console.log(document.cookie);
         if(cookie != "") {
-            var promo = JSON.parse(cookie);
-            var discount = promo.discount;
+            var promo = cookie.split(":")[0];
+            var discount = cookie.split(":")[1];
             setPromoValue(discount);
         }
         else {
