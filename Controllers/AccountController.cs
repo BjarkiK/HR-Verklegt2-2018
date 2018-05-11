@@ -21,6 +21,7 @@ namespace authentication_repo.Controllers
         private UserService _userService;
         private OrderService  _orderService;
         private AddressService _addressService;
+        private UserRoleService _userRoleService;
 
         public AccountController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager) {
             _signInMager =  signInManager;
@@ -28,6 +29,8 @@ namespace authentication_repo.Controllers
             _userService = new UserService();
             _orderService = new OrderService();
             _addressService = new AddressService();
+            _userRoleService = new UserRoleService();
+
         }
 
         [Authorize]        
@@ -41,12 +44,16 @@ namespace authentication_repo.Controllers
             var profile = getProfile();
             return View(profile);
         }
+        public IActionResult orderHistory() {
+            return View();
+        }
 
         private ProfileViewModel getProfile() {
             var user = _userService.getUser(User.Claims.ToArray()[0].Value).First();
             var address = _addressService.getUserAddress(user.Id);
             var country = _addressService.getUserAddressCountry(address.CountryId);
             var countries = _addressService.getAllCountries();
+            var favBooks = _userService.getFavoriteBooks(user.Id);
             var orders = (from o in _orderService.getUserOrder(user.Id)
                             select new Order {
                                 AddressId = o.AddressId,
@@ -59,7 +66,8 @@ namespace authentication_repo.Controllers
                                                 FirstName = user.FirstName, LastName = user.LastName,
                                                 Picture = user.Picture, PhoneNumber = user.PhoneNumber,
                                                 Address = address, Orders = orders,
-                                                Countries = countries, Country = country};
+                                                Countries = countries, Country = country,
+                                                FavoriteBooks = favBooks};
         }
 
         [Authorize]  
@@ -70,8 +78,8 @@ namespace authentication_repo.Controllers
             var address = _addressService.getUserAddress(user.Id);
             user.FirstName = profile.FirstName;
             user.LastName = profile.LastName;
+            user.PhoneNumber = profile.PhoneNumber;
             await _userManger.UpdateAsync(user);
-
             Console.WriteLine(address.Id);
             address.Address1 = profile.Address.Address1;
             address.Address2 = profile.Address.Address2;
@@ -142,7 +150,15 @@ namespace authentication_repo.Controllers
             }
             // if vidkomand sign in PasswordSignInAsync
             var result = await _signInMager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+            
+
             if (result.Succeeded) {
+                var userId = _userService.getUserIdByEmail(model.Email);
+                var userRole = _userRoleService.getUsersRole(userId);
+                if(userRole == "ADMIN"){
+                    return RedirectToAction("index", "adminBook");
+                }
+
                 return RedirectToAction("index", "FrontPage");
             }
             return View();

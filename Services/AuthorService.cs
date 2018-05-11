@@ -15,5 +15,11 @@ namespace TheBookCave.Services {
             return authors;
         }
 
+        public List <AuthorListViewModel> getAuthor(int id)
+        {
+            var author = _authorRepo.getAuthor(id);
+            return author;
+        }
+
     }
 }

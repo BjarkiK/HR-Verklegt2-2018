@@ -3,13 +3,15 @@ using System.Linq;
 using TheBookCave.Data.EntityModels;
 using TheBookCave.Models.ViewModels;
 using TheBookCave.Repositories;
-
+using System;
 namespace TheBookCave.Services {
     public class AdminBookService {
         private BookRepo _bookRepo;
+        private ConvertService _convertService;
 
         public AdminBookService() {
             _bookRepo = new BookRepo();
+            _convertService = new ConvertService();
         }
 
          public List<BookListViewModel> getBook(int id) {
@@ -26,6 +28,36 @@ namespace TheBookCave.Services {
             var book = convertBookListViewModelToBook(b);
             var successfull = _bookRepo.updateBook(book);
         }
+
+        public void updateDetaildBook(BookDetailedListViewModel bd){
+            var book = _convertService.bookListViewToEntity(_bookRepo.getBook(bd.Id)).First();
+           /* var publisherId = (from p in bd.Publisher
+                                where bd.Publisher == p.Name 
+                                select p.Id).SingleOrDefault();
+            var genreId = ( from g in bd.Genre
+                            where bd.Genre == g.GenreEN
+                            select g.Id).SingleOrDefault();
+            var authorId = ( from a in bd.Authors
+                            where bd.Author == a.Name
+                            select a.AuthorId).SingleOrDefault(); */
+            book.Name = bd.Name;
+            book.AuthorId = Int32.Parse(bd.Author);
+            book.Picture = bd.Picture;
+            book.DetailsIS = bd.DetailsIS;
+            book.DetailsEN = bd.DetailsEN;
+            book.PublisherId = Int32.Parse(bd.Publisher);
+            book.GenreId = Int32.Parse(bd.Genre);
+            book.Price = bd.Price;
+            book.Discount = bd.Discount;
+            book.Pages = bd.Pages;
+            book.Quantity = bd.Quantity;
+            book.Published = bd.Published;
+            _bookRepo.updateBook(book);
+        }
+
+        
+
+
 
         public void createBook(BookListViewModel b) {
             var book = convertBookListViewModelToBook(b);

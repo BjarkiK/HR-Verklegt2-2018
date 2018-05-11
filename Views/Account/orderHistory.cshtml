@@ -1,0 +1,47 @@
+
+
+<div class="profile-container">
+    <div class="row">
+        <div class="btn-group btn-group-justified" role="group">
+            <a asp-controller="Account" asp-action="" class="btn btn-default" role="button">Profile</a>
+            <a asp-controller="Account" asp-action="orderHistory" class="btn btn-primary disabled" role="button">Order history</a>
+            <a asp-controller="Account" asp-action="editProfile" class="btn btn-default" role="button">Edit profile</a>
+        </div>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Order number</th>
+                    <th>Date</th>
+                    <th>Price</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>#</td>
+                    <td>#</td>
+                    <td>#</td>
+                    <td>
+                        <button class="btn btn-primary" value="" type="button">Details</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>#</td>
+                    <td>#</td>
+                    <td>#</td>
+                    <td>#</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-1"></div>
+</div>
+
+<style>
+    table {
+        margin-top: 10px;
+    }
+</style>

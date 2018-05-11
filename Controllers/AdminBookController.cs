@@ -20,10 +20,18 @@ namespace TheBookCave.Controllers {
     [Authorize(Roles = "ADMIN")]
     public class AdminBookController : Controller {
         private AdminBookService _adminBookService;
-
+        private AuthorService _authorService;
+        private GenreService _gernreService;
+        private PublisherService _publisherService;
+        private BookService _bookService;
 
         public AdminBookController() {
             _adminBookService = new AdminBookService();
+            _authorService = new AuthorService();
+            _gernreService = new GenreService();
+            _publisherService = new PublisherService();
+            _bookService = new BookService();
+        
         }
         public IActionResult index() {
             var bookList = _adminBookService.getAllBooks();
@@ -48,7 +56,29 @@ namespace TheBookCave.Controllers {
             var book = _adminBookService.getBook(id);
             return View(book);
         }
+      
         public IActionResult editBook(int id) {
+			var book = _bookService.getDetailedBook(id);
+            if(!book.Any()) {
+                return RedirectToAction("BookNotFound");
+            }
+			return View(book.First());
+
+        }
+
+        [HttpPost]
+        public ActionResult editBook(BookDetailedListViewModel book) {
+           	if (ModelState.IsValid) {
+				_adminBookService.updateDetaildBook(book);
+				return RedirectToAction("index");
+			}
+			return View(book);
+        }
+
+
+/*
+
+ public IActionResult editBook(int id) {
 			var book = _adminBookService.getBook(id);
             if(!book.Any()) {
                 return RedirectToAction("BookNotFound");
@@ -64,6 +94,9 @@ namespace TheBookCave.Controllers {
 			}
 			return View(book);
         }
+
+ */
+       
         
         public IActionResult removeBook(int id)
         {
