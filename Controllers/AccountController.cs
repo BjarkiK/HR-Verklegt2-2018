@@ -77,6 +77,7 @@ namespace authentication_repo.Controllers
             var address = _addressService.getUserAddress(user.Id);
             user.FirstName = profile.FirstName;
             user.LastName = profile.LastName;
+            user.PhoneNumber = profile.PhoneNumber;
             await _userManger.UpdateAsync(user);
             Console.WriteLine(address.Id);
             address.Address1 = profile.Address.Address1;

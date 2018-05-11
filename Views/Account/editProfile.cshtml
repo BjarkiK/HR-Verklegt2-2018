@@ -2,58 +2,61 @@
 
 <div class="profile-container">
     <div class="row">
-            <div class="btn-group btn-group-justified" role="group">
-                <a asp-controller="Account" asp-action="" class="btn btn-default" role="button">Profile</a>
-                <a asp-controller="Account" asp-action="orderHistory" class="btn btn-default" role="button">Order history</a>
-                <a asp-controller="Account" asp-action="editProfile" class="btn btn-primary disabled" role="button">Edit profile</a>
-            </div>
-            <div class="profile-layot">
-                <div class="col-md-12">
-                    <form asp-action="editProfile" asp-controller="Account" class="form-horizontal" method="POST">
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <div class="profile-picture" asp-for="Picture" value="@Model.Picture"></div>
-                                <input class="inputBtN" type='file' onchange="readURL(this);" />
-                            </div>
+        <div class="btn-group btn-group-justified" role="group">
+            <a asp-controller="Account" asp-action="" class="btn btn-default" role="button">Profile</a>
+            <a asp-controller="Account" asp-action="orderHistory" class="btn btn-default" role="button">Order history</a>
+            <a asp-controller="Account" asp-action="editProfile" class="btn btn-primary disabled" role="button">Edit profile</a>
+        </div>
+        <div class="profile-layot">
+            <div class="col-md-12">
+                <form asp-action="editProfile" asp-controller="Account" class="form-horizontal" method="POST">
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <div class="profile-picture" asp-for="Picture" value="@Model.Picture"></div>
+                            <input class="inputBtN" type='file' onchange="readURL(this);" />
                         </div>
-                        <div class="col-md-4 container">
-                            <div class="form-group">
-                                <h4>First name:</h4>
-                                <input tpe="text" class="form-control" autofocus="autofocus" asp-for="FirstName" placeholder="Enter first name" value="@Model.FirstName" />
-                            </div>
-                            <div class="form-group">
-                                <h4>Last name:</h4>
-                                <input tpe="text" class="form-control" asp-for="LastName" placeholder="Enter last name" value="@Model.LastName" />
-                            </div>
-                            <div class="form-group">
-                                <h4>Shipping Address:</h4>
-                                <input tpe="text" class="form-control" asp-for="Address.Address1" placeholder="Enter address" value="@Model.Address.Address1" />
-                            </div>
-                            <div class="form-group">
-                                <input tpe="text" class="form-control" asp-for="Address.Address2" placeholder="Enter more detailed address" value="@Model.Address.Address2" />
-                            </div>
-                            <div class="form-group">
-                                <select class="btn btn-default dropdown-toggle" asp-for="Country">
-                                <option value="None">Select a country</option>
-                                @foreach(var c in @Model.Countries) {
-                                    if(@Model.Country == c.Name) {
-                                        <option selected="selected" value="@c.Name">@c.Name</option>
-                                    }
-                                    else {
-                                        <option value="@c.Id">@c.Name</option>
-                                    }
+                    </div>
+                    <div class="col-md-4 container">
+                        <div class="form-group">
+                            <h4>First name:</h4>
+                            <input tpe="text" class="form-control" autofocus="autofocus" asp-for="FirstName" placeholder="Enter first name" value="@Model.FirstName" />
+                        </div>
+                        <div class="form-group">
+                            <h4>Last name:</h4>
+                            <input tpe="text" class="form-control" asp-for="LastName" placeholder="Enter last name" value="@Model.LastName" />
+                        </div>
+                        <div class="form-group">
+                            <h4>Phonenumber:</h4>
+                            <input tpe="text" class="form-control" autofocus="autofocus" asp-for="PhoneNumber" placeholder="Enter phonenumber" value="@Model.PhoneNumber" />
+                        </div>
+                        <div class="form-group">
+                            <h4>Shipping Address:</h4>
+                            <input tpe="text" class="form-control" asp-for="Address.Address1" placeholder="Enter address" value="@Model.Address.Address1" />
+                        </div>
+                        <div class="form-group">
+                            <input tpe="text" class="form-control" asp-for="Address.Address2" placeholder="Enter more detailed address" value="@Model.Address.Address2" />
+                        </div>
+                        <div class="form-group">
+                            <select class="btn btn-default dropdown-toggle" asp-for="Country">
+                            <option value="None">Select a country</option>
+                            @foreach(var c in @Model.Countries) {
+                                if(@Model.Country == c.Name) {
+                                    <option selected="selected" value="@c.Name">@c.Name</option>
                                 }
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <input tpe="text" class="form-control" asp-for="Address.Region" placeholder="Enter Region" value="@Model.Address.Region" />
-                            </div>
-                            <div class="form-group">
-                                <input tpe="text" class="form-control" asp-for="Address.Zip" placeholder="Enter Zip code" value="@Model.Address.Zip" />
-                            </div>
-                            <div class="form-group">
-                                <input type="submit" class="btn btn-default" value="Save"/>
-                            </div>
+                                else {
+                                    <option value="@c.Id">@c.Name</option>
+                                }
+                            }
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input tpe="text" class="form-control" asp-for="Address.Region" placeholder="Enter Region" value="@Model.Address.Region" />
+                        </div>
+                        <div class="form-group">
+                            <input tpe="text" class="form-control" asp-for="Address.Zip" placeholder="Enter Zip code" value="@Model.Address.Zip" />
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-default" value="Save"/>
                         </div>
                     </div>
                 </form>
@@ -61,7 +64,6 @@
         </div>
     </div>
 </div>
-
 
 <style>
     .inputBtN {
