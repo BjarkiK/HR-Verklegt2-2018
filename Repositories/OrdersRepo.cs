@@ -16,11 +16,12 @@ namespace TheBookCave.Repositories {
             var order = (from o in _db.Orders
                                 where o.Id == oid
                                 select new OrderListViewModel {
-                                Id = o.Id,
-                                AddressId = o.AddressId,
-                                Date = o.Date,
-                                TypeId = o.TypeId,
-                                UserId = o.UserId
+                                    Id = o.Id,
+                                    Address = o.Address,
+                                    PromoCode = o.PromoCode,
+                                    Date = o.Date,
+                                    OrderStatusId = o.OrderStatusId,
+                                    UserId = o.UserId
                                 }).ToList();
             return order;
         }
@@ -33,11 +34,12 @@ namespace TheBookCave.Repositories {
         public List<OrderListViewModel> getAllOrder() {
             var orders = (from o in _db.Orders
                                 select new OrderListViewModel {
-                                Id = o.Id,
-                                AddressId = o.AddressId,
-                                Date = o.Date,
-                                TypeId = o.TypeId,
-                                UserId = o.UserId
+                                    Id = o.Id,
+                                    Address = o.Address,
+                                    PromoCode = o.PromoCode,
+                                    Date = o.Date,
+                                    OrderStatusId = o.OrderStatusId,
+                                    UserId = o.UserId
                                 }).ToList();
             return orders;
         }

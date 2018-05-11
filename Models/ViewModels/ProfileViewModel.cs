@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using TheBookCave.Data.EntityModels;
+
 namespace TheBookCave.Models.ViewModels {
     public class ProfileViewModel {
         public string UserName { get; set; }
@@ -5,6 +8,8 @@ namespace TheBookCave.Models.ViewModels {
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Picture { get; set; }
+        public Address Address { get; set; }
+        public List<Order> Orders { get; set; }
 
 
     }

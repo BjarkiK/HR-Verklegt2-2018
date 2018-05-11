@@ -28,7 +28,7 @@ X • Navigation bar
 X • Footer
 Edit profile
 X • Name
-• Image
+X • Image
 • Addresses
 • Favorite book
 • Order history

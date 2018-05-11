@@ -2,45 +2,32 @@
 
 <h1>Edit Profile</h1>
 
-<form asp-action="editProfile" asp-controller="Account" class="form-horizontal" method="POST">
+<form asp-action="editProfile" asp-controller="Account"  id="sumbit-form"class="form-horizontal" method="POST">
     <div class="form-group">
-        <input tpe="text" class="form-control" autofocus="autofocus" asp-for="FirstName" placeholder="Enter first name" value="@Model.FirstName" />
+        <input id="firstName" tpe="text" class="form-control" autofocus="autofocus" asp-for="FirstName" placeholder="Enter first name" value="@Model.FirstName" />
     </div>
     <div class="form-group">
-        <input tpe="text" class="form-control" asp-for="LastName" placeholder="Enter last name" value="@Model.LastName" />
+        <input id="lastName" tpe="text" class="form-control" asp-for="LastName" placeholder="Enter last name" value="@Model.LastName" />
     </div>
     <div class="form-group">
-        <div class="profile-picture" asp-for="Picture"></div>
-        <input type='file' onchange="readURL(this);" />
+        <div class="profile-picture-edit" value="@Model.Picture"></div>
+        <input id="file" type='file' asp-for="Picture" bame="picture" onchange="readURL(this);" />
     </div>
     <div class="form-group">
         <input type="submit" class="btn btn-default" value="Save"/>
-        
+        <a href="/account"><input type="submit" class="btn btn-default" value="Cancel"/></a>
     </div>
 </form>
 
-<script>
-
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-            $('.profile-picture').style.backgroundImage = "url('" + e.target.results + "')";
-        };
-
-        reader.readAsDataURL(input.files[0]);
-    }
-}
-</script>
 
 <style>
-    .profile-picture {
+    .profile-picture-edit {
         width: 200px;
         height: 200px;
-        background-image: url(@Model.Picture);
         background-repeat: no-repeat;
         background-size: cover;
         border-radius: 50%;
 }
 </style>
+
+<script src="~/js/profile.js" asp-append-version="true"></script>

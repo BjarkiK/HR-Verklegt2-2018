@@ -20,14 +20,20 @@ namespace TheBookCave.Services{
         public List<UserListViewModel> getUser(string uid){
             var user = _userRepo.getUser(uid);
             return user;
-
         }
+        public AddressListViewModel getUserAddress(string uid) {
+            //var address = _addressRepo.GetAddress(user.addressId);
+            //return address
+            return null;
+        }
+
         public List<AddressListViewModel> getUserAddresss(string uid) {
             /* var user = _userRepo.GetUser(uid);
             var address = _addressRepo.GetAddress(user.addressId);
             return address */
             return null;
         }
+
         public List<SubscriptionListViewModel> getUserSubscriptions(string uid) {
             /* var user = _userRepo.GetUser(uid);
             var subscriptions = _subscriptionRepo.GetAllSubscriptions();

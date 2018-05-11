@@ -1,13 +1,16 @@
 using System;
+using System.IO;
 using System.Security.Claims;
 using System.Security.Principal;
 using System.Threading.Tasks;
 using authentication_repo.Models;
 using authentication_repo.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using TheBookCave.Models.ViewModels;
+using TheBookCave.Services;
 
 namespace authentication_repo.Controllers
 {
@@ -16,15 +19,20 @@ namespace authentication_repo.Controllers
         //meðmæla breytur
         private readonly SignInManager<ApplicationUser> _signInMager;
         private readonly UserManager<ApplicationUser> _userManger;
+        private UserService _userSerrvice;
+        private UserRoleService _userRoleSerrvice;
 
         public AccountController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager) {
             _signInMager =  signInManager;
             _userManger =  userManager;
+            _userSerrvice = new UserService();
+            _userRoleSerrvice = new UserRoleService();
         }
 
         [Authorize]        
         public async Task<IActionResult> index() {
             var user = await _userManger.GetUserAsync(User);
+            var address = _userSerrvice.getUserAddresss(user.Id);
             var profile = new ProfileViewModel {UserName = user.UserName, Email = user.Email,
                                                 FirstName = user.FirstName, LastName = user.LastName,
                                                 Picture = user.Picture};
@@ -44,13 +52,20 @@ namespace authentication_repo.Controllers
         [HttpPost]
         public async Task<IActionResult> editProfile(ProfileViewModel profile) {
             var user = await _userManger.GetUserAsync(User);
-            Console.WriteLine(user.LastName);
+
             user.FirstName = profile.FirstName;
             user.LastName = profile.LastName;
-            user.Picture = profile.Picture;
             await _userManger.UpdateAsync(user);
-
             return RedirectToAction("index");
+        }
+
+        [Authorize]  
+        [HttpPost]
+        public async Task editProfilePicture(string picture) {
+            Console.WriteLine("ServerPicture");
+            var user = await _userManger.GetUserAsync(User);
+            user.Picture = picture;
+            _userManger.UpdateAsync(user);
         }
 
         // view tar sem fyllt er ut register
@@ -76,7 +91,7 @@ namespace authentication_repo.Controllers
                 // concatenated first and last name as fullname in claims
                 await _userManger.AddClaimAsync(user, new Claim("Name", $"{model.FirstName} {model.LastName}"));
 
-                await _userManger.AddToRoleAsync(user, "user");
+                await _userManger.AddToRoleAsync(user, "USER");
                 // SignInAsync logar user in
                 await _signInMager.SignInAsync(user,false);
 
@@ -101,6 +116,14 @@ namespace authentication_repo.Controllers
             // if vidkomand sign in PasswordSignInAsync
             var result = await _signInMager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
             if ( result.Succeeded) {
+               /* var user =  await _userManger.GetUserAsync(User);
+                var userId = user.Id;
+                var role = _userRoleSerrvice.getUsersRole(userId);
+                Console.WriteLine(role);
+
+                if(role == "ADMIN") {
+                    return RedirectToAction("index", "AdmonOrderList");
+                }*/
                 return RedirectToAction("index", "FrontPage");
                 // ADMIN return RedirectToAction("index", "AdmonOrderList");
             }

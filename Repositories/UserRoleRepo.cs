@@ -12,11 +12,10 @@ namespace TheBookCave.Repositories {
         public UserRoleRepo() {
             _db = new DataContext();
         }
-        public string getUserRoleId(string uid) {
-            var role = (from r in _db.AspNetUserRoles
-                                where uid == r.UserId
-                                select r.RoleId).SingleOrDefault();
-            return role;
+        public List<UserRole> getAllUserRoles() {
+            var roles = (from r in _db.AspNetUserRoles
+                                select r).ToList();
+            return roles;
         }
     }
 }

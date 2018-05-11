@@ -21,7 +21,7 @@ namespace TheBookCave.Services {
             var types = _orderStatusRepo.getAllOrderStatus();
             var result = (from o in order
                             join t in types
-                            on o.TypeId equals t.Id
+                            on o.OrderStatusId equals t.Id
                             select t).ToList();
             return result;
         }

@@ -37,10 +37,11 @@ namespace TheBookCave.Services {
         private Order convertOrderListViewModelToOrder(OrderListViewModel o) {
             var order = new Order {
                                 Id = o.Id,
-                                AddressId = o.AddressId,
+                                Address = o.Address,
+                                PromoCode = o.PromoCode,
                                 Date = o.Date,
-                                TypeId = o.TypeId,
-                                UserId = o.UserId                              
+                                OrderStatusId = o.OrderStatusId,
+                                UserId = o.UserId                             
                                 };
             return order;
         }
@@ -52,9 +53,10 @@ namespace TheBookCave.Services {
                         select new OrderListViewModel
                         {
                             Id = o.Id,
-                            AddressId = o.AddressId,
+                            Address = o.Address,
+                            PromoCode = o.PromoCode,
                             Date = o.Date,
-                            TypeId = o.TypeId,
+                            OrderStatusId = o.OrderStatusId,
                             UserId = o.UserId
                         }).ToList();
 
