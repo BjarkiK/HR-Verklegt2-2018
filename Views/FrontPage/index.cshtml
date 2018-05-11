@@ -1,7 +1,6 @@
 ﻿@model TheBookCave.Models.ViewModels.FrontPageViewModel
 
 <div id="FrontPageBooks">
-    <!-- (bæta við?) Þegar hoverað er yfir mynd að þá kemur númer á myndina í hvaða sæti hún er á Top10 -->
     <div class="fp-list">
         <div class="arrow">
             <button type="button" class="btn btn-default btn-arrow glyphicon glyphicon-menu-left" value="left" />
@@ -18,7 +17,6 @@
                                 <h4>Nr @counter</h4>
                             </div>
                         </div>
-                        <!--<img class="book-preview-image" src="~/@book.Picture" alt="Image broken">-->
                         <h3 class="book-preview-title">@book.Name</h3>
                         <h4 class="preview-book-author">@book.Author</h4>
                         @if(@book.Discount == 0) {

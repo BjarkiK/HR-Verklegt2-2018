@@ -2,25 +2,16 @@
 
 <div class="container">
     <form  asp-controller="Checkout" asp-action="submitPayment" class="form-horizontal">
-      
         <div class="row" >
             <div class="form-group">
                 <h3>Credit Card information</h3>
                 <div class="form-group">
                     <label for="cname"> Name on card</label><br>
-<<<<<<< HEAD
                     <input type="text" id="cname" name="NameOnCard" asp-for="NameOnCard" required>
                 </div>
                 <div class="form-group">
                     <label for="ccnum"> Credit card number</label><br>
                     <input type="number" id="ccnum" name="CardNumber" asp-for="CardNumber"required>
-=======
-                    <input type="text" id="cname" name="cardName" required>
-                </div>
-                <div class="form-group">
-                    <label for="ccnum"> Credit card number</label><br>
-                    <input type="number" id="ccnum" name="creditcardnumber" required>
->>>>>>> 6be3498539d95afc30581e066911e3d058b33c7f
                 </div>
                 <div class="form-group">
                         <label for="card"><i class="fa fa-credit-card"></i> Select credit card type</label><br>
@@ -32,19 +23,11 @@
                 </div>
                 <div class="form-group">
                     <label for="exd">Expiration date</label><br>
-<<<<<<< HEAD
                     <input type="month" id="exd" name="ExpiryDate" asp-for="ExpiryDate" required>
                 </div>
                 <div class="form-group">
                     <label for="cvv2">CVC</label><br>
                     <input type="number" id="cvv2" name="CVC" asp-for="CVC" required>
-=======
-                    <input type="month" id="exd" name="expiration date" required>
-                </div>
-                <div class="form-group">
-                    <label for="cvv2">CVV2</label><br>
-                    <input type="number" id="cvv2" name="cvv2" required>
->>>>>>> 6be3498539d95afc30581e066911e3d058b33c7f
                 </div>
                 <div class="form-group">
                     <input type="submit" value="Continue">

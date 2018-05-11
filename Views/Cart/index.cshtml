@@ -8,7 +8,6 @@
         <img class="book-detail-image" src="~/@item.Book.Picture" alt="Image broken">
         <div class="cart-item-detail">
             <div class="cart-title">@item.Book.Name</div>
-            
             @if(@item.Book.Discount == 0) {
                 <div class="cart-price" value="@item.Book.Price">@item.Book.Price ISK</div>
             }
@@ -65,7 +64,7 @@
 </div>
 <div class="checkout">
     <p><a class="btn btn-default btn-sm" asp-controller="checkout" asp-action="index" class="btn btn-default">
-                <span class="glyphicon glyphicon-check"></span> Check out</a></p>
+        <span class="glyphicon glyphicon-check"></span> Check out</a></p>
 </div>
 }
 

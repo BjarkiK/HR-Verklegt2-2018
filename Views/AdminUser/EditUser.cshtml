@@ -7,27 +7,22 @@
 <h1>Edit user</h1>
 
 <form asp-action="editUser" asp-controller="adminUser" class="form-horizontal" method="POST">
-
     <div class="form-group">
         <label>Username</label>
         <input type="text" asp-for="User.UserName" autofocus="autofocus" class="form-control" placeholder="Enter username" value="@Model.User.UserName"/>
     </div>
-
     <div class="form-group">
         <label>Email</label>
         <input type="email" asp-for="User.Email" class="form-control" placeholder="Enter user email" value="@Model.User.Email"/>
     </div>
-
     <div class="form-group">
         <label>Phone number</label>
         <input type="phone" asp-for="User.PhoneNumber" class="form-control" placeholder="Enter user phone number" value="@Model.User.PhoneNumber"/>
     </div>
-
     <div class="form-group">
         <label>First name</label>
         <input type="text" asp-for="User.FirstName" class="form-control" placeholder="Enter users first name" value="@Model.User.FirstName"/>
     </div>
-    
     <select asp-for="Role.Name">
     @foreach(var r in @Model.AllRoles) {
         if(@Model.Role.Name == r.Name) {
@@ -38,17 +33,14 @@
         }
     }
     </select>
-
     <div class="form-group">
         <label>Last name</label>
         <input type="text" asp-for="User.LastName" class="form-control" placeholder="Enter users last name" value="@Model.User.LastName"/>
     </div>
-
     <div class="form-group">
         <label>Lockout end date</label>
         <input type="text" asp-for="User.LockoutEnd" class="form-control" placeholder="Enter lockout end date" value="@Model.User.LockoutEnd"/>
     </div>
-
     <div class="form-group">
            <button type="submit" class="btn btn-default">Save</button>
             <a href="/adminUser"><button type="button" class="btn btn-default">Cancel</button></a>
