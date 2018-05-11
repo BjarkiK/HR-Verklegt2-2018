@@ -1,4 +1,4 @@
-
+@model List<TheBookCave.Models.ViewModels.OrderListViewModel>;
 
 <div class="profile-container">
     <div class="row">
@@ -15,25 +15,19 @@
                 <tr>
                     <th>Order number</th>
                     <th>Date</th>
-                    <th>Price</th>
-                    <th>Details</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
+            @foreach(var o in @Model) {
                 <tr>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
+                    <td>@o.Id</td>
+                    <td>@o.Date</td>
                     <td>
                         <button class="btn btn-primary" value="" type="button">Details</button>
                     </td>
                 </tr>
-                <tr>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                </tr>
+            }
             </tbody>
         </table>
     </div>

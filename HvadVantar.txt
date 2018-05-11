@@ -30,7 +30,7 @@ Edit profile
 X • Name
 X • Image
 X • Addresses
-• Favorite book
+X • Favorite book
 • Order history
 X Book details
 X Cart

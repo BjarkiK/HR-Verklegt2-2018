@@ -40,10 +40,10 @@ namespace TheBookCave.Repositories {
             // linq delete
             return true;
         }
-        public bool createAddress(Address address) {
+        public int createAddress(Address address) {
             _db.Addresses.Add(address);
             _db.SaveChanges();
-            return true;
+            return address.Id;
         }
     }
 }

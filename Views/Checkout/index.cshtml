@@ -1,32 +1,38 @@
+@model TheBookCave.Models.ViewModels.CheckoutViewModel;
+
 <div class="container">
-    <form  asp-controller="Checkout" asp-action="creditInfo" class="form-horizontal">
-      
+    <ol class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Library</a></li>
+        <li class="active">Data</li>
+    </ol>
+    <form asp-controller="Checkout" asp-action="submitAddress" class="form-horizontal" method="POST">
         <div class="row" >
             <div class="form-group">
                 <h3>Billing Address</h3>
                 <div class="form-group">
                     <label for="fname"><i class="fa fa-user"></i> Full Name</label><br>
-                    <input type="text" id="fname" name="firstname" required>
+                    <input type="text" id="fname" name="firstname" asp-for="Firstname" required>
                 </div>
                 <div class="form-group">
                     <label for="email"><i class="fa fa-envelope"></i> Email</label><br>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email" name="email" asp-for="Email" required>
                 </div>
                 <div class="form-group">
                     <label for="pho"><i class="fa fa-phone"></i> Phone number</label><br>
-                    <input type="number" id="pho" name="phone" required>
+                    <input type="number" id="pho" name="phone" asp-for="Phone" required>
                 </div>
                 <div class="form-group">
                     <label for="adr"><i class="fa fa-address-card-o"></i> Address</label><br>
-                    <input type="text" id="adr" name="address" required>
+                    <input type="text" id="adr" name="address1" asp-for="Address1" required>
                 </div>
                 <div class="form-group">
                     <label for="adr2"><i class="fa fa-address-card-o"></i> Address 2</label><br>
-                    <input type="text" id="adr2" name="address2">
+                    <input type="text" id="adr2" name="address2" asp-for="Address2">
                 </div>
                  <div class="form-group">
                         <label for="country">Country</label><br>
-                        <select id="country">
+                        <select id="country" asp-for="CountryCode">
                         <option value="AF">Afghanistan</option>
                         <option value="AX">Åland Islands</option>
                         <option value="AL">Albania</option>
@@ -279,8 +285,8 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="city"><i class="fa fa-institution"></i> City</label><br>
-                    <input type="text" id="city" name="city" required>
+                    <label for="region"><i class="fa fa-institution"></i> City</label><br>
+                    <input type="text" id="region" name="region" asp-for="Region" required>
                 </div>
                 <div class="form-group">
                     <label for="state">State</label><br>
@@ -288,12 +294,11 @@
                 </div>
                 <div class="form-group">
                     <label for="zip">Zip</label><br>
-                    <input type="number" id="zip" name="zip" required>
+                    <input type="number" id="zip" name="zip" asp-for="Zip" required>
                 </div>
                 <div class="form-group">
                 <input type="checkbox" class="ToggleShowOrHide"> Sendingarstadur er annar en upplysingar<br>
                 </div>
-                
                 <div class="shippingAdress hidden" >
                     <h2>SendingarUpplýsingar</h2>
                     <div class="form-group">

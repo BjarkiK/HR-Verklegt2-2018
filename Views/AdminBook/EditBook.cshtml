@@ -60,7 +60,7 @@
                 }
             }
             </select>
-             <select asp-for="Publisher">
+            <select asp-for="Publisher">
             <option value="None">Select a Publisher</option>
             @foreach(var c in @Model.Publishers) {
                 if(@Model.Publisher == c.Name) {
@@ -73,7 +73,6 @@
             </select>
             <div class="form-group">
                 <input type="submit" class="btn btn-default" value="Save"/>
-                
             </div>
         </form>
     </div>

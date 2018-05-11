@@ -1,7 +1,7 @@
 @model TheBookCave.Models.ViewModels.CheckoutOverviewViewModel;
 
 <div class="container">
-    <h2>Your order overview:</h2>
+    <h2>Thank you for your order!</h2>
     <div class="panel panel-default">
         <div class="panel-heading">Shipping Address:</div>
         <ul class="list-group">
@@ -32,6 +32,4 @@
         }
         <div class="panel-footer">Sum: @Model.Sum</div>
     </div>
-    <p><a class="btn btn-default btn-sm" asp-controller="checkout" asp-action="checkout" class="btn btn-default">
-    <span class="glyphicon glyphicon-check"></span> Confirm</a></p>
 </div>

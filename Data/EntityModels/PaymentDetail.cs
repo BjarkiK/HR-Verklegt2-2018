@@ -9,11 +9,11 @@ namespace TheBookCave.Data.EntityModels {
         // Name printed on the card.
         public string NameOnCard { get; set; }
         // Cards expiry date.
-        public DateTime ExpiryDate { get; set; }
+        public string ExpiryDate { get; set; }
         // Card number printed on card.
         public string CardNumber { get; set; }
         // The CVC printed on back of card.
-        public int CVC { get; set; }
+        public string CVC { get; set; }
 
     }
 }
