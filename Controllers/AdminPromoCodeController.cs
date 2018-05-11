@@ -71,10 +71,29 @@ namespace TheBookCave.Controllers
 		public ActionResult addPromoCode(PromoCodeListViewModel promoCode) {
 			if (ModelState.IsValid) {
 				_adminPromoCodeService.createPromocode(promoCode);
-				return RedirectToAction("Index");
+				return RedirectToAction("Index", "adminPromoCode");
 			}
             Console.WriteLine("CreateNotValid");
 			return View(promoCode);
 		}
+
+        public IActionResult removePromoCode(int id)
+        {
+            var promoCode = _adminPromoCodeService.getPromoCode(id);
+            if(!promoCode.Any()) {
+                return RedirectToAction("SubscriptionNotFound");
+            }
+			return View(promoCode.First());
+
+        }
+
+        [HttpPost]
+        public ActionResult removePromoCode(PromoCodeListViewModel pro){
+           	if (ModelState.IsValid) {
+				_adminPromoCodeService.removePc(pro);
+				return RedirectToAction("index");
+			}
+			return View(pro);
+        }
     }
 }

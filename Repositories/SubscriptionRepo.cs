@@ -36,8 +36,9 @@ namespace TheBookCave.Repositories {
                                 }).ToList();
             return subscription;
         }
-        public bool deleteSubscription(int sid) {
-            // linq delete
+        public bool removeSub(Subscription sub){
+            _db.Subscriptions.Remove(sub);
+            _db.SaveChanges();
             return true;
         }
         public bool createSubscription(Subscription subscription) {

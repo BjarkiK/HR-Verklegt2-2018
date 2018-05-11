@@ -76,26 +76,7 @@ namespace TheBookCave.Controllers {
         }
 
 
-/*
 
- public IActionResult editBook(int id) {
-			var book = _adminBookService.getBook(id);
-            if(!book.Any()) {
-                return RedirectToAction("BookNotFound");
-            }
-			return View(book.First());
-
-        }
-        [HttpPost]
-        public ActionResult editBook(BookListViewModel book) {
-           	if (ModelState.IsValid) {
-				_adminBookService.updateBook(book);
-				return RedirectToAction("index");
-			}
-			return View(book);
-        }
-
- */
        
         
         public IActionResult removeBook(int id)

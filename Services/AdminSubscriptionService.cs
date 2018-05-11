@@ -18,6 +18,11 @@ namespace TheBookCave.Services {
             return subscription;
         }
 
+        public void removeSub(SubscriptionListViewModel s) {
+            var sub = convertSubscriptionListViewModelToSubscription(s);
+            var successfull = _subscriptionRepo.removeSub(sub);
+        }
+
         public List<SubscriptionListViewModel> getAllSubscription() {
             var subscription = _subscriptionRepo.getAllSubscription();
 
@@ -63,23 +68,8 @@ namespace TheBookCave.Services {
             return searchResult;
         }
 
+
     }
 }    
-    /*
-       public List<OrderListViewModel> getAllOrdersOfActiveType() {
-            var allActiveOrders = getAllOrder().Where(m => m.TypeId == 2);
-            
-            var lowest = ( from i in allActiveOrders orderby i ascending
-				select i).ToList();
-            
-            foreach (var X in lowest)
-            {
-            //    return X;
-            }
-            return null;
-           
-        }
-    }
-    
-     */
+
      

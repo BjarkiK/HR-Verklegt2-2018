@@ -1,7 +1,7 @@
 @model TheBookCave.Data.EntityModels.Subscription
 
 @{
-    ViewBag.Title = "Create";
+    Layout = "_AdminLayout";
 }
 
 <h2>Create</h2>
@@ -12,7 +12,6 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Add new book</h4>
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.DescriptionEn, htmlAttributes: new { @class = "control-label col-md-2" })

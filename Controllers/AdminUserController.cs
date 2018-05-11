@@ -20,6 +20,7 @@ namespace TheBookCave.Controllers
     public class AdminUserController : Controller
     {
         private AdminUserService _adminUserService;
+        private UserService _UserService;
         private ConvertService _convertService;
         private readonly UserManager<ApplicationUser> _userManger;
         private readonly SignInManager<ApplicationUser> _signInMager;
@@ -30,6 +31,7 @@ namespace TheBookCave.Controllers
             _signInMager =  signInManager;
             _adminUserService = new AdminUserService();
             _convertService = new ConvertService();
+            _UserService = new UserService();
         }
         
         public IActionResult index()
@@ -47,7 +49,7 @@ namespace TheBookCave.Controllers
 
         public IActionResult userDetails(string id)
         {
-            var user = _adminUserService.getUser(id);
+            var user = _UserService.getUser(id);
             return View(user);
         }
 
@@ -91,6 +93,25 @@ namespace TheBookCave.Controllers
             }
 
             return View();
+        }
+
+        public IActionResult removeUser(string id)
+        {
+            var user = _UserService.getUser(id);
+            if(!user.Any()) {
+                return RedirectToAction("SubscriptionNotFound");
+            }
+			return View(user.First());
+
+        }
+
+        [HttpPost]
+        public ActionResult removeUser(UserListViewModel user){
+           	if (ModelState.IsValid) {
+				_adminUserService.removeUser(user);
+				return RedirectToAction("index");
+			}
+			return View(user);
         }
     }
 }

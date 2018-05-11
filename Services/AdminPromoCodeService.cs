@@ -21,7 +21,6 @@ namespace TheBookCave.Services {
 
         public List<PromoCodeListViewModel> getAllPromoCode() {
             var promoCodes = _promoCodeRepo.getAllPromoCode();
-            Console.WriteLine(promoCodes.First().Code);
             return promoCodes;
         }
         public void updatePromoCode(PromoCodeListViewModel pc) {
@@ -59,6 +58,10 @@ namespace TheBookCave.Services {
                         }).ToList();
 
             return searchResult;
+        }
+        public void removePc(PromoCodeListViewModel pc) {
+            var PromoC = convertPromoCodeListViewModelToPromoCode(pc);
+            var successfull = _promoCodeRepo.removePc(PromoC);
         }
     }
 }

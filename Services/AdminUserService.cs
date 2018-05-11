@@ -20,10 +20,30 @@ namespace TheBookCave.Services {
             _convertService = new ConvertService();
         }
 
-         public UserListViewModel getUser(string uid) {
-            var user = _userRepo.getUser(uid).First();
+        public void removeUser(UserListViewModel u) {
+            var user = convertUserListViewModelToUser(u);
+            var successfull = _userRepo.removeUser(user);
+        }
+        
+        private User convertUserListViewModelToUser(UserListViewModel u) {
+            var user = new User {
+                                PasswordHash = u.PasswordHash,
+                                AccessFailedCount = u.AccessFailedCount,
+                                ConcurrencyStamp = u.ConcurrencyStamp,
+                                Email = u.Email,
+                                EmailConfirmed = u.EmailConfirmed,
+                                LockoutEnd = u.LockoutEnd,
+                                LockoutEnabled = u.LockoutEnabled,
+                                NormalizedEmail = u.NormalizedEmail,
+                                NormalizedUserName = u.NormalizedUserName,
+                  
+                                };
             return user;
         }
+
+
+
+
 
         public List<UserListViewModel> getAllUsers() {
             var users = _userRepo.getAllUsers();

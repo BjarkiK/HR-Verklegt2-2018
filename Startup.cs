@@ -25,6 +25,7 @@ namespace TheBookCave
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+           // serivces.AddTransient<IContactService, ContactService>();
             // Geymd i conflig skra
             services.AddDbContext<AuthenticationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("AuthenticationConnection")));
             // User sem er tengdur vid inskradan notanda

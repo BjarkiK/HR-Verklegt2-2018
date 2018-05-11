@@ -35,10 +35,12 @@ namespace TheBookCave.Repositories {
             return promoCodes;
         }
 
-        public bool deletePromoCode(int pcid) {
-            // linq delete
+        public bool removePc(PromoCode pc){
+            _db.PromoCodes.Remove(pc);
+            _db.SaveChanges();
             return true;
         }
+
          public bool createPromoCode(PromoCode promocode) {
             _db.PromoCodes.Add(promocode);
             _db.SaveChanges();

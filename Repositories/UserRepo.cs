@@ -64,9 +64,9 @@ namespace TheBookCave.Repositories {
                                 }).ToList();
             return users;
         }
-       
-        public bool deleteUser(int uid) {
-            // linq delete
+        public bool removeUser(User user){
+            _db.AspNetUsers.Remove(user);
+            _db.SaveChanges();
             return true;
         }
         public bool createUser(User user) {

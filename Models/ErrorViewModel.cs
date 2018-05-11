@@ -1,6 +1,6 @@
 using System;
 
-namespace SpotifyLite.Models
+namespace TheBookCave.Models
 {
     public class ErrorViewModel
     {

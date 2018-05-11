@@ -74,5 +74,25 @@ namespace TheBookCave.Controllers
             Console.WriteLine("CreateNotValid");
 			return View(subscription);
 		}
+
+
+        public IActionResult removeSubscription(int id)
+        {
+            var sub = _adminSubscriptionService.getSubscription(id);
+            if(!sub.Any()) {
+                return RedirectToAction("SubscriptionNotFound");
+            }
+			return View(sub.First());
+
+        }
+
+        [HttpPost]
+        public ActionResult removeSubscription(SubscriptionListViewModel sub){
+           	if (ModelState.IsValid) {
+				_adminSubscriptionService.removeSub(sub);
+				return RedirectToAction("index");
+			}
+			return View(sub);
+        }
     }
 }
