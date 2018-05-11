@@ -11,9 +11,10 @@ using TheBookCave.Data;
 namespace TheBookCave.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20180510223844_[OrderItems]Migration_AddOrderItems3")]
+    partial class OrderItemsMigration_AddOrderItems3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -182,46 +183,6 @@ namespace TheBookCave.Migrations
                     b.HasIndex("BookId");
 
                     b.ToTable("OrderItems");
-                });
-
-            modelBuilder.Entity("TheBookCave.Data.EntityModels.OrderItemBook", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("AuthorId");
-
-                    b.Property<string>("DetailsEN");
-
-                    b.Property<string>("DetailsIS");
-
-                    b.Property<int>("Discount");
-
-                    b.Property<int>("GenreId");
-
-                    b.Property<double>("Grade");
-
-                    b.Property<string>("Name");
-
-                    b.Property<int>("NrOfGrades");
-
-                    b.Property<int>("OrderItemId");
-
-                    b.Property<int>("Pages");
-
-                    b.Property<string>("Picture");
-
-                    b.Property<double>("Price");
-
-                    b.Property<bool>("Published");
-
-                    b.Property<int>("PublisherId");
-
-                    b.Property<int>("Quantity");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("OrderItemBook");
                 });
 
             modelBuilder.Entity("TheBookCave.Data.EntityModels.OrderStatus", b =>

@@ -65,7 +65,7 @@ namespace authentication_repo.Controllers
             Console.WriteLine("ServerPicture");
             var user = await _userManger.GetUserAsync(User);
             user.Picture = picture;
-            _userManger.UpdateAsync(user);
+            await _userManger.UpdateAsync(user);
         }
 
         // view tar sem fyllt er ut register

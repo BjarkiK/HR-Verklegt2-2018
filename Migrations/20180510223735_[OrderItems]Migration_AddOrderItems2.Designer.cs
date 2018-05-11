@@ -11,9 +11,10 @@ using TheBookCave.Data;
 namespace TheBookCave.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20180510223735_[OrderItems]Migration_AddOrderItems2")]
+    partial class OrderItemsMigration_AddOrderItems2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -162,66 +163,6 @@ namespace TheBookCave.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Orders");
-                });
-
-            modelBuilder.Entity("TheBookCave.Data.EntityModels.OrderItem", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int?>("BookId");
-
-                    b.Property<int>("Discount");
-
-                    b.Property<int>("OrderId");
-
-                    b.Property<int>("Quantity");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BookId");
-
-                    b.ToTable("OrderItems");
-                });
-
-            modelBuilder.Entity("TheBookCave.Data.EntityModels.OrderItemBook", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("AuthorId");
-
-                    b.Property<string>("DetailsEN");
-
-                    b.Property<string>("DetailsIS");
-
-                    b.Property<int>("Discount");
-
-                    b.Property<int>("GenreId");
-
-                    b.Property<double>("Grade");
-
-                    b.Property<string>("Name");
-
-                    b.Property<int>("NrOfGrades");
-
-                    b.Property<int>("OrderItemId");
-
-                    b.Property<int>("Pages");
-
-                    b.Property<string>("Picture");
-
-                    b.Property<double>("Price");
-
-                    b.Property<bool>("Published");
-
-                    b.Property<int>("PublisherId");
-
-                    b.Property<int>("Quantity");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("OrderItemBook");
                 });
 
             modelBuilder.Entity("TheBookCave.Data.EntityModels.OrderStatus", b =>
@@ -422,13 +363,6 @@ namespace TheBookCave.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("AspNetUserRoles");
-                });
-
-            modelBuilder.Entity("TheBookCave.Data.EntityModels.OrderItem", b =>
-                {
-                    b.HasOne("TheBookCave.Data.EntityModels.Book", "Book")
-                        .WithMany()
-                        .HasForeignKey("BookId");
                 });
 #pragma warning restore 612, 618
         }

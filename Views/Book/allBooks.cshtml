@@ -6,14 +6,37 @@
     <div class="col-md-3 book-box">
         <div class="thumbnail">
             <div class="booklist-container click-book" value="@book.Id">
-                <img class="book-image" src="~/@book.Picture" alt="Image broken">
+                @if(@book.Discount == 0) {
+                    <img class="book-preview-image" src="~/@book.Picture" alt="Image broken">
+                }
+                else {
+                    <div class="ticketOnBooks">
+                            <img class="book-preview-image" src="~/@book.Picture" alt="Image broken">
+                            <div class="text-block">
+                                <h4>@book.Discount%</h4>
+                            </div>
+                    </div>
+                }
                 <div class="caption">
                     <div class="titleDiv">
                         <h3 class="title">@book.Name</h3>
                     </div>
                     <h4 class="author">@book.Author</h4>
                     <p>@book.DetailsEN</p>
-                    <p id="price">@book.Price ISK</p>
+                    @if(@book.Discount == 0) {
+                        <div class="book-detail-price">Price: @book.Price kr</div>
+                    }
+                    else {
+                        int price = Convert.ToInt32(@book.Price);
+                        int discountPrice = Convert.ToInt32((1 - @book.Discount/100m) * price);
+                        <div class="book-detail-price-over">
+                            <div class="book-detail-price-container">
+                                <div class="book-detail-price">Price: @discountPrice ISK</div>
+                                <div class="discounted-price">@book.Price ISK</div>
+                                <div class="discount">(-@book.Discount%)</div>
+                            </div>
+                        </div>
+                    }
                 </div>
             </div>
             <div class="addCart">
