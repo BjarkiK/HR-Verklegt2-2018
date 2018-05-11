@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TheBookCave.Models.ViewModels;
 using TheBookCave.Repositories;
 using System.Linq;
+using TheBookCave.Data.EntityModels;
 
 namespace TheBookCave.Services {
     public class BookService {
@@ -87,6 +88,8 @@ namespace TheBookCave.Services {
             }
             return detailedBook;
         }
+
+
         
         public List<BookDetailedListViewModel> getTop10Books() {
             var books = getBookList();

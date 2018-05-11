@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TheBookCave.Models;
 using TheBookCave.Services;
@@ -32,6 +33,13 @@ namespace TheBookCave.Controllers
             /*var orders = _orderService.getUserOrder(uid);
             return View(orders);*/
             return View();
+        }
+
+        [Authorize]
+        public bool addToFav(int bid){
+            Console.WriteLine(bid);
+            var userId = User.Claims.ToArray()[0].Value;
+            return _userService.addFavoriteBook(userId, bid);
         }
         public IActionResult userOrderDetails(int id)
         {

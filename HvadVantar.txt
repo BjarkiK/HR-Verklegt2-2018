@@ -29,7 +29,7 @@ X • Footer
 Edit profile
 X • Name
 X • Image
-• Addresses
+X • Addresses
 • Favorite book
 • Order history
 X Book details

@@ -47,6 +47,7 @@ namespace authentication_repo.Controllers
             var address = _addressService.getUserAddress(user.Id);
             var country = _addressService.getUserAddressCountry(address.CountryId);
             var countries = _addressService.getAllCountries();
+            var favBooks = _userService.getFavoriteBooks(user.Id);
             var orders = (from o in _orderService.getUserOrder(user.Id)
                             select new Order {
                                 AddressId = o.AddressId,
@@ -60,7 +61,8 @@ namespace authentication_repo.Controllers
                                                 FirstName = user.FirstName, LastName = user.LastName,
                                                 Picture = user.Picture, PhoneNumber = user.PhoneNumber,
                                                 Address = address, Orders = orders,
-                                                Countries = countries, Country = country};
+                                                Countries = countries, Country = country,
+                                                FavoriteBooks = favBooks};
         }
 
         [Authorize]  
@@ -144,6 +146,7 @@ namespace authentication_repo.Controllers
             // if vidkomand sign in PasswordSignInAsync
             var result = await _signInMager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
             if (result.Succeeded) {
+                Console.WriteLine(User);
                 return RedirectToAction("index", "FrontPage");
             }
             return View();

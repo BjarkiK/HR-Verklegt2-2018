@@ -44,6 +44,16 @@
                     else {
                          <h4>Edit profile to add new address</h4>
                     }
+
+                    @if(@Model.FavoriteBooks.Count == 0) {
+                        <h1>No books to dispay. Go find book you like and press <3</h1>
+                    }
+                    else {
+                        <h2>Your favorite books</h2>
+                        @foreach (var b in @Model.FavoriteBooks) {
+                            <div>@b.Name</div>
+                        }
+                    }
                 </div>
             </div>
         </div>

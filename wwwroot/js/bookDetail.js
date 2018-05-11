@@ -124,3 +124,25 @@ for (var i = 0; i < stars.length; i++) {
         })
     });
 }
+
+document.getElementsByClassName("favorite")[0].addEventListener("click", e => addToFav(e))
+
+
+function addToFav(e) {
+    var bookId = parseInt(e.currentTarget.attributes[1].nodeValue);
+
+    console.log(e)
+    $.post('/user/addToFav', { bid: bookId }, function(returnData) {
+        console.log(returnData)
+        var heart = document.getElementsByClassName("heart")[0];
+        if(returnData == false) {
+            heart.style.color = "black";
+        }
+        else {
+            heart.style.color = "red";
+        }
+        //Change background to red
+    }).fail(function(response) {
+        console.log("failed" + response);
+    })
+}
