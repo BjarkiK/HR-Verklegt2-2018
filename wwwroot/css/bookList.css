@@ -27,6 +27,44 @@ h1 {
     text-align: center;
 }
 
+.book-detail-price-container {
+    display: flex;
+    text-align: center;
+    color: red;
+    margin: auto;
+}
+
+.book-detail-price-over {
+    display: flex;
+}
+.book-detail-price {
+    text-align: center;
+}
+.discounted-price {
+    padding: 5px 0 0 10px;
+    text-decoration: line-through;
+    font-size: 10px;
+}
+.discount {
+    font-size: 10px;
+    padding: 2.5px 0 0 5px;
+}
+.ticketOnBooks {
+    position: relative;
+    font-family: Arial;
+    min-width: 157px;
+}
+.text-block {
+    position: absolute;
+    top: 10px;
+    background-color: red;
+    opacity: 0.8;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: 47px;
+}
+
 
 .caption p {
     width:100%;
