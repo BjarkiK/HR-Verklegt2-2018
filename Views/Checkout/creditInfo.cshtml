@@ -5,29 +5,28 @@
             <div class="form-group">
                 <h3>Credit Card information</h3>
                 <div class="form-group">
-                    <label for="cname"> Name on card</label>
-                    <input type="text" id="cname" name="cardName">
+                    <label for="cname"> Name on card</label><br>
+                    <input type="text" id="cname" name="cardName" required>
                 </div>
                 <div class="form-group">
-                    <label for="ccnum"> Credit card number</label>
-                    <input type="text" id="ccnum" name="creditcardnumber">
+                    <label for="ccnum"> Credit card number</label><br>
+                    <input type="number" id="ccnum" name="creditcardnumber" required>
                 </div>
                 <div class="form-group">
-                    <p>Type of credit card</p>
-                    <select>
+                        <label for="card"><i class="fa fa-credit-card"></i> Select credit card type</label><br>
+                        <select id="card">
                         <option value="visa"> Visa</option>
                         <option value="masercard"> MasterCard</option>
                         <option value="americanexpress"> American express</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <p>Expiration date</p>
-                    <label for="exd">Expiration date</label>
-                    <input type="text" id="exd" name="expiration date">
+                    <label for="exd">Expiration date</label><br>
+                    <input type="month" id="exd" name="expiration date" required>
                 </div>
                 <div class="form-group">
-                    <label for="cvv2">CVV2</label>
-                    <input type="text" id="cvv2" name="cvv2">
+                    <label for="cvv2">CVV2</label><br>
+                    <input type="number" id="cvv2" name="cvv2" required>
                 </div>
                 <div class="form-group">
                     <input type="submit" value="Continue">

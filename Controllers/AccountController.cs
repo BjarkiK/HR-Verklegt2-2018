@@ -21,6 +21,7 @@ namespace authentication_repo.Controllers
         private UserService _userService;
         private OrderService  _orderService;
         private AddressService _addressService;
+        private UserRoleService _userRoleService;
 
         public AccountController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager) {
             _signInMager =  signInManager;
@@ -28,6 +29,8 @@ namespace authentication_repo.Controllers
             _userService = new UserService();
             _orderService = new OrderService();
             _addressService = new AddressService();
+            _userRoleService = new UserRoleService();
+
         }
 
         [Authorize]        
@@ -40,6 +43,9 @@ namespace authentication_repo.Controllers
         public ActionResult editProfile() {
             var profile = getProfile();
             return View(profile);
+        }
+        public IActionResult orderHistory() {
+            return View();
         }
 
         private ProfileViewModel getProfile() {
@@ -73,8 +79,8 @@ namespace authentication_repo.Controllers
             var address = _addressService.getUserAddress(user.Id);
             user.FirstName = profile.FirstName;
             user.LastName = profile.LastName;
+            user.PhoneNumber = profile.PhoneNumber;
             await _userManger.UpdateAsync(user);
-
             Console.WriteLine(address.Id);
             address.Address1 = profile.Address.Address1;
             address.Address2 = profile.Address.Address2;
@@ -145,8 +151,15 @@ namespace authentication_repo.Controllers
             }
             // if vidkomand sign in PasswordSignInAsync
             var result = await _signInMager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+            
+
             if (result.Succeeded) {
-                Console.WriteLine(User);
+                var userId = _userService.getUserIdByEmail(model.Email);
+                var userRole = _userRoleService.getUsersRole(userId);
+                if(userRole == "ADMIN"){
+                    return RedirectToAction("index", "adminBook");
+                }
+
                 return RedirectToAction("index", "FrontPage");
             }
             return View();

@@ -14,7 +14,10 @@ namespace TheBookCave.Repositories {
         }
         public List<UserRole> getAllUserRoles() {
             var roles = (from r in _db.AspNetUserRoles
-                                select r).ToList();
+                                select new UserRole {
+                                 UserId = r.UserId,
+                                 RoleId = r.RoleId   
+                                }).ToList();
             return roles;
         }
 
