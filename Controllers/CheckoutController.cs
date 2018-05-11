@@ -82,7 +82,8 @@ namespace TheBookCave.Controllers
                 return RedirectToAction("creditInfo");
             }
             var cartCookie = Request.Cookies["TBCbooksInCart"];
-            CheckoutOverviewViewModel overviewList = _orderService.getOrderOverview(orderDetails, cartCookie);
+            var promoCookie = Request.Cookies["TBCPromoCode"];
+            CheckoutOverviewViewModel overviewList = _orderService.getOrderOverview(orderDetails, cartCookie, "");
 
             return View(overviewList);
         }
@@ -92,8 +93,12 @@ namespace TheBookCave.Controllers
                 return RedirectToAction("index");
             }
             var cartCookie = Request.Cookies["TBCbooksInCart"];
+            var promoCookie = Request.Cookies["TBCPromoCode"];
             _orderService.checkOut(cartCookie, addressId);
-            CheckoutOverviewViewModel overviewList = _orderService.getOrderOverview(orderDetails, cartCookie);
+            CheckoutOverviewViewModel overviewList = _orderService.getOrderOverview(orderDetails, cartCookie, promoCookie);
+            Response.Cookies.Delete("TBCOrderDetails");
+            Response.Cookies.Delete("TBCbooksInCart");
+            Response.Cookies.Delete("TBCPromoCode");
             return View(overviewList);
         }
     }

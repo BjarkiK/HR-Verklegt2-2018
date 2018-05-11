@@ -110,7 +110,7 @@ namespace TheBookCave.Services {
             _orderRepo.updateOrder(convertOrderListViewModelToOrder(order));
         }
 
-        public CheckoutOverviewViewModel getOrderOverview(string orderDetails, string cartCookie) {
+        public CheckoutOverviewViewModel getOrderOverview(string orderDetails, string cartCookie, string promoCode) {
             if (orderDetails == null || orderDetails == "") {
                 return null;
             }
@@ -130,9 +130,12 @@ namespace TheBookCave.Services {
             overviewList.ExpiryDate = orderInfo[12];
             overviewList.CVC = orderInfo[13];
             overviewList.OrderItems = new List<OrderItemB>();
-            overviewList.Sum = orderSum;
             foreach (var oi in orderitems) {
                 overviewList.OrderItems.Add(oi);
+            }
+            if (promoCode != null) {
+                
+                overviewList.Sum = orderSum;
             }
             return overviewList;
         }
