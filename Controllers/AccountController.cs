@@ -96,7 +96,11 @@ namespace authentication_repo.Controllers
             }
             // if vidkomand sign in PasswordSignInAsync
             var result = await _signInMager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
-            if ( result.Succeeded) {
+            if (result.Succeeded) {
+                Console.WriteLine(User.IsInRole("2"));
+                if(User.IsInRole("ADMIN")) {
+                    return RedirectToAction("index", "AdminAllOrder");
+                }
                 return RedirectToAction("index", "FrontPage");
             }
             return View();
