@@ -146,3 +146,19 @@
   .rating .star.active.half::after {
     width: 0.5em;
  }
+ .ticketOnBooks {
+    position: relative;
+    font-family: Arial;
+    min-width: 157px;
+}
+.text-block {
+    position: absolute;
+    top: 10px;
+    background-color: red;
+    opacity: 0.8;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: 15px;
+    margin-top: 15px;
+}

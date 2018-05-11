@@ -14,5 +14,8 @@ namespace TheBookCave.Data.EntityModels {
         public int TypeId { get; set; }
         // Id of address shipped to.
         public int AddressId { get; set; }
+        public int OrderItemId { get; set; }
+        public string Address {get; set; }
+        public string PromoCode { get; set; }
     }
 }
