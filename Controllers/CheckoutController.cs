@@ -37,11 +37,7 @@ namespace TheBookCave.Controllers
         }
 
         public ActionResult submitAddress(CheckoutViewModel checkoutInfo) {
-<<<<<<< HEAD
-            var userId =  User.Claims.ToArray()[0].Value;
-=======
             var userId = _userManager.GetUserId(User);
->>>>>>> b7ffbf94205e1a09ca88cb5ca6327bc6d4a7b21d
             orderDetails = ("ADDRESS;" + checkoutInfo.Firstname + ";" + checkoutInfo.Email + ";" + checkoutInfo.Phone + ";" + checkoutInfo.Address1 + ";" + checkoutInfo.Address2 + ";" + checkoutInfo.CountryCode + ";" + checkoutInfo.Region + ";" + checkoutInfo.Zip);
             addressId = _addressService.createAddress(userId, checkoutInfo.Address1, checkoutInfo.Address2, checkoutInfo.CountryCode, checkoutInfo.Region, checkoutInfo.Zip, checkoutInfo.Phone);
             Response.Cookies.Append("TBCOrderDetails", addressId + ":" + orderDetails);

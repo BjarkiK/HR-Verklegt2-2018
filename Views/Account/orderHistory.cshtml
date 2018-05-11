@@ -1,4 +1,4 @@
-@model TheBookCave.Models.ViewModels.OrderListViewModel;
+@model List<TheBookCave.Models.ViewModels.OrderListViewModel>;
 
 <div class="profile-container">
     <div class="row">
@@ -15,7 +15,6 @@
                 <tr>
                     <th>Order number</th>
                     <th>Date</th>
-                    <th>Price</th>
                     <th>Status</th>
                 </tr>
             </thead>
@@ -24,7 +23,6 @@
                 <tr>
                     <td>@o.Id</td>
                     <td>@o.Date</td>
-                    <td>#</td>
                     <td>
                         <button class="btn btn-primary" value="" type="button">Details</button>
                     </td>
