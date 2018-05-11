@@ -34,5 +34,8 @@ namespace TheBookCave.Controllers
         private void newestBooks() {
             _frontPageViewModel.Newest =  _bookService.getNewestBooks(10);
         }
+        public IActionResult aboutUs() {
+            return View();
+        }
     }
 }
