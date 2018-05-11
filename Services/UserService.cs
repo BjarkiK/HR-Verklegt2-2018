@@ -26,6 +26,15 @@ namespace TheBookCave.Services{
             return user;
         }
 
+        public string  getUserIdByEmail(string email) {
+            var users = _userRepo.getAllUsers();
+
+            var userId = (from u in users
+                        where email == u.Email
+                        select u.Id).SingleOrDefault();
+            return userId;
+        }
+
 
 
         public List<SubscriptionListViewModel> getUserSubscriptions(string uid) {

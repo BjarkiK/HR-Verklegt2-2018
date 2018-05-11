@@ -11,7 +11,8 @@ namespace TheBookCave.Repositories {
         public UserRepo() {
             _db = new DataContext();
         }
-       
+
+
         public List<UserListViewModel> getUser(string uid) {
             var user = (from u in _db.AspNetUsers
                                 where u.Id == uid
