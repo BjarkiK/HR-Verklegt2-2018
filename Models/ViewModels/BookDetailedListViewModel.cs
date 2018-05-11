@@ -1,5 +1,7 @@
 using System.ComponentModel.DataAnnotations;
-
+using System;
+using System.Collections.Generic;
+using TheBookCave.Data.EntityModels;
 namespace TheBookCave.Models.ViewModels {
     public class BookDetailedListViewModel {
         // ISBN of book
@@ -34,6 +36,12 @@ namespace TheBookCave.Models.ViewModels {
         // Determains if the book is visible on the website or is
         // saved and unfinished.
         public bool Published { get; set; }
+
+        public List <GenreListViewModel> Genres { get; set; }
+        // The author that wrote the book.
+        public List <AuthorListViewModel> Authors { get; set; }
+        // Books publisher
+        public List <PublisherListViewModel> Publishers { get; set; }
 
     }
 }

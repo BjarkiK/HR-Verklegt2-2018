@@ -47,6 +47,7 @@ namespace TheBookCave.Services {
             var newGrade = (book.Grade / book.NrOfGrades);
             return newGrade;
         }
+        
 
         public List<BookDetailedListViewModel> getBookList() {
             var books = _bookRepo.getAllBooks();
@@ -75,9 +76,15 @@ namespace TheBookCave.Services {
                                 Published = b.Published,
                                 Genre = g.GenreEN,
                                 Author = a.Name,
-                                Publisher = p.Name
+                                Publisher = p.Name,
+                                Authors = authors,
+                                Publishers = publishers,
+                                Genres = genres
                              }).ToList();
-            return joined;
+             var alphabeticalOrder = ( from b in joined orderby b.Name ascending
+				select b).ToList();
+            
+            return alphabeticalOrder;
         }
         public List<BookDetailedListViewModel> getDetailedBook(int id) {
             var books = getBookList();
@@ -87,6 +94,7 @@ namespace TheBookCave.Services {
             }
             return detailedBook;
         }
+    
         
         public List<BookDetailedListViewModel> getTop10Books() {
             var books = getBookList();
@@ -103,10 +111,12 @@ namespace TheBookCave.Services {
         public List<BookDetailedListViewModel> getBooksByGenre(string genre) {
             var books = getBookList();
             List<BookDetailedListViewModel> genreBooks = books.Where(g => g.Genre == genre).ToList();
+            var alphabeticalOrder = ( from b in genreBooks orderby b.Name ascending
+				select b).ToList();
             if (genreBooks.Count == 0){
                 return null;
             }
-            return genreBooks;
+            return alphabeticalOrder;
         }
         public List<BookDetailedListViewModel> getBooksByAuthor(string author) {
             var books = getBookList();

@@ -14,6 +14,12 @@ namespace TheBookCave.Services {
             // Filter books that are in cart and return
             return Publishers;
         }
+        
+        public List<PublisherListViewModel> getPublisher(int id)
+        {
+            var publisher = _PublisherRepo.getPublisher(id);
+            return publisher;
+        }
 
     }
 }

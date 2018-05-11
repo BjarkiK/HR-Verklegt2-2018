@@ -15,5 +15,10 @@ namespace TheBookCave.Services {
             return Genres;
         }
 
+        public List <GenreListViewModel> getGenre(int id){
+            var Genre = _GenreRepo.getGenre(id);
+            return Genre;
+        }
+
     }
 }
