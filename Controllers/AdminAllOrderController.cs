@@ -13,25 +13,21 @@ using TheBookCave.Models;
 using TheBookCave.Models.ViewModels;
 using TheBookCave.Services;
 
-namespace TheBookCave.Controllers
-{
+namespace TheBookCave.Controllers {
     [Authorize(Roles = "ADMIN")]
-    public class AdminAllOrderController : Controller
-    {
+    public class AdminAllOrderController : Controller {
         private AdminOrderService _adminOrderService;
 
         public AdminAllOrderController() {
             _adminOrderService = new AdminOrderService();
         }
-        public IActionResult index()
-        {
+        public IActionResult index() {
             var orderList = _adminOrderService.getAllOrder();
             return View(orderList);
         }
 
         [HttpPost]
-        public IActionResult index(string searchString)
-        {
+        public IActionResult index(string searchString) {
             var searchResult = _adminOrderService.getSearchResult(searchString);
             if (searchResult == null) {
                 return View("NotFound");
@@ -39,8 +35,7 @@ namespace TheBookCave.Controllers
             return View(searchResult);
         }
 
-        public IActionResult details(int id)
-        {
+        public IActionResult details(int id) {
             var order = _adminOrderService.getOrder(id);
             return View(order);
         }

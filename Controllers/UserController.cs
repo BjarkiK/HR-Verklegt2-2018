@@ -37,7 +37,6 @@ namespace TheBookCave.Controllers
 
         [Authorize]
         public bool addToFav(int bid){
-            Console.WriteLine(bid);
             var userId = User.Claims.ToArray()[0].Value;
             return _userService.addFavoriteBook(userId, bid);
         }

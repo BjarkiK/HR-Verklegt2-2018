@@ -4,13 +4,11 @@ function checkPromo(e) {
     var code = document.getElementsByClassName("cart-promo-input")[0].value.toString();
 
     $.post("/cart/validatePromoCode", { code: code }, function(data, status) {
-        console.log(data)
         document.getElementsByClassName("promo-message")[0].innerHTML = "Promocode " + code + " added. You received " + data + "% discount" ;
         setPromoValue(data);
         setPromoCookie(data, code);
         applyPromo();
     }).fail(function(response) {
-        console.log("Failed");
         document.getElementsByClassName("promo-message")[0].innerHTML = "Promocode not valid. Try another."
     })
 }

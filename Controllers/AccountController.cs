@@ -10,11 +10,10 @@ using Microsoft.AspNetCore.Mvc;
 using TheBookCave.Models.ViewModels;
 using TheBookCave.Services;
 using TheBookCave.Data.EntityModels;
+using System.Collections.Generic;
 
-namespace authentication_repo.Controllers
-{
-    public class AccountController : Controller
-    {
+namespace authentication_repo.Controllers {
+    public class AccountController : Controller  {
         //meðmæla breytur
         private readonly SignInManager<ApplicationUser> _signInMager;
         private readonly UserManager<ApplicationUser> _userManger;
@@ -44,10 +43,15 @@ namespace authentication_repo.Controllers
             var profile = getProfile();
             return View(profile);
         }
+
+        [Authorize]
         public IActionResult orderHistory() {
-            return View();
+            var userId = User.Claims.ToArray()[0].Value;
+            var orders = _orderService.getUserOrder(userId);
+            return View(orders);
         }
 
+        [Authorize] 
         private ProfileViewModel getProfile() {
             var user = _userService.getUser(User.Claims.ToArray()[0].Value).First();
             var address = _addressService.getUserAddress(user.Id);
@@ -75,13 +79,11 @@ namespace authentication_repo.Controllers
         [HttpPost]
         public async Task<IActionResult> editProfile(ProfileViewModel profile) {
             var user = await _userManger.GetUserAsync(User);
-            Console.WriteLine(user);
             var address = _addressService.getUserAddress(user.Id);
             user.FirstName = profile.FirstName;
             user.LastName = profile.LastName;
             user.PhoneNumber = profile.PhoneNumber;
             await _userManger.UpdateAsync(user);
-            Console.WriteLine(address.Id);
             address.Address1 = profile.Address.Address1;
             address.Address2 = profile.Address.Address2;
             var countryId = 0;
@@ -90,13 +92,13 @@ namespace authentication_repo.Controllers
             address.Region = profile.Address.Region;
             address.Zip = profile.Address.Zip;
             _addressService.updateAddress(address);
+
             return RedirectToAction("index");
         }
 
         [Authorize]  
         [HttpPost]
         public async Task editProfilePicture(string picture) {
-            Console.WriteLine("ServerPicture");
             var user = await _userManger.GetUserAsync(User);
             user.Picture = picture;
             await _userManger.UpdateAsync(user);
