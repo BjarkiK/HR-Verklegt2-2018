@@ -20,7 +20,6 @@
     </environment>
 </head>
 <body>
-<!--Þarf að laga navbar þegar gluggi er minnkaður-->
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="row">
         <div class="navbar-header">
@@ -36,31 +35,20 @@
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse">
             <div class="col-md-7">
-                <!--<form class="navbar-form" action="/action_page.php">-->
-                    <div class="input-group">
-                        @using (Html.BeginForm("search", "Book",FormMethod.Get))
-                        {
-                            <input type="search" name="searchText" class="form-control navbarSearch" placeholder="Search">
-                            <div class="input-group-btn">
-                                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-                                <!--<button type="submit" class="btn btn-default">adv. Search</button>-->
-                            </div>
-                            
-                        }
-                        <!--<input type="text" name="" class="form-control navbarSearch" placeholder="Search">
+                <div class="input-group">
+                    @using (Html.BeginForm("search", "Book",FormMethod.Get))
+                    {
+                        <input type="search" name="searchText" class="form-control navbarSearch" placeholder="Search">
                         <div class="input-group-btn">
                             <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-                            <button type="submit" class="btn btn-default">adv. Search</button>
-                        </div>-->
-                    </div>
-                <!--</form>-->
+                        </div>
+                    }
+                </div>
             </div>
             <div class="col-md-2">
                 <ul class="nav navbar-nav"> 
                     <li>@await Html.PartialAsync("_LoginPartial")</li>
-                    <!--<li><a asp-area="" asp-controller="Home" asp-action="Globe"><span class="glyphicon glyphicon-globe" aria-hidden="true"></a></li>-->
                     <li><a asp-area="" asp-controller="Account" asp-action="index"><span class="glyphicon glyphicon-user" aria-hidden="true"></a></li>
-                    
                     <li><a asp-area="" asp-controller="Cart" asp-action="index"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></a></li>
                 </ul>
             </div>
@@ -86,7 +74,6 @@
     <div class="noscript">This site uses javascript to function normaly. Please enable javascript in your browser</div>
 </noscript>
 
-
 <div class="row">
     <div class="col-md-2 ">
         <div class="main-container">
@@ -106,10 +93,9 @@
         </div>
     </div>
 
-    <!--<div class="container body-content">-->
-    <div class="col-md-10">
-         @RenderBody()
-    </div>
+<div class="col-md-10">
+        @RenderBody()
+</div>
 </div>
 <hr />
 <footer>
@@ -139,9 +125,7 @@
         </div>
         <div class="col-md-1 last"></div>
     </div>
-
 </footer>
-    <!--</div>-->
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>

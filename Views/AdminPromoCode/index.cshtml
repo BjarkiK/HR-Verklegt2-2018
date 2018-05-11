@@ -19,7 +19,7 @@
 
 <table class="table table-striped table-responsive-md btn-table ">
     <thead>
-      <tr>
+        <tr>
             <th>#</th>
             <th>Edit Promocode</th>
             <th>Remove Promocode</th>
@@ -30,7 +30,7 @@
         </tr>
     </thead>
     @foreach(var promoCode in @Model)
-        {
+    {
         <tbody>
             <tr>
                 <td><a class="btn btn-primary btn-rounded btn-sm my-0" asp-controller="AdminPromoCode" asp-action="promoCodeDetails" asp-route-id="@promoCode.Id">@promoCode.Id</a></td>    
@@ -44,5 +44,5 @@
                 <td>@promoCode.Published</td>
             </tr>
         </tbody>
-        }      
-    </table>
+    }
+</table>

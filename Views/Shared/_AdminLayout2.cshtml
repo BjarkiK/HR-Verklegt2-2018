@@ -1,6 +1,4 @@
-<!--
-     This is for all admin Views
--->
+<!-- This is for all admin Views -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +20,7 @@
     </environment>
 </head>
 <body>
-<!--Þarf að laga navbar þegar gluggi er minnkaður-->
+
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="row">
         <div class="navbar-header">
@@ -51,11 +49,8 @@
             <div class="col-md-2">
                 <ul class="nav navbar-nav"> 
                     <li>@await Html.PartialAsync("_LoginPartial")</li>
-                  <!--  <li><a asp-area="" asp-controller="Home" asp-action="Globe"><span class="glyphicon glyphicon-globe" aria-hidden="true"></a></li>
-                   -->
                     <li><a asp-area="" asp-controller="AdminAllOrder" asp-action="index"><span class="glyphicon glyphicon-user" aria-hidden="true"></a></li>
                     <li><a asp-area="" asp-controller="Cart" asp-action="index"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></a></li>
-                    
                 </ul>
             </div>
         </div>
@@ -112,9 +107,7 @@
         </div>
         <div class="col-md-1 last"></div>
     </div>
-
 </footer>
-    <!--</div>-->
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
