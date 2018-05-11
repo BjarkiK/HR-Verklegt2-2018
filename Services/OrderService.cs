@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using authentication_repo.Models;
-using Microsoft.AspNetCore.Identity;
 using TheBookCave.Data.EntityModels;
 using TheBookCave.Models.ViewModels;
 using TheBookCave.Repositories;
@@ -14,7 +12,7 @@ namespace TheBookCave.Services {
         private BookRepo _bookRepo;
         private PaymentDetailRepo _paymentDetailRepo;
         private ConvertService _convertService;
-        //private readonly UserManager<ApplicationUser> _userManager;
+
         private double orderSum;
         public OrderService(){
             _bookRepo = new BookRepo();
@@ -22,7 +20,6 @@ namespace TheBookCave.Services {
             _orderStatusRepo = new OrderStatusRepo();
             _paymentDetailRepo = new PaymentDetailRepo();
             _convertService = new ConvertService();
-            //_userManager = userManager;
         }
         public List<OrderListViewModel> getUserOrder(string uid){
             var orders = _orderRepo.getAllOrder();
@@ -44,7 +41,8 @@ namespace TheBookCave.Services {
                                 AddressId = o.AddressId,
                                 Date = o.Date,
                                 TypeId = o.TypeId,
-                                UserId = o.UserId                              
+                                UserId = o.UserId,
+                                PromoCode = o.PromoCode                           
                                 };
             return order;
         }
@@ -53,6 +51,7 @@ namespace TheBookCave.Services {
             if (cookie == null || cookie == "") {
                 return null;
             }
+            orderSum = 0;
             var cookieContent = getCookiecontent(cookie);
             var id = cookieContent[0];
             var quantity = cookieContent[1];
@@ -93,10 +92,13 @@ namespace TheBookCave.Services {
             return _orderRepo.createOrder(order);
         }
 
-        public void checkOut(string cookie, int addressId) {
+        public void checkOut(string userId, string cookie, int addressId, string promoCode) {
             var order = new OrderListViewModel();
             //var user = await _userManager.GetUserAsync(User);
-            order.UserId = "";
+            if (promoCode != null) {
+                order.PromoCode = promoCode;
+            }
+            order.UserId = userId;
             order.Date = DateTime.Now; 
             order.TypeId = 2; // Default = 2 Í vinnslu
             order.AddressId = addressId;
@@ -130,18 +132,21 @@ namespace TheBookCave.Services {
             overviewList.ExpiryDate = orderInfo[12];
             overviewList.CVC = orderInfo[13];
             overviewList.OrderItems = new List<OrderItemB>();
+            overviewList.Sum = orderSum;
             foreach (var oi in orderitems) {
                 overviewList.OrderItems.Add(oi);
             }
             if (promoCode != null) {
-                
-                overviewList.Sum = orderSum;
+                string[] promoSplit = promoCode.Split(':');
+                int promoDiscount = Int32.Parse(promoSplit[1]);
+                overviewList.Sum = orderSum * (1 - promoDiscount / 100.0);
             }
             return overviewList;
         }
 
-        public int savePaymentDetails(string name, string cardNumber, string expiryDate, string cvc, int addressId) {
+        public int savePaymentDetails(string userId, string name, string cardNumber, string expiryDate, string cvc, int addressId) {
             var pd = new PaymentDetail();
+            pd.UserId = userId;
             pd.AddressId = addressId;
             pd.NameOnCard = name;
             pd.ExpiryDate = expiryDate;

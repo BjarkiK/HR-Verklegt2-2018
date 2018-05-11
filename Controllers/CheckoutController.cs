@@ -7,6 +7,8 @@ using System.Globalization;
 using System.Web;
 using System.Net;
 using Microsoft.AspNetCore.Mvc;
+using authentication_repo.Models;
+using Microsoft.AspNetCore.Identity;
 using TheBookCave.Models;
 using TheBookCave.Services;
 using TheBookCave.Models.ViewModels;
@@ -18,14 +20,16 @@ namespace TheBookCave.Controllers
         private CartService _cartService;
         private OrderService _orderService;
         private AddressService _addressService;
+        private readonly UserManager<ApplicationUser> _userManager;
         private string orderDetails;
         private int addressId;
         private int paymentId;
 
-        public CheckoutController() {
+        public CheckoutController(UserManager<ApplicationUser> userManager) {
             _addressService = new AddressService();
             _cartService = new CartService();
             _orderService = new OrderService();
+            _userManager = userManager;
         }
         public IActionResult index()
         {
@@ -33,10 +37,10 @@ namespace TheBookCave.Controllers
         }
 
         public ActionResult submitAddress(CheckoutViewModel checkoutInfo) {
+            var userId = _userManager.GetUserId(User);
             orderDetails = ("ADDRESS;" + checkoutInfo.Firstname + ";" + checkoutInfo.Email + ";" + checkoutInfo.Phone + ";" + checkoutInfo.Address1 + ";" + checkoutInfo.Address2 + ";" + checkoutInfo.CountryCode + ";" + checkoutInfo.Region + ";" + checkoutInfo.Zip);
-            addressId = _addressService.createAddress("", checkoutInfo.Address1, checkoutInfo.Address2, checkoutInfo.CountryCode, checkoutInfo.Region, checkoutInfo.Zip, checkoutInfo.Phone);
+            addressId = _addressService.createAddress(userId, checkoutInfo.Address1, checkoutInfo.Address2, checkoutInfo.CountryCode, checkoutInfo.Region, checkoutInfo.Zip, checkoutInfo.Phone);
             Response.Cookies.Append("TBCOrderDetails", addressId + ":" + orderDetails);
-            
             if (addressId != 0) {
                 return RedirectToAction("creditInfo");
             }
@@ -66,9 +70,10 @@ namespace TheBookCave.Controllers
         }
         public ActionResult submitPayment(PaymentDetailListViewModel paymentDetails) {
             // Expirydate to DateTime MM/yy virkni scrapped vegna tímaþröng -Ingi.
+            var userId = _userManager.GetUserId(User);
             unpackOrderCookie();
             orderDetails = (orderDetails + ";PAYMENT;" + paymentDetails.NameOnCard + ";" + paymentDetails.CardNumber + ";" + paymentDetails.ExpiryDate + ";" + paymentDetails.CVC);
-            paymentId = _orderService.savePaymentDetails(paymentDetails.NameOnCard, paymentDetails.CardNumber, paymentDetails.ExpiryDate, paymentDetails.CVC, addressId);
+            paymentId = _orderService.savePaymentDetails(userId, paymentDetails.NameOnCard, paymentDetails.CardNumber, paymentDetails.ExpiryDate, paymentDetails.CVC, addressId);
             Response.Cookies.Delete("TBCOrderDetails");
             Response.Cookies.Append("TBCOrderDetails", addressId + ":" + orderDetails + ":" + paymentId);
             if (paymentId != 0) {
@@ -83,23 +88,28 @@ namespace TheBookCave.Controllers
             }
             var cartCookie = Request.Cookies["TBCbooksInCart"];
             var promoCookie = Request.Cookies["TBCPromoCode"];
-            CheckoutOverviewViewModel overviewList = _orderService.getOrderOverview(orderDetails, cartCookie, "");
+            CheckoutOverviewViewModel overviewList = _orderService.getOrderOverview(orderDetails, cartCookie, promoCookie);
 
             return View(overviewList);
         }
         public IActionResult checkout() 
         {
+            var userId = _userManager.GetUserId(User);
             if (!unpackOrderCookie() || orderDetails == null || addressId == 0 || paymentId == 0) {
                 return RedirectToAction("index");
             }
             var cartCookie = Request.Cookies["TBCbooksInCart"];
             var promoCookie = Request.Cookies["TBCPromoCode"];
-            _orderService.checkOut(cartCookie, addressId);
+            _orderService.checkOut(userId, cartCookie, addressId, promoCookie);
             CheckoutOverviewViewModel overviewList = _orderService.getOrderOverview(orderDetails, cartCookie, promoCookie);
             Response.Cookies.Delete("TBCOrderDetails");
             Response.Cookies.Delete("TBCbooksInCart");
             Response.Cookies.Delete("TBCPromoCode");
             return View(overviewList);
+        }
+
+        private bool isLoggedIn() {
+            return false;
         }
     }
 }

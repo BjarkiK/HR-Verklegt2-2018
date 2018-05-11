@@ -58,7 +58,7 @@ namespace TheBookCave.Services {
         public int createAddress(string uid, string address1, string address2, string country, string region, string zip, string phone) {
             var countryId = getCountryId(country);
             var address = new Address();
-            address.UserId = "";
+            address.UserId = uid;
             address.Address1 = address1;
             address.Address2 = address2;
             address.CountryId = countryId;
