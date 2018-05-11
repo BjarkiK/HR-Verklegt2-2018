@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using TheBookCave.Data;
+using TheBookCave.Data.EntityModels;
 using TheBookCave.Models.ViewModels;
 
 namespace TheBookCave.Repositories {
@@ -47,9 +48,10 @@ namespace TheBookCave.Repositories {
             // linq delete
             return true;
         }
-        public bool createPaymentDetail() {
-            // linq insert
-            return true;
+        public int createPaymentDetail(PaymentDetail paymentDetail) {
+            _db.PaymentDetails.Add(paymentDetail);
+            _db.SaveChanges();
+            return paymentDetail.Id;
         }
     }
 }

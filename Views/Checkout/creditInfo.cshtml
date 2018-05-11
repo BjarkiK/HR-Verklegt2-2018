@@ -1,33 +1,34 @@
+@model TheBookCave.Models.ViewModels.PaymentDetailListViewModel;
+
 <div class="container">
-    <form  asp-controller="Checkout" asp-action="overview" class="form-horizontal">
+    <form  asp-controller="Checkout" asp-action="submitPayment" class="form-horizontal">
       
         <div class="row" >
             <div class="form-group">
                 <h3>Credit Card information</h3>
                 <div class="form-group">
-                    <label for="cname"> Name on card</label>
-                    <input type="text" id="cname" name="cardName">
+                    <label for="cname"> Name on card</label><br>
+                    <input type="text" id="cname" name="NameOnCard" asp-for="NameOnCard" required>
                 </div>
                 <div class="form-group">
-                    <label for="ccnum"> Credit card number</label>
-                    <input type="text" id="ccnum" name="creditcardnumber">
+                    <label for="ccnum"> Credit card number</label><br>
+                    <input type="number" id="ccnum" name="CardNumber" asp-for="CardNumber"required>
                 </div>
                 <div class="form-group">
-                    <p>Type of credit card</p>
-                    <select>
+                        <label for="card"><i class="fa fa-credit-card"></i> Select credit card type</label><br>
+                        <select id="card">
                         <option value="visa"> Visa</option>
                         <option value="masercard"> MasterCard</option>
                         <option value="americanexpress"> American express</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <p>Expiration date</p>
-                    <label for="exd">Expiration date</label>
-                    <input type="text" id="exd" name="expiration date">
+                    <label for="exd">Expiration date</label><br>
+                    <input type="month" id="exd" name="ExpiryDate" asp-for="ExpiryDate" required>
                 </div>
                 <div class="form-group">
-                    <label for="cvv2">CVV2</label>
-                    <input type="text" id="cvv2" name="cvv2">
+                    <label for="cvv2">CVC</label><br>
+                    <input type="number" id="cvv2" name="CVC" asp-for="CVC" required>
                 </div>
                 <div class="form-group">
                     <input type="submit" value="Continue">

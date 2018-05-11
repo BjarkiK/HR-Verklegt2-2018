@@ -12,12 +12,15 @@ namespace TheBookCave.Services {
         private OrdersRepo _orderRepo;
         private OrderStatusRepo _orderStatusRepo;
         private BookRepo _bookRepo;
+        private PaymentDetailRepo _paymentDetailRepo;
         private ConvertService _convertService;
         //private readonly UserManager<ApplicationUser> _userManager;
+        private double orderSum;
         public OrderService(){
             _bookRepo = new BookRepo();
             _orderRepo = new OrdersRepo();
             _orderStatusRepo = new OrderStatusRepo();
+            _paymentDetailRepo = new PaymentDetailRepo();
             _convertService = new ConvertService();
             //_userManager = userManager;
         }
@@ -31,7 +34,7 @@ namespace TheBookCave.Services {
             var types = _orderStatusRepo.getAllOrderStatus();
             var result = (from o in order
                             join t in types
-                            on o.OrderStatusId equals t.Id
+                            on o.TypeId equals t.Id
                             select t).ToList();
             return result;
         }
@@ -58,6 +61,7 @@ namespace TheBookCave.Services {
                 if (book.Count != 0) {
                     var eBook = _convertService.bookListViewToEntity(book).First();
                     var sum = eBook.Price * (1 - eBook.Discount/100.0)*quantity[i];
+                    orderSum += sum;
                     var orderItem = new OrderItemB{Book = eBook, Quantity = quantity[i], Discount = eBook.Discount, OrderId = oid};
                     var orderItemId = _orderRepo.createOrderItem(orderItem);
                     orderItemList.Add(new OrderItemB {Id = orderItemId, Book = eBook, Quantity = quantity[i], Discount = eBook.Discount, OrderId = oid });
@@ -87,24 +91,60 @@ namespace TheBookCave.Services {
         public int createOrder(OrderListViewModel o) {
             var order = convertOrderListViewModelToOrder(o);
             return _orderRepo.createOrder(order);
-        } 
+        }
 
-        public void checkOut(string cookie) {
+        public void checkOut(string cookie, int addressId) {
             var order = new OrderListViewModel();
             //var user = await _userManager.GetUserAsync(User);
             order.UserId = "";
             order.Date = DateTime.Now; 
             order.TypeId = 2; // Default = 2 Í vinnslu
-            order.AddressId = -1; // Þarf að stofna Address í fyrri glugga og tengja hér við
+            order.AddressId = addressId;
             var orderId = createOrder(order);
             var orderItems = getOrderItemsFromCart(cookie, orderId);
             
-/*--------> order.OrderItemId = new List<int>();
+            order.OrderItemId = new List<int>();
             foreach (var o in orderItems) {
                 order.OrderItemId.Add(o.Id);
-            }*/
-
+            }
             _orderRepo.updateOrder(convertOrderListViewModelToOrder(order));
+        }
+
+        public CheckoutOverviewViewModel getOrderOverview(string orderDetails, string cartCookie) {
+            if (orderDetails == null || orderDetails == "") {
+                return null;
+            }
+            string[] orderInfo = orderDetails.Split(';');
+            var orderitems = getOrderItemsFromCart(cartCookie, -1);
+            var overviewList =  new CheckoutOverviewViewModel();
+            overviewList.Firstname = orderInfo[1];
+            overviewList.Email = orderInfo[2];
+            overviewList.Phone = orderInfo[3];
+            overviewList.Address1 = orderInfo[4];
+            overviewList.Address2 = orderInfo[5];
+            overviewList.CountryCode = orderInfo[6];
+            overviewList.Region = orderInfo[7];
+            overviewList.Zip = orderInfo[8];
+            overviewList.NameOnCard = orderInfo[10];
+            overviewList.CardNumber = orderInfo[11];
+            overviewList.ExpiryDate = orderInfo[12];
+            overviewList.CVC = orderInfo[13];
+            overviewList.OrderItems = new List<OrderItemB>();
+            overviewList.Sum = orderSum;
+            foreach (var oi in orderitems) {
+                overviewList.OrderItems.Add(oi);
+            }
+            return overviewList;
+        }
+
+        public int savePaymentDetails(string name, string cardNumber, string expiryDate, string cvc, int addressId) {
+            var pd = new PaymentDetail();
+            pd.AddressId = addressId;
+            pd.NameOnCard = name;
+            pd.ExpiryDate = expiryDate;
+            pd.CardNumber = cardNumber;
+            pd.CVC = cvc;
+            return _paymentDetailRepo.createPaymentDetail(pd);
         }
     }
 }

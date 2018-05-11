@@ -33,6 +33,16 @@ namespace TheBookCave.Services {
                             select c.Name ).SingleOrDefault();
             return address;
         }
+        public int getCountryId(string country) {
+            if (country == "") {
+                return 0;
+            }
+            var countries = _countryRepo.getAllCountries();
+            var cid = (from c in countries
+                        where country == c.CountryCode
+                        select c.Id).SingleOrDefault();
+            return cid;
+        }
 
         public List<Country> getAllCountries() {
            return _countryRepo.getAllCountries();
@@ -43,6 +53,20 @@ namespace TheBookCave.Services {
         }
         public void updateAddress(Address address) {
             _addressRepo.updateAddress(address);
+        }
+
+        public int createAddress(string uid, string address1, string address2, string country, string region, string zip, string phone) {
+            var countryId = getCountryId(country);
+            var address = new Address();
+            address.UserId = "";
+            address.Address1 = address1;
+            address.Address2 = address2;
+            address.CountryId = countryId;
+            address.Region = region;
+            address.Zip = zip;
+            address.Phone = phone;
+            var aid = _addressRepo.createAddress(address);
+            return aid;
         }
     }
 }

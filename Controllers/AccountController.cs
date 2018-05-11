@@ -52,7 +52,6 @@ namespace authentication_repo.Controllers
                                 AddressId = o.AddressId,
                                 Date = o.Date,
                                 Id = o.Id,
-                                OrderStatusId = o.OrderStatusId,
                                 TypeId = o.TypeId,
                                 UserId = o.UserId,
                             }).ToList();
