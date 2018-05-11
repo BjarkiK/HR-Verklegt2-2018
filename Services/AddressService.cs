@@ -19,16 +19,7 @@ namespace TheBookCave.Services {
             var addresses = _addressRepo.getAllAddresses();
             var address = (from a in addresses
                             where uid == a.UserId
-                            select new Address {
-                                Id = a.Id,
-                                UserId = a.UserId,
-                                Address1 = a.Address1,
-                                Address2 = a.Address2,
-                                CountryId = a.CountryId,
-                                Region = a.Region,
-                                Zip = a.Zip,
-                                Phone = a.Phone,
-                            }).SingleOrDefault();
+                            select a ).SingleOrDefault();
             return address;
         }
 

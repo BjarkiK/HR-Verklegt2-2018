@@ -4,53 +4,53 @@
     Layout = "_AdminLayout";
 }
 
-<form asp-action="editBook" asp-controller="adminBook" method="POST">
+<form asp-action="editBook" asp-controller="adminBook" asp-action="index" method="POST">
     <div class="form-group">
-        <input tpe="text" class="form-control" autofocus="autofocus" asp-for="Name" placeholder="Enter book title" value="@Model.Name" />
+        <input type="text" class="form-control" autofocus="autofocus" asp-for="Name" placeholder="Enter book title" value="@Model.Name" />
     </div>
 
     <div class="form-group">
-        <input tpe="text" class="form-control" asp-for="Picture" placeholder="Enter path to book image" value="@Model.Picture" />
+        <input type="text" class="form-control" asp-for="Picture" placeholder="Enter path to book image" value="@Model.Picture" />
     </div>
 
     <div class="form-group">
-        <input tpe="text" class="form-control" asp-for="DetailsEN" placeholder="Enter description in English" value="@Model.DetailsEN" />
+        <input type="text" class="form-control" asp-for="DetailsEN" placeholder="Enter description in English" value="@Model.DetailsEN" />
     </div>
 
     <div class="form-group">
-        <input tpe="text" class="form-control" asp-for="DetailsIS" placeholder="Enter description in Icelandic" value="@Model.DetailsIS" />
+        <input type="text" class="form-control" asp-for="DetailsIS" placeholder="Enter description in Icelandic" value="@Model.DetailsIS" />
     </div>
 
     <div class="form-group">
-        <input tpe="text" class="form-control" asp-for="GenreId" placeholder="Select Genre" value="@Model.GenreId" />
+        <input type="text" class="form-control" asp-for="GenreId" placeholder="Select Genre" value="@Model.GenreId" />
     </div>
 
     <div class="form-group">
-        <input tpe="text" class="form-control" asp-for="AuthorId" placeholder="Select Author" value="@Model.AuthorId" />
+        <input type="text" class="form-control" asp-for="AuthorId" placeholder="Select Author" value="@Model.AuthorId" />
     </div>
 
     <div class="form-group">
-        <input tpe="text" class="form-control" asp-for="PublisherId" placeholder="Select Publisher" value="@Model.PublisherId" />
+        <input type="text" class="form-control" asp-for="PublisherId" placeholder="Select Publisher" value="@Model.PublisherId" />
     </div>
 
     <div class="form-group">
-        <input tpe="number" class="form-control" asp-for="Price" placeholder="Enter Price" value="@Model.Price" />
+        <input type="number" class="form-control" asp-for="Price" placeholder="Enter Price" value="@Model.Price" />
     </div>
 
     <div class="form-group">
-        <input tpe="number" class="form-control" asp-for="Discount" placeholder="Enter discount if any" value="@Model.Discount" />
+        <input type="number" class="form-control" asp-for="Discount" placeholder="Enter discount if any" value="@Model.Discount" />
     </div>
 
     <div class="form-group">
-        <input tpe="number" class="form-control" asp-for="Pages" placeholder="Enter books page count" value="@Model.Pages" />
+        <input type="number" class="form-control" asp-for="Pages" placeholder="Enter books page count" value="@Model.Pages" />
     </div>
 
     <div class="form-group">
-        <input tpe="number" class="form-control" asp-for="Quantity" placeholder="Enter how many books are in stock" value="@Model.Quantity" />
+        <input type="number" class="form-control" asp-for="Quantity" placeholder="Enter how many books are in stock" value="@Model.Quantity" />
     </div>
 
     <div class="form-group">
-        <input tpe="checkbox" class="form-control" asp-for="Published" placeholder="Check if book is published" value="@Model.Published" />
+        <input type="checkbox" class="form-control" asp-for="Published" placeholder="Check if book is published" value="@Model.Published" />
     </div>
 
     <div class="form-group">

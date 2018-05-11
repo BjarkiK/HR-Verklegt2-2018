@@ -67,6 +67,7 @@ namespace authentication_repo.Controllers
         [HttpPost]
         public async Task<IActionResult> editProfile(ProfileViewModel profile) {
             var user = await _userManger.GetUserAsync(User);
+            Console.WriteLine(user);
             var address = _addressService.getUserAddress(user.Id);
             user.FirstName = profile.FirstName;
             user.LastName = profile.LastName;
@@ -75,7 +76,9 @@ namespace authentication_repo.Controllers
             Console.WriteLine(address.Id);
             address.Address1 = profile.Address.Address1;
             address.Address2 = profile.Address.Address2;
-            address.CountryId = Int32.Parse(profile.Country);
+            var countryId = 0;
+            Int32.TryParse(profile.Country, out countryId);
+            address.CountryId = countryId;
             address.Region = profile.Address.Region;
             address.Zip = profile.Address.Zip;
             _addressService.updateAddress(address);
