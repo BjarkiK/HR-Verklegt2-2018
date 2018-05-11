@@ -4,13 +4,11 @@ function checkPromo(e) {
     var code = document.getElementsByClassName("cart-promo-input")[0].value.toString();
 
     $.post("/cart/validatePromoCode", { code: code }, function(data, status) {
-        console.log(data)
         document.getElementsByClassName("promo-message")[0].innerHTML = "Promocode " + code + " added. You received " + data + "% discount" ;
         setPromoValue(data);
         setPromoCookie(data, code);
         applyPromo();
     }).fail(function(response) {
-        console.log("Failed");
         document.getElementsByClassName("promo-message")[0].innerHTML = "Promocode not valid. Try another."
     })
 }
@@ -30,6 +28,7 @@ function applyPromo() {
     // If value has not been set, for example on refresh
     if(discount === null) {
         var cookie = getCookie("TBCPromoCode");
+        console.log(document.cookie);
         if(cookie != "") {
             var promo = JSON.parse(cookie);
             var discount = promo.discount;
@@ -48,7 +47,6 @@ function applyPromo() {
 
 // promo code will be acrive untill cookie expires or is deleted. Mac 2 days
 function setPromoCookie(discount, code) {
-    var promo = { "code":code, "discount":discount};
-    var promoJSON = JSON.stringify(promo);
-    setCookie("TBCPromoCode", promoJSON, 2);
+    var codeCookie = code + ":" + discount;
+    setCookie("TBCPromoCode", codeCookie, 2);
 }

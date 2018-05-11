@@ -114,13 +114,9 @@ for (var i = 0; i < stars.length; i++) {
     var r = new StarRating(stars[i]);
 
     stars[i].addEventListener('rate', function(e) {
-        console.log('Rating: ' + e.detail);
         var bookId = Number(location.pathname.split('/')[3]);
         $.post('/book/totalGradeUpdate',{ bid : bookId, grade : e.detail }, function(returnData) {
-            console.log(status + " " + returnData);
             r.setDefaultRating(returnData);
-        }).fail(function(response) {
-            console.log("failed" + response);
         })
     });
 }
@@ -131,9 +127,7 @@ document.getElementsByClassName("favorite")[0].addEventListener("click", e => ad
 function addToFav(e) {
     var bookId = parseInt(e.currentTarget.attributes[1].nodeValue);
 
-    console.log(e)
     $.post('/user/addToFav', { bid: bookId }, function(returnData) {
-        console.log(returnData)
         var heart = document.getElementsByClassName("heart")[0];
         if(returnData == false) {
             heart.style.color = "black";
@@ -142,7 +136,5 @@ function addToFav(e) {
             heart.style.color = "red";
         }
         //Change background to red
-    }).fail(function(response) {
-        console.log("failed" + response);
     })
 }

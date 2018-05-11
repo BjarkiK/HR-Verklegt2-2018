@@ -11,7 +11,6 @@ function setCookie(cname, cvalue, exdays) {
 function getCookie(cname) {
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
-    console.log(decodedCookie);
     var ca = decodedCookie.split(';');
     for(var i = 0; i <ca.length; i++) {
         var c = ca[i];
@@ -28,8 +27,6 @@ function getCookie(cname) {
             return c.substring(name.length, c.length);
         }
     }
-    console.log(decodedCookie[15])
-    console.log(decodedCookie)
     /*if (decodedCookie[15] != null ) {
         addCartBadge();
     } else {
