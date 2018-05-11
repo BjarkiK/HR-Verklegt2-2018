@@ -4,7 +4,17 @@
 @foreach(var book in @Model) {
     var avgGrade = (@book.Grade / @book.NrOfGrades);
     <div class="book-main-detail"> 
-        <img class="book-detail-image" src="~/@book.Picture" alt="Image broken">
+        @if(@book.Discount == 0) {
+            <img class="book-detail-image" src="~/@book.Picture" alt="Image broken">
+        }
+        else {
+            <div class="ticketOnBooks">
+                    <img class="book-detail-image" src="~/@book.Picture" alt="Image broken">
+                    <div class="text-block">
+                        <h4>@book.Discount%</h4>
+                    </div>
+            </div>
+        }
         <div class="book-detail-main">
             <div class="book-detail-title">@book.Name</div>
             <div class="book-detail-author-grade">

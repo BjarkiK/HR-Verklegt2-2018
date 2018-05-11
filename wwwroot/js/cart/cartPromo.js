@@ -2,7 +2,6 @@ document.getElementsByClassName("cart-promo-btn")[0].addEventListener("click", e
 
 function checkPromo(e) {
     var code = document.getElementsByClassName("cart-promo-input")[0].value.toString();
-    console.log(code)
 
     $.post("/cart/validatePromoCode", { code: code }, function(data, status) {
         console.log(data)
@@ -34,7 +33,6 @@ function applyPromo() {
         if(cookie != "") {
             var promo = JSON.parse(cookie);
             var discount = promo.discount;
-            console.log(discount)
             setPromoValue(discount);
         }
         else {

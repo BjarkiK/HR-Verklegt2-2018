@@ -9,5 +9,6 @@ namespace TheBookCave.Models.ViewModels {
         public int Quantity { get; set; }
         // If there is any discount on this book.
         public int Discount { get; set; }
+
     }
 }

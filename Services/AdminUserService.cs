@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TheBookCave.Data.EntityModels;
@@ -34,7 +35,9 @@ namespace TheBookCave.Services {
         
         public UserDetailedListViewModel getUpdateUser(string uid) {
             var user = _convertService.userViewToEntity(_userRepo.getUser(uid).First());
-            var userRoleId = _userRoleRepo.getUserRoleId(uid);
+            var userRoleId = (from ur in _userRoleRepo.getAllUserRoles()
+                                where uid == ur.UserId
+                                select ur.RoleId).SingleOrDefault();
             var roles = _roleRepo.getAllRoles();
             var role = (from r in roles
                         where userRoleId == r.Id

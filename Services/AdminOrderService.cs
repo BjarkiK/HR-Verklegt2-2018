@@ -40,7 +40,7 @@ namespace TheBookCave.Services {
                                 AddressId = o.AddressId,
                                 Date = o.Date,
                                 TypeId = o.TypeId,
-                                UserId = o.UserId                              
+                                UserId = o.UserId                        
                                 };
             return order;
         }

@@ -26,7 +26,6 @@ function calculateTotal(){
     totalElement[0].innerHTML = sum + " kr";
     totalElement[0].setAttribute("value", sum);
     applyPromo();
-    console.log(sum)
 }
 
 function plus(e) { 

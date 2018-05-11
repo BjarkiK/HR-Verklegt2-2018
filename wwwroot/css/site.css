@@ -152,6 +152,7 @@ td {
 }
 
 #sideBar {
+    text-align: center;
     margin-top: 10px;
 }
 #sideBar a:hover {

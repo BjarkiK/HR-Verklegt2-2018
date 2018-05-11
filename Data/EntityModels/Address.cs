@@ -11,12 +11,12 @@ namespace TheBookCave.Data.EntityModels {
         public string Address1 { get; set; }
         // Not required. More detailed address.
         public string Address2 { get; set; }
-        // Id that connects address to a certain region.
-        public int RegionId { get; set; }
-         // Id that connects address to a certain zip code.
-        public int ZipId { get; set; }
          // Id that connects address to a certain country.
-        public string CountryId { get; set; }
+        public int CountryId { get; set; }
+        // Region.
+        public string Region { get; set; }
+         // Zip code
+        public string Zip { get; set; }
         // Not required user phone number.
         public string Phone { get; set; }
 

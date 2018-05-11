@@ -10,35 +10,49 @@
         <div class="profile-layot">
             <div class="col-md-2">
                 <div>
-                    <img class="profile-picture" src="~/images/profile/profileImagePlaceholder.jpg" alt="profile picture"></span>
+                    <img class="profile-picture" src="@Model.Picture" alt="profile picture"></span>
                 </div>
             </div>
-            <div class="col-md-10">
-                <div>
+            <div class="col-md-10 container">
+                <div class="basic-info">
                     <h4>Name:</h4>
                     <div>@Model.FirstName @Model.LastName</div>
-                </div>
-                <div>
                     <h4>Username:</h4>
                     <div>@Model.UserName</div>
-                </div>
-                <div>
                     <h4>Email:</h4>
                     <div>@Model.Email</div>
-                </div>
-                <div>
-                    <h4>Shipping Address</h4>
-                    <div>heimilisfang</div>
-                </div>
-                <div>
-                    <h4>Phonenumber</h4>
-                    <div>símanumer</div>
-                </div>
-                <div>
+                    <h4>Phonenumber:</h4>
+                    <div>@Model.PhoneNumber</div>
                     <h4>Subscriptions</h4>
                     <div>engar askriftir</div>
+                </div>
+                <div class="shipping-info">
+                    @if(@Model.Address != null) {
+                        <h4>Address:</h4>
+                        <div>@Model.Address.Address1</div>
+                        if(@Model.Address.Address2 != null) {
+                            <h4>Address2:</h4>
+                            <div>@Model.Address.Address2</div>
+                        }
+                        <h4>Country:</h4>
+                        <div>@Model.Country</div>
+                        <h4>Region:</h4>
+                        <div>@Model.Address.Region</div>
+                        <h4>Zip:</h4>
+                        <div>@Model.Address.Zip</div>
+                    }
+                    else {
+                         <h4>Edit profile to add new address</h4>
+                    }
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
+<style>
+    .container {
+        display: flex;
+    }
+</style>

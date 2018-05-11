@@ -3,9 +3,10 @@
  */
 namespace TheBookCave.Data.EntityModels {
     public class Country {
-        // Country code. Example code for Iceland : IS.
-        public string Id { get; set; }
+        public int Id { get; set; }
         // Name of country.
         public string Name { get; set; }
+        // Country code. Example code for Iceland : IS.
+        public string CountryCode { get; set; }
     }
 }
