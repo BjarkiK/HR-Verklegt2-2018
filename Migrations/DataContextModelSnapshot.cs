@@ -3,8 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Microsoft.EntityFrameworkCore.Storage;
-using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
 using TheBookCave.Data;
 
@@ -112,20 +110,6 @@ namespace TheBookCave.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Countries");
-                });
-
-            modelBuilder.Entity("TheBookCave.Data.EntityModels.FavBook", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("UserId");
-
-                    b.Property<int>("bookId");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("FavBooks");
                 });
 
             modelBuilder.Entity("TheBookCave.Data.EntityModels.Genre", b =>

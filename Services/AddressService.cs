@@ -15,10 +15,10 @@ namespace TheBookCave.Services {
             _countryRepo = new CountryRepo();
         }
 
-        public Address getUserAddress(string uid) {
+        public Address getAddress(int aid) {
             var addresses = _addressRepo.getAllAddresses();
             var address = (from a in addresses
-                            where uid == a.UserId
+                            where aid == a.Id
                             select a ).SingleOrDefault();
             return address;
         }
@@ -48,8 +48,8 @@ namespace TheBookCave.Services {
            return _countryRepo.getAllCountries();
         }
 
-        public void initialiceUserAddress(string uid) {
-            _addressRepo.createAddress(new Address { UserId = uid });
+        public int initialiceUserAddress() {
+            return _addressRepo.createAddress(new Address());
         }
         public void updateAddress(Address address) {
             _addressRepo.updateAddress(address);
@@ -58,7 +58,7 @@ namespace TheBookCave.Services {
         public int createAddress(string uid, string address1, string address2, string country, string region, string zip, string phone) {
             var countryId = getCountryId(country);
             var address = new Address();
-            address.UserId = "";
+            address.UserId = uid;
             address.Address1 = address1;
             address.Address2 = address2;
             address.CountryId = countryId;

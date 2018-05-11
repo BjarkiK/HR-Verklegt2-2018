@@ -22,6 +22,7 @@ namespace TheBookCave.Repositories {
                                     ConcurrencyStamp = u.ConcurrencyStamp,
                                     Email = u.Email,
                                     EmailConfirmed = u.EmailConfirmed,
+                                    AddressId = u.AddressId,
                                     LockoutEnd = u.LockoutEnd,
                                     LockoutEnabled = u.LockoutEnabled,
                                     NormalizedEmail = u.NormalizedEmail,

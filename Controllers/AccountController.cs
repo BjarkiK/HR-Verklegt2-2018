@@ -54,7 +54,7 @@ namespace authentication_repo.Controllers {
         [Authorize] 
         private ProfileViewModel getProfile() {
             var user = _userService.getUser(User.Claims.ToArray()[0].Value).First();
-            var address = _addressService.getUserAddress(user.Id);
+            var address = _addressService.getAddress(user.AddressId);
             var country = _addressService.getUserAddressCountry(address.CountryId);
             var countries = _addressService.getAllCountries();
             var favBooks = _userService.getFavoriteBooks(user.Id);
@@ -78,7 +78,7 @@ namespace authentication_repo.Controllers {
         [HttpPost]
         public async Task<IActionResult> editProfile(ProfileViewModel profile) {
             var user = await _userManger.GetUserAsync(User);
-            var address = _addressService.getUserAddress(user.Id);
+            var address = _addressService.getAddress(user.AddressId);
             user.FirstName = profile.FirstName;
             user.LastName = profile.LastName;
             user.PhoneNumber = profile.PhoneNumber;
@@ -115,10 +115,10 @@ namespace authentication_repo.Controllers {
             if(!ModelState.IsValid) {
                 return View();
             }
-
+            var addressId = _addressService.initialiceUserAddress();
+            Console.WriteLine(addressId);
             // nyr user . Username og email verd tad sama
-            var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, Picture = "/images/profile/profileImagePlaceholder.jpg"};
-            _addressService.initialiceUserAddress(user.Id);
+            var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, AddressId = addressId, LastName = model.LastName, Picture = "/images/profile/profileImagePlaceholder.jpg"};
             //  Task til ad nota asynic
             // _userMangar byr til user i startup
             var result = await _userManger.CreateAsync(user, model.Password);
@@ -136,6 +136,13 @@ namespace authentication_repo.Controllers {
             }
 
             return View();
+        }
+
+        [Authorize]
+        public bool addToFav(int bid){
+            Console.WriteLine(bid);
+            var userId = User.Claims.ToArray()[0].Value;
+            return _userService.addFavoriteBook(userId, bid);
         }
 
         public IActionResult Login() {

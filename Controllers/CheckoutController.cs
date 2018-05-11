@@ -33,8 +33,9 @@ namespace TheBookCave.Controllers
         }
 
         public ActionResult submitAddress(CheckoutViewModel checkoutInfo) {
+            var userId =  User.Claims.ToArray()[0].Value;
             orderDetails = ("ADDRESS;" + checkoutInfo.Firstname + ";" + checkoutInfo.Email + ";" + checkoutInfo.Phone + ";" + checkoutInfo.Address1 + ";" + checkoutInfo.Address2 + ";" + checkoutInfo.CountryCode + ";" + checkoutInfo.Region + ";" + checkoutInfo.Zip);
-            addressId = _addressService.createAddress("", checkoutInfo.Address1, checkoutInfo.Address2, checkoutInfo.CountryCode, checkoutInfo.Region, checkoutInfo.Zip, checkoutInfo.Phone);
+            addressId = _addressService.createAddress(userId, checkoutInfo.Address1, checkoutInfo.Address2, checkoutInfo.CountryCode, checkoutInfo.Region, checkoutInfo.Zip, checkoutInfo.Phone);
             Response.Cookies.Append("TBCOrderDetails", addressId + ":" + orderDetails);
             
             if (addressId != 0) {
@@ -82,6 +83,8 @@ namespace TheBookCave.Controllers
                 return RedirectToAction("creditInfo");
             }
             var cartCookie = Request.Cookies["TBCbooksInCart"];
+            Console.WriteLine(cartCookie);
+            Console.WriteLine(Request.Cookies["TBCPromoCode"]);
             CheckoutOverviewViewModel overviewList = _orderService.getOrderOverview(orderDetails, cartCookie);
 
             return View(overviewList);

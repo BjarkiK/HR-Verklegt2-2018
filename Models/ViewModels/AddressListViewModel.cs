@@ -20,7 +20,5 @@ namespace TheBookCave.Models.ViewModels {
         public string Zip { get; set; }
         // Not required user phone number.
         public string Phone { get; set; }
-
-
     }
 }

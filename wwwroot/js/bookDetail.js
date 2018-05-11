@@ -127,7 +127,7 @@ document.getElementsByClassName("favorite")[0].addEventListener("click", e => ad
 function addToFav(e) {
     var bookId = parseInt(e.currentTarget.attributes[1].nodeValue);
 
-    $.post('/user/addToFav', { bid: bookId }, function(returnData) {
+    $.post('/account/addToFav', { bid: bookId }, function(returnData) {
         var heart = document.getElementsByClassName("heart")[0];
         if(returnData == false) {
             heart.style.color = "black";
