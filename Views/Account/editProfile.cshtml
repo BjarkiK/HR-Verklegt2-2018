@@ -24,8 +24,8 @@
             </div>
 
             <select asp-for="Country">
+            <option value="None">Select a country</option>
             @foreach(var c in @Model.Countries) {
-                <option value="None">Select a country</option>
                 if(@Model.Country == c.Name) {
                     <option selected="selected" value="@c.Name">@c.Name</option>
                 }

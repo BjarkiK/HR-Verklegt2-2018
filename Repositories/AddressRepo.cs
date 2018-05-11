@@ -32,7 +32,7 @@ namespace TheBookCave.Repositories {
             return address;
         }
         public bool updateAddress(Address address) {
-            _db.Addresses.Update(address);
+            _db.Update(address);
             _db.SaveChanges();
             return true;
         }
