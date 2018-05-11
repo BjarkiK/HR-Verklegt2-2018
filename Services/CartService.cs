@@ -27,7 +27,7 @@ namespace TheBookCave.Services
             var quantity = cookieContent[1];
             for(var i = 0; i < id.Count; i++) {
                 var book = _bookRepo.getBook(id[i]);
-                if(book.Count  != 0) {
+                if(book.Count != 0) {
                     var eBook = _convertService.bookListViewToEntity(book).First();
                     var sum = eBook.Price * (1 - eBook.Discount/100.0)*quantity[i];
                     books.Add(new CartListViewModel { Book = eBook, Quantity = quantity[i], Sum = sum });
@@ -75,8 +75,8 @@ namespace TheBookCave.Services
             // TODO
         }
 
-        public void checkout(){
-            
+        public void checkout(string cookie){
+            var books = getBooksInCart(cookie);
         }
     }
 }
