@@ -7,6 +7,8 @@ namespace TheBookCave.Models.ViewModels {
         public int Id { get; set; }
         // Id of user who made this order.
         public string UserId { get; set; }
+        // List of orderitems
+        public List<int> OrderItemId { get; set; }
         // Id of orderStatus type
         public int OrderStatusId { get; set; }
         // Date when order was made.

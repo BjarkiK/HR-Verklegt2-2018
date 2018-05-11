@@ -11,9 +11,10 @@ using TheBookCave.Data;
 namespace TheBookCave.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20180511201050_[paymentDetail]MigrationDateTimetoString")]
+    partial class paymentDetailMigrationDateTimetoString
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -112,20 +113,6 @@ namespace TheBookCave.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Countries");
-                });
-
-            modelBuilder.Entity("TheBookCave.Data.EntityModels.FavBook", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("UserId");
-
-                    b.Property<int>("bookId");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("FavBooks");
                 });
 
             modelBuilder.Entity("TheBookCave.Data.EntityModels.Genre", b =>
