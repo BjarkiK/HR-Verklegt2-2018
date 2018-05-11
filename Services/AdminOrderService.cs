@@ -61,22 +61,11 @@ namespace TheBookCave.Services {
             return searchResult;
         }
 
-
-/*
-
-        public List<OrderListViewModel> getAllOrdersOfActiveType() {
-            var allActiveOrders = getAllOrder().Where(m => m.TypeId == 2);
-            
-            var lowest = ( from i in allActiveOrders orderby i ascending
-				select i).ToList();
-            
-            foreach (var X in lowest)
-            {
-            //    return X;
-            }
-            return null;
-           
+        public void removeO(OrderListViewModel o ) {
+            var order = convertOrderListViewModelToOrder(o);
+            var successfull = _orderRepo.removeOrder(order);
         }
- */
+
+
     }
 }

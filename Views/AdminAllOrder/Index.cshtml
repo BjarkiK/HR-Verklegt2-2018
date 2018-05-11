@@ -36,7 +36,7 @@
                 <td><a class="btn btn-primary btn-rounded btn-sm my-0" asp-controller="AdminAllOrder" asp-action="Details" asp-route-id="@order.Id">@order.Id</a></td>
                 <td><a id="editbuttons" class="btn btn-default btn-sm" asp-controller="adminAllOrder" asp-action="EditOrder" class="btn btn-default" asp-route-id="@order.Id">
                 <span class="glyphicon glyphicon-edit"></span> Edit</a></td>
-                <td><a id="removebuttons" class="btn btn-default btn-sm" asp-controller="adminAllOrder" asp-action="RemoveOrder" class="btn btn-default" asp-route-id="@order.Id">
+                <td><a id="removebuttons" class="btn btn-default btn-sm" asp-controller="adminAllOrder" asp-action="removeOrder" class="btn btn-default" asp-route-id="@order.Id">
                 <span class="glyphicon glyphicon-remove"></span> Remove</a></td>
                 <td>@order.AddressId</td>
                 <td>@order.UserId</td>

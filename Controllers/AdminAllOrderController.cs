@@ -73,5 +73,25 @@ namespace TheBookCave.Controllers {
             Console.WriteLine("CreateNotValid");
 			return View(order);
 		}
+
+
+        public IActionResult removeOrder(int id)
+        {
+            var order = _adminOrderService.getOrder(id);
+            if(!order.Any()) {
+                return RedirectToAction("OrderNotFound");
+            }
+			return View(order.First());
+
+        }
+
+        [HttpPost]
+        public ActionResult removeOrder(OrderListViewModel pro){
+           	if (ModelState.IsValid) {
+				_adminOrderService.removeO(pro);
+				return RedirectToAction("index");
+			}
+			return View(pro);
+        }
     }
 }

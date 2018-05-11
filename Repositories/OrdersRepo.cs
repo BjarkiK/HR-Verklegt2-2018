@@ -41,8 +41,9 @@ namespace TheBookCave.Repositories {
                                 }).ToList();
             return orders;
         }
-        public bool deleteOrder(int oid) {
-            // linq delete
+        public bool removeOrder(Order o){
+            _db.Orders.Remove(o);
+            _db.SaveChanges();
             return true;
         }
          public int createOrder(Order order) {
