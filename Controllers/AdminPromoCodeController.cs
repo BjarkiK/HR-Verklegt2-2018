@@ -19,7 +19,6 @@ namespace TheBookCave.Controllers
     public class AdminPromoCodeController : Controller
     {
         private AdminPromoCodeService _adminPromoCodeService;
-
         public AdminPromoCodeController() {
             _adminPromoCodeService = new AdminPromoCodeService();
         }
