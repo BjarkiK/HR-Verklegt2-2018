@@ -44,6 +44,9 @@ namespace authentication_repo.Controllers
             var profile = getProfile();
             return View(profile);
         }
+        public IActionResult orderHistory() {
+            return View();
+        }
 
         private ProfileViewModel getProfile() {
             var user = _userService.getUser(User.Claims.ToArray()[0].Value).First();
