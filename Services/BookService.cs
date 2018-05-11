@@ -1,3 +1,4 @@
+
 using System.Collections.Generic;
 using TheBookCave.Models.ViewModels;
 using TheBookCave.Repositories;
@@ -130,8 +131,14 @@ namespace TheBookCave.Services {
                                                                          || b.Genre.ToLower().Contains(param.ToLower())).ToList();
             return searchResult;
         }
-        public List<BookListViewModel> getBooksWithAdvSearch(string param1, string param2, string param3, string param4, string param5) {
+        public List<BookDetailedListViewModel> getBooksWithAdvSearch(string param1, string param2, string param3, string param4) {
             /* tekur marga param og leitar út frá því */
+            var books = getBookList();
+            if(param1 != null && param2 == null && param3 == null && param4 == null)
+            {
+                List<BookDetailedListViewModel> searchResult = books.Where(b => b.Name.ToLower().Contains(param1.ToLower())).ToList();
+                return searchResult;
+            }
             return null;
         }
     }

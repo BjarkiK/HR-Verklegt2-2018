@@ -6,29 +6,31 @@
 
 <link rel="stylesheet" href="~/css/subscription.css" />
 
-<div class="row">
+<div class="row listrow">
     <div class="col-md-12">
-        <div class="caption">
+        <div class="thumbnail">
             <h3>About Subscriptions</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                Nullam eget ex egestas, imperdiet leo vel, rutrum odio. 
-                In vel dui eget tortor faucibus mattis quis non lacus. 
-                Pellentesque dapibus lacus lobortis magna lacinia, eu pellentesque ipsum placerat. 
-                Morbi non felis quis leo ultrices volutpat. Ut sagittis felis id nisl tincidunt, ac varius nisl bibendum. 
-                Sed non lorem semper, rutrum lectus at, sodales sapien.
+            <p>When you sign up for a subscription you will recive a book based on your 
+                subscription type every month. This is a great idea for avid readers.
+                We will make sure that you never run out of books to read. Choose from
+                our many available subcription types and get ready to recive your monthly
+                book right away. Keep in mind that if you don't like your book you can give 
+                it to your friends. The books are not returnable when they are a part of 
+                the subscription method.
             </p>
         </div>
     </div>
-    <!-- vantar að setja price á subscriptions -->
     @foreach(var subscription in @Model)
     {
     <div class="col-md-3">
-        <div class="caption">
-            <h3>Subscription @subscription.Id</h3>
-            <h4>@subscription.TypeEn</h4>
-            <p>@subscription.DescriptionEn</p>
+        <div class="thumbnail sub-item">
+            <h3>Subscription Type: @subscription.Id</h3>
+            <h4>@subscription.TypeEn Books</h4>
+            <div class="descript">
+                <p>@subscription.DescriptionEn</p>
+            </div>
             <div class="price-button">
-                <h4 class="price">20$</h4>
+                <h4 class="price">1500 ISK</h4>
                 <div class="button">
                     <a href="#" class="btn btn-primary button" role="button">Buy</a>
                 </div>

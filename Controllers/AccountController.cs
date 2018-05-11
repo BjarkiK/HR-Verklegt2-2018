@@ -1,12 +1,15 @@
 using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using System.Linq;
 using authentication_repo.Models;
 using authentication_repo.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using TheBookCave.Models.ViewModels;
+using TheBookCave.Services;
+using TheBookCave.Data.EntityModels;
 
 namespace authentication_repo.Controllers
 {
@@ -15,38 +18,77 @@ namespace authentication_repo.Controllers
         //meðmæla breytur
         private readonly SignInManager<ApplicationUser> _signInMager;
         private readonly UserManager<ApplicationUser> _userManger;
+        private UserService _userService;
+        private OrderService  _orderService;
+        private AddressService _addressService;
 
         public AccountController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager) {
             _signInMager =  signInManager;
             _userManger =  userManager;
+            _userService = new UserService();
+            _orderService = new OrderService();
+            _addressService = new AddressService();
         }
 
         [Authorize]        
-        public async Task<IActionResult> index() {
-            var user = await _userManger.GetUserAsync(User);
-            var profile = new ProfileViewModel {UserName = user.UserName, Email = user.Email,
-                                                FirstName = user.FirstName, LastName = user.LastName};
+        public IActionResult index() {
+            var profile = getProfile();
             return View(profile);
         }
 
         [Authorize]        
-        public async Task<IActionResult> editProfile() {
-            var user = await _userManger.GetUserAsync(User);
-            var profile = new ProfileViewModel {UserName = user.UserName, Email = user.Email,
-                                                FirstName = user.FirstName, LastName = user.LastName};
+        public ActionResult editProfile() {
+            var profile = getProfile();
             return View(profile);
+        }
+
+        private ProfileViewModel getProfile() {
+            var user = _userService.getUser(User.Claims.ToArray()[0].Value).First();
+            var address = _addressService.getUserAddress(user.Id);
+            var country = _addressService.getUserAddressCountry(address.CountryId);
+            var countries = _addressService.getAllCountries();
+            var orders = (from o in _orderService.getUserOrder(user.Id)
+                            select new Order {
+                                AddressId = o.AddressId,
+                                Date = o.Date,
+                                Id = o.Id,
+                                OrderStatusId = o.OrderStatusId,
+                                TypeId = o.TypeId,
+                                UserId = o.UserId,
+                            }).ToList();
+            return new ProfileViewModel {UserName = user.UserName, Email = user.Email,
+                                                FirstName = user.FirstName, LastName = user.LastName,
+                                                Picture = user.Picture, PhoneNumber = user.PhoneNumber,
+                                                Address = address, Orders = orders,
+                                                Countries = countries, Country = country};
         }
 
         [Authorize]  
         [HttpPost]
         public async Task<IActionResult> editProfile(ProfileViewModel profile) {
             var user = await _userManger.GetUserAsync(User);
-            Console.WriteLine(user.LastName);
+            var address = _addressService.getUserAddress(user.Id);
             user.FirstName = profile.FirstName;
             user.LastName = profile.LastName;
             await _userManger.UpdateAsync(user);
 
+            Console.WriteLine(address.Id);
+            address.Address1 = profile.Address.Address1;
+            address.Address2 = profile.Address.Address2;
+            address.CountryId = Int32.Parse(profile.Country);
+            address.Region = profile.Address.Region;
+            address.Zip = profile.Address.Zip;
+            _addressService.updateAddress(address);
             return RedirectToAction("index");
+        }
+
+        [Authorize]  
+        [HttpPost]
+        public async Task editProfilePicture(string picture) {
+            Console.WriteLine("ServerPicture");
+            var user = await _userManger.GetUserAsync(User);
+            user.Picture = picture;
+            await _userManger.UpdateAsync(user);
         }
 
         // view tar sem fyllt er ut register
@@ -61,8 +103,10 @@ namespace authentication_repo.Controllers
             if(!ModelState.IsValid) {
                 return View();
             }
+
             // nyr user . Username og email verd tad sama
-            var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName };
+            var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, Picture = "/images/profile/profileImagePlaceholder.jpg"};
+            _addressService.initialiceUserAddress(user.Id);
             //  Task til ad nota asynic
             // _userMangar byr til user i startup
             var result = await _userManger.CreateAsync(user, model.Password);
@@ -97,10 +141,6 @@ namespace authentication_repo.Controllers
             // if vidkomand sign in PasswordSignInAsync
             var result = await _signInMager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
             if (result.Succeeded) {
-                Console.WriteLine(User.IsInRole("2"));
-                if(User.IsInRole("ADMIN")) {
-                    return RedirectToAction("index", "AdminAllOrder");
-                }
                 return RedirectToAction("index", "FrontPage");
             }
             return View();

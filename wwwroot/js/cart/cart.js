@@ -4,7 +4,6 @@ function setCookie(cname, cvalue, exdays) {
     d.setTime(d.getTime() + (exdays*24*60*60*1000));
     var expires = "expires="+ d.toUTCString();
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-    console.log(cvalue)
 }
 
 
@@ -12,6 +11,7 @@ function setCookie(cname, cvalue, exdays) {
 function getCookie(cname) {
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
+    console.log(decodedCookie);
     var ca = decodedCookie.split(';');
     for(var i = 0; i <ca.length; i++) {
         var c = ca[i];
@@ -19,10 +19,35 @@ function getCookie(cname) {
             c = c.substring(1);
         }
         if (c.indexOf(name) == 0) {
+            addCartBadge();
             return c.substring(name.length, c.length);
         }
     }
+    /*if (decodedCookie[15] != null ) {
+        addCartBadge();
+    } else {
+        removeCartBadge();
+    }*/
+    removeCartBadge();
     return "";
+}
+
+
+function addCartBadge() {
+    var cartIconElem = document.getElementsByClassName("glyphicon-shopping-cart")[0];
+    if (cartIconElem.firstChild == null) {
+        var badge = document.createElement('span');
+        badge.className = 'badge badge-red';
+        badge.innerHTML = "_";
+        cartIconElem.appendChild(badge);
+    }
+}
+
+function removeCartBadge() {
+    var cartIconElem = document.getElementsByClassName("glyphicon-shopping-cart")[0];
+    if (cartIconElem.firstChild != null) {
+        cartIconElem.innerHTML = "";
+    }
 }
 
 

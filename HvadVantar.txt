@@ -15,3 +15,50 @@
 - About Us
 - Admin stöff, eitthvað komið en athuga hversu mikið(virkni) og look.
 - Admin edit user (Role)...
+
+
+Signed in users can rate a book and give an optional comment
+Book catalogue
+X • Filter by genre
+X • Search
+X Order by name
+X Top 10 (based on rating)
+X Layout site
+X • Navigation bar
+X • Footer
+Edit profile
+X • Name
+X • Image
+• Addresses
+• Favorite book
+• Order history
+X Book details
+X Cart
+X • Quantity
+X • Delete
+Checkout
+• Billing address & Shipping address
+• Street name
+• House number
+• City
+• Country
+• <select>
+• Zip code
+Review step (read-only)
+• Confirmation step
+• Easy navig
+X Add book to cart
+
+
+
+Kröfulisti 
+X 1 Notandi á að geta pantað bók
+X 2 Notandi á að geta fundið ákveðna bók
+3 Notandi á að geta greitt fyrir bók með kreditkorti - Vantar allt
+Y 4 Starfsmaður þarf að geta bætt inn bók - Bæta við dropdown lista með öllum Genre, Author, Publisher sem eru til í grunni eða bæta nýjum við
+Y 5 Starfsmaður þarf að geta uppfært bók - Sama og í 4
+X 6 Kerfið þarf að geta sýnt nánari upplýsingar um bók
+X 7 Kerfið þarf að geta bætt við í körfu
+X 8 Notandi þarf að geta skoðað körfuna
+X 9 Notandi þarf að geta eytt úr körfu
+10 Notandi þarf að geta valið "shipping address" - Vantar allt

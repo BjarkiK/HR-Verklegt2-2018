@@ -1,3 +1,5 @@
+document.getElementsByClassName("book-detail-addtocart-button")[0].addEventListener("click", e => addBookToCart(e))
+
 var StarRating = (function () {
     function StarRating(target) {
         function attr(name, d) {

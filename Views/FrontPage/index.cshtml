@@ -1,0 +1,89 @@
+﻿@model TheBookCave.Models.ViewModels.FrontPageViewModel
+
+<div id="FrontPageBooks">
+    <!-- (bæta við?) Þegar hoverað er yfir mynd að þá kemur númer á myndina í hvaða sæti hún er á Top10 -->
+    <div class="fp-list">
+        <div class="arrow">
+            <button type="button" class="btn btn-default btn-arrow glyphicon glyphicon-menu-left" value="left" />
+        </div>
+        <div class="books-container">
+            <div class="books-container2">
+            @{int counter = 1;}
+            @foreach(var book in @Model.Top10) {
+                <div class="single-book-container">
+                    <div class="book-box click-book" value="@book.Id">
+                        <div class="ticketOnBooks">
+                            <img class="book-preview-image" src="~/@book.Picture" alt="Image broken">
+                            <div class="text-block">
+                                <h4>Nr @counter</h4>
+                            </div>
+                        </div>
+                        <!--<img class="book-preview-image" src="~/@book.Picture" alt="Image broken">-->
+                        <h3 class="book-preview-title">@book.Name</h3>
+                        <h4 class="preview-book-author">@book.Author</h4>
+                        @if(@book.Discount == 0) {
+                            <div class="book-detail-price">Price: @book.Price ISK</div>
+                        }
+                        else {
+                            int price = Convert.ToInt32(@book.Price);
+                            int discountPrice = Convert.ToInt32((1 - @book.Discount/100m) * price);
+                            <div class="book-detail-price-container">
+                                <div class="book-detail-price">Price: @discountPrice ISK</div>
+                                <div class="discounted-price">@book.Price ISK</div>
+                                <div>(-@book.Discount%)</div>
+                            </div>
+                        }
+                    </div>
+                </div>
+                counter++;
+            }
+            </div>
+        </div>
+        <div class="arrow">
+            <button type="button" class="btn btn-default btn-arrow glyphicon glyphicon-menu-right" value="right">
+            </button>
+        </div>
+    </div>
+    <div class="fp-list">
+        <div class="arrow">
+            <button type="button" class="btn btn-default btn-arrow glyphicon glyphicon-menu-left" value="left" />
+        </div>
+        <div class="books-container">
+            <div class="books-container2">
+            @foreach(var book in @Model.Newest) {
+                <div class="single-book-container">
+                    <div class="book-box click-book" value="@book.Id">
+                    <div class="ticketOnBooks">
+                        <div class="text-block">
+                            <h4>NEW</h4>
+                        </div>
+                    </div>
+                        <img class="book-preview-image" src="~/@book.Picture" alt="Image broken">
+                        <h3 class="book-preview-title">@book.Name</h3>
+                        <h4 class="preview-book-author">@book.Author</h4>
+                        @if(@book.Discount == 0) {
+                            <div class="book-detail-price">Price: @book.Price ISK</div>
+                        }
+                        else {
+                            int price = Convert.ToInt32(@book.Price);
+                            int discountPrice = Convert.ToInt32((1 - @book.Discount/100m) * price);
+                            <div class="book-detail-price-container">
+                                <div class="book-detail-price">Price: @discountPrice ISK</div>
+                                <div class="discounted-price">@book.Price ISK</div>
+                                <div>(-@book.Discount%)</div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+            </div>
+        </div>
+        <div class="arrow">
+            <button type="button" class="btn btn-default btn-arrow glyphicon glyphicon-menu-right" value="right">
+            </button>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="~/css/frontPage.css" />
+<script src="~/js/frontPage.js" asp-append-version="true"></script>

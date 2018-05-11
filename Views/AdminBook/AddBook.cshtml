@@ -1,4 +1,9 @@
 ﻿@model TheBookCave.Models.ViewModels.BookListViewModel
+
+@{
+    Layout = "_AdminLayout";
+}
+
 <h2>Create new book</h2>
 
 
@@ -48,7 +53,7 @@
     </div>
 
     <div class="form-group">
-        <input tpe="checkbox" class="form-control" asp-for="Published" placeholder="Check if book is published" />
+        <input type="checkbox" class="form-control" asp-for="Published" placeholder="Check if book is published" />
     </div>
 
     <div class="form-group">

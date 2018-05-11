@@ -1,9 +1,58 @@
 @model TheBookCave.Models.ViewModels.ProfileViewModel;
 
 <div class="profile-container">
-    <h2>Profile</h2>
-    <div>Username: @Model.UserName</div>
-    <div>Email: @Model.Email</div>
-    <div>Name: @Model.FirstName @Model.LastName</div>
-    <td><a asp-controller="Account" asp-action="editProfile" class="btn btn-default">Edit profile</a></td>
+    <div class="row">
+        <div class="btn-group btn-group-justified" role="group">
+            <a asp-controller="Account" asp-action="" class="btn btn-primary disabled" role="button">Profile</a>
+            <a asp-controller="Account" asp-action="" class="btn btn-default" role="button">Order history</a>
+            <a asp-controller="Account" asp-action="editProfile" class="btn btn-default" role="button">Edit profile</a>
+        </div>
+        <div class="profile-layot">
+            <div class="col-md-2">
+                <div>
+                    <img class="profile-picture" src="@Model.Picture" alt="profile picture"></span>
+                </div>
+            </div>
+            <div class="col-md-10 container">
+                <div class="basic-info">
+                    <h4>Name:</h4>
+                    <div>@Model.FirstName @Model.LastName</div>
+                    <h4>Username:</h4>
+                    <div>@Model.UserName</div>
+                    <h4>Email:</h4>
+                    <div>@Model.Email</div>
+                    <h4>Phonenumber:</h4>
+                    <div>@Model.PhoneNumber</div>
+                    <h4>Subscriptions</h4>
+                    <div>engar askriftir</div>
+                </div>
+                <div class="shipping-info">
+                    @if(@Model.Address != null) {
+                        <h4>Address:</h4>
+                        <div>@Model.Address.Address1</div>
+                        if(@Model.Address.Address2 != null) {
+                            <h4>Address2:</h4>
+                            <div>@Model.Address.Address2</div>
+                        }
+                        <h4>Country:</h4>
+                        <div>@Model.Country</div>
+                        <h4>Region:</h4>
+                        <div>@Model.Address.Region</div>
+                        <h4>Zip:</h4>
+                        <div>@Model.Address.Zip</div>
+                    }
+                    else {
+                         <h4>Edit profile to add new address</h4>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+
+<style>
+    .container {
+        display: flex;
+    }
+</style>

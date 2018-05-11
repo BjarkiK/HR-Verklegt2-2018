@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using TheBookCave.Data.EntityModels;
 using TheBookCave.Models.ViewModels;
 using TheBookCave.Repositories;
+using System.Linq;
 
 
 namespace TheBookCave.Services{
@@ -9,25 +11,23 @@ namespace TheBookCave.Services{
         private AddressRepo _addressRepo;
         private SubscriptionRepo _subscriptionRepo;
         private BookRepo _bookRepo;
+        private CountryRepo _contryRepo;
 
         public UserService() {
             _userRepo = new UserRepo();
             _addressRepo = new AddressRepo();
             _subscriptionRepo = new SubscriptionRepo();
             _bookRepo = new BookRepo();
+            _contryRepo = new CountryRepo();
         }
 
         public List<UserListViewModel> getUser(string uid){
             var user = _userRepo.getUser(uid);
             return user;
+        }
 
-        }
-        public List<AddressListViewModel> getUserAddresss(string uid) {
-            /* var user = _userRepo.GetUser(uid);
-            var address = _addressRepo.GetAddress(user.addressId);
-            return address */
-            return null;
-        }
+
+
         public List<SubscriptionListViewModel> getUserSubscriptions(string uid) {
             /* var user = _userRepo.GetUser(uid);
             var subscriptions = _subscriptionRepo.GetAllSubscriptions();

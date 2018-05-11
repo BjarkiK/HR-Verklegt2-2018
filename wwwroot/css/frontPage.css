@@ -1,10 +1,9 @@
 .fp-list {
-    height: 400px;
-    margin: 10px;
+    height: 20%;
+    margin: 10px 10px 0px 10px;
     align-items: center;
     overflow: hidden;
-    border: 2px solid black;
-    border-radius: 5px;
+    background-color:#dadddc;
     display: flex;
 }
 
@@ -21,7 +20,8 @@
 
 .single-book-container {
     width: 20%;
-    padding: 10px;
+    height: 325px;
+    padding: 5px 10px;
     text-align: center;
     cursor: pointer;
     flex: 1 0 20%;
@@ -30,10 +30,14 @@
     align-items: center;
     transition: margin 1s;
 }
+.book-box{
+    width: 250px;
+    height: 315px;
+}
 
 .book-preview-image {
-    width: 150px;
-    height: 220px;
+    width: 124px;
+    height: 183px;
     border: 0.5px solid gray;
     object-fit: cover;
 }
@@ -54,4 +58,34 @@
 
 .btn-arrow {
     height: 30px;
+}
+
+.discounted-price {
+    padding: 5px 0 0 10px;
+    text-decoration: line-through;
+}
+
+.book-detail-price-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.book-detail-price {
+    font-size: 20px;
+}
+.ticketOnBooks {
+    position: relative;
+    font-family: Arial;
+    min-width: 157px;
+}
+.text-block {
+    position: absolute;
+    top: 10px;
+    background-color: purple;
+    opacity: 0.8;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: 47px;
 }

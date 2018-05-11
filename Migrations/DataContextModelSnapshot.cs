@@ -29,15 +29,15 @@ namespace TheBookCave.Migrations
 
                     b.Property<string>("Address2");
 
-                    b.Property<string>("CountryId");
+                    b.Property<int>("CountryId");
 
                     b.Property<string>("Phone");
 
-                    b.Property<int>("RegionId");
+                    b.Property<string>("Region");
 
                     b.Property<string>("UserId");
 
-                    b.Property<int>("ZipId");
+                    b.Property<string>("Zip");
 
                     b.HasKey("Id");
 
@@ -100,6 +100,20 @@ namespace TheBookCave.Migrations
                     b.ToTable("Books");
                 });
 
+            modelBuilder.Entity("TheBookCave.Data.EntityModels.Country", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("CountryCode");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Countries");
+                });
+
             modelBuilder.Entity("TheBookCave.Data.EntityModels.Genre", b =>
                 {
                     b.Property<int>("Id")
@@ -155,6 +169,8 @@ namespace TheBookCave.Migrations
 
                     b.Property<DateTime>("Date");
 
+                    b.Property<int>("OrderStatusId");
+
                     b.Property<int>("TypeId");
 
                     b.Property<string>("UserId");
@@ -162,6 +178,66 @@ namespace TheBookCave.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("TheBookCave.Data.EntityModels.OrderItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("BookId");
+
+                    b.Property<int>("Discount");
+
+                    b.Property<int>("OrderId");
+
+                    b.Property<int>("Quantity");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("OrderItems");
+                });
+
+            modelBuilder.Entity("TheBookCave.Data.EntityModels.OrderItemBook", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("AuthorId");
+
+                    b.Property<int>("BookId");
+
+                    b.Property<string>("DetailsEN");
+
+                    b.Property<string>("DetailsIS");
+
+                    b.Property<int>("Discount");
+
+                    b.Property<int>("GenreId");
+
+                    b.Property<double>("Grade");
+
+                    b.Property<string>("Name");
+
+                    b.Property<int>("NrOfGrades");
+
+                    b.Property<int>("OrderItemId");
+
+                    b.Property<int>("Pages");
+
+                    b.Property<string>("Picture");
+
+                    b.Property<double>("Price");
+
+                    b.Property<bool>("Published");
+
+                    b.Property<int>("PublisherId");
+
+                    b.Property<int>("Quantity");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("OrderItemBook");
                 });
 
             modelBuilder.Entity("TheBookCave.Data.EntityModels.OrderStatus", b =>
@@ -230,6 +306,22 @@ namespace TheBookCave.Migrations
                     b.ToTable("Publishers");
                 });
 
+            modelBuilder.Entity("TheBookCave.Data.EntityModels.Role", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("ConcurrencyStamp");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("NormalizedName");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AspNetRoles");
+                });
+
             modelBuilder.Entity("TheBookCave.Data.EntityModels.Subscription", b =>
                 {
                     b.Property<int>("Id")
@@ -255,25 +347,63 @@ namespace TheBookCave.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int>("AccessFailedCount");
+
                     b.Property<int>("AddressId");
+
+                    b.Property<string>("ConcurrencyStamp");
+
+                    b.Property<string>("Email");
+
+                    b.Property<bool>("EmailConfirmed");
 
                     b.Property<int>("FavoriteBookId");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("FirstName");
 
-                    b.Property<int>("OrderId");
+                    b.Property<string>("LastName");
 
-                    b.Property<string>("Password");
+                    b.Property<bool>("LockoutEnabled");
 
-                    b.Property<bool>("Permission");
+                    b.Property<string>("LockoutEnd");
+
+                    b.Property<string>("NormalizedEmail");
+
+                    b.Property<string>("NormalizedUserName");
+
+                    b.Property<string>("PasswordHash");
+
+                    b.Property<string>("PhoneNumber");
+
+                    b.Property<bool>("PhoneNumberConfirmed");
 
                     b.Property<string>("Picture");
 
-                    b.Property<int>("SubscriptionId");
+                    b.Property<string>("SecurityStamp");
+
+                    b.Property<bool>("TwoFactorEnabled");
+
+                    b.Property<string>("UserName");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("TheBookCave.Data.EntityModels.UserClaims", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("ClaimType");
+
+                    b.Property<string>("ClaimValue");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AspNetClaims");
                 });
 
             modelBuilder.Entity("TheBookCave.Data.EntityModels.UserReview", b =>
@@ -294,6 +424,20 @@ namespace TheBookCave.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("UserReviews");
+                });
+
+            modelBuilder.Entity("TheBookCave.Data.EntityModels.UserRole", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("RoleId");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AspNetUserRoles");
                 });
 #pragma warning restore 612, 618
         }

@@ -11,16 +11,29 @@ namespace TheBookCave.Controllers
 {
     public class CheckoutController : Controller
     {
-        //private CheckoutService _checkoutService;
-        //private OrderService _orderservice;
+        private CartService _cartService;
+        private OrderService _orderService;
 
         public CheckoutController() {
-            //_checkoutService = new CheckoutService();
-            //_orderservice = new OrderService();
+            _cartService = new CartService();
+            _orderService = new OrderService();
         }
         public IActionResult index()
         {
             return View();
+        }
+        public IActionResult creditInfo()
+        {
+            return View();
+        }
+        public IActionResult overview()
+        {
+            return View();
+        }
+        public void checkout() 
+        {
+            var cookie = Request.Cookies["TBCbooksInCart"];
+            _orderService.checkOut(cookie);
         }
         public void autofillLoggedinUserDetails(string uid)
         {
@@ -30,10 +43,6 @@ namespace TheBookCave.Controllers
                 var userAddress = _checkoutService.getLoggedinUserMainAddress(uid);
             }
             */
-        }
-        public void createOrder()
-        {
-            //_checkoutService.createOrder(Order);
         }
     }
 }

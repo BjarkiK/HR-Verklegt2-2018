@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using TheBookCave.Data;
+using TheBookCave.Data.EntityModels;
 using TheBookCave.Models.ViewModels;
 
 namespace TheBookCave.Repositories {
@@ -14,41 +15,34 @@ namespace TheBookCave.Repositories {
             var address = (from a in _db.Addresses
                                 where a.Id == aid
                                 select new AddressListViewModel {
-                                AddressId = a.Id,
-                                Address1 = a.Address1,
-                                Address2 = a.Address2,
-                                CountryId = a.CountryId,
-                                Phone = a.Phone,
-                                RegionId = a.RegionId,
-                                UserId = a.UserId,
-                                ZipId = a.ZipId
+                                    Id = a.Id,
+                                    Address1 = a.Address1,
+                                    Address2 = a.Address2,
+                                    CountryId = a.CountryId,
+                                    Phone = a.Phone,
+                                    Region = a.Region,
+                                    Zip = a.Zip,
+                                    UserId = a.UserId                                    
                                 }).ToList();
             return address;
         }
-        public List<AddressListViewModel> getAllAddresses() {
+        public List<Address> getAllAddresses() {
             var address = (from a in _db.Addresses
-                                select new AddressListViewModel {
-                                AddressId = a.Id,
-                                Address1 = a.Address1,
-                                Address2 = a.Address2,
-                                CountryId = a.CountryId,
-                                Phone = a.Phone,
-                                RegionId = a.RegionId,
-                                UserId = a.UserId,
-                                ZipId = a.ZipId
-                                }).ToList();
+                                select a ).ToList();
             return address;
         }
-        public bool updateAddress(int aid) {
-            // linq update
+        public bool updateAddress(Address address) {
+            _db.Addresses.Update(address);
+            _db.SaveChanges();
             return true;
         }
         public bool deleteAddress(int aid) {
             // linq delete
             return true;
         }
-        public bool createAddress() {
-            // linq insert
+        public bool createAddress(Address address) {
+            _db.Addresses.Add(address);
+            _db.SaveChanges();
             return true;
         }
     }

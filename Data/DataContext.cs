@@ -18,11 +18,11 @@ namespace TheBookCave.Data {
         public DbSet<OrderStatus> OrderStatus {get; set; }
         public DbSet<User> AspNetUsers { get; set;}
         public DbSet<Role> AspNetRoles { get; set;}
-        public DbSet<UserRole> AspNetUserRoles { get; set;}
-     
+        public DbSet<UserRole> AspNetUserRoles { get; set;}     
         public DbSet<UserClaims> AspNetClaims { get; set;}
-        // public DbSet<UserRoles> AspNetUserRoles { get; set;}
-
+        public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<OrderItemBook> OrderItemBook {get; set; }
+        public DbSet<Country> Countries {get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
             // erum ad nota SQL fyrir gagnagrun
             optionsBuilder.UseSqlServer(

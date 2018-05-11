@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TheBookCave.Models;
 using TheBookCave.Models.ViewModels;
@@ -89,6 +90,7 @@ namespace TheBookCave.Controllers
             return View(genreBookList);*/
             return View();
         }
+        [Authorize(Roles = "USER, ADMIN")]
         [HttpPost]
         public double totalGradeUpdate(int bid, int grade) {
             var newGrade = _bookService.updateTotalGrade(bid, grade);
@@ -97,8 +99,17 @@ namespace TheBookCave.Controllers
         public IActionResult search(string searchText) {
             if(searchText != null) {
                 var search = _bookService.getBooksWithSearch(searchText);
-                return View(search);
+                if(search != null) 
+                {
+                    return View(search);
+                }
+                return View("noResults");
             }
+            return View("noResults");
+        }
+        public IActionResult advancedSearch(string title, string publisher, string author, string isbn) 
+        {
+            var search = _bookService.getBooksWithAdvSearch(title, publisher, author, isbn);
             return View();
         }
     }

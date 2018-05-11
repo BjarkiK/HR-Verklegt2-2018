@@ -38,11 +38,6 @@ namespace TheBookCave.Controllers
             }
             return View(searchResult);
         }
-        public IActionResult promoCodeListDisplay()
-        {
-            var promoCodeList = _adminPromoCodeService.getAllPromoCode();
-            return View(promoCodeList);
-        }
         public IActionResult promoCodeDetails(int id)
         {
             var promoCode = _adminPromoCodeService.getPromoCode(id);
